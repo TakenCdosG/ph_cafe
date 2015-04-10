@@ -46,6 +46,14 @@ if ( !function_exists( 'wpex_homepage_slider' ) ) {
 											foreach($caption as $key => $value){ ?>
 											<div class="homepage-slide-caption caption-<?php echo $key; ?>"><?php echo $caption[$key]; ?></div>
 										<?php }} ?>
+										<div class="sub-menu-home">
+											<?php if ( function_exists( 'ot_get_option' ) ) {
+												$ids = ot_get_option( 'sub_menu_header', array() ); } ?>
+											<ul>
+												<li><?php print $ids[0]['title'] ?></li>
+												<li><?php print"<a href='".$ids[1]['link']."'>".$ids[1]['title']."</a>"; ?></li>
+											</ul>
+										</div>
 									</div><!-- .homepage-slider-content -->
 								</div>
 <!--								<img src="--><?php //echo wpex_get_featured_img_url("",TRUE); ?><!--" alt="--><?php //echo $title; ?><!--">-->
