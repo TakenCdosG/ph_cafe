@@ -26,28 +26,56 @@
 
 	<div id="wrap">
 		<?php
-		if(!is_front_page()){?>
-		<div id="header-wrap" class="clr fixed-header">
-			<header id="header" class="site-header clr container" role="banner">
-				<?php
-				// Outputs the site logo
-				wpex_logo(); ?>
-				<div id="sidr-close"><a href="#sidr-close" class="toggle-sidr-close"></a></div>
-				<div id="site-navigation-wrap">
-					<a href="#sidr-main" id="navigation-toggle"><span class="fa fa-bars"></span><?php echo __( 'Menu', 'wpex' ); ?></a>
-					<nav id="site-navigation" class="navigation main-navigation clr" role="navigation">
-						<?php
-						// Display main menu
-						wp_nav_menu( array(
-							'theme_location'	=> 'main_menu',
-							'sort_column'		=> 'menu_order',
-							'menu_class'		=> 'dropdown-menu sf-menu',
-							'fallback_cb'		=> false,
-							'walker'			=> new WPEX_Dropdown_Walker_Nav_Menu()
-						) ); ?>
-					</nav><!-- #site-navigation -->
-				</div><!-- #site-navigation-wrap -->
-			</header><!-- #header -->
+		if(!is_front_page()){
+            $bg_id = get_post_thumbnail_id($post->ID);
+            $bg_url = wp_get_attachment_url( $bg_id );
+            ?>
+		<div id="header-wrap" class="clr fixed-header"  style="background-image: url('<?php print $bg_url ?>')">
+            <div id="header-wrap-block">
+                <header id="header" class="site-header clr container" role="banner">
+                    <?php
+                    // Outputs the site logo
+                    wpex_logo(); ?>
+                    <div id="sidr-close"><a href="#sidr-close" class="toggle-sidr-close"></a></div>
+                    <div id="site-navigation-wrap">
+                        <a href="#sidr-main" id="navigation-toggle"><span class="fa fa-bars"></span></a>
+                        <nav id="site-navigation" class="navigation main-navigation clr" role="navigation">
+                            <?php
+                            // Display main menu
+                            wp_nav_menu( array(
+                                'theme_location'	=> 'main_menu',
+                                'sort_column'		=> 'menu_order',
+                                'menu_class'		=> 'dropdown-menu sf-menu',
+                                'fallback_cb'		=> false,
+                                'walker'			=> new WPEX_Dropdown_Walker_Nav_Menu()
+                            ) ); ?>
+                        </nav><!-- #site-navigation -->
+                    </div><!-- #site-navigation-wrap -->
+                </header><!-- #header -->
+                <div class="sub-site-navigation clr container">
+                    <?php
+                    // Display main menu
+                    wp_nav_menu( array(
+                        'theme_location'	=> 'main_menu',
+                        'sort_column'		=> 'menu_order',
+                        'menu_class'		=> 'dropdown-menu sf-menu',
+                        'fallback_cb'		=> false,
+                        'walker'			=> new Custom_Walker_Sub_Main_Menu()
+                    ) ); ?>
+                </div>
+            </div><!--header-wrap-block -->
+
+                <?php
+                global $post;
+                $post_id = $post->ID;
+                $caption = get_post_meta( $post_id, 'Header Text Box', true );
+                if(!empty($caption)){?>
+                    <div id="header-text-box">
+                        <?php print $caption; ?>
+                    </div><!--header-text-box -->
+                <?php } ?>
+
+
 		</div><!-- #header-wrap -->
 		<?php } ?>
 		<?php

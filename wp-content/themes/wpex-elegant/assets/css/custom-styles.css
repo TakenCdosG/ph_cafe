@@ -1,3 +1,6 @@
+#wrap{
+    background-color: #FFFFFF;
+}
 /* HOME */
 
 .homepage-slide-content{
@@ -63,6 +66,9 @@
 }
 
 /* FOOTER */
+body{
+    background-color: #5D574F;
+}
 body.home{
     background: #D8CBBA url("../images/bg_footer_buttons.png");
 }
@@ -110,10 +116,6 @@ body.home{
     display: none;
 }
 
-.home #footer-buttons-wrap{
-    background: none;
-}
-
 #footer-buttons-wrap img{
     -webkit-filter: grayscale(1);
     filter: grayscale(1);
@@ -124,6 +126,187 @@ body.home{
     filter: grayscale(0);
 }
 
+#footer-wrap{
+    color: #FFFFFF;
+    font-size: 14px;
+    background-color: #5D574F;
+    padding-top: 0;
+}
+
+#footer-widgets{
+    border-top: 1px solid #8F8B86;
+    padding-top: 18px;
+    padding-bottom: 45px;
+}
+.footer-box{
+    min-height: 170px;
+    border-right: 1px solid #8F8B86;
+    padding: 10px 3%;
+    margin: 0;
+}
+#footer-widgets .span_1_of_3.col-2,#footer-widgets .span_1_of_3.col-3,#footer-widgets .span_1_of_3.col-1{
+    padding: 10px 3%;
+}
+#footer-widgets .span_1_of_3.col-1{
+    text-align: right;
+}
+.footer-box.col-3{
+    border: none;
+}
+
+.footer-widget{
+    margin-bottom: 0;
+}
+
+.social-icon{
+    padding: 0 9px;
+}
+
+#footer-wrap input[type="text"], #footer-wrap input[type="search"]{
+    border: 1px solid #C4C4C4;
+    font-size: 14px;
+    display: inline-block;
+    background-color: #FFFFFF;
+    height: 32px;
+    width: 150px;
+}
+#email-signup .submit{
+    background-color:#11110F;
+    display: inline-block;
+    height: 32px;
+    margin-left: -3px;
+}
+
+#email-signup{
+    text-align: right;
+}
+
+#footer-social-wrap{
+    padding-top: 28px;
+    padding-bottom: 20px;
+}
+
+#footer-social-wrap .col{
+    margin-bottom: 0;
+}
+
+#footer-social-wrap input[placeholder],
+#footer-social-wrap [placeholder],
+#footer-social-wrap *[placeholder] {
+    color: #11110E !important;
+}
+
+#social-icons{
+    padding-left: 47px;
+}
+#footer-social-wrap .col-2{
+    margin-left: 0;
+}
+/* HEADER */
+
+#header-wrap-block{
+    background-color:#fff ;
+    opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+}
+#logo img{
+    margin: 0 auto;
+}
+#site-navigation-wrap{
+    top: 42%;
+}
+a#navigation-toggle {
+    display: block;
+    color: #552583;
+    font-size: 30px;
+}
+
+#site-navigation{
+    display: none;
+}
+
+.sub-site-navigation{
+    padding-bottom: 30px;
+}
+
+.sub-site-navigation a{
+    color:#552683;
+    font-size: 18px;
+    padding: 0 18px;
+}
+#sub-menu-title-page{
+    font-size: 34px;
+    color: #552683;
+}
+
+#header-wrap{
+    height: 842px;
+    background-size: cover;
+    background-position: 50% 50%;
+    -webkit-background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#header-text-box{
+    width: 418px;
+    background-color: #FFFFFF;
+    opacity: 0.89;
+    filter: alpha(opacity=89);
+    border: 1px solid #cccccc;
+    position: absolute;
+    top: 532px;
+    right: 174px;
+    padding: 38px 25px;
+    font-size: 18px;
+    color: #552683;
+    line-height: 30px;
+}
+#header-text-box title{
+    font-weight: 800;
+    color: #552683;
+    padding-bottom: 15px;
+    display: block;
+}
+/* Sub site Navigation */
+
+li.cafe a,li.weddings a,li.catering a,li.banquets a{
+    color: transparent;
+    padding: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+    -webkit-background-size: cover;
+}
+li.cafe a{
+    background: url("../images/cafe_logo.png");
+    width: 293px;
+    height: 27px;
+}
+li.weddings a{
+    background: url("../images/weddings_logo.png");
+    width: 392px;
+    height: 24px;
+}
+li.catering a{
+    background: url("../images/catering_logo.png");
+    width: 373px;
+    height: 24px;
+}
+li.banquets a{
+    background: url("../images/banquets_logo.png");
+    width: 375px;
+    height: 29px;
+}
+
+#sidr-main ul a[title="aux_item_menu"] {
+    display: none;
+}
+
+
+/* CONTENT */
+#content{
+    font-size: 17px;
+    line-height: 34px;
+}
 
 /* RESPONSIVE */
 
@@ -131,7 +314,6 @@ body.home{
     .container {
         width: 1046px;
     }
-
 }
 
 @media only screen and (max-width: 1000px) and (min-width: 960px) {
@@ -139,6 +321,8 @@ body.home{
         max-width: 95%;
     }
 }
+
+
 
 @media only screen and (min-width: 768px) and (max-width: 959px){
     .homepage-slide-caption.caption-0{
@@ -158,13 +342,34 @@ body.home{
 
 }
 
+@media only screen and (max-width: 1024px) {
+
+    #header-text-box{
+        width: 418px;
+        right: 47px;
+    }
+    #content{
+        font-size: 16px;
+        line-height: 32px;
+    }
+
+}
+
 @media only screen  and (max-width: 959px){
     .homepage-slide-caption{
         padding-left: 8%;
     }
+    #header-text-box{
+        width: 344px;
+        right: 32px;
+    }
 }
 
 @media only screen and (max-width: 767px){
+    .footer-box{
+        border: none;
+        min-height: inherit;
+    }
     .homepage-slide-content {
         display: block;
     }
@@ -202,6 +407,61 @@ body.home{
     }
     .sub-menu-home{
         display: block;
+    }
+    #email-signup{
+        text-align: center;
+        padding-bottom: 18px;
+        border-bottom: 1px solid #8F8B86;
+    }
+    #social-icons{
+        padding-top: 9px;
+        padding-left: 0;
+        text-align: center;
+    }
+    .social-icon{
+        padding: 0 3px;
+    }
+    #footer-widgets .span_1_of_3.col-1{
+    text-align: left;
+     }
+
+    #facebook_icon img{
+        width: 24px;
+    }
+    #twitter_icon img{
+        width: 26px;
+    }
+    #painteres_icon img{
+        width: 25px;
+    }
+    #yelp_icon img{
+        width: 53px;
+    }
+    #open_table_icon img{
+        width: 106px;
+    }
+
+    #header-text-box{
+        width: 240px;
+        right: 4%;
+        padding: 20px;
+    }
+
+    .sub-site-navigation ul li{
+        display: none;
+    }
+    .sub-site-navigation ul .catering{
+        display: block;
+    }
+    .menu-main-menu-1{
+        text-align: center;
+    }
+    li.cafe a,li.weddings a,li.catering a,li.banquets a{
+        max-width: 100%;
+    }
+    #content{
+        font-size: 14px;
+        line-height: 28px;
     }
 }
 

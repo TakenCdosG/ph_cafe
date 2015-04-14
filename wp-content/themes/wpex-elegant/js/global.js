@@ -15,8 +15,8 @@ jQuery( function($) {
 		$('#navigation-toggle').sidr({
 			name: 'sidr-main',
 			source: '#sidr-close, #site-navigation, #mobile-search',
-			side: 'left'
-		});
+			side: 'right'
+        });
 		$(".sidr-class-toggle-sidr-close").click( function() {
 			$.sidr('close', 'sidr-main');
 			return false;
