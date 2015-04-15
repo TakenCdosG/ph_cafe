@@ -275,7 +275,7 @@ a#navigation-toggle {
     display: inline-block;
 }
 
-li a[title='aux_item_menu_cafe'],li a[title='aux_item_menu_weddings'],li a[title='aux_item_menu_catering'],li a[title='aux_item_menu_banquets']{
+.sub-main-menu li a[title='aux_item_menu_cafe'],.sub-main-menu li a[title='aux_item_menu_weddings'],.sub-main-menu li a[title='aux_item_menu_catering'],.sub-main-menu li a[title='aux_item_menu_banquets']{
     color: transparent;
     padding: 0;
     background-size: cover;
@@ -283,22 +283,22 @@ li a[title='aux_item_menu_cafe'],li a[title='aux_item_menu_weddings'],li a[title
     -webkit-background-size: cover;
     display: block;
 }
-li a[title='aux_item_menu_cafe']{
+.sub-main-menu li a[title='aux_item_menu_cafe']{
     background: url("../images/cafe_logo.png");
     width: 293px;
     height: 27px;
 }
-li a[title='aux_item_menu_weddings']{
+.sub-main-menu li a[title='aux_item_menu_weddings']{
     background: url("../images/weddings_logo.png");
     width: 392px;
     height: 24px;
 }
-li a[title='aux_item_menu_catering']{
+.sub-main-menu li a[title='aux_item_menu_catering']{
     background: url("../images/catering_logo.png");
     width: 373px;
     height: 24px;
 }
-li a[title='aux_item_menu_banquets']{
+.sub-main-menu li a[title='aux_item_menu_banquets']{
     background: url("../images/banquets_logo.png");
     width: 375px;
     height: 29px;
