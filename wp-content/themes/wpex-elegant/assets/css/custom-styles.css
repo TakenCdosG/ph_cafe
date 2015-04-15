@@ -225,26 +225,14 @@ a#navigation-toggle {
     display: none;
 }
 
-.sub-site-navigation{
-    padding-bottom: 30px;
-}
-
-.sub-site-navigation a{
-    color:#552683;
-    font-size: 18px;
-    padding: 0 18px;
-}
-#sub-menu-title-page{
-    font-size: 34px;
-    color: #552683;
-}
-
 #header-wrap{
     height: 842px;
     background-size: cover;
     background-position: 50% 50%;
     -webkit-background-size: cover;
     background-repeat: no-repeat;
+    position: relative;
+    border-bottom: 1px solid #cccccc;
 }
 
 #header-text-box{
@@ -267,31 +255,50 @@ a#navigation-toggle {
     padding-bottom: 15px;
     display: block;
 }
-/* Sub site Navigation */
+/* Sub main menu */
 
-li.cafe a,li.weddings a,li.catering a,li.banquets a{
+.sub-main-menu{
+    padding-bottom: 30px;
+}
+
+.sub-main-menu a{
+    color:#552683;
+    font-size: 18px;
+    padding: 0 18px;
+}
+#sub-menu-title-page{
+    font-size: 34px;
+    color: #552683;
+}
+
+.sub-main-menu li{
+    display: inline-block;
+}
+
+li a[title='aux_item_menu_cafe'],li a[title='aux_item_menu_weddings'],li a[title='aux_item_menu_catering'],li a[title='aux_item_menu_banquets']{
     color: transparent;
     padding: 0;
     background-size: cover;
     background-position: 50% 50%;
     -webkit-background-size: cover;
+    display: block;
 }
-li.cafe a{
+li a[title='aux_item_menu_cafe']{
     background: url("../images/cafe_logo.png");
     width: 293px;
     height: 27px;
 }
-li.weddings a{
+li a[title='aux_item_menu_weddings']{
     background: url("../images/weddings_logo.png");
     width: 392px;
     height: 24px;
 }
-li.catering a{
+li a[title='aux_item_menu_catering']{
     background: url("../images/catering_logo.png");
     width: 373px;
     height: 24px;
 }
-li.banquets a{
+li a[title='aux_item_menu_banquets']{
     background: url("../images/banquets_logo.png");
     width: 375px;
     height: 29px;
@@ -301,6 +308,32 @@ li.banquets a{
     display: none;
 }
 
+/* sub sub main menu  */
+
+.sub-sub-main-menu{
+    margin: 585px auto 0 auto;
+    width: 497px;
+    height: 52px;
+}
+.sub-sub-main-menu a{
+    color: #552683;
+    background-color: #EDE2D1;
+    display: block;
+    font-size: 24px;
+    text-transform: uppercase;
+    padding: 14px 28px;
+
+}
+
+.sub-sub-main-menu li{
+    float: left;
+    margin: 0 9px;
+}
+
+.sub-sub-main-menu li.current-menu-item a{
+    background-color: #FFFFFF;
+    margin-top: 3px;
+}
 
 /* CONTENT */
 #content{
@@ -447,10 +480,10 @@ li.banquets a{
         padding: 20px;
     }
 
-    .sub-site-navigation ul li{
+    .sub-main-menu ul li{
         display: none;
     }
-    .sub-site-navigation ul .catering{
+    .sub-main-menu ul .catering{
         display: block;
     }
     .menu-main-menu-1{

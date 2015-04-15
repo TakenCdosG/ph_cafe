@@ -52,16 +52,8 @@
                         </nav><!-- #site-navigation -->
                     </div><!-- #site-navigation-wrap -->
                 </header><!-- #header -->
-                <div class="sub-site-navigation clr container">
-                    <?php
-                    // Display main menu
-                    wp_nav_menu( array(
-                        'theme_location'	=> 'main_menu',
-                        'sort_column'		=> 'menu_order',
-                        'menu_class'		=> 'dropdown-menu sf-menu',
-                        'fallback_cb'		=> false,
-                        'walker'			=> new Custom_Walker_Sub_Main_Menu()
-                    ) ); ?>
+                <div class="sub-main-menu clr container">
+                    <?php dynamic_sidebar( 'sub-main-menu' ); ?>
                 </div>
             </div><!--header-wrap-block -->
 
@@ -74,6 +66,9 @@
                         <?php print $caption; ?>
                     </div><!--header-text-box -->
                 <?php } ?>
+            <div class="sub-sub-main-menu clr">
+                <?php dynamic_sidebar( 'sub-sub-main-menu' ); ?>
+            </div>
 
 
 		</div><!-- #header-wrap -->

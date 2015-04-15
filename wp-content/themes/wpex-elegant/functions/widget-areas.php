@@ -46,3 +46,25 @@ register_sidebar(array(
 	'before_title'	=> '<h6 class="widget-title"><span>',
 	'after_title'	=> '</span></h6>',
 ));
+
+// Sub Main Menu
+register_sidebar(array(
+    'name'			=> __( 'Sub Main Menu', 'wpex' ),
+    'id'			=> 'sub-main-menu',
+    'description'	=> __( 'To show Sub Main Menu', 'wpex' ),
+    'before_widget'	=> '<div class="sub-main-menu-widget %2$s clr">',
+    'after_widget'	=> '</div>',
+    'before_title'	=> '<h6 class="widget-title"><span>',
+    'after_title'	=> '</span></h6>',
+));
+
+// Sub Sub Main Menu
+register_sidebar(array(
+    'name'			=> __( 'Sub Sub Main Menu', 'wpex' ),
+    'id'			=> 'sub-sub-main-menu',
+    'description'	=> __( 'To show Sub Sub Main Menu', 'wpex' ),
+    'before_widget'	=> '<div class="sub-sub-main-menu-widget %2$s clr">',
+    'after_widget'	=> '</div>',
+    'before_title'	=> '<h6 class="widget-title"><span>',
+    'after_title'	=> '</span></h6>',
+));
