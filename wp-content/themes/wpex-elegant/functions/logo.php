@@ -11,9 +11,13 @@ if ( ! function_exists( 'wpex_logo' ) ) {
 	function wpex_logo() {
 
 		// Vars
-		$logo_img = get_theme_mod('wpex_logo');
+
 		$blog_name = get_bloginfo( 'name' );
-		$home_url = home_url(); ?>
+		$home_url = home_url();
+        print $home_url;
+        $logo_img = $home_url."/wp-content/uploads/2015/04/PondHouseCafeLogo.png";
+
+        ?>
 
 		<div id="logo" class="clr">
 			<?php if ( $logo_img ) { ?>
