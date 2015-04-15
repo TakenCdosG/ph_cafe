@@ -14,7 +14,6 @@ if ( ! function_exists( 'wpex_logo' ) ) {
 
 		$blog_name = get_bloginfo( 'name' );
 		$home_url = home_url();
-        print $home_url;
         $logo_img = $home_url."/wp-content/uploads/2015/04/PondHouseCafeLogo.png";
 
         ?>
