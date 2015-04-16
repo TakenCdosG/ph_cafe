@@ -37,7 +37,11 @@ select { max-width: 100%; }
 .col.first { clear: both; margin-left: 0; }
 /* Body & Main
 ================================================== */
-body { background: #f6f6f6; color: #777; font: 12px/22px 'Open Sans', "Helvetica", Arial; -webkit-font-smoothing: antialiased; }
+body {
+    background: #f6f6f6; color: #777;
+    font: 12px/22px 'Open Sans', "Helvetica", Arial;
+    -webkit-font-smoothing: antialiased;
+}
 body a { color: #54d5a2; text-decoration: none; }
 #main { padding: 40px 0; }
 .container { margin: 0 auto; width: 980px; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; }
