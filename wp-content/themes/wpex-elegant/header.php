@@ -28,8 +28,12 @@
 
 	<div id="wrap">
 		<?php
+        global $post;
+        $post_id = $wp_query->post->ID;
 		if(!is_front_page()){
-            $bg_id = get_post_thumbnail_id($post->ID);
+            //d($post_id);
+
+            $bg_id = get_post_thumbnail_id($post_id);
             $bg_url = wp_get_attachment_url( $bg_id );
             ?>
 		<div id="header-wrap" class="clr fixed-header"  style="background-image: url('<?php print $bg_url ?>')">
@@ -60,8 +64,7 @@
             </div><!--header-wrap-block -->
 
                 <?php
-                global $post;
-                $post_id = $post->ID;
+
                 $caption = get_post_meta( $post_id, 'Header Text Box', true );
                 if(!empty($caption)){?>
                     <div id="header-text-box">
