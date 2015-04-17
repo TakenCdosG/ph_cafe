@@ -369,7 +369,7 @@ a#navigation-toggle {
     height: 29px;
 }
 
-#sidr-main ul a[title="aux_item_menu"] {
+#sidr-main ul a[title="aux_item_menu_cafe"],#sidr-main ul a[title="aux_item_menu_weddings"],#sidr-main ul a[title="aux_item_menu_catering"],#sidr-main ul a[title="aux_item_menu_banquets"] {
     display: none;
 }
 
@@ -398,6 +398,49 @@ a#navigation-toggle {
 .sub-sub-main-menu li.current-menu-item a{
     background-color: #FFFFFF;
     margin-top: 3px;
+}
+/* MEnu Mobile */
+#sidr-main a{
+    color: #FFFFFF;
+
+}
+
+#sidr-main{
+    background-color: #552683;
+    padding: 30px 0 0 0;
+}
+#sidr-main #sidr-id-menu-item-21{
+    display: none;
+}
+#sidr-main ul a,#sidr-main ul li ul li a{
+    padding: 10px 30px;
+}
+
+#sidr-main ul a{
+    border: none;
+
+}
+#sidr-main .sidr-inner:nth-child(3){
+    display: none;
+}
+
+#sidr-main ul li ul li ul {
+    display: none;
+}
+
+#sidr-main ul li ul {
+    background-color: #663B8F;
+    border-bottom: 1px solid #8D6DAC;
+}
+
+.sidr-class-toggle-sidr-close:before{
+    left: inherit;
+    right: 18px;
+    top: 12px;
+}
+
+#sidr-main ul li ul li a:before{
+    content: initial;
 }
 
 /* CONTENT */
