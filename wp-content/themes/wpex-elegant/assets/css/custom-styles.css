@@ -771,5 +771,9 @@ a.tribe-events-gcal.tribe-events-button
     }
     .tribe-events-calendar thead th {
     padding: 7px 0 !important;
+    }
 }
+
+.sidr-class-sub-menu{
+    text-transform: capitalize;
 }
