@@ -64,11 +64,13 @@
             </div><!--header-wrap-block -->
 
                 <?php
+                $title = get_field('header_box_title');
+                $text = get_field('header_box_content');
 
-                $caption = get_post_meta( $post_id, 'Header Text Box', true );
-                if(!empty($caption)){?>
+                if(!empty($title) and !empty($text)){?>
                     <div id="header-text-box">
-                        <?php print $caption; ?>
+                       <title> <?php print $title; ?></title>
+                        <?php print $text?>
                     </div><!--header-text-box -->
                 <?php } ?>
             <div class="sub-sub-main-menu clr">

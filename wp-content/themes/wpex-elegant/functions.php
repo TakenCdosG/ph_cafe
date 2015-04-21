@@ -24,7 +24,7 @@
 /*--------------------------------------*/
 /* Akendos Custom functions and definitions */
 /*--------------------------------------*/
-require_once( get_template_directory() .'/assets/functions/tynyMce.php');
+
 
 
 /** Theme Setup **/

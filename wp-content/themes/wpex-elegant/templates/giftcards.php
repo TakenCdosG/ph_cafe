@@ -5,15 +5,13 @@
 
 get_header(); ?>
 
-    <div id="primary" class="content-area clr">
-        <div id="content" class="site-content" role="main">
-            <?php while ( have_posts() ) : the_post(); ?>
+    <div id="header_text" class="content-area clr">
+        <?php print get_field('big_text'); ?>
+    </div>
 
-                <?php if ( !is_front_page() ) { ?>
-                    <header class="page-header clr">
-                        <h1 class="page-header-title"><?php the_title(); ?></h1>
-                    </header><!-- #page-header -->
-                <?php } ?>
+    <div id="primary" class="content-area clr">
+        <div id="content" class="site-content span_1_of_2 col col-1" role="main">
+            <?php while ( have_posts() ) : the_post(); ?>
 
                 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                     <div class="entry clr">
@@ -23,7 +21,12 @@ get_header(); ?>
                 </article><!-- #post -->
             <?php endwhile; ?>
         </div><!-- #content -->
+        <div id="paypal_form" class="span_1_of_2 col col-2">
+            <?php print get_field('paypal_form'); ?>
+        </div>
     </div><!-- #primary -->
+
+
 
 
 <?php get_footer(); ?>
