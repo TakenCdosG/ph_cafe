@@ -823,10 +823,12 @@ a.tribe-events-gcal.tribe-events-button
     display: none;
 }
 input.ninja-forms-field.ninja-forms-req.text-ninjaf, textarea.ninja-forms-field.ninja-forms-req.text-ninjaf, input.ninja-forms-field.text-ninjaf {
-    margin-left: 23%;
+    margin-left: 23% !important;
     position: relative;
     bottom: 26px;
 }
+
+
 select.ninja-forms-field.list-ninjaf, select.ninja-forms-field.ninja-forms-req.list-ninjaf{
-    margin-left: 10% !important;
+    margin-left: 18% !important;
 }
