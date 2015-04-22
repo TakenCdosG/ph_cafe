@@ -813,3 +813,20 @@ a.tribe-events-gcal.tribe-events-button
 .sidr-class-sub-menu{
     text-transform: capitalize;
 }
+
+/*NINJA FORM STYLES*/
+.entry input[type="submit"]{
+    background: #552684;
+}
+
+.ninja-forms-required-items{
+    display: none;
+}
+input.ninja-forms-field.ninja-forms-req.text-ninjaf, textarea.ninja-forms-field.ninja-forms-req.text-ninjaf{
+    margin-left: 23%;
+    position: relative;
+    bottom: 26px;
+}
+select.ninja-forms-field.list-ninjaf{
+    margin-left: 18% !important;
+}
