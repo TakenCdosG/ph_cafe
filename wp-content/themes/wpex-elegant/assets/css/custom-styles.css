@@ -829,6 +829,11 @@ input.ninja-forms-field.ninja-forms-req.text-ninjaf, textarea.ninja-forms-field.
 }
 
 
-select.ninja-forms-field.list-ninjaf, select.ninja-forms-field.ninja-forms-req.list-ninjaf{
+select.ninja-forms-field.list-ninjaf{
     margin-left: 18% !important;
+
+    }
+select.ninja-forms-field.ninja-forms-req{
+    margin-left: 15% !important;
+
 }
