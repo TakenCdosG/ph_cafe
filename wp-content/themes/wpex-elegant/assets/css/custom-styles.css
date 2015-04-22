@@ -495,6 +495,9 @@ a#navigation-toggle {
     .container {
         max-width: 95%;
     }
+    .page-template-single-gallery-php .container{
+        max-width: 100%;
+    }
 }
 
 
@@ -513,6 +516,9 @@ a#navigation-toggle {
     .homepage-slide-content{
         width: 100%;
         top: 440px;
+    }
+    .page-template-single-gallery-php .container{
+        max-width: 100%;
     }
 
 }
@@ -711,10 +717,35 @@ a#navigation-toggle {
     }
 
     #main{
-        padding: 20px 0 0 0;
+        padding: 20px 0;
+    }
+    .page-template-single-gallery-php .container {
+        max-width: 100%;
+        width: 100%;
     }
 
+}
 
+
+/* GALLERY */
+
+.page-template-single-gallery-php .sub-sub-main-menu{
+    display: none;
+}
+.page-template-single-gallery-php #header-wrap{
+    height: auto;
+    border-bottom: none;
+    box-shadow: none;
+}
+
+.page-template-single-gallery-php #main{
+    width: 100%;
+    background-color: #DFDFDF;
+}
+
+
+.page-template-single-gallery-php .uris-slider-title{
+    display: none;
 }
 
 /*CALENDAR*/
@@ -751,6 +782,11 @@ a.tribe-events-gcal.tribe-events-button
     background-color: #552684 !important;
 }
 
+.loop-entry{
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
 /*RESPONSIVE CALENDAR TWEAKS*/
 @media only screen and (max-width: 768px) {
     .tribe-events-sub-nav li a{
