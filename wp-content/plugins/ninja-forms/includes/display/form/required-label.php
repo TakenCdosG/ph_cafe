@@ -5,7 +5,7 @@
 **/
 add_action('init', 'ninja_forms_register_display_req_items');
 function ninja_forms_register_display_req_items(){
-	add_action('ninja_forms_display_before_fields', 'ninja_forms_display_req_items', 12 );
+	add_action('ninja_forms_display_after_fields', 'ninja_forms_display_req_items', 12 );
 }
 
 function ninja_forms_display_req_items( $form_id ){
@@ -13,7 +13,7 @@ function ninja_forms_display_req_items( $form_id ){
 	if(isset($plugin_settings['req_div_label'])){
 		$req_div_label = __( $plugin_settings['req_div_label'], 'ninja-forms' );
 	}else{
-		$req_div_label = __('Fields marked with a * are required.', 'ninja-forms');
+		$req_div_label = __('* Required fields', 'ninja-forms');
 	}
 
 	$all_fields = ninja_forms_get_fields_by_form_id( $form_id );
