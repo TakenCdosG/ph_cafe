@@ -818,24 +818,27 @@ a.tribe-events-gcal.tribe-events-button
 /*NINJA FORM STYLES*/
 .entry input[type="submit"]{
     background: #552684;
+    border-radius: 5px;
 }
 
 input.ninja-forms-field.ninja-forms-req.text-ninjaf, textarea.ninja-forms-field.ninja-forms-req.text-ninjaf, input.ninja-forms-field.text-ninjaf, textarea.ninja-forms-field.text-ninjaf {
-    margin-left: 23% !important;
+   
     position: relative;
     bottom: 26px;
-    padding: 16px;
+    padding: 10px;
     border-radius: 6px;
+    float: right;
 }
 
-
 select.ninja-forms-field.list-ninjaf{
-    margin-left: 18% !important;
-
-    }
+    width: 216px;
+    float:right;
+    padding: 10px;
+}
 select.ninja-forms-field.ninja-forms-req{
-    margin-left: 15% !important;
-
+    width: 216px;
+    float:right;
+    padding: 10px;
 }
 
 label[id^=ninja_forms_field]{
@@ -843,14 +846,10 @@ label[id^=ninja_forms_field]{
     top: 15px !important;
 }
 
-/*label#ninja_forms_field_11_label, label#ninja_forms_field_17_label, label#ninja_forms_field_19_label, label#ninja_forms_field_20_label{
-    top: 0px !important;
-}*/
-
-label#ninja_forms_field_16_label, label#ninja_forms_field_19_label, label#ninja_forms_field_21_label, label#ninja_forms_field_22_label{
+label#ninja_forms_field_11_label, label#ninja_forms_field_17_label, label#ninja_forms_field_19_label, label#ninja_forms_field_20_label{
     top: 0px !important;
 }
 
-.ninja-forms-form-wrap label{
-    
+form[id^=ninja_forms_form_]{
+    width: 60%;
 }
