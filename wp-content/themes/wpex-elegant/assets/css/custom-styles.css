@@ -846,3 +846,7 @@ label[id^=ninja_forms_field]{
 .field-wrap.text-wrap.label-left.text-ninjaf-wrap, .field-wrap.list-dropdown-wrap.label-left.list-ninjaf-wrap, .field-wrap.textarea-wrap.label-left.text-ninjaf-wrap, .field-wrap.list-dropdown-wrap.label-left{
     width: 60%;
 }
+
+input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="tel"], textarea{
+    font-family: "open-sans";
+}
