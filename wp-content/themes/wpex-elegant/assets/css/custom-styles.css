@@ -819,13 +819,16 @@ a.tribe-events-gcal.tribe-events-button
     background: #552684;
 }
 
-.ninja-forms-required-items{
+/*.ninja-forms-required-items{
     display: none;
-}
+}*/
+
 input.ninja-forms-field.ninja-forms-req.text-ninjaf, textarea.ninja-forms-field.ninja-forms-req.text-ninjaf, input.ninja-forms-field.text-ninjaf {
     margin-left: 23% !important;
     position: relative;
     bottom: 26px;
+    padding: 16px;
+    border-radius: 6px;
 }
 
 
@@ -836,4 +839,13 @@ select.ninja-forms-field.list-ninjaf{
 select.ninja-forms-field.ninja-forms-req{
     margin-left: 15% !important;
 
+}
+
+label[id^=ninja_forms_field]{
+    position: relative;
+    top: 15px !important;
+}
+
+label#ninja_forms_field_11_label, label#ninja_forms_field_17_label, label#ninja_forms_field_19_label, label#ninja_forms_field_20_label{
+    top: 0px !important;
 }
