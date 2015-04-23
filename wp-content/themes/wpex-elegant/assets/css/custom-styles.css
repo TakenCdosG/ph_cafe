@@ -843,6 +843,6 @@ label[id^=ninja_forms_field]{
     position: relative;
 }
 
-.field-wrap.text-wrap.label-left.text-ninjaf-wrap{
+.field-wrap.text-wrap.label-left.text-ninjaf-wrap, .field-wrap.list-dropdown-wrap.label-left.list-ninjaf-wrap, .field-wrap.textarea-wrap.label-left.text-ninjaf-wrap, .field-wrap.list-dropdown-wrap.label-left{
     width: 60%;
 }
