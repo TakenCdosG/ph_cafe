@@ -461,6 +461,7 @@ a#navigation-toggle {
 #paypal_form table{
     float: right;
     width: 100%;
+    text-align: right;
 }
 
 #paypal_form td{
