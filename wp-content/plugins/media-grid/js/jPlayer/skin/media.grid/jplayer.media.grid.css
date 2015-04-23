@@ -1,0 +1,401 @@
+/*
+ * Skin for jPlayer Plugin (jQuery JavaScript Library)
+ * http://www.happyworm.com/jquery/jplayer
+ *
+ * Skin Name: Media Grid
+ 
+ * Author: Luca Montanari
+ * Skin Version: 1.0
+ * Date: 06 April 2012
+ */
+
+#mg_overlay_content div.jp-jplayer {
+	height: 0px;
+}
+#mg_overlay_content div.jp-audio {
+
+	/* Edit the font-size to counteract inherited font sizing.
+	 * Eg. 1.25em = 1 / 0.8em
+	 */
+
+	font-size:1em; /* 1.25em for testing in site pages */ /* No parent CSS that can effect the size in the demos ZIP */
+
+	font-family:Verdana, Arial, sans-serif;
+	line-height:1.6;
+	color: #666;
+	background-color:#3a3c3d;
+	position:relative;
+}
+#mg_overlay_content div.jp-audio {
+	width: 100%;
+	margin-top: -7px;
+}
+
+#mg_overlay_content div.jp-interface {
+	position: relative;
+	background: url('player_bg.png') repeat-x top left transparent;
+	border-radius: 0px 0px 2px 2px;
+}
+
+#mg_overlay_content div.jp-audio div.jp-type-single div.jp-interface {
+	height:60px;
+}
+#mg_overlay_content div.jp-audio div.jp-type-playlist div.jp-interface {
+	height: auto;
+	padding: 0 10px 4px;
+}
+
+/* @group CONTROLS */
+
+#mg_overlay_content .jp-controls {
+	list-style: none;	
+}
+
+#mg_overlay_content a.jp-play,
+#mg_overlay_content a.jp-pause,
+#mg_overlay_content a.jp-stop, 
+#mg_overlay_content a.jp-previous, 
+#mg_overlay_content a.jp-next,
+#mg_overlay_content a.jp-mute,
+#mg_overlay_content a.jp-unmute {
+	width: 14px;
+	height: 14px;
+	float: left;
+	margin-top: 8px;
+	text-indent: -9999px
+}
+
+#mg_overlay_content a.jp-previous,
+#mg_overlay_content a.jp-play,
+#mg_overlay_content a.jp-pause,
+#mg_overlay_content a.jp-next {
+	margin-left: 3px;	
+}
+
+#mg_overlay_content a.jp-previous {
+	margin-left: 0px;
+	margin-right: 3px;
+	background: url("jplayer.media.grid.png") -24px 0 no-repeat transparent;
+}
+#mg_overlay_content a.jp-play {
+	margin-left: 0px;
+	background: url("jplayer.media.grid.png") 1px 0 no-repeat transparent;
+}
+#mg_overlay_content a.jp-pause {
+	margin-left: 0px;
+	background: url("jplayer.media.grid.png") -52px 0 no-repeat transparent;
+	display: none;
+}
+#mg_overlay_content a.jp-next {
+	background: url("jplayer.media.grid.png") -12px 0 no-repeat transparent;
+}
+
+#mg_overlay_content a.jp-mute {
+	right: 73px;	
+	background: url("jplayer.media.grid.png") -66px 0 no-repeat transparent;		
+}
+#mg_overlay_content a.jp-unmute {
+	right: 74px;	
+	background: url("jplayer.media.grid.png") -77px 0 no-repeat transparent;
+	display: none;
+}
+
+
+#mg_overlay_content a.jp-stop {
+	background: url("jplayer.media.grid.png") 0 -83px no-repeat;
+	margin-left:10px;
+}
+
+#mg_overlay_content div.jp-toggle-playlist {
+	width: 14px;
+	height: 14px;
+	float: right;
+	margin-top: 8px;
+	background: url("jplayer.media.grid.png") -90px 0 no-repeat transparent;	
+}
+
+
+/* @end */
+
+/* @group progress bar */
+
+#mg_overlay_content div.jp-progress {
+	overflow:hidden;
+	background-color: #ddd;
+}
+#mg_overlay_content div.jp-seek-bar {
+	background-color: #444;
+	width:0px;
+	height:100%;
+	cursor: pointer;
+}
+#mg_overlay_content div.jp-audio div.jp-progress {
+	float: left;
+	margin-top: 12px;
+	margin-left: 20px;
+	height: 5px;
+	background-color: #262929;
+	border: 1px solid #262929;
+	border-radius: 1px;
+	position: relative;
+}
+#mg_overlay_content div.jp-audio div.jp-type-single div.jp-progress,
+#mg_overlay_content div.jp-audio div.jp-type-playlist div.jp-progress {
+	width: 40%;
+}
+#mg_overlay_content div.jp-play-bar {
+	background-color: #ccc;
+	width:0px;
+	height: 5px;
+}
+
+/* @end */
+
+/* @group current time and duration */
+
+#mg_overlay_content div.jp-audio div.jp-time-holder {
+	float: left;
+	margin-top: 7px;
+	color: #ddd;
+}
+#mg_overlay_content div.jp-audio div.jp-type-single div.jp-time-holder {
+	margin-left: 84px;
+	width: 314px;
+}
+#mg_overlay_content div.jp-audio div.jp-type-playlist div.jp-time-holder {
+	margin-left: 20px;
+	width: 75px;
+}
+
+#mg_overlay_content div.jp-audio div.jp-type-playlist div.jp-time-holder span {	
+	display: inline-block;
+    font-size: 12px;
+    left: 2px;
+    line-height: 12px;
+    position: relative;
+    top: -6px;
+	padding-left: 3px;
+}
+
+#mg_overlay_content div.jp-current-time,
+#mg_overlay_content div.jp-duration {
+	width: 30px;
+	font-size:.64em;
+	font-style:oblique;
+}
+#mg_overlay_content div.jp-current-time {
+	float: left;
+	display:inline;
+}
+#mg_overlay_content div.jp-duration {
+	float: right;
+	display:inline;
+	text-align: right;
+}
+
+/* @end */
+
+/* @group volume controls */
+
+#mg_overlay_content div.jp-volume-group {
+	float: right;	
+	width: 63px;
+}
+
+#mg_overlay_content div.jp-volume-bar {
+	float: left;
+	overflow: hidden;
+	background: url("jplayer.media.grid.png") 0 -250px repeat-x;
+	width: 42px;
+	height: 5px;
+	cursor: pointer;
+}
+#mg_overlay_content div.jp-audio div.jp-volume-bar {
+	margin-top: 11px;
+	margin-left: 5px;
+	background-color: #262929;
+	border: 1px solid #262929;
+	border-radius: 2px;
+}
+#mg_overlay_content div.jp-volume-bar-value {
+	background-color: #ccc;
+	width: 0px;
+	height: 5px;
+}
+
+/* @end */
+
+/* @group current time and duration */
+
+#mg_overlay_content div.jp-audio div.jp-time-holder {
+	float: left;
+	margin-top: 7px;
+	color: #ddd;
+}
+#mg_overlay_content div.jp-audio div.jp-type-single div.jp-time-holder {
+	margin-left: 84px;
+	width: 314px;
+}
+#mg_overlay_content div.jp-audio div.jp-type-playlist div.jp-time-holder {
+	margin-left: 20px;
+	width: 75px;
+}
+
+#mg_overlay_content div.jp-audio div.jp-type-playlist div.jp-time-holder span {	
+	display: inline-block;
+    font-size: 12px;
+    left: 2px;
+    line-height: 12px;
+    position: relative;
+    top: -7px;
+	padding-left: 3px;
+}
+
+#mg_overlay_content div.jp-current-time,
+#mg_overlay_content div.jp-duration {
+	width: 30px;
+	font-size:.64em;
+	font-style:oblique;
+}
+#mg_overlay_content div.jp-current-time {
+	float: left;
+	display:inline;
+}
+#mg_overlay_content div.jp-duration {
+	float: right;
+	display:inline;
+	text-align: right;
+}
+
+/* @end */
+
+/* track title */
+#mg_overlay_content .jp-track-title {
+	clear: both;
+	position: relative;
+    top: 3px;
+}
+#mg_overlay_content .jp-track-title ul {
+	list-style: none;
+	font-size: 11px;
+	margin: 2px 0 0;
+	padding: 0 4px;
+}
+#mg_overlay_content .jp-track-title ul {
+	margin: 0;	
+}
+#mg_overlay_content .jp-track-title ul li {
+	cursor: pointer;	
+}
+#mg_overlay_content .jp-track-title ul li.jp-playlist-current {
+	cursor: default;	
+}
+#mg_overlay_content .jp-track-title ul li a {
+	text-decoration: none;	
+	overflow: hidden;
+}
+
+/* full tracklist */
+#mg_overlay_content .jp-playlist.jp_full_tracklist a {
+	height: 20px;
+    line-height: 22px;	
+	color: #949494;
+	padding: 4px 0 8px;
+	display: block;
+	border-bottom: 1px solid #5f5f5f;
+}
+#mg_overlay_content .jp-playlist.jp_full_tracklist li:last-child a {
+	border: none !important;	
+}
+#mg_overlay_content .jp-playlist.jp_full_tracklist a.jp-playlist-current {
+	color: #eee !important;
+}
+
+/* one line tracklist */
+#mg_overlay_content .jp-track-title .jp_hide_tracklist .jp-playlist-item {
+	display: none;		
+}
+#mg_overlay_content .jp-track-title .jp_hide_tracklist a.jp-playlist-current {
+	height: 20px;
+    line-height: 22px;	
+	display: block !important;	
+	padding: 4px 0 8px;
+	cursor: default;
+	color: #eee !important;
+	border: none;
+}
+
+
+/* @group NO SOLUTION error feedback */
+
+#mg_overlay_content .jp-no-solution {
+	position:absolute;
+	width:390px;
+	margin-left:-202px;
+	left:50%;
+	top: 10px;
+
+	padding:5px;
+	font-size:.8em;
+	background-color:#eee;
+	border:2px solid #009be3;
+	color:#000;
+	display:none;
+}
+
+#mg_overlay_content .jp-no-solution a {
+	color:#000;
+}
+
+#mg_overlay_content .jp-no-solution span {
+	font-size:1em;
+	display:block;
+	text-align:center;
+	font-weight:bold;
+}
+
+/* @end */
+
+
+/* responsive */
+
+@media screen and (max-width: 890px) { 
+	#mg_overlay_content div.jp-audio div.jp-type-playlist div.jp-progress {
+		width: 20%;
+	}
+	#mg_overlay_content div.jp-volume-group {
+		width: 50px;
+	}
+	
+	#mg_overlay_content div.jp-volume-bar {
+		width: 28px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	#mg_overlay_content .jp-playlist-current a {
+		vertical-align: middle;	
+	}
+}
+
+@media screen and (max-width: 630px) { 
+	#mg_overlay_content div.jp-audio div.jp-type-playlist div.jp-progress {
+		width: 25%;
+	}	
+	#mg_overlay_content div.jp-volume-group {
+		width: 50px;
+	}
+	
+	#mg_overlay_content div.jp-volume-bar {
+		width: 28px;
+	}
+}
+
+@media screen and (max-width: 550px) { 
+	#mg_overlay_content div.jp-audio div.jp-type-playlist div.jp-progress {
+		width: 30%;
+	}
+	#mg_overlay_content .jp-volume-group {
+		display: none;	
+	}
+}
