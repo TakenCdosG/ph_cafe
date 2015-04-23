@@ -819,11 +819,7 @@ a.tribe-events-gcal.tribe-events-button
     background: #552684;
 }
 
-/*.ninja-forms-required-items{
-    display: none;
-}*/
-
-input.ninja-forms-field.ninja-forms-req.text-ninjaf, textarea.ninja-forms-field.ninja-forms-req.text-ninjaf, input.ninja-forms-field.text-ninjaf {
+input.ninja-forms-field.ninja-forms-req.text-ninjaf, textarea.ninja-forms-field.ninja-forms-req.text-ninjaf, input.ninja-forms-field.text-ninjaf, textarea.ninja-forms-field.text-ninjaf {
     margin-left: 23% !important;
     position: relative;
     bottom: 26px;
@@ -846,6 +842,14 @@ label[id^=ninja_forms_field]{
     top: 15px !important;
 }
 
-label#ninja_forms_field_11_label, label#ninja_forms_field_17_label, label#ninja_forms_field_19_label, label#ninja_forms_field_20_label{
+/*label#ninja_forms_field_11_label, label#ninja_forms_field_17_label, label#ninja_forms_field_19_label, label#ninja_forms_field_20_label{
     top: 0px !important;
+}*/
+
+label#ninja_forms_field_16_label, label#ninja_forms_field_19_label, label#ninja_forms_field_21_label, label#ninja_forms_field_22_label{
+    top: 0px !important;
+}
+
+.ninja-forms-form-wrap label{
+    
 }
