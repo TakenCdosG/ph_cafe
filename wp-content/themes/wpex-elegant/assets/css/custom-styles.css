@@ -467,7 +467,7 @@ a#navigation-toggle {
     padding: 8px;
 }
 
-#paypal_form select{
+select{
     padding: 16px;
     border-radius: 6px;
     width: 100%;
