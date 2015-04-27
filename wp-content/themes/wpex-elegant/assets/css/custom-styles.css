@@ -815,6 +815,10 @@ a.tribe-events-gcal.tribe-events-button
     text-transform: capitalize;
 }
 
+input#email-input.blur{
+    font-family: "pt_sans_regular";
+}
+
 /*NINJA FORM STYLES*/
 .entry input[type="submit"]{
     background: #552684;
