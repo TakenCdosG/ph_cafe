@@ -340,7 +340,7 @@ a#navigation-toggle {
     display: inline-block;
 }
 
-.sub-main-menu li.menu-item-40 a,.sub-main-menu li.menu-item-43 a,.sub-main-menu li.menu-item-45 a,.sub-main-menu li.menu-item-41 a{
+.sub-main-menu li.menu-item-40 a,.sub-main-menu li.menu-item-128 a,.sub-main-menu li.menu-item-45 a,.sub-main-menu li.menu-item-41 a{
     color: transparent;
     padding: 0;
     background-size: cover;
@@ -353,7 +353,7 @@ a#navigation-toggle {
     width: 293px;
     height: 27px;
 }
-.sub-main-menu li.menu-item-43 a{
+.sub-main-menu li.menu-item-128 a{
     background-image: url("../images/weddings_logo.png");
     width: 392px;
     height: 24px;
