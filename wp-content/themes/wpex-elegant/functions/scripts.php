@@ -24,6 +24,7 @@ function wpex_load_scripts() {
 	}
 	wp_enqueue_script( 'wpex-plugins', get_template_directory_uri().'/js/plugins.js', array( 'jquery' ), '1.7.5', true );
 	wp_enqueue_script( 'wpex-global', get_template_directory_uri().'/js/global.js', array( 'jquery', 'wpex-plugins' ), '1.7.5', true );
+    wp_enqueue_script( 'wpex-custom-scripts', get_template_directory_uri().'/assets/js/custom-scripts.js', array( 'jquery' ), '1.7.5', true );
 	
 }
 add_action( 'wp_enqueue_scripts','wpex_load_scripts' );
