@@ -23,7 +23,7 @@
 		</div>
 	</div>
 
-	<footer id="copyright-wrap" class="clear container">
+	<footer id="copyright-wrap" class="clr container">
 		<div id="copyright" role="contentinfo" class="clr">
 			<?php
 			// Displays copyright info
