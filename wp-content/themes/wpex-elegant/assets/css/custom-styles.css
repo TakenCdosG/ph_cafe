@@ -377,7 +377,7 @@ a#navigation-toggle {
 
 .sub-sub-main-menu{
     margin: 585px auto 0 auto;
-    max-width: 497px;
+    display: table;
     height: 52px;
 }
 .sub-sub-main-menu a{
