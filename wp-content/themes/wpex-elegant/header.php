@@ -67,9 +67,9 @@
                 $title = get_field('header_box_title');
                 $text = get_field('header_box_content');
 
-                if(!empty($title) and !empty($text)){?>
+                if(!empty($title) or !empty($text)){?>
                     <div id="header-text-box">
-                       <title> <?php print $title; ?></title>
+                      <?php if(!empty($title) ){ ?> <title> <?php print $title; ?></title><?php }?>
                         <?php print $text?>
                     </div><!--header-text-box -->
                 <?php } ?>
