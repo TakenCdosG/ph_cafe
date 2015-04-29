@@ -12,7 +12,7 @@
             </a>
 		</div>
 		<div class="col span_1_of_4">
-            <a href="/weddings" class="weddings">
+            <a href="/wedding-info" class="weddings">
 			<img src="<?php echo get_template_directory_uri(); ?>/assets/images/weddings_button.png">
             </a>
 		</div>
