@@ -831,29 +831,22 @@ input#email-input.blur{
     border-radius: 5px;
 }
 
-input.ninja-forms-field.ninja-forms-req.text-ninjaf, textarea.ninja-forms-field.ninja-forms-req.text-ninjaf, input.ninja-forms-field.text-ninjaf, textarea.ninja-forms-field.text-ninjaf { 
+
+.ninja-forms-form .list-dropdown-wrap.label-above select,.ninja-forms-form  select, .ninja-forms-form input, .ninja-forms-form textarea{
     position: relative;
     padding: 10px;
     border-radius: 6px;
     float: right;
-}
-
-select.ninja-forms-field.list-ninjaf{
     width: 216px;
-    float:right;
-    padding: 10px;
-}
-select.ninja-forms-field.ninja-forms-req{
-    width: 216px;
-    float:right;
-    padding: 10px;
+    background-color: #cccccc;
 }
 
-label[id^=ninja_forms_field]{
-    position: relative;
+.ninja-forms-form .list-dropdown-wrap.label-above select option,.ninja-forms-form  select option{
+
+    padding: 5px;
 }
 
-.field-wrap.text-wrap.label-left.text-ninjaf-wrap, .field-wrap.list-dropdown-wrap.label-left.list-ninjaf-wrap, .field-wrap.textarea-wrap.label-left.text-ninjaf-wrap, .field-wrap.list-dropdown-wrap.label-left{
+.ninja-forms-form .field-wrap{
     width: 60%;
 }
 
