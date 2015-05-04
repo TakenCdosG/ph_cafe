@@ -84,12 +84,12 @@ b {
     padding-left: 12%;
 }
 
-.homepage-slide-caption.caption-0{
+.homepage-slide-caption.caption_first_line{
     font-size: 46px;
     line-height: 46px;
 }
 
-.homepage-slide-caption.caption-1{
+.homepage-slide-caption.caption_second_line{
     font-size: 72px;
     line-height: 72px;
     margin-top: 10px;

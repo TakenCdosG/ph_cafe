@@ -30,9 +30,7 @@ if ( !function_exists( 'wpex_homepage_slider' ) ) {
 						foreach( $wpex_query->posts as $post ) : setup_postdata($post);
 						$post_id = $post->ID;
 						$title = esc_attr( the_title_attribute( 'echo=0' ) );
-						//$caption[] = get_post_meta( $post_id, 'wpex_slide_caption', true );
-						$caption[] = get_post_meta( $post_id, 'first_line', true );
-						$caption[] = get_post_meta( $post_id, 'second_line', true );
+
 						$url = get_post_meta( $post_id, 'wpex_slide_url', true );
 						$url_target = get_post_meta( $post_id, 'wpex_slide_target', true );
 						$url_target = $url_target ? $url_target : 'blank'; ?>
@@ -42,10 +40,10 @@ if ( !function_exists( 'wpex_homepage_slider' ) ) {
 								<?php } ?>
 								<div class="homepage-slide-inner container">
 									<div class="homepage-slide-content">
-										<?php if ( '' != $caption ) {
-											foreach($caption as $key => $value){ ?>
-											<div class="homepage-slide-caption caption-<?php echo $key; ?>"><?php echo $caption[$key]; ?></div>
-										<?php }} ?>
+                                        <?php 	$first_line = get_post_meta( $post_id, 'first_line', true );
+                                        $second_line = get_post_meta( $post_id, 'second_line', true );?>
+                                        <div class="homepage-slide-caption caption_first_line"><?php if(!empty($first_line)) echo $first_line;  ?></div>
+                                        <div class="homepage-slide-caption caption_second_line"><?php if(!empty($second_line))  echo $second_line;  ?></div>
 										<div class="sub-menu-home">
 											<?php if ( function_exists( 'ot_get_option' ) ) {
 												$ids = ot_get_option( 'sub_menu_header', array() ); } ?>
