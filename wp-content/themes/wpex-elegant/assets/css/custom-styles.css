@@ -805,6 +805,9 @@ a.tribe-events-gcal.tribe-events-button
     margin-bottom: 0;
     padding-bottom: 0;
 }
+.events-archive .sub-sub-main-menu{
+    display:none;
+}
 /*RESPONSIVE CALENDAR TWEAKS*/
 @media only screen and (max-width: 768px) {
     .tribe-events-sub-nav li a{
