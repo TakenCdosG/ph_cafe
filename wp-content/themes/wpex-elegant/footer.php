@@ -32,12 +32,16 @@
                     <a href="https://www.pinterest.com/pondhousecafe/" id="painteres_icon" class="social-icon" target="_blank">
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pt_icon.png">
                     </a>
+                    <a href="https://www.theknot.com/marketplace/pond-house-cafe-west-hartford-ct-380213" id="knot_icon" class="social-icon" target="_blank">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/knot_icon.resized.png">
+                    </a>
                     <a href="http://www.yelp.com/biz/pond-house-cafe-west-hartford-3" id="yelp_icon" class="social-icon" target="_blank">
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/yp_icon.png">
                     </a>
                      <a href="http://www.opentable.com/pond-house-cafe-reservations-west-hartford?rid=6035&restref=6035" id="open_table_icon" class="social-icon" target="_blank">
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ot_icon.png">
                     </a>
+
 
             </div>
         </div><!-- #footer-social-icons -->

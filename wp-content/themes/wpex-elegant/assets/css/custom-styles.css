@@ -227,7 +227,7 @@ body.home{
 }
 
 .social-icon{
-    padding: 0 9px;
+    padding: 0 8px;
 }
 
 #footer-wrap input[type="text"], #footer-wrap input[type="search"]{
@@ -265,7 +265,7 @@ body.home{
 }
 
 #social-icons{
-    padding-left: 47px;
+    padding-left: 0px;
 }
 #footer-social-wrap .col-2{
     margin-left: 0;
@@ -496,6 +496,9 @@ select{
     .container {
         width: 1046px;
     }
+    #social-icons{
+        padding-left: 47px;
+    }
 }
 
 @media only screen and (max-width: 1000px) and (min-width: 960px) {
@@ -505,6 +508,7 @@ select{
     .page-template-single-gallery-php .container{
         max-width: 100%;
     }
+
 }
 
 
@@ -649,6 +653,10 @@ select{
         padding-left: 0;
         text-align: center;
     }
+    #social-icons a.social-icon{
+        padding-top: 12px;
+        display: inline-block;
+    }
     .social-icon{
         padding: 0 3px;
     }
@@ -663,6 +671,9 @@ select{
         width: 26px;
     }
     #painteres_icon img{
+        width: 25px;
+    }
+    #knot_icon img{
         width: 25px;
     }
     #yelp_icon img{
