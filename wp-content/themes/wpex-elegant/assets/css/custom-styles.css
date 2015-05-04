@@ -839,6 +839,7 @@ input#email-input.blur{
     float: right;
     width: 216px;
     background-color: #FFFFFF;
+    margin-top: -30px;
 }
 
 .ninja-forms-form .list-dropdown-wrap.label-above select option,.ninja-forms-form  select option{
