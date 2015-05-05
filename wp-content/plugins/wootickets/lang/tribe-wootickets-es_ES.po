@@ -1,0 +1,1893 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Tribe Pro - tribe-wootickets-es_ES.po - Tribe Central</title>
+<meta name="description" content="ChiliProject" />
+<meta name="keywords" content="issue,bug,tracker" />
+<meta name="csrf-param" content="authenticity_token"/>
+<meta name="csrf-token" content="lOSDz2480m/jL45irSTodjTu7YJsIXDY33py09dok9g="/>
+<link rel='shortcut icon' href='/plugin_assets/redmine_shane_and_peter_design/images//favicon.ico?1360645205' />
+<link href="/stylesheets/reset.css?1360645048" media="all" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/smoothness/jquery-ui.css?1360645048" media="all" rel="stylesheet" type="text/css" />
+<link href="/plugin_assets/redmine_shane_and_peter_design/themes/modern_tribe/stylesheets/application.css?1360645205" media="all" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/print.css?1360645048" media="print" rel="stylesheet" type="text/css" />
+
+<!--[if lte IE 6]><link href="/stylesheets/ie6.css?1360645048" media="all" rel="stylesheet" type="text/css" /><![endif]-->
+<!--[if lte IE 7]><link href="/stylesheets/ie7.css?1360645048" media="all" rel="stylesheet" type="text/css" /><![endif]-->
+<!--[if gte IE 8]><![endif]-->
+
+<script src="/javascripts/jquery.min.js?1360645048" type="text/javascript"></script>
+<script src="/javascripts/jquery-ui.min.js?1360645048" type="text/javascript"></script>
+<script src="/javascripts/jquery.menu_expand.js?1360645048" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+jQuery.noConflict();
+//]]>
+</script>
+<script src="/javascripts/prototype.js?1360645048" type="text/javascript"></script>
+<script src="/javascripts/effects.js?1360645048" type="text/javascript"></script>
+<script src="/javascripts/dragdrop.js?1360645048" type="text/javascript"></script>
+<script src="/javascripts/controls.js?1360645048" type="text/javascript"></script>
+<script src="/javascripts/application.js?1360645048" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+Event.observe(window, 'load', function(){ new WarnLeavingUnsaved('The current page contains unsaved text that will be lost if you leave this page.'); });
+//]]>
+</script>
+<link href="/stylesheets/jstoolbar.css?1360645048" media="screen" rel="stylesheet" type="text/css" />
+
+
+<script src="/plugin_assets/chiliproject_clocking/javascripts/underscore-min.js?1360645204" type="text/javascript"></script> <script src="/plugin_assets/chiliproject_clocking/javascripts/jquery.tmpl.min.js?1360645204" type="text/javascript"></script> <script src="/plugin_assets/chiliproject_clocking/javascripts/helpers.js?1360645204" type="text/javascript"></script> <script src="/plugin_assets/chiliproject_clocking/javascripts/clocking_tool.js?1360645204" type="text/javascript"></script> <link href="/plugin_assets/chiliproject_clocking/stylesheets/clocking_tool.css?1360645204" media="screen" rel="stylesheet" type="text/css" /> <style type="text/css">html {
+    min-width: 960px;
+}
+
+body {
+    background: url('/plugin_assets/redmine_shane_and_peter_design/images/header-other.jpg') no-repeat center 44px;
+    font: museo-sans,sans-serif;
+    font-size: 13px;
+}
+
+a, a:link, a:visited{
+    color:#0386AA;
+}
+
+a:hover{
+    color:#21A6CB;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    border: none;
+}
+
+.title-bar h2 {
+    /*font-weight: normal;
+    padding-bottom:0;*/
+    font-family: 'Helvetica Neue', Helvetica, sans;
+    font-weight: 100;
+    padding-left:2px;
+    font-size:48px;
+    padding-bottom:0px;
+}
+
+h2, .wiki h1 {
+    /*font-size: 72px;
+    margin: 20px 0;
+    font-family: Yellowtail, museo-sans, arial;
+    */
+    border: none;
+    line-height:1em;
+    font-family: 'Helvetica Neue', Helvetica, sans;
+    font-weight: 100;
+    padding-left: 2px;
+    font-size: 48px;
+    padding-bottom: 0px;
+}
+
+/*h3, .wiki h2 {
+    text-transform: uppercase;
+    font-weight: 700;
+    border-bottom: 1px solid #F2F2F2;
+    padding-bottom: 2px;
+    margin: 24px 0 18px 0;
+    text-shadow: 1px 1px 1px white, 2px 2px 0 #D9D9D9;
+    letter-spacing: 1.85px;
+    font-family: arial,'lucida grandriale','lucida sans unicode',tahom,sans-serif;
+}*/
+
+h3{
+    text-transform: uppercase;
+    font-weight: 700;
+    border-bottom: 1px solid #F2F2F2;
+    padding-bottom: 2px;
+    margin: 24px 0 18px 0;
+    letter-spacing: 1.85px;
+    font-family: arial,'lucida grandriale','lucida sans unicode',tahom,sans-serif; 
+}
+ .wiki h2 {
+    text-transform: uppercase;
+    border-bottom: none;
+    padding-bottom: 2px;
+    margin: 24px 0 18px 0;
+    text-shadow: none;
+    letter-spacing: 1.85px;
+    font-family: arial,'lucida grandriale','lucida sans unicode',tahom,sans-serif;
+    padding:20px;
+    background: #f3f3f3;
+    color:#666;
+}
+
+
+/*** Font Size Reset ***/
+
+table, tbody, tfoot, thead, tr, th, td,
+.contextual,
+.contextual input, .contextual select,
+p.breadcrumb,
+p.subtitle,
+p.footnote,
+p.other-formats,
+fieldset.collapsible,
+.buttons,
+div#activity dd, #search-results dd,
+table#time-report .hours-dec,
+td.hours .hours-dec,
+#errorExplanation ul,
+ul.properties,
+div.issue p,
+div.issue div,
+#content,
+#content td,
+#content.nosidebar,
+#content table.progress td,
+#content .tabs ul li a,
+button.tab-left, button.tab-right,
+table.plugins span.description,
+table.plugins span.url,
+#sidebar,
+#sidebar a,
+#sidebar a:link,
+#sidebar a:visited,
+#sidebar h3,
+.mypage-box,
+.mypage-box h3,
+.mypage-box a,
+.extras-actions a,
+.js-tooltip-inner,
+.journal h4,
+div.attachments,
+div.attachments span.author,
+ul.projects .description,
+ul.projects li div.root,
+.js-tooltip .arrow,
+.wiki,
+h5, .wiki h4,
+#footer,
+td.hours .hours-dec,
+table.plugins span.description,
+table.plugins span.url,
+table.cal td {
+    font-size: 100%;
+}
+
+.wiki p {
+    margin: 20px 0;
+}
+
+/*** Menu / Header ***/
+
+#top-menu {
+    height: 100px;
+}
+
+#top-menu,
+#header,
+#breadcrumb {
+    background: none;
+}
+
+#breadcrumb {
+    display: table;
+}
+
+#main {
+	background: none;
+	margin:25px 0 0 39px;
+	min-width: 960px;
+	clear: both;
+}
+
+#content {
+/*
+	Boxed In Version
+	border: none;
+	box-shadow:0px 0px 3px #ccc;
+	padding:20px;*/
+
+	/*Open Version */
+	border:none !important;
+	background:none;
+	padding:0 30px;
+
+	clear: both;
+}
+
+#breadcrumb{
+	padding-left:39px;
+	margin-top:20px;
+	font-weight:lighter;
+	font-family: Helvetica Neue, Helvetica, sans;
+	font-size:30px;
+}
+
+#breadcrumb a{
+    text-decoration: none !important;
+    color:#21A6CB !important;
+}
+
+#side-container{
+	/*margin-top:35px;*/
+	margin-top:0;
+}
+
+.box {
+	border: 1px solid #D0EBF1;
+	background: #F7FCFC;
+	color: #535353;
+}
+
+#content .box h3 {
+	margin: -6px;
+	border: none;
+	background: #D0EBF1;
+	padding: 10px;
+	margin-bottom: 6px;
+}
+
+a, a:link, a:visited {
+    text-decoration: none;
+    color: #21A6CB;
+    font-weight: normal;
+}
+
+#logo a {
+    display:block;
+    background: url('/plugin_assets/redmine_shane_and_peter_design/images/logo.png') no-repeat 25px 13px;
+    text-indent:-999em;
+    width: 265px;
+}
+
+
+.drop-down ul{
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: none;
+}
+
+/* Alternate header
+
+#breadcrumb {
+    letter-spacing: 2px;
+    font-size: 18px;
+    padding: 4px 20px;
+    color: white;
+    display: block;
+    padding: 4px 20px;
+    background: #21A6CB;
+    font-family: arial,'lucida grandriale','lucida sans unicode',tahom,sans-serif;
+}
+
+#top-menu {
+    height: 90px;
+}
+
+body {
+    background-position-y: 90px;
+}
+
+*/
+
+#account-nav {
+    background: #fff
+}
+
+#header li {
+    border: none;
+}
+
+#header li > a {
+    color: #4F4F4F;
+}
+
+#header li > a:hover {
+    background-color:#21A6CB;
+    color: #fff;
+}
+
+#header li.drop-down > a:hover {
+    background:#21A6CB url(/images/arrow-down-white.png) no-repeat right center;
+}
+
+#header li.drop-down > a {
+    background:#FFF url(/images/arrow-down-grey.png) no-repeat right center;
+}
+#header li li a:hover {
+    background-color:#FFFFFF;
+    color:#222222;
+}
+
+#header li li {
+    border: none;
+}
+
+#header li > ul {
+    border: 1px solid #B7B7B7;
+    box-shadow: 0px 0px 3px #CCC;
+    margin-left: 1px;
+}
+
+#header li.drop-down li > a.separator,
+#header li.drop-down li > a.administration {
+    border-bottom: 1px solid #DDD;
+    background: #EEE;
+}
+
+#header li.drop-down li > a.separator,
+#header li.drop-down li > a.reports,
+#header li.drop-down li > a.timesheet,
+#header li.drop-down li > a.accounts-payables,
+#header li.drop-down li > a.administration {
+    background: #EEE;
+}
+
+#more-menu.drop-down ul li a.projects {
+    border-top: none;
+}
+
+#header li.drop-down li > a {
+    padding: 8px 20px 8px 10px;
+    margin: 0;
+}
+
+#clocking-tool .issues-container h3 {
+	margin: 0;
+	display: none;
+}
+
+div.clocking-tool-inner .issues-container ul {
+	height: 240px;
+}
+
+div.clocking-tool-inner .form-container {
+	width: 228px;
+}
+
+.clocking-tool-trigger a img {
+    padding: 12px 0;
+}
+
+#clocking-tool.embed {
+    top: 43px;
+    z-index: 999;
+}
+div#clocking-tool {
+    height: 297px;
+}
+
+input.time_entry_spent_on {
+	width:71px;
+	float: left;
+	margin-left:11px
+}
+
+#main-menu {
+    border: none;
+    box-shadow:1px 1px 2px #ccc;
+}
+
+#main-menu ul {
+    border:none;
+}
+
+#main-menu li {
+    border:none;
+    margin-bottom: 1px;
+    background-color: #f1f1f1;
+}
+
+#main-menu .toggler{
+    top:6px;
+}
+
+#header li.drop-down li > a:hover,
+#main-menu li a.selected,
+#main-menu li a:hover  {
+	-moz-border-radius-topleft:0px;
+	-moz-border-radius-topright:0px;
+	-webkit-border-top-left-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	border-top-left-radius:0px;
+	border-top-right-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	-moz-border-radius-bottomright:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	border-bottom-left-radius:0px;
+	border-bottom-right-radius:0px;
+	background-color:#21A6CB;
+	color:#fff;
+}
+
+#main-menu li a.selected{
+    background:#999;
+}
+
+#header li.drop-down.open > a {
+	color: #fff;
+	background:#21A6CB url(/images/arrow-down-white.png) no-repeat right center;
+}
+
+#main-menu li a {
+	margin: 0;
+	padding: 6px 0 6px 20px;
+	font-weight:normal;
+}
+
+#main-menu li li{
+    background:#f9f9f9;
+}
+
+li a.home {
+	background-image:url(/images/icon_home_grey.png);
+}
+
+li a.home:hover {
+	background-image:url(/images/icon_home.png);
+}
+
+li a.help {
+	background-image:url(/images/icon_help_grey.png);
+}
+
+li a.help:hover {
+	background-image:url(/images/icon_help.png);
+}
+
+#header li a.clocking-tool-menu {
+    background-image: url( /plugin_assets/chiliproject_clocking/images/clock_grey.png );
+}
+
+#header li a.clocking-tool-menu:hover {
+    background-image: url( /plugin_assets/chiliproject_clocking/images/clock.png );
+}
+
+.button-large a {
+	color:#21A6CB;
+}
+
+#sidebar a, #sidebar a:link, #sidebar a:visited {
+	color: #21A6CB;
+}
+
+/** Form Elements **/
+
+textarea {
+    border-color: #AAA;
+}
+
+/** Single Issue **/
+
+#content div.issue h1.subject{
+    background:none;
+    color:#333;
+    border-radius:0;
+    padding:0;
+    font-weight:bold;
+    margin-top:-10px;
+    max-width: 50%;
+    font-size: 18px;
+    line-height: 1.25em;
+}
+
+#content .meta table th{
+    width:110px;
+}
+
+div.issue hr{
+	margin:10px 0;
+	background:#efefef;
+}
+
+body.controller-issues #content #upper-title-bar .title-bar-actions .contextual a{
+	color:#333;
+}
+
+body.controller-issues #content .title-bar-actions .contextual{
+    top:0 !important;
+    font-size:11px;
+}
+
+.title-bar-actions{
+	margin-top:0;
+}
+
+#content .title-bar {
+	top: auto;
+	height: auto;
+	min-height: 1px;
+}
+
+div.meta{
+	padding:20px;
+	background:#f4f4f4;
+	margin-top:-9px;
+}
+
+#content .title-bar-actions a{
+	color: #167d9a !important;
+	text-transform: capitalize;
+	padding-right: 11px;
+	padding-left:0;
+	background:none !important;
+	line-height: 2.25em !important;
+}
+#content .title-bar-actions a:hover{
+	color: #21A6CB !important;
+}
+div.issue{
+	padding:0;
+}
+
+body.controller-issues #content .title-bar-actions a.icon.icon-edit{
+	background: #21A6CB !important;
+	color: #fff !important;
+	padding:3px 10px !important;
+}
+
+p.author{
+	background: #E9E9E9;
+	padding: 9px;
+	margin: 10px 0;
+}
+
+#history .journal{
+	padding: 20px;
+	background: #F4F4F4;
+	margin-bottom:20px;
+}
+
+.journal-details h4{
+    font-weight:bold;
+}
+
+.journal.has-avatar .journal-details {
+    padding-left: 65px;
+}
+
+.details hr{
+    display:none;
+}
+
+/* Playing with solid background behind description area */
+
+div.description,
+#relations,
+.attachments{
+    padding:30px 23px;
+    background:#f4f4f4;
+    border-top:1px solid #ddd;
+}
+
+div.attachments {
+    margin-top:0;
+}
+
+/* #16523 - clearfix after image thumbnails */
+#history .journal-attributes:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+/*** Accounts Payable ***/
+
+.controller-timesheet #main,
+.controller-accounts_payables #main {
+    margin-top: -7px;
+}
+
+.controller-timesheet .contextual,
+.controller-accounts_payables .contextual {
+    line-height: 0;
+    margin-top: 0;
+}
+
+.controller-timesheet #top-menu,
+.controller-accounts_payables #top-menu {
+    height: 75px;
+}
+
+#time_entries h2 {
+    font-size: 60px;
+    margin: 14px 0;
+}
+
+/*** Context Menu ***/
+
+.context-menu-selection,
+.context-menu-selection:hover {
+    color: #FFF !important;
+    background: #21A6CB !important;
+}
+
+.context-menu-selection a,
+.context-menu-selection:hover a {
+    color: #FFF !important;
+}
+
+#context-menu .submenu {
+    border-left-color: #21A6CB;
+}
+
+#context-menu .folder:hover .submenu {
+    border-left-color: #fff;
+}
+
+#context-menu li:hover {
+    border: none;
+    background: #21A6CB;
+}
+
+/*** Search ***/
+
+#header .search_field {
+    background: #F8F8F8;
+    color: #333;
+    margin-top: 6px;
+
+    /* Rounded Version */
+    -moz-border-radius-topleft: 15px;
+    -moz-border-radius-topright: 15px;
+    -webkit-border-top-left-radius: 15px;
+    -webkit-border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    -moz-border-radius-bottomleft: 15px;
+    -moz-border-radius-bottomright: 15px;
+    -webkit-border-bottom-left-radius: 15px;
+    -webkit-border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: 1px solid #DDD;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    /* Square Corner Version */
+    /*
+    box-shadow: inset 0px 0px 4px #ccc;
+    border: none;
+    */
+}
+
+#header input.search_field::-webkit-input-placeholder {
+    color: #BBB;
+}
+
+/*** Footer ***/
+
+#footer {
+    color: #BBB;
+    background: #F6F6F6;
+    padding: 15px;
+    display: none;
+}
+
+#footer a {
+    color: #BBB;
+}
+
+/*** Homepage styling ***/
+
+.controller-welcome .splitcontentleft {
+    width: 100%;
+}
+.controller-welcome .splitcontentright {
+    display: none;
+}
+.controller-welcome .box {
+    display: none;
+}
+.controller-welcome #breadcrumb {
+    display: none;
+}
+.controller-welcome h2 {
+    display: none;
+}
+.controller-welcome .splitcontentleft h2 {
+    display: block;
+}
+.controller-welcome #top-menu {
+    height: 0px;
+}
+
+/*** My Page ***/
+
+#content .mypage-box h3 {
+    font-size: 16px;
+}
+
+/*** Issue List ***/
+
+#content td{
+    padding: 5px;
+}
+
+.title-bar .contextual {
+    top:24px;
+}
+
+#content table th a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #666;
+    text-shadow: 2px 2px 2px white;
+}
+
+/**** Misc Elements ***/
+
+fieldset#filters legend,
+fieldset#column_options legend{
+    border-radius:0px
+}
+
+.rounded-background{
+    border-radius:0px;
+}
+
+#history .journal.question{
+    color:#B3D0D8;
+background:#167D9A;
+border-bottom-left-radius: 5px;
+-moz-border-radius-bottomleft: 5px;
+-webkit-border-bottom-left-radius: 5px;
+border-bottom-right-radius: 5px;
+-moz-border-radius-bottomright: 5px;
+-webkit-border-bottom-right-radius: 5px;
+}
+
+#history .journal.question a {
+color:#fff;
+}
+
+.pagination{
+    float:right;
+    clear:right;
+    margin-top:13px !important;
+    margin-left:20px;
+}
+
+.other-formats{
+    text-align:right;
+    margin:70px 0 0 0;
+}
+
+/** Spent Time Sidebar **/
+
+#projects-sidebar-hours {
+    display: none;
+}
+
+/** Watchers **/
+
+#watchers h3{
+    text-transform:capitalize;
+    letter-spacing:0;
+    text-shadow:none;
+    font-size:13px;
+    margin-left:0;
+    padding-left:0;
+}
+
+#watchers{
+    margin-bottom:10px;
+}
+
+/** Contracts **/
+
+#dialog-window h2 {
+    font-size: 34px;
+}
+
+#finance-summary {
+    line-height: 78px;
+}
+
+table.striped-contract-style,
+#finance-summary {
+    font-size: 12px;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+    border-top: none;
+    margin: 0px;
+    padding: 12px;
+}
+
+.ui-corner-all {
+    -moz-border-radius-bottomright: 0px;
+    -webkit-border-bottom-right-radius: 0px;
+    -khtml-border-bottom-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    -moz-border-radius-bottomleft: 0px;
+    -webkit-border-bottom-left-radius: 0px;
+    -khtml-border-bottom-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    -moz-border-radius-topright: 0px;
+    -webkit-border-top-right-radius: 0px;
+    -khtml-border-top-right-radius: 0px;
+    border-top-right-radius: 0px;
+    -moz-border-radius-topleft: 0px;
+    -webkit-border-top-left-radius: 0px;
+    -khtml-border-top-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+.ui-dialog {
+    padding: 0;
+}
+
+.ui-widget-header {
+
+}
+
+h1:hover a.wiki-anchor {
+display: none;
+}
+
+.striped-contract-style .finance table {
+width: 100%;
+}</style><script type="text/javascript">
+//<![CDATA[
+/**** Google Font ****/
+
+WebFontConfig = {
+    google: { families: [ 'Yellowtail::latin' ] }
+};
+(function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+})();
+
+/**** Fix Watchers Box / Remove Help Link / Remove related selector ****/
+
+jQuery(document).ready(function($) {
+    $('#watchers').prependTo('#history');
+    $('li a.help').parent('li').remove();
+	
+	var option = $('<option></option>').attr("value", "relates").text("related to");
+	$('#relation_relation_type').empty().append(option).hide();
+});
+
+/**** Remove Menu Animation ****/
+
+var animationRate = 0;
+
+/**** Fix time entries ****/
+
+/*
+ * Javascript time conversion script
+ * version 1.0
+ * @requires jQuery
+ * @author Modern Tribe Inc. (Peter Chester)
+ *
+ * Converts several formats to a 2 point float. Accepted formats include:
+ * 1.3333333333
+ * 1h 10m
+ * 1:10
+ * 1
+ *
+ * Entries over 15 hours are assumed to be 15 minutes.
+ */
+function filterTimeFormat(time) {
+
+	if (time=="") {
+		return "";
+	}
+
+	// Number of decimal places to round to
+	var decimal_places = 2;
+
+	// Maximum number of hours before we should assume minutes were intended. Set to 0 to remove the maximum.
+	var maximum_hours = 8;
+
+	// 3
+	var int_format = time.match(/^\d+$/);
+
+	// 1:15
+	var time_format = time.match(/([\d]*):([\d]+)/);
+
+	// 10m
+	var minute_string_format = time.toLowerCase().match(/([\d]+)m/);
+
+	// 2h
+	var hour_string_format = time.toLowerCase().match(/([\d]+)h/);
+
+	if (time_format != null) {
+		hours = parseInt(time_format[1]);
+		minutes = parseFloat(time_format[2]/60);
+		time = hours + minutes;
+	} else if (minute_string_format != null || hour_string_format != null) {
+		if (hour_string_format != null) {
+			hours = parseInt(hour_string_format[1]);
+		} else {
+			hours = 0;
+		}
+		if (minute_string_format != null) {
+			minutes = parseFloat(minute_string_format[1]/60);
+		} else {
+			minutes = 0;
+		}
+		time = hours + minutes;
+	} else if (int_format != null) {
+		// Entries over 15 hours are likely intended to be minutes.
+		time = parseInt(time);
+		if (maximum_hours > 0 && time >= maximum_hours) {
+			time = (time/60).toFixed(decimal_places);
+		}
+	}
+
+	// make sure what ever we return is a 2 digit float
+	time = parseFloat(time).toFixed(decimal_places);
+
+	return time;
+}
+
+jQuery(document).ready(function($) {
+
+	// Check the time entry when the time field loses focus
+	$('#time_entry_hours').blur(function() {
+		console.log('Filtering time entry time.');
+		$('#time_entry_hours').val(filterTimeFormat($('#time_entry_hours').val()));
+	});
+
+	// because the clocking tool loads after page load, we need to watch for it and then initialize.
+	$('#clocking-tool').bind("DOMSubtreeModified",function(){
+		// Check the clocker time entry when the time field loses focus
+		$('.time_entry_hours').blur(function() {
+			console.log('Filtering clocking tool time.');
+			$('.time_entry_hours').val(filterTimeFormat($('.time_entry_hours').val()));
+		});
+	});
+});
+//]]>
+</script> <link href="/plugin_assets/chiliproject_knowledgebase/stylesheets/smoothness/jquery-ui-1.8.15.custom.css?1360645205" media="screen" rel="stylesheet" type="text/css" />
+<link href="/plugin_assets/chiliproject_knowledgebase/stylesheets/knowledgebase.css?1360645205" media="screen" rel="stylesheet" type="text/css" />
+
+
+
+
+
+<script src="/plugin_assets/chiliproject_knowledgebase/javascripts/jquery-ui-1.8.15.custom.min.js?1360645205" type="text/javascript"></script>
+<script src="/plugin_assets/chiliproject_knowledgebase/javascripts/jquery.form.js?1360645205" type="text/javascript"></script>
+<script src="/plugin_assets/chiliproject_knowledgebase/javascripts/knowledgebase.js?1360645205" type="text/javascript"></script>
+
+   <style type="text/css">
+.question { background-color:#FFEBC1; border:2px solid #FDBD3B; margin-bottom:12px; padding:0px 4px 8px 4px; }
+td.formatted_questions { text-align: left; white-space: normal}
+td.formatted_questions ol { margin-top: 0px; margin-bottom: 0px; }
+
+.kanban-question { background:#FFFFFF none repeat scroll 0 0; border:1px solid #D5D5D5; padding:2px; font-size: 0.8em }
+.question-link {font-weight: bold; } /* Kanban Menu item */
+
+  </style>
+  <style type="text/css">#admin-menu a.rate-caches { background-image: url('/plugin_assets/redmine_rate/images/database_refresh.png?1360645205'); }</style>
+<!-- page specific tags -->
+    <link href="/stylesheets/scm.css?1360645048" media="screen" rel="stylesheet" type="text/css" /><script src="/javascripts/jstoolbar/jstoolbar.js?1360645048" type="text/javascript"></script><script src="/javascripts/jstoolbar/textile.js?1360645048" type="text/javascript"></script><script src="/javascripts/jstoolbar/lang/jstoolbar-en.js?1360645048" type="text/javascript"></script><link href="/stylesheets/jstoolbar.css?1360645048" media="screen" rel="stylesheet" type="text/css" /></head>
+<body class="theme-Modern tribe controller-attachments action-show">
+<div id="wrapper">
+  <div id="top-menu">
+    <div id="header">
+      <div id="logo"><a href="/">Tribe Central</a></div>
+      <div id="top-menu-items">
+      <div id="search">
+              
+        <label class="hidden-for-sighted" for="q">Search</label>
+        <form action="/search/index/premium-plugins" method="get">
+          
+          <input accesskey="f" class="search_field" id="q" name="q" placeholder="search ..." size="20" type="text" />
+        </form>
+      
+
+      </div>
+
+      
+      <ul id="account-nav">
+        
+        <li class="drop-down">
+          <a href="/projects" class="projects">Projects</a>
+          <ul style="display:none;">
+            <li><a href="/projects" class="projects separator">All Projects</a></li>
+            
+            <li><a href="/projects/cafe-bon-appetit?jump=attachments">Café Bon Appétit</a></li><li><a href="/projects/marketing?jump=attachments">Marketing</a></li><li><a href="/projects/website?jump=attachments">Products Website</a></li><li><a href="/projects/wpshindig?jump=attachments">WPShindig</a></li><li><a href="/projects/mit-sloan-tablet?jump=attachments">MIT SMR</a></li><li><a href="/projects/premium-plugins?jump=attachments">Tribe Pro</a></li>
+          </ul>
+        </li>
+        
+        <li class="drop-down" id="more-menu">
+          <a class="more" href="#">More</a>
+          <ul style="display:none;">
+            
+            <li><a href="/system_reports" class="reports">Reports</a></li>
+            
+            <li><a href="/timesheet" class="timesheet">Timesheet</a></li>
+            
+            
+            
+          </ul>
+        </li>
+        
+          <li><a href="https://www.chiliproject.org/help/v3" class="help">?</a></li>
+          
+            <li class="drop-down last-child">
+            <a href="/users/506">Leah Koerper</a>
+            <ul style="display:none;">
+            
+              <li><a href="/my/page" class="my-page">My page</a></li>
+            
+              <li><a href="/my/account" class="my-account">Settings</a></li>
+            
+              <li><a href="/logout" class="logout">Sign out</a></li>
+            
+            </ul>
+            </li>
+          
+      </ul>
+      
+    </div>
+    </div>
+    <div id="breadcrumb">
+      Tribe Pro
+    </div>
+  </div>
+
+  
+  
+  
+  
+  <div id="main" class="">
+    
+      <div id="side-container">
+        <div id="main-menu">
+          <ul><li><a href="/projects/premium-plugins" class="overview">Overview</a></li>
+<li><a href="/projects/premium-plugins/activity" class="activity">Activity</a></li>
+<li>
+<a href="/projects/premium-plugins/roadmap" class="roadmap">Roadmap</a>
+<ul class="menu-children unattached"><li><a href="/versions/show/450" class="version-450">Adminstrative</a></li><li><a href="/versions/show/327" class="version-327">Common Code &amp; Systems</a></li><li><a href="/versions/show/318" class="version-318">Conference 1.0</a></li><li><a href="/versions/show/432" class="version-432">Content</a></li><li><a href="/versions/show/418" class="version-418">Current Release</a></li><li><a href="/versions/show/445" class="version-445">Filter Bar 1.0</a></li><li><a href="/versions/show/409" class="version-409">Image Widget 4.0</a></li><li><a href="/versions/show/420" class="version-420">Next Release</a></li><li><a href="/versions/show/455" class="version-455">Release 112</a></li><li><a href="/versions/show/456" class="version-456">Release 113</a></li><li><a href="/versions/show/421" class="version-421">Support</a></li><li><a href="/versions/show/444" class="version-444">To Be Determined</a></li><li><a href="/versions/show/406" class="version-406">Wordpress.com Integration</a></li></ul>
+</li>
+<li>
+<a href="/projects/premium-plugins/issues" class="issues">Issues</a>
+<ul class="menu-children"><li><a href="/projects/premium-plugins/issues/new" accesskey="7" class="new-issue">New issue</a></li><li><a href="/projects/premium-plugins/issues?set_filter=1" class="all-open-issues">View all open issues</a></li><li><a href="/queries/new?project_id=premium-plugins" class="new-query">New saved query</a></li><li><a href="/projects/premium-plugins/issues/report" class="issue-summary">Issue Summary</a></li><li><a href="/questions/my_issue_filter?project=premium-plugins" class="questions">Questions for me</a></li></ul>
+<ul class="menu-children unattached"><li><a href="/projects/premium-plugins/issues?query_id=582" class="query-582">1 - Current Release</a></li><li><a href="/projects/premium-plugins/issues?query_id=585" class="query-585">2 - Next Release</a></li><li><a href="/projects/premium-plugins/issues?query_id=628" class="query-628">3 - Release TBD</a></li><li><a href="/projects/premium-plugins/issues?query_id=510" class="query-510">3.0 QA</a></li><li><a href="/projects/premium-plugins/issues?query_id=566" class="query-566">4 - Events Filters 1.0</a></li><li><a href="/projects/premium-plugins/issues?query_id=631" class="query-631">5 - Admin Stuff</a></li><li><a href="/projects/premium-plugins/issues?query_id=654" class="query-654">Current Release by Category</a></li><li><a href="/projects/premium-plugins/issues?query_id=598" class="query-598">Current Release by Person</a></li><li><a href="/projects/premium-plugins/issues?query_id=144" class="query-144">My Issues</a></li><li><a href="/projects/premium-plugins/issues?query_id=612" class="query-612">Next Release by Person</a></li><li><a href="/projects/premium-plugins/issues?query_id=569" class="query-569">Pending Manager</a></li><li><a href="/projects/premium-plugins/issues?query_id=640" class="query-640">Pending Merge</a></li><li><a href="/projects/premium-plugins/issues?query_id=304" class="query-304">Pending QA</a></li><li><a href="/projects/premium-plugins/issues?query_id=584" class="query-584">Pending Something</a></li><li><a href="/projects/premium-plugins/issues?query_id=639" class="query-639">QA By Person</a></li><li><a href="/projects/premium-plugins/issues?query_id=592" class="query-592">Release 107 (July 2013)</a></li><li><a href="/projects/premium-plugins/issues?query_id=599" class="query-599">Release 108 (Aug 2013)</a></li><li><a href="/projects/premium-plugins/issues?query_id=619" class="query-619">Release 109 (Sept 2013)</a></li><li><a href="/projects/premium-plugins/issues?query_id=629" class="query-629">Release 110 (Nov 2013)</a></li><li><a href="/projects/premium-plugins/issues?query_id=642" class="query-642">Release 111 (Dec 2013)</a></li><li><a href="/projects/premium-plugins/issues?query_id=655" class="query-655">Release 112 (Jan 2014)</a></li><li><a href="/projects/premium-plugins/issues?query_id=605" class="query-605">Support: Docs</a></li><li><a href="/projects/premium-plugins/issues?query_id=397" class="query-397">Support: Tickets</a></li><li><a href="/projects/premium-plugins/issues?query_id=563" class="query-563">Tagged with Leah</a></li></ul>
+</li>
+<li>
+<a href="/projects/premium-plugins/time_entries" class="reports">Reports</a>
+<ul class="menu-children"><li><a href="/projects/premium-plugins/time_entries/report" class="time-reports">Report</a></li></ul>
+</li>
+<li>
+<a href="/projects/premium-plugins/boards" class="boards">Forums</a>
+<ul class="menu-children"><li><a href="/projects/premium-plugins/boards/new" class="new-board">New forum</a></li></ul>
+<ul class="menu-children unattached"><li><a href="/projects/premium-plugins/boards/17" class="board-17">Plugin Standards</a></li></ul>
+</li>
+<li><a href="/projects/premium-plugins/repository" class="repository">Repository</a></li>
+<li>
+<a href="/projects/premium-plugins/wiki" class="wiki">Wiki</a>
+<ul class="menu-children unattached"><li><a href="/projects/premium-plugins/wiki/Schedule" class="wiki-page-867">Schedule</a></li><li><a href="/projects/premium-plugins/wiki/Support_Idea_Bin" class="wiki-page-605">Support Idea Bin</a></li></ul>
+</li>
+<li>
+<a href="/projects/premium-plugins/settings" class="settings">Settings</a>
+<ul class="menu-children unattached"><li><a href="/projects/premium-plugins/settings/versions" class="settings-versions">Versions</a></li><li><a href="/projects/premium-plugins/settings/categories" class="settings-categories">Issue categories</a></li><li><a href="/projects/premium-plugins/settings/wiki" class="settings-wiki">Wiki</a></li><li><a href="/projects/premium-plugins/settings/boards" class="settings-boards">Forums</a></li></ul>
+</li></ul>
+          
+        </div>
+
+      
+        <!-- Sidebar -->
+        <div id="sidebar">
+          
+          
+        </div>
+      
+      </div>
+
+      <script type="text/javascript">
+//<![CDATA[
+jQuery.menu_expand({ menuItem: '.attachments' });
+//]]>
+</script>
+    
+    <div class="" id="content">
+      
+      <h2>tribe-wootickets-es_ES.po</h2>
+
+<div class="attachments">
+<p>
+   <span class="author"><a href="/users/506">Leah Koerper</a>, 01/08/2014 03:11 pm</span></p>
+<p><a href="/attachments/download/66573/tribe-wootickets-es_ES.po">Download</a>   <span class="size">(5.1 kB)</span></p>
+
+</div>
+&nbsp;
+<div class="autoscroll">
+<table class="filecontent syntaxhl">
+<tbody>
+
+
+<tr><th class="line-num" id="L1"><a href="#L1">1</a></th><td class="line-code"><pre># Tribe Events WooTickets by Modern Tribe, Inc.
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L2"><a href="#L2">2</a></th><td class="line-code"><pre># Copyright (C) Modern Tribe, Inc.
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L3"><a href="#L3">3</a></th><td class="line-code"><pre># This file is distributed under the same license as the Tribe Events WooTickets package.
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L4"><a href="#L4">4</a></th><td class="line-code"><pre>msgid &quot;&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L5"><a href="#L5">5</a></th><td class="line-code"><pre>msgstr &quot;&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L6"><a href="#L6">6</a></th><td class="line-code"><pre>&quot;Project-Id-Version: Tribe Events WooTickets\n&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L7"><a href="#L7">7</a></th><td class="line-code"><pre>&quot;Report-Msgid-Bugs-To: \n&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L8"><a href="#L8">8</a></th><td class="line-code"><pre>&quot;POT-Creation-Date: 2013-06-26 12:59-0800\n&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L9"><a href="#L9">9</a></th><td class="line-code"><pre>&quot;PO-Revision-Date: 2014-01-08 17:00+0100\n&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L10"><a href="#L10">10</a></th><td class="line-code"><pre>&quot;Last-Translator: diggeridoo &lt;diggeridoo@gmail.com&gt;\n&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L11"><a href="#L11">11</a></th><td class="line-code"><pre>&quot;Language-Team: Modern Tribe, Inc. &lt;pro@tri.be&gt;\n&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L12"><a href="#L12">12</a></th><td class="line-code"><pre>&quot;MIME-Version: 1.0\n&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L13"><a href="#L13">13</a></th><td class="line-code"><pre>&quot;Content-Type: text/plain; charset=UTF-8\n&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L14"><a href="#L14">14</a></th><td class="line-code"><pre>&quot;Content-Transfer-Encoding: 8bit\n&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L15"><a href="#L15">15</a></th><td class="line-code"><pre>&quot;Plural-Forms: nplurals=2; plural=n != 1;\n&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L16"><a href="#L16">16</a></th><td class="line-code"><pre>&quot;X-Poedit-SourceCharset: UTF-8\n&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L17"><a href="#L17">17</a></th><td class="line-code"><pre>&quot;X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L18"><a href="#L18">18</a></th><td class="line-code"><pre>&quot;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L19"><a href="#L19">19</a></th><td class="line-code"><pre>&quot;X-Poedit-Basepath: ./\n&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L20"><a href="#L20">20</a></th><td class="line-code"><pre>&quot;X-Textdomain-Support: yes\n&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L21"><a href="#L21">21</a></th><td class="line-code"><pre>&quot;X-Generator: Poedit 1.6.3\n&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L22"><a href="#L22">22</a></th><td class="line-code"><pre>&quot;Language: es_ES\n&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L23"><a href="#L23">23</a></th><td class="line-code"><pre>&quot;X-Poedit-SearchPath-0: ..\n&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L24"><a href="#L24">24</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L25"><a href="#L25">25</a></th><td class="line-code"><pre>#: ../wootickets.php:125
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L26"><a href="#L26">26</a></th><td class="line-code"><pre>msgid &quot;The Events Calendar&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L27"><a href="#L27">27</a></th><td class="line-code"><pre>msgstr &quot;The Events Calendar&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L28"><a href="#L28">28</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L29"><a href="#L29">29</a></th><td class="line-code"><pre>#: ../wootickets.php:126
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L30"><a href="#L30">30</a></th><td class="line-code"><pre>msgid &quot;WooCommerce&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L31"><a href="#L31">31</a></th><td class="line-code"><pre>msgstr &quot;WooCommerce&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L32"><a href="#L32">32</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L33"><a href="#L33">33</a></th><td class="line-code"><pre>#: ../wootickets.php:131 ../wootickets.php:133
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L34"><a href="#L34">34</a></th><td class="line-code"><pre>#, php-format
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L35"><a href="#L35">35</a></th><td class="line-code"><pre>msgid &quot;&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L36"><a href="#L36">36</a></th><td class="line-code"><pre>&quot;To begin using WooTickets, please install the latest version of &lt;a href=\&quot;%s&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L37"><a href="#L37">37</a></th><td class="line-code"><pre>&quot;\&quot; class=\&quot;thickbox\&quot; title=\&quot;%s\&quot;&gt;%s&lt;/a&gt;.&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L38"><a href="#L38">38</a></th><td class="line-code"><pre>msgstr &quot;&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L39"><a href="#L39">39</a></th><td class="line-code"><pre>&quot;Para comenzar a usar WooTickets, por favor instale la versión más reciente &quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L40"><a href="#L40">40</a></th><td class="line-code"><pre>&quot;de &lt;a href=\&quot;%s\&quot; class=\&quot;thickbox\&quot; title=\&quot;%s\&quot;&gt;%s&lt;/a&gt;.&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L41"><a href="#L41">41</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L42"><a href="#L42">42</a></th><td class="line-code"><pre>#: ../admin-views/metabox-advanced.php:12
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L43"><a href="#L43">43</a></th><td class="line-code"><pre>msgid &quot;SKU:&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L44"><a href="#L44">44</a></th><td class="line-code"><pre>msgstr &quot;SKU:&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L45"><a href="#L45">45</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L46"><a href="#L46">46</a></th><td class="line-code"><pre>#: ../admin-views/metabox-advanced.php:25
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L47"><a href="#L47">47</a></th><td class="line-code"><pre>msgid &quot;&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L48"><a href="#L48">48</a></th><td class="line-code"><pre>&quot;Currently, WooTickets will only show up on the frontend once per full event. &quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L49"><a href="#L49">49</a></th><td class="line-code"><pre>&quot;For PRO users this means the same ticket will appear across all events in &quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L50"><a href="#L50">50</a></th><td class="line-code"><pre>&quot;the series. Please configure your events accordingly.&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L51"><a href="#L51">51</a></th><td class="line-code"><pre>msgstr &quot;&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L52"><a href="#L52">52</a></th><td class="line-code"><pre>&quot;Actualmente, WooTickets sólo se muestra en el interfaz público una vez por &quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L53"><a href="#L53">53</a></th><td class="line-code"><pre>&quot;evento. Para usuarios PRO, esto significa que el mismo ticket aparecerá en &quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L54"><a href="#L54">54</a></th><td class="line-code"><pre>&quot;todos los eventos de la serie. Por favor, configure sus eventos en &quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L55"><a href="#L55">55</a></th><td class="line-code"><pre>&quot;consecuencia.&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L56"><a href="#L56">56</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L57"><a href="#L57">57</a></th><td class="line-code"><pre>#: ../classes/class-ticket-email.php:13 ../views/tickets.php:99
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L58"><a href="#L58">58</a></th><td class="line-code"><pre>msgid &quot;Tickets&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L59"><a href="#L59">59</a></th><td class="line-code"><pre>msgstr &quot;Tickets&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L60"><a href="#L60">60</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L61"><a href="#L61">61</a></th><td class="line-code"><pre>#: ../classes/class-ticket-email.php:14
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L62"><a href="#L62">62</a></th><td class="line-code"><pre>msgid &quot;&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L63"><a href="#L63">63</a></th><td class="line-code"><pre>&quot;Email the user will recieve after a completed order with the tickets he &quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L64"><a href="#L64">64</a></th><td class="line-code"><pre>&quot;purchased.&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L65"><a href="#L65">65</a></th><td class="line-code"><pre>msgstr &quot;&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L66"><a href="#L66">66</a></th><td class="line-code"><pre>&quot;El email que el usuario recibirá tras completar su pedido, con los tickets &quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L67"><a href="#L67">67</a></th><td class="line-code"><pre>&quot;que ha comprado.&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L68"><a href="#L68">68</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L69"><a href="#L69">69</a></th><td class="line-code"><pre>#: ../classes/class-ticket-email.php:16
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L70"><a href="#L70">70</a></th><td class="line-code"><pre>msgid &quot;Your tickets from {sitename}&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L71"><a href="#L71">71</a></th><td class="line-code"><pre>msgstr &quot;Sus tickets de {sitename}&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L72"><a href="#L72">72</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L73"><a href="#L73">73</a></th><td class="line-code"><pre>#: ../classes/class-ticket-email.php:97
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L74"><a href="#L74">74</a></th><td class="line-code"><pre>msgid &quot;Subject&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L75"><a href="#L75">75</a></th><td class="line-code"><pre>msgstr &quot;Asunto&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L76"><a href="#L76">76</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L77"><a href="#L77">77</a></th><td class="line-code"><pre>#: ../classes/class-ticket-email.php:99
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L78"><a href="#L78">78</a></th><td class="line-code"><pre>#, php-format
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L79"><a href="#L79">79</a></th><td class="line-code"><pre>msgid &quot;Defaults to &lt;code&gt;%s&lt;/code&gt;&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L80"><a href="#L80">80</a></th><td class="line-code"><pre>msgstr &quot;Configuración por defecto &lt;code&gt;%s&lt;/code&gt;&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L81"><a href="#L81">81</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L82"><a href="#L82">82</a></th><td class="line-code"><pre>#: ../classes/class-wootickets.php:536
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L83"><a href="#L83">83</a></th><td class="line-code"><pre>#, php-format
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L84"><a href="#L84">84</a></th><td class="line-code"><pre>msgid &quot;In trash (was %s)&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L85"><a href="#L85">85</a></th><td class="line-code"><pre>msgstr &quot;En papelera (was %s)&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L86"><a href="#L86">86</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L87"><a href="#L87">87</a></th><td class="line-code"><pre>#: ../classes/class-wootickets.php:539
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L88"><a href="#L88">88</a></th><td class="line-code"><pre>msgid &quot;Deleted&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L89"><a href="#L89">89</a></th><td class="line-code"><pre>msgstr &quot;Eliminado&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L90"><a href="#L90">90</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L91"><a href="#L91">91</a></th><td class="line-code"><pre>#: ../classes/class-wootickets.php:546
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L92"><a href="#L92">92</a></th><td class="line-code"><pre>msgid &quot;(deleted)&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L93"><a href="#L93">93</a></th><td class="line-code"><pre>msgstr &quot;(eliminado)&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L94"><a href="#L94">94</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L95"><a href="#L95">95</a></th><td class="line-code"><pre>#: ../classes/class-wootickets.php:745
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L96"><a href="#L96">96</a></th><td class="line-code"><pre>msgid &quot;This is a ticket for the event:&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L97"><a href="#L97">97</a></th><td class="line-code"><pre>msgstr &quot;Este es un ticket para el evento:&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L98"><a href="#L98">98</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L99"><a href="#L99">99</a></th><td class="line-code"><pre>#: ../vendor/pue-client/admin-views/license-key.view.php:9
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L100"><a href="#L100">100</a></th><td class="line-code"><pre>#: ../vendor/pue-client/admin-views/license-key.view.php:13
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L101"><a href="#L101">101</a></th><td class="line-code"><pre>#: ../vendor/pue-client/lib/pue_plugin_update_engine.class.php:185
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L102"><a href="#L102">102</a></th><td class="line-code"><pre>msgid &quot;License Key&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L103"><a href="#L103">103</a></th><td class="line-code"><pre>msgstr &quot;Clave de Licencia | License Key&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L104"><a href="#L104">104</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L105"><a href="#L105">105</a></th><td class="line-code"><pre>#: ../vendor/pue-client/admin-views/license-key.view.php:10
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L106"><a href="#L106">106</a></th><td class="line-code"><pre>msgid &quot;A valid license key is required for support and updates.&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L107"><a href="#L107">107</a></th><td class="line-code"><pre>msgstr &quot;&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L108"><a href="#L108">108</a></th><td class="line-code"><pre>&quot;Se requiere una clave de licencia válida para soporte y actualizaciones.&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L109"><a href="#L109">109</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L110"><a href="#L110">110</a></th><td class="line-code"><pre>#: ../vendor/pue-client/admin-views/license-key.view.php:16
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L111"><a href="#L111">111</a></th><td class="line-code"><pre>msgid &quot;Replace empty fields&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L112"><a href="#L112">112</a></th><td class="line-code"><pre>msgstr &quot;Reemplazar campos vacíos&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L113"><a href="#L113">113</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L114"><a href="#L114">114</a></th><td class="line-code"><pre>#: ../vendor/pue-client/admin-views/license-key.view.php:25
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L115"><a href="#L115">115</a></th><td class="line-code"><pre>#: ../vendor/pue-client/lib/pue_plugin_update_engine.class.php:186
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L116"><a href="#L116">116</a></th><td class="line-code"><pre>msgid &quot;A valid license key is required for support and updates&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L117"><a href="#L117">117</a></th><td class="line-code"><pre>msgstr &quot;&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L118"><a href="#L118">118</a></th><td class="line-code"><pre>&quot;Se requiere una clave de licencia válida para soporte y actualizaciones.&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L119"><a href="#L119">119</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L120"><a href="#L120">120</a></th><td class="line-code"><pre>#: ../vendor/pue-client/lib/pue_plugin_update_engine.class.php:254
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L121"><a href="#L121">121</a></th><td class="line-code"><pre>msgid &quot;License key(s) updated.&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L122"><a href="#L122">122</a></th><td class="line-code"><pre>msgstr &quot;Clave(s) de licencia actualizada(s).&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L123"><a href="#L123">123</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L124"><a href="#L124">124</a></th><td class="line-code"><pre>#: ../vendor/pue-client/lib/pue_plugin_update_engine.class.php:294
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L125"><a href="#L125">125</a></th><td class="line-code"><pre>msgid &quot;Sorry, key validation server is not available.&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L126"><a href="#L126">126</a></th><td class="line-code"><pre>msgstr &quot;Disculpe, el servidor para validar su clave no está disponible.&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L127"><a href="#L127">127</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L128"><a href="#L128">128</a></th><td class="line-code"><pre>#: ../vendor/pue-client/lib/pue_plugin_update_engine.class.php:296
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L129"><a href="#L129">129</a></th><td class="line-code"><pre>msgid &quot;Sorry, this key is expired.&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L130"><a href="#L130">130</a></th><td class="line-code"><pre>msgstr &quot;Disculpe, esta clave de licencia ha vencido.&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L131"><a href="#L131">131</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L132"><a href="#L132">132</a></th><td class="line-code"><pre>#: ../vendor/pue-client/lib/pue_plugin_update_engine.class.php:298
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L133"><a href="#L133">133</a></th><td class="line-code"><pre>msgid &quot;Sorry, this key is out of installs.&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L134"><a href="#L134">134</a></th><td class="line-code"><pre>msgstr &quot;&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L135"><a href="#L135">135</a></th><td class="line-code"><pre>&quot;Disculpe, esta clave de licencia ha alcanzado la cantidad máxima de &quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L136"><a href="#L136">136</a></th><td class="line-code"><pre>&quot;instalaciones.&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L137"><a href="#L137">137</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L138"><a href="#L138">138</a></th><td class="line-code"><pre>#: ../vendor/pue-client/lib/pue_plugin_update_engine.class.php:300
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L139"><a href="#L139">139</a></th><td class="line-code"><pre>msgid &quot;Sorry, this key is not valid.&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L140"><a href="#L140">140</a></th><td class="line-code"><pre>msgstr &quot;Disculpe, esta clave de licencia no es válida.&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L141"><a href="#L141">141</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L142"><a href="#L142">142</a></th><td class="line-code"><pre>#: ../vendor/pue-client/lib/pue_plugin_update_engine.class.php:303
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L143"><a href="#L143">143</a></th><td class="line-code"><pre>#, php-format
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L144"><a href="#L144">144</a></th><td class="line-code"><pre>msgid &quot;Valid Key! Expires on %s&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L145"><a href="#L145">145</a></th><td class="line-code"><pre>msgstr &quot;La clave de licencia es válida. Vence el %s&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L146"><a href="#L146">146</a></th><td class="line-code"><pre>
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L147"><a href="#L147">147</a></th><td class="line-code"><pre>#: ../vendor/pue-client/lib/pue_plugin_update_engine.class.php:307
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L148"><a href="#L148">148</a></th><td class="line-code"><pre>#, php-format
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L149"><a href="#L149">149</a></th><td class="line-code"><pre>msgid &quot;&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L150"><a href="#L150">150</a></th><td class="line-code"><pre>&quot;Hmmm... something&#39;s wrong with this validator. Please contact &lt;a href=\&quot;%s&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L151"><a href="#L151">151</a></th><td class="line-code"><pre>&quot;\&quot;&gt;support.&lt;/a&gt;&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L152"><a href="#L152">152</a></th><td class="line-code"><pre>msgstr &quot;&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L153"><a href="#L153">153</a></th><td class="line-code"><pre>&quot;Hmmm… algo fue mal con la validación. Por favor, contacte con &lt;a href=\&quot;%s&quot;
+</pre></td></tr>
+
+
+<tr><th class="line-num" id="L154"><a href="#L154">154</a></th><td class="line-code"><pre>&quot;\&quot;&gt;soporte.&lt;/a&gt;&quot;
+</pre></td></tr>
+
+
+</tbody>
+</table>
+</div>
+
+
+
+
+
+      
+      <div style="clear:both;">&nbsp;</div>
+    </div>
+  </div>
+
+  <div id="footer">
+    <div class="bgl"><div class="bgr">
+        Powered by <a href="https://www.chiliproject.org/">ChiliProject</a>
+      </div></div>
+  </div>
+
+  <div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+  <div id="dialog-window" style="display:none;"></div>
+
+</div>
+<script type="text/javascript">
+var clockingConfig = {
+  createUrl: '/time_entries.json',
+  rootUrl: '/',
+  currentUserName: "Leah Koerper",
+  apiKey: '68894ad079b73a86dc9eade9065a6db65d89edff',
+  images: {
+    refresh: '/plugin_assets/chiliproject_clocking/images/arrow_refresh.png?1360645204',
+    window: '/plugin_assets/chiliproject_clocking/images/window.png?1360645204',
+    loading: '/images/loading.gif?1360645048'
+  },
+  embedded: true,
+  helpUrl: '/help/wiki_syntax'
+};
+
+var clockingTool = new ClockingTool(clockingConfig);
+
+// Sent the CSRF token with any ajax requests
+jQuery(document).ajaxSend(function(e, xhr, options) {
+  var token = jQuery("meta[name='csrf-token']").attr("content");
+  if (token) {
+    xhr.setRequestHeader("X-CSRF-Token", token);
+  }
+});
+
+jQuery(document).ready(function() {
+  jQuery('#more-menu').after('<li class="clocking-tool-trigger"><a href="/clocking_tool" class="clocking-tool-menu" onclick="return false">Clocking tool</a></li>');
+  clockingTool.draw();
+
+  // Use an event the html element to handle clicks
+  // outside the tool to close the tool
+  //
+  // Adapted from ChiliProject 3.0.0's handleClickEventOnPageToCloseOpenMenu()
+  jQuery('html').live("click", function(htmlEvent) {
+    var clockingToolEle = jQuery('#clocking-tool');
+  
+    // Was the trigger clicked?
+    if (jQuery('.clocking-tool-trigger').has(htmlEvent.target).length > 0) {
+      // Clicked on the trigger, let it bubble up (thus close)
+    } else if (clockingToolEle.has(htmlEvent.target).length > 0) {
+      // Clicked on the open tool, let it bubble up
+    } else {
+      // Clicked elsewhere, close tool
+      clockingToolEle.hide().removeClass('open');
+    }
+  });
+
+  jQuery('.clocking-tool-trigger').live('click', function() {
+    clockingTool.getProjects();
+
+    var clockingToolEle = jQuery('#clocking-tool');
+    if (clockingToolEle.hasClass('open')) {
+      // Close tool
+      clockingToolEle.hide().removeClass('open');
+    } else {
+      // Open tool
+      clockingToolEle.show().addClass('open');
+    }
+      
+  });
+});
+</script>
+
+<div id="clocking-tool" class="embed" style="display: none;"></div>
+
+  <script type="text/x-jquery-tmpl" id="clocking-tool-template">
+    <div class="clocking-tool-inner">
+      <div class="header">
+        <div class="message-box"></div>
+        <div class="popout"></div>
+        <div class="ajax-loading" style="display:none;"></div>
+      </div>
+      <div class="form-container">
+        <form action="${ formUrl }" class="" method="post">
+          <p>
+            <select class="project_id" name="project_id">
+            </select>
+          </p>
+          <p class="issue-fields">
+            <input class="time_entry_issue_id" name="time_entry[issue_id]" type="hidden">
+            <input class="issue_search" name="issue_search" type="text" placeholder="--- Issue search ---">
+            <img alt="Refresh" class="refresh-data" src="${ refreshImage }" height="16" width="16">
+          </p>
+          <p>
+            <select class="time_entry_activity_id" name="time_entry[activity_id]">
+            </select>
+          </p>
+          <p class="hours-section">
+            <input class="time_entry_hours" name="time_entry[hours]" size="3" type="text" placeholder="0:00">
+            <input id="time_entry_spent_on_${ randomId }" class="time_entry_spent_on" name="time_entry[spent_on]" size="10" type="text" value="${ today }">
+            <img alt="Calendar" id="time_entry_spent_on_${ randomId }_trigger" class="calendar-trigger time_entry_spent_on_trigger" src="/images/calendar.png?1323882096" height="16" width="16" style="float: right;"><br>
+            <a class="formatting-help" href="${ helpUrl }" tabindex="-1" target="_blank">Formatting Help</a>
+          </p>
+          <p style="clear:left;">
+            <input class="time_entry_comments" name="time_entry[comments]" type="text" placeholder="--- Describe what you did here.---">
+          </p>
+
+          <p>
+            <input name="commit" type="submit" value="Save">
+            <a class="jump-to-issue" href="#">Go to this issue...</a>
+          </p>
+        </form>
+
+      </div>
+      <div class="issues-container">
+        <h3>Recent Issues</h3>
+        <ul class="issue-results">
+        </ul>
+      </div>
+    </div>
+  </script>
+
+        
+ <div id='dialog-window'></div> <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-8411715-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

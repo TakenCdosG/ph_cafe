@@ -1,0 +1,173 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooTickets v2.0-alpha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-06-26 12:21-0800\n"
+"PO-Revision-Date: 2013-06-26 12:21-0800\n"
+"Last-Translator: DJIO <wordpress@djio.com.br>\n"
+"Language-Team: DJIO <wordpress@djio.com.br>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ./\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+# @ tribe-wootickets
+#: ../wootickets.php:125
+msgid "The Events Calendar"
+msgstr "Agenda de Eventos"
+
+# @ tribe-wootickets
+#: ../wootickets.php:126
+msgid "WooCommerce"
+msgstr "WooComerce"
+
+# @ tribe-wootickets
+#: ../wootickets.php:131 ../wootickets.php:133
+#, php-format
+msgid ""
+"To begin using WooTickets, please install the latest version of <a href=\"%s"
+"\" class=\"thickbox\" title=\"%s\">%s</a>."
+msgstr ""
+"Para usar o WooTickets, por favor instale a última versão do <a href=\"%s\" "
+"class=\"thickbox\" title=\"%s\">%s</a>."
+
+# @ tribe-wootickets
+#: ../admin-views/metabox-advanced.php:12
+msgid "SKU:"
+msgstr "UME:"
+
+# @ tribe-wootickets
+#: ../admin-views/metabox-advanced.php:25
+msgid ""
+"Currently, WooTickets will only show up on the frontend once per full event. "
+"For PRO users this means the same ticket will appear across all events in "
+"the series. Please configure your events accordingly."
+msgstr ""
+"Atualmente, o WooTickets somente aparecerá no site uma vez por evento. Para "
+"usuários PRO isto significa que o mesmo ingresso aparecerá para todos os "
+"eventos da série. Por favor configure seus eventos de acordo com isto."
+
+# @ tribe-wootickets
+#: ../classes/class-ticket-email.php:13 ../views/tickets.php:99
+msgid "Tickets"
+msgstr "Ingressos"
+
+# @ tribe-wootickets
+#: ../classes/class-ticket-email.php:14
+msgid ""
+"Email the user will recieve after a completed order with the tickets he "
+"purchased."
+msgstr ""
+"Email que o usuário receberá após completar o pedido com os ingressos que "
+"ele comprou."
+
+# @ tribe-wootickets
+#: ../classes/class-ticket-email.php:16
+msgid "Your tickets from {sitename}"
+msgstr "Seus Ingressos de {sitename}"
+
+# @ woocommerce
+#: ../classes/class-ticket-email.php:97
+msgid "Subject"
+msgstr "Assunto"
+
+# @ woocommerce
+#: ../classes/class-ticket-email.php:99
+#, php-format
+msgid "Defaults to <code>%s</code>"
+msgstr "Padrão para <code>%s</code>"
+
+# @ tribe-wootickets
+#: ../classes/class-wootickets.php:536
+#, php-format
+msgid "In trash (was %s)"
+msgstr "Na Lixeira (era %s)"
+
+# @ tribe-wootickets
+#: ../classes/class-wootickets.php:539
+msgid "Deleted"
+msgstr "Excluído"
+
+# @ wootickets
+#: ../classes/class-wootickets.php:546
+msgid "(deleted)"
+msgstr "(excluido)"
+
+# @ tribe-wootickets
+#: ../classes/class-wootickets.php:745
+msgid "This is a ticket for the event:"
+msgstr "Este é o ingresso para o evento:"
+
+# @ tribe-plugin-update-engine
+#: ../vendor/pue-client/admin-views/license-key.view.php:9
+#: ../vendor/pue-client/admin-views/license-key.view.php:13
+#: ../vendor/pue-client/lib/pue_plugin_update_engine.class.php:185
+msgid "License Key"
+msgstr "Chave de Licença"
+
+# @ tribe-plugin-update-engine
+#: ../vendor/pue-client/admin-views/license-key.view.php:10
+msgid "A valid license key is required for support and updates."
+msgstr ""
+"Uma chave de licença válida é necessária para receber suporte e atualizações."
+
+# @ tribe-plugin-update-engine
+#: ../vendor/pue-client/admin-views/license-key.view.php:16
+msgid "Replace empty fields"
+msgstr "Substitua os campos vazios"
+
+# @ tribe-plugin-update-engine
+#: ../vendor/pue-client/admin-views/license-key.view.php:25
+#: ../vendor/pue-client/lib/pue_plugin_update_engine.class.php:186
+msgid "A valid license key is required for support and updates"
+msgstr ""
+"Uma chave de licença válida é necessária para obter suporte e atualizações"
+
+# @ tribe-plugin-update-engine
+#: ../vendor/pue-client/lib/pue_plugin_update_engine.class.php:254
+msgid "License key(s) updated."
+msgstr "Chave(s) de licença atualizadas."
+
+# @ tribe-plugin-update-engine
+#: ../vendor/pue-client/lib/pue_plugin_update_engine.class.php:294
+msgid "Sorry, key validation server is not available."
+msgstr "Desculpe, o servidor de validação da chave não está disponível."
+
+# @ tribe-plugin-update-engine
+#: ../vendor/pue-client/lib/pue_plugin_update_engine.class.php:296
+msgid "Sorry, this key is expired."
+msgstr "Desculpe, esta chave está expirada."
+
+# @ tribe-plugin-update-engine
+#: ../vendor/pue-client/lib/pue_plugin_update_engine.class.php:298
+msgid "Sorry, this key is out of installs."
+msgstr "Desculpe, essa chave não permite nenhuma instalação adicional."
+
+# @ tribe-plugin-update-engine
+#: ../vendor/pue-client/lib/pue_plugin_update_engine.class.php:300
+msgid "Sorry, this key is not valid."
+msgstr "Desculpe, esta chave não é válida."
+
+# @ tribe-plugin-update-engine
+#: ../vendor/pue-client/lib/pue_plugin_update_engine.class.php:303
+#, php-format
+msgid "Valid Key! Expires on %s"
+msgstr "Chave Válida! Expira em %s"
+
+# @ tribe-plugin-update-engine
+#: ../vendor/pue-client/lib/pue_plugin_update_engine.class.php:307
+#, php-format
+msgid ""
+"Hmmm... something's wrong with this validator. Please contact <a href=\"%s"
+"\">support.</a>"
+msgstr ""
+"Hmmm… algo está errado com este validador. Entre em contato com o <a href="
+"\"%s\">suporte.</a>"
