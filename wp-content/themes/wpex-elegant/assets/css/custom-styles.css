@@ -868,3 +868,21 @@ input#email-input.blur{
 input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="tel"], textarea{
     font-family: "open-sans";
 }
+
+
+
+/* EVENTS WOOCOMERCE  */
+
+form.cart table.tribe-events-tickets button, .woocommerce input[type="submit"], .wc-proceed-to-checkout a{
+    height: inherit !important;
+    background-color: #552684 !important;
+    color:#FFFFFF !important;
+}
+.woocommerce .product-remove a.remove{
+    color:#552684 !important;
+}
+
+.woocommerce .product-remove a.remove:hover {
+    color: #fff!important;
+    background: #552684;
+}
