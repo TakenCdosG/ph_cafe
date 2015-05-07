@@ -15,9 +15,7 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-	<?php if ( get_theme_mod('wpex_custom_favicon') ) { ?>
-		<link rel="shortcut icon" href="<?php echo get_theme_mod('wpex_custom_favicon'); ?>" />
-	<?php } ?>
+        <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/pondhouse_favicon.jpg" />
 	<!--[if lt IE 9]>
 		<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js"></script>
 	<![endif]-->
