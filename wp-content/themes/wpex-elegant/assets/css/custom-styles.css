@@ -51,6 +51,10 @@
 
 }
 
+hr{
+    border: solid #ccc;
+}
+
 b {
     font-weight: 600;
     color: #000;
