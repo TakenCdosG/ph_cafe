@@ -39,7 +39,7 @@
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/yp_icon.png">
                     </a>
                      <a href="http://www.opentable.com/pond-house-cafe-reservations-west-hartford?rid=6035&restref=6035" id="open_table_icon" class="social-icon" target="_blank">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ot_icon.png">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/opentable_logo.png">
                     </a>
 
 
