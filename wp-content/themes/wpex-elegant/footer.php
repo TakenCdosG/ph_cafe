@@ -15,12 +15,14 @@
 	<div id="footer-wrap" class="site-footer clr">
         <div id="footer-social-wrap" class="container clr">
             <div id="email-signup" class="span_1_of_3 col col-1">
-                <form name="ccoptin" action="http://visitor.r20.constantcontact.com/d.jsp" target="_blank" method="post">
+                <form name="ccoptin" action="http://visitor.r20.constantcontact.com/d.jsp" target="_blank" method="post"">
                     <input type="hidden" name="llr" value="kav6gfcab">
                     <input type="hidden" name="m" value="1101834146826">
                     <input type="hidden" name="p" value="oi">
-                    <div id="input-border-left"></div><input id="email-input" type="text" name="ea" size="20" title="Email Signup" class="blur" placeholder="Email Signup">
-                    <input  type="button" name="go" value="Join" class="submit"></form>
+                    <div id="input-border-left"></div>
+                    <input id="email-input" type="text" name="ea" size="20" title="Email Signup" class="blur" placeholder="Email Signup">
+                    <input type="button" name="go" value="Join" class="submit"  />
+                </form><!-- END: Constant Contact Basic Opt-in Email List Form -->
             </div>
             <div id="social-icons" class="span_2_of_3 col col-2">
                     <a href="https://www.facebook.com/pondhousecafe" id="facebook_icon" class="social-icon" target="_blank">
