@@ -26,21 +26,21 @@
 
 	<div id="wrap">
 		<?php
-        global $post;
+
         $post_id = $wp_query->post->ID;
-        d($post);
+        //d($wp_query->post);
 		if(!is_front_page()){
             //d($post_id);
 
 
-            if($post->post_type == 'tribe_events'){
+            if($wp_query->post->post_type == 'tribe_events'){
              $bg_id = get_post_thumbnail_id(80);
 
             }else{
                 $bg_id = get_post_thumbnail_id($post_id);
             }
             $bg_url = wp_get_attachment_url( $bg_id );
-            d($post_id);
+            //d($post_id);
             ?>
 		<div id="header-wrap" class="clr fixed-header"  <?php if(!empty($bg_url)){ ?>style="background-image: url('<?php print $bg_url ?>')" <?php }?>>
             <div id="header-wrap-block">
