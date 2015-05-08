@@ -21,7 +21,7 @@
                     <input type="hidden" name="p" value="oi">
                     <div id="input-border-left"></div>
                     <input id="email-input" type="text" name="ea" size="20" title="Email Signup" class="blur" placeholder="Email Signup">
-                    <input type="button" name="go" value="Join" class="submit"  />
+                    <input type="submit" name="go" value="Join" class="submit"  />
                 </form><!-- END: Constant Contact Basic Opt-in Email List Form -->
             </div>
             <div id="social-icons" class="span_2_of_3 col col-2">
