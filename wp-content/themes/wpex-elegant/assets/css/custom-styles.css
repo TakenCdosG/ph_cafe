@@ -519,12 +519,12 @@ select{
 
 
 @media only screen and (min-width: 768px) and (max-width: 959px){
-    .homepage-slide-caption.caption-0{
+    .homepage-slide-caption.caption_first_line{
         font-size: 39px;
         line-height: 39px;
     }
 
-    .homepage-slide-caption.caption-1{
+    .homepage-slide-caption.caption_second_line{
         font-size: 58px;
         line-height: 58px;
         margin-top: 8px;
@@ -614,12 +614,12 @@ select{
         display: block;
     }
 
-    .homepage-slide-caption.caption-0{
+    .homepage-slide-caption.caption_first_line{
         font-size: 32px;
         line-height: 32px;
     }
 
-    .homepage-slide-caption.caption-1{
+    .homepage-slide-caption.caption_second_line{
         font-size: 40px;
         line-height: 40px;
         margin-top: 8px;
