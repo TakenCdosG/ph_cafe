@@ -32,9 +32,15 @@
             //d($post_id);
 
             $bg_id = get_post_thumbnail_id($post_id);
-            $bg_url = wp_get_attachment_url( $bg_id );
+
+            if($post_id == 80){
+                $bg_url = wp_get_attachment_url( 80 );
+            }else{
+                $bg_url = wp_get_attachment_url( $bg_id );
+            }
+
             ?>
-		<div id="header-wrap" class="clr fixed-header"  style="background-image: url('<?php print $bg_url ?>')">
+		<div id="header-wrap" class="clr fixed-header"  <?php if(!empty($bg_url)){ ?>style="background-image: url('<?php print $bg_url ?>')" <?php }?>>
             <div id="header-wrap-block">
                 <header id="header" class="site-header clr container" role="banner">
                     <?php
