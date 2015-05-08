@@ -119,12 +119,12 @@ b {
     color: #fff;
     text-transform: uppercase;
 }
-.sub-menu-home ul li:nth-child(1){
+.sub-menu-home ul li:nth-child(2){
     border-right: solid 1px #fff;
     padding-right: 5px;
     text-align: right;
 }
-.sub-menu-home li:nth-child(2){
+.sub-menu-home li:nth-child(3){
     padding-left: 1px;
     text-align: left;
 }
