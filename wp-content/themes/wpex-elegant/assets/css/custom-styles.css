@@ -384,6 +384,12 @@ a#navigation-toggle {
 }
 
 /* sub sub main menu  */
+#sub-sub-main-menu-select{
+    background-color: #552683;
+    color: #FFFFFF;
+    padding: 8px 14px;
+    font-weight: 600;
+}
 
 #sub-sub-main-menu-select{
     display: none;
