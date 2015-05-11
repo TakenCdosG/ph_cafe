@@ -385,6 +385,9 @@ a#navigation-toggle {
 
 /* sub sub main menu  */
 
+#sub-sub-main-menu-select{
+    display: none;
+}
 .sub-sub-main-menu{
     margin: 597px auto 0 auto;
     display: table;
@@ -606,7 +609,13 @@ select{
 @media only screen and (max-width: 767px){
 
     .sub-sub-main-menu {
+        margin: 144px auto 0 auto;
+    }
+    .sub-sub-main-menu-widget{
         display: none;
+    }
+    #sub-sub-main-menu-select{
+        display: block;
     }
     #logo img{
         max-width: 207px;
