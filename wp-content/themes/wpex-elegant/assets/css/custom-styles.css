@@ -593,11 +593,12 @@ select{
         display: block;
     }
 
-    .sub-sub-main-menu a{
-        font-size: 13px;
+    .sub-sub-main-menu a {
+        font-size: 11px;
+        padding: 4px 4px;
     }
     .sub-sub-main-menu {
-        margin: 322px auto 0 auto;
+        margin: 330px auto 0 auto;
     }
 
 }
