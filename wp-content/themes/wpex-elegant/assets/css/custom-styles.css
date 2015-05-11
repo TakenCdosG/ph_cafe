@@ -500,6 +500,16 @@ select{
 
 /* RESPONSIVE */
 
+@media only screen and (min-width: 1200px) {
+    .sub-sub-main-menu a {
+        font-size: 20px;
+        padding: 10px 10px;
+    }
+    .sub-sub-main-menu {
+        margin: 593px auto 0 auto;
+    }
+}
+
 @media only screen and (min-width: 1070px) {
     .container {
         width: 1046px;
