@@ -386,18 +386,18 @@ a#navigation-toggle {
 /* sub sub main menu  */
 
 .sub-sub-main-menu{
-    margin: 585px auto 0 auto;
+    margin: 597px auto 0 auto;
     display: table;
-    height: 52px;
+    height: 46px;
 }
 
 .sub-sub-main-menu a{
     color: #552683;
     background-color: #EDE2D1;
     display: block;
-    font-size: 24px;
+    font-size: 14px;
     text-transform: uppercase;
-    padding: 14px 28px;
+    padding: 8px 8px;
 
 }
 
@@ -593,9 +593,20 @@ select{
         display: block;
     }
 
+    .sub-sub-main-menu a{
+        font-size: 13px;
+    }
+    .sub-sub-main-menu {
+        margin: 322px auto 0 auto;
+    }
+
 }
 
 @media only screen and (max-width: 767px){
+
+    .sub-sub-main-menu {
+        display: none;
+    }
     #logo img{
         max-width: 207px;
     }
