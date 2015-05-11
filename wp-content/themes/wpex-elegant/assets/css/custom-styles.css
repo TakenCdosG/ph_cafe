@@ -500,7 +500,7 @@ select{
 
 /* RESPONSIVE */
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1300px) {
     .sub-sub-main-menu a {
         font-size: 20px;
         padding: 10px 10px;
