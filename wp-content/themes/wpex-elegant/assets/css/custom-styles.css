@@ -619,7 +619,7 @@ select{
 @media only screen and (max-width: 767px){
 
     .sub-sub-main-menu {
-        margin: 144px auto 0 auto;
+        margin: 215px auto 0 auto;
     }
     .sub-sub-main-menu-widget{
         display: none;
@@ -771,7 +771,7 @@ select{
     }
 
     #main{
-        padding: 20px 0;
+        padding: 80px 0 20px 0;
     }
     .page-template-single-gallery-php .container {
         max-width: 100%;
