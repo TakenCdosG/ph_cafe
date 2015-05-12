@@ -28,12 +28,13 @@
 		<?php
 
         $post_id = $wp_query->post->ID;
-        //d($wp_query->post);
+        d($wp_query);
+        //$wp_query->post->post_parent -> = ;
 		if(!is_front_page()){
             //d($post_id);
 
 
-            if($wp_query->post->post_type == 'tribe_events'){
+            if($wp_query->post->post_type == 'tribe_events' or $wp_query->query[eventDisplay] == 'list'){
              $bg_id = get_post_thumbnail_id(80);
 
             }else{

@@ -810,6 +810,13 @@ select{
 }
 
 /*CALENDAR*/
+
+.tribe-bar-filters{
+    right: 16.66667%;
+    left: auto;
+    width: 83.3333%;
+}
+
 a.tribe-events-ical.tribe-events-button{
     display: none !important;
 }
