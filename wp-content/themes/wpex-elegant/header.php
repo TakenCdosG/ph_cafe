@@ -34,7 +34,7 @@
             //d($post_id);
 
 
-            if($wp_query->post->post_type == 'tribe_events' or $wp_query->query[eventDisplay] == 'list'){
+            if($wp_query->query[post_type] == 'tribe_events'){
              $bg_id = get_post_thumbnail_id(80);
 
             }else{
