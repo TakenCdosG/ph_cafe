@@ -330,6 +330,11 @@ a#navigation-toggle {
     padding-bottom: 15px;
     display: block;
 }
+
+#menu-main-menu-1{
+    display: table;
+    margin: 0px auto;
+}
 /* Sub main menu */
 
 .sub-main-menu{
@@ -741,6 +746,8 @@ select{
     .menu-main-menu-1{
         text-align: center;
     }
+
+
     li.cafe a,li.weddings a,li.catering a,li.banquets a{
         max-width: 100%;
     }
