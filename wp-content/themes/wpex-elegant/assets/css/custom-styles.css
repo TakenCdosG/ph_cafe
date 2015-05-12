@@ -139,6 +139,9 @@ body{
 body a{
     color: #552684;
 }
+body a:hover{
+
+}
 body.home{
     background: #D8CBBA url("../images/bg_footer_buttons.png");
 }
@@ -205,7 +208,9 @@ body.home{
     font-family: helvetica_neueregular_roman;
     line-height: 18px;
 }
-
+#footer-wrap a:hover{
+    color: #552684;
+}
 #footer-widgets{
     border-top: 1px solid #8F8B86;
     padding-top: 18px;
