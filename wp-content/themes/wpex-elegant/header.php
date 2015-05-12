@@ -28,7 +28,7 @@
 		<?php
 
         $post_id = $wp_query->post->ID;
-        d($wp_query);
+       // d($wp_query);
         //$wp_query->post->post_parent -> = ;
 		if(!is_front_page()){
             //d($post_id);
