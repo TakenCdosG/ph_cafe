@@ -60,7 +60,7 @@ $event_id = get_the_ID();
                 <?php the_content(); ?>
             </div>
             <!-- .tribe-events-single-event-description -->
-            <?php do_action( 'tribe_events_single_event_after_the_content' ) ?>
+            <?php do_action( 'tribe_events_single_event_after_the_content_custom' ) ?>
 
             <!-- Event meta -->
             <?php do_action( 'tribe_events_single_event_before_the_meta' ) ?>

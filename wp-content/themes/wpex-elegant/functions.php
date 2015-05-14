@@ -24,7 +24,7 @@
 /*--------------------------------------*/
 /* Akendos Custom functions and definitions */
 /*--------------------------------------*/
-
+require_once( get_template_directory() .'/assets/functions/custom-functions.php' );
 
 
 /** Theme Setup **/
