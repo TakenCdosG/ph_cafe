@@ -2,23 +2,30 @@ jQuery( function($) {
 
     $(document).ready(function() {
 
-
-        var ClassToAdd = jQuery("#sidr-id-menu-main-menu  > li.sidr-class-current-menu-ancestor > a").text();
-
-        var ClassToAdd = ClassToAdd.toLowerCase();
-
-        $("#footer-buttons a."+ClassToAdd+" img").css({
-            "-webkit-filter": "grayscale(0)",
-            "filter": "grayscale(0)"
-        });
-
-
-       // alert(ClassToAdd);
+        FooterButtonsHover();
 
         SubSubMenuDropdownVersion();
 
 
     });
+
+    function FooterButtonsHover(){
+
+        if(jQuery("#site-navigation-wrap").length){
+
+
+            var ClassToAdd = jQuery("#sidr-id-menu-main-menu  > li.sidr-class-current-menu-ancestor > a").text();
+
+            var ClassToAdd = ClassToAdd.toLowerCase();
+
+            $("#footer-buttons a."+ClassToAdd+" img").css({
+                "-webkit-filter": "grayscale(0)",
+                "filter": "grayscale(0)"
+            });
+        }
+
+
+    }
 
     // Create default option "Go to..."
 
