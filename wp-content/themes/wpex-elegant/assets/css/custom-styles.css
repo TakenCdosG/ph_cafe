@@ -284,6 +284,7 @@ body.home{
 
 #header-wrap-block{
     background-color:#fff ;
+    min-height: 207px;
     opacity: 0.8;
     filter: alpha(opacity=80); /* For IE8 and earlier */
 }
@@ -389,6 +390,7 @@ a#navigation-toggle {
     height: 29px;
 }
 
+a[title="hidden-item"],#sidr-main ul a[title="aux_item_menu_cafe"],#sidr-main ul a[title="aux_item_menu_weddings"],#sidr-main ul a[title="aux_item_menu_catering"],#sidr-main ul a[title="aux_item_menu_banquets"] {
 a[title="hidden-item"],#sidr-main ul a[title="aux_item_menu_cafe"],#sidr-main ul a[title="aux_item_menu_weddings"],#sidr-main ul a[title="aux_item_menu_catering"],#sidr-main ul a[title="aux_item_menu_banquets"] {
     display: none;
 }
