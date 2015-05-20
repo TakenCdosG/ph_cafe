@@ -619,7 +619,7 @@ select{
         width: 272px;
     }
 
-    .sub-main-menu li.menu-item-40,.sub-main-menu li.menu-item-43,.sub-main-menu li.menu-item-45,.sub-main-menu li.menu-item-41{
+    .sub-main-menu li.menu-item-40,.sub-main-menu li.menu-item-43,.sub-main-menu li.menu-item-45,.sub-main-menu li.menu-item-41, .sub-main-menu li.menu-item-218{
         display: block;
     }
 
