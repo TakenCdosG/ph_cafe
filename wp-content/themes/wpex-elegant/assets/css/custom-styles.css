@@ -515,6 +515,63 @@ select{
     margin-top: 10px;
 }
 
+
+.sidr-class-sub-menu{
+    text-transform: capitalize;
+}
+
+input#email-input.blur{
+    font-family: "pt_sans_regular";
+}
+
+/*NINJA FORM STYLES*/
+.entry input[type="submit"]{
+    background: #552684;
+    border-radius: 5px;
+}
+
+
+.ninja-forms-form .list-dropdown-wrap.label-above select,.ninja-forms-form  select, .ninja-forms-form input, .ninja-forms-form textarea{
+    position: relative;
+    padding: 10px;
+    border-radius: 6px;
+    float: right;
+    width: 216px;
+    background-color: #FFFFFF;
+    margin-top: -30px;
+}
+
+.ninja-forms-form .list-dropdown-wrap.label-above select option,.ninja-forms-form  select option{
+
+    padding: 5px;
+}
+
+.ninja-forms-form .field-wrap{
+    width: 60%;
+}
+
+input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="tel"], textarea{
+    font-family: "open-sans";
+}
+
+
+
+/* EVENTS WOOCOMERCE  */
+
+form.cart table.tribe-events-tickets button, .woocommerce input[type="submit"], .wc-proceed-to-checkout a{
+    height: inherit !important;
+    background-color: #552684 !important;
+    color:#FFFFFF !important;
+}
+.woocommerce .product-remove a.remove{
+    color:#552684 !important;
+}
+
+.woocommerce .product-remove a.remove:hover {
+    color: #fff!important;
+    background: #552684;
+}
+
 /* RESPONSIVE */
 
 @media only screen and (min-width: 1300px) {
@@ -631,9 +688,25 @@ select{
         margin: 330px auto 0 auto;
     }
 
+
 }
 
 @media only screen and (max-width: 767px){
+    .ninja-forms-form .list-dropdown-wrap.label-above select,.ninja-forms-form  select, .ninja-forms-form .field-wrap input, .ninja-forms-form .field-wrap textarea{
+        position:inherit;
+        float: none;
+        margin-top: 0px;
+        margin-left: 0px;
+        width: 100%;
+    }
+
+
+    .ninja-forms-form .field-wrap.label-left .ninja-forms-field, .ninja-forms-form .field-wrap.label-left .ninja-forms-star-rating-control{
+        margin-left: 0px;
+    }
+    .ninja-forms-form .field-wrap{
+        width: 100%;
+    }
 
     .sub-sub-main-menu {
         margin: 215px auto 0 auto;
@@ -894,60 +967,4 @@ a.tribe-events-gcal.tribe-events-button
     .tribe-events-calendar thead th {
     padding: 7px 0 !important;
     }
-}
-
-.sidr-class-sub-menu{
-    text-transform: capitalize;
-}
-
-input#email-input.blur{
-    font-family: "pt_sans_regular";
-}
-
-/*NINJA FORM STYLES*/
-.entry input[type="submit"]{
-    background: #552684;
-    border-radius: 5px;
-}
-
-
-.ninja-forms-form .list-dropdown-wrap.label-above select,.ninja-forms-form  select, .ninja-forms-form input, .ninja-forms-form textarea{
-    position: relative;
-    padding: 10px;
-    border-radius: 6px;
-    float: right;
-    width: 216px;
-    background-color: #FFFFFF;
-    margin-top: -30px;
-}
-
-.ninja-forms-form .list-dropdown-wrap.label-above select option,.ninja-forms-form  select option{
-
-    padding: 5px;
-}
-
-.ninja-forms-form .field-wrap{
-    width: 60%;
-}
-
-input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="tel"], textarea{
-    font-family: "open-sans";
-}
-
-
-
-/* EVENTS WOOCOMERCE  */
-
-form.cart table.tribe-events-tickets button, .woocommerce input[type="submit"], .wc-proceed-to-checkout a{
-    height: inherit !important;
-    background-color: #552684 !important;
-    color:#FFFFFF !important;
-}
-.woocommerce .product-remove a.remove{
-    color:#552684 !important;
-}
-
-.woocommerce .product-remove a.remove:hover {
-    color: #fff!important;
-    background: #552684;
 }
