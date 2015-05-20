@@ -27,29 +27,39 @@ jQuery( function($) {
 
     }
 
-    // Create default option "Go to..."
 
-    function SubSubMenuDropdownVersion(){
-        $("<option />", {
-            "selected": "selected",
-            "value"   : "",
-            "text"    : "Go to..."
-        }).appendTo(".sub-sub-main-menu select");
 
-    // Populate dropdown with menu items
-        $(".sub-sub-main-menu a").each(function() {
-            var el = $(this);
+
+        function SubSubMenuDropdownVersion(){
+
+            if(jQuery(".sub-sub-main-menu-widget").length){
+
+                $('<select id="sub-sub-main-menu-select"></select>').appendTo(".sub-sub-main-menu");
+
+                // Create default option "Go to..."
+
             $("<option />", {
-                "value"   : el.attr("href"),
-                "text"    : el.text()
+                "selected": "selected",
+                "value"   : "",
+                "text"    : "Go to..."
             }).appendTo(".sub-sub-main-menu select");
-        });
 
-        $(".sub-sub-main-menu select").change(function() {
-            window.location = $(this).find("option:selected").val();
-        });
+            // Populate dropdown with menu items
+            $(".sub-sub-main-menu a").each(function() {
+                var el = $(this);
+                $("<option />", {
+                    "value"   : el.attr("href"),
+                    "text"    : el.text()
+                }).appendTo(".sub-sub-main-menu select");
+            });
 
+            $(".sub-sub-main-menu select").change(function() {
+                window.location = $(this).find("option:selected").val();
+            });
+
+        }
     }
+
 
 
 

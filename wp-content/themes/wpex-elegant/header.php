@@ -108,7 +108,7 @@
                 <?php } ?>
             <div class="sub-sub-main-menu clr">
                 <?php dynamic_sidebar( 'sub-sub-main-menu' ); ?>
-                <select id="sub-sub-main-menu-select"></select>
+
             </div>
 
 
