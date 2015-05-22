@@ -390,7 +390,17 @@ a#navigation-toggle {
     height: 29px;
 }
 
-a[title="hidden-item"],#sidr-main ul a[title="hidden-item"],#sidr-main ul a[title="aux_item_menu_cafe"],#sidr-main ul a[title="aux_item_menu_weddings"],#sidr-main ul a[title="aux_item_menu_catering"],#sidr-main ul a[title="aux_item_menu_banquets"] {
+a[title="hidden-item"],
+#sidr-main ul a[title="hidden-item"],
+#sidr-main ul a[title="aux_item_menu_cafe"],
+#sidr-main ul a[title="aux_item_menu_weddings"],
+#sidr-main ul a[title="aux_item_menu_catering"],
+#sidr-main ul a[title="aux_item_menu_banquets"],
+.sub-main-menu-mobile ul a[title="hidden-item"],
+.sub-main-menu-mobile ul a[title="aux_item_menu_cafe"],
+.sub-main-menu-mobile ul a[title="aux_item_menu_weddings"],
+.sub-main-menu-mobile ul a[title="aux_item_menu_catering"],
+.sub-main-menu-mobile ul a[title="aux_item_menu_banquets"]{
     display: none;
 }
 
