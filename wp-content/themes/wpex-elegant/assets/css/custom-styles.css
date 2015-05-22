@@ -591,6 +591,10 @@ form.cart table.tribe-events-tickets button, .woocommerce input[type="submit"], 
     text-transform: uppercase;
 
 }
+.sub-main-menu-mobile > a{
+    font-weight: 600;
+
+}
 
 .sub-main-menu-mobile ul a{
     display: inline-block;
