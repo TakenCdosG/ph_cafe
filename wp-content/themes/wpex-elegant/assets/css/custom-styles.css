@@ -572,6 +572,31 @@ form.cart table.tribe-events-tickets button, .woocommerce input[type="submit"], 
     background: #552684;
 }
 
+.sub-main-menu-mobile{
+    text-align: center;
+}
+
+.sub-main-menu-mobile li{
+    display: inline;
+}
+
+.sub-main-menu-mobile ul{
+    text-align: center;
+}
+
+.sub-main-menu-mobile a{
+    font-size: 17px;
+    color: #552684;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.sub-main-menu-mobile li a{
+    font-weight: normal;
+}
+
+.sub-main-menu-mobile{
+    display: none;
+}
 /* RESPONSIVE */
 
 @media only screen and (min-width: 1300px) {
@@ -692,6 +717,21 @@ form.cart table.tribe-events-tickets button, .woocommerce input[type="submit"], 
 }
 
 @media only screen and (max-width: 767px){
+
+    #header {
+        text-align: left;
+        position: relative;
+        padding: 10px 0;
+    }
+    #header-wrap-block {
+        padding: 8px;
+    }
+    .sub-main-menu{
+        padding-bottom: 10px;
+    }
+    .sub-main-menu-mobile{
+        display: block;
+    }
     .ninja-forms-form .list-dropdown-wrap.label-above select,.ninja-forms-form  select, .ninja-forms-form .field-wrap input, .ninja-forms-form .field-wrap textarea{
         position:inherit;
         float: none;
@@ -812,7 +852,7 @@ form.cart table.tribe-events-tickets button, .woocommerce input[type="submit"], 
     #header-text-box{
         width: 244px;
         right: 4%;
-        padding: 10px 18px;
+        padding: 8px 10px;
         font-size: 12px;
         line-height: 16px;
         top: 235px;

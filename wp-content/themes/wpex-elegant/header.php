@@ -94,6 +94,13 @@
                 <div class="sub-main-menu clr container">
                     <?php dynamic_sidebar( 'sub-main-menu' ); ?>
                 </div>
+                <div class="sub-main-menu-mobile clr container">
+                    <?php
+                    $ids = ot_get_option( 'sub_menu_header', array() );
+                    print"<a href='".$ids[0]['link']."'>".$ids[0]['title']."</a>";
+                    ?>
+                    <?php dynamic_sidebar( 'sub-main-menu' ); ?>
+                </div>
             </div><!--header-wrap-block -->
 
                 <?php
