@@ -321,7 +321,7 @@ a#navigation-toggle {
     filter: alpha(opacity=89);
     border: 1px solid #cccccc;
     position: absolute;
-    top: 532px;
+    top: 450px;
     right: 174px;
     padding: 38px 25px;
     font-size: 18px;
@@ -406,7 +406,7 @@ a[title="hidden-item"],#sidr-main ul a[title="hidden-item"],#sidr-main ul a[titl
     display: none;
 }
 .sub-sub-main-menu{
-    margin: 597px auto 0 auto;
+    margin: 0px auto 0 auto;
     display: table;
     height: 46px;
 }
@@ -597,6 +597,12 @@ form.cart table.tribe-events-tickets button, .woocommerce input[type="submit"], 
 .sub-main-menu-mobile{
     display: none;
 }
+
+.sub-sub-main-menu-widget{
+    position: relative;
+    margin-top: -39px;
+}
+
 /* RESPONSIVE */
 
 @media only screen and (min-width: 1300px) {
@@ -605,7 +611,10 @@ form.cart table.tribe-events-tickets button, .woocommerce input[type="submit"], 
         padding: 10px 10px;
     }
     .sub-sub-main-menu {
-        margin: 593px auto 0 auto;
+        margin: 0px auto 0 auto;
+    }
+    .sub-sub-main-menu-widget{
+        margin-top: -43px;
     }
 }
 
@@ -681,7 +690,7 @@ form.cart table.tribe-events-tickets button, .woocommerce input[type="submit"], 
     #header-text-box{
         font-size: 14px;
         line-height: 22px;
-        top: 318px;
+        top: 250px;
         width: 302px;
         right: 32px;
         padding: 36px 20px;
@@ -710,7 +719,10 @@ form.cart table.tribe-events-tickets button, .woocommerce input[type="submit"], 
         padding: 4px 4px;
     }
     .sub-sub-main-menu {
-        margin: 330px auto 0 auto;
+        margin: 0px auto 0 auto;
+    }
+    .sub-sub-main-menu-widget{
+        margin-top: -31px;
     }
 
 
@@ -749,13 +761,14 @@ form.cart table.tribe-events-tickets button, .woocommerce input[type="submit"], 
     }
 
     .sub-sub-main-menu {
-        margin: 215px auto 0 auto;
+        margin: 0px auto 0 auto;
     }
     .sub-sub-main-menu-widget{
         display: none;
     }
     #sub-sub-main-menu-select{
         display: block;
+        margin-top: 20px;
     }
     #logo img{
         max-width: 207px;
@@ -903,7 +916,7 @@ form.cart table.tribe-events-tickets button, .woocommerce input[type="submit"], 
     }
 
     #main{
-        padding: 80px 0 20px 0;
+        padding: 20px 0 20px 0;
     }
     .page-template-single-gallery-php .container {
         max-width: 100%;

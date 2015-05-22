@@ -113,10 +113,7 @@
                         <?php print $text?>
                     </div><!--header-text-box -->
                 <?php } ?>
-            <div class="sub-sub-main-menu clr">
-                <?php dynamic_sidebar( 'sub-sub-main-menu' ); ?>
 
-            </div>
 
 
 		</div><!-- #header-wrap -->
@@ -125,5 +122,10 @@
 		// Displays the homepage slider based on the slides custom post type
 		wpex_homepage_slider(); ?>
 		<?php if(!is_front_page()){?>
+        <div class="sub-sub-main-menu clr">
+            <?php dynamic_sidebar( 'sub-sub-main-menu' ); ?>
+
+        </div>
 		<div id="main" class="site-main clr container">
+
 <?php } ?>
