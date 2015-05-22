@@ -587,11 +587,19 @@ form.cart table.tribe-events-tickets button, .woocommerce input[type="submit"], 
 .sub-main-menu-mobile a{
     font-size: 17px;
     color: #552684;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-.sub-main-menu-mobile li a{
     font-weight: normal;
+    text-transform: uppercase;
+
+}
+
+.sub-main-menu-mobile ul a{
+    display: inline-block;
+    border-left: 1px solid #552684;
+    padding-left: 5px;
+    margin-left: 5px;
+}
+.sub-main-menu-mobile ul li:nth-child(1) a{
+    border: none;
 }
 
 .sub-main-menu-mobile{
