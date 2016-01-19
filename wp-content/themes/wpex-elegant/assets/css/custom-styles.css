@@ -997,7 +997,9 @@ li.tribe-events-nav-previous a, li.tribe-events-nav-next a, p.tribe-events-back 
     background: #552684;
     color: #ffffff !important;
 }
-
+#tribe-bar-form.tribe-bar-full .tribe-bar-filters{
+    width: 80% !important;
+}
 td.tribe-events-present{
     background-color: #eeeeee;
 }
