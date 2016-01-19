@@ -1,6 +1,6 @@
 <?php
 /**
- * Handle data for the current customers session.
+ * Handle data for the current customers session
  *
  * @class       WC_Session
  * @version     2.0.0
@@ -53,7 +53,6 @@ abstract class WC_Session {
 	 * __unset function.
 	 *
 	 * @param mixed $key
-	 * @return void
 	 */
 	public function __unset( $key ) {
 		if ( isset( $this->_data[ $key ] ) ) {
@@ -63,7 +62,7 @@ abstract class WC_Session {
 	}
 
 	/**
-	 * Get a session variable
+	 * Get a session variable.
 	 *
 	 * @param string $key
 	 * @param  mixed $default used if the session variable isn't set
@@ -75,7 +74,7 @@ abstract class WC_Session {
 	}
 
 	/**
-	 * Set a session variable
+	 * Set a session variable.
 	 *
 	 * @param string $key
 	 * @param mixed $value

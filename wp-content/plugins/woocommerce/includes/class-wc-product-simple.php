@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Simple Product Class
+ * Simple Product Class.
  *
  * The default product type kinda product.
  *
@@ -18,20 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class WC_Product_Simple extends WC_Product {
 
 	/**
-	 * __construct function.
+	 * Initialize simple product.
 	 *
-	 * @access public
 	 * @param mixed $product
 	 */
 	public function __construct( $product ) {
 		$this->product_type = 'simple';
+		$this->supports[]   = 'ajax_add_to_cart';
 		parent::__construct( $product );
 	}
 
 	/**
 	 * Get the add to url used mainly in loops.
 	 *
-	 * @access public
 	 * @return string
 	 */
 	public function add_to_cart_url() {
@@ -41,9 +40,8 @@ class WC_Product_Simple extends WC_Product {
 	}
 
 	/**
-	 * Get the add to cart button text
+	 * Get the add to cart button text.
 	 *
-	 * @access public
 	 * @return string
 	 */
 	public function add_to_cart_text() {
@@ -55,7 +53,6 @@ class WC_Product_Simple extends WC_Product {
 	/**
 	 * Get the title of the post.
 	 *
-	 * @access public
 	 * @return string
 	 */
 	public function get_title() {
@@ -71,9 +68,6 @@ class WC_Product_Simple extends WC_Product {
 
 	/**
 	 * Sync grouped products with the children lowest price (so they can be sorted by price accurately).
-	 *
-	 * @access public
-	 * @return void
 	 */
 	public function grouped_product_sync() {
 		if ( ! $this->get_parent() ) return;

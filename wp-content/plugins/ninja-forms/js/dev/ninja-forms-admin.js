@@ -86,68 +86,6 @@ jQuery.fn.nextElementInDom = function(selector, options) {
 	}
 };
 
-jQuery.fn.nfAdminModal = function( action, options ) {
-	if ( 'object' === typeof action ) {
-		options = action;
-	}
-
-	var defaults = { 'title' : '', 'buttons' : false };
-
-	if ( 'undefined' === typeof options ) {
-		options = jQuery( this ).data( 'nfAdminModal' );
-		if ( 'undefined' === typeof options ) {
-			// Merge our default options with the options sent
-			options = jQuery.extend( defaults, options );
-		}
-	} else {
-		// Merge our default options with the options sent
-		options = jQuery.extend( defaults, options );
-	}
-
-	// Set our data with the current options
-	jQuery( this ).data( 'nfAdminModal', options );
-
-	jQuery( this ).hide();
-	jQuery( '#nf-admin-modal-content' ).html( this.html() );
-
-	jQuery( '#nf-modal-title' ).html( options.title );
-
-	if ( options.buttons ) {
-		jQuery( options.buttons ).hide();
-		var buttons = jQuery( options.buttons ).html();
-		jQuery( '#modal-contents-wrapper' ).find( '.submitbox' ).html( buttons );
-		jQuery( '#nf-admin-modal-content' ).addClass( 'admin-modal-inside' );
-		jQuery( '#modal-contents-wrapper' ).find( '.submitbox' ).show();
-	} else {
-		jQuery( '#nf-admin-modal-content' ).removeClass( 'admin-modal-inside' );
-		jQuery( '#modal-contents-wrapper' ).find( '.submitbox' ).hide();
-	}
-
-	if ( 'close' == action ) {
-		jQuery.fn.nfAdminModal.close();
-	} else if ( 'open' == action ) {
-		jQuery.fn.nfAdminModal.open();
-	}
-
-	jQuery( document ).on( 'click', '.modal-close', function( e ) {
-		e.preventDefault();
-		jQuery.fn.nfAdminModal.close();
-	} );
-
-};
-
-jQuery.fn.nfAdminModal.close = function() {
-	jQuery( '#nf-admin-modal-backdrop' ).hide();
-	jQuery( '#nf-admin-modal-wrap' ).hide();
-	jQuery( document ).triggerHandler( 'nfAdminModalClose' );
-}
-
-jQuery.fn.nfAdminModal.open = function() {
-	jQuery( '#nf-admin-modal-backdrop' ).show();
-	jQuery( '#nf-admin-modal-wrap' ).show();
-	jQuery( document ).triggerHandler( 'nfAdminModalOpen' );
-}
-
 jQuery(document).ready(function($) {
 	/* * * General JS * * */
 

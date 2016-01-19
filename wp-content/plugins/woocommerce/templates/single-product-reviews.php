@@ -2,6 +2,14 @@
 /**
  * Display single product reviews (comments)
  *
+ * This template can be overridden by copying it to yourtheme/woocommerce/single-product-reviews.php.
+ *
+ * HOWEVER, on occasion WooCommerce will need to update template files and you (the theme developer).
+ * will need to copy the new files to your theme to maintain compatibility. We try to do this.
+ * as little as possible, but it does happen. When this occurs the version of the template file will.
+ * be bumped and the readme will list any important changes.
+ *
+ * @see 	    http://docs.woothemes.com/document/template-structure/
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
  * @version     2.3.2
@@ -57,7 +65,7 @@ if ( ! comments_open() ) {
 					$commenter = wp_get_current_commenter();
 
 					$comment_form = array(
-						'title_reply'          => have_comments() ? __( 'Add a review', 'woocommerce' ) : __( 'Be the first to review', 'woocommerce' ) . ' &ldquo;' . get_the_title() . '&rdquo;',
+						'title_reply'          => have_comments() ? __( 'Add a review', 'woocommerce' ) : sprintf( __( 'Be the first to review &ldquo;%s&rdquo;', 'woocommerce' ), get_the_title() ),
 						'title_reply_to'       => __( 'Leave a Reply to %s', 'woocommerce' ),
 						'comment_notes_before' => '',
 						'comment_notes_after'  => '',
@@ -71,6 +79,10 @@ if ( ! comments_open() ) {
 						'logged_in_as'  => '',
 						'comment_field' => ''
 					);
+
+					if ( $account_page_url = wc_get_page_permalink( 'myaccount' ) ) {
+						$comment_form['must_log_in'] = '<p class="must-log-in">' .  sprintf( __( 'You must be <a href="%s">logged in</a> to post a review.', 'woocommerce' ), esc_url( $account_page_url ) ) . '</p>';
+					}
 
 					if ( get_option( 'woocommerce_enable_review_rating' ) === 'yes' ) {
 						$comment_form['comment_field'] = '<p class="comment-form-rating"><label for="rating">' . __( 'Your Rating', 'woocommerce' ) .'</label><select name="rating" id="rating">

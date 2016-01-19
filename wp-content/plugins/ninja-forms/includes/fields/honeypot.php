@@ -2,7 +2,7 @@
 function ninja_forms_register_field_honeypot(){
 	$args = array(
 		'name' => __( 'Honey Pot', 'ninja-forms' ),
-		'sidebar' => 'template_fields',
+		'sidebar' => '',
 		'edit_function' => '',
 		'display_function' => 'ninja_forms_field_honeypot_display',
 		'save_function' => '',
@@ -55,9 +55,7 @@ function ninja_forms_field_honeypot_pre_process( $field_id, $user_value ){
 
 	if( $ninja_forms_processing->get_action() != 'save' AND $ninja_forms_processing->get_action() != 'mp_save' AND !isset($_POST['_wp_login']) AND $user_value != '' ){
 		if( is_object( $ninja_forms_processing)){
-			if( $user_value != '' ){
 				$ninja_forms_processing->add_error('honeypot-'.$field_id, $honeypot_error, $field_id);
-			}
 		}
 	}
 }

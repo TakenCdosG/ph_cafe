@@ -14,7 +14,6 @@ class WC_Shortcode_Checkout {
 	/**
 	 * Get the shortcode content.
 	 *
-	 * @access public
 	 * @param array $atts
 	 * @return string
 	 */
@@ -25,9 +24,7 @@ class WC_Shortcode_Checkout {
 	/**
 	 * Output the shortcode.
 	 *
-	 * @access public
 	 * @param array $atts
-	 * @return void
 	 */
 	public static function output( $atts ) {
 		global $wp;
@@ -42,10 +39,10 @@ class WC_Shortcode_Checkout {
 			_deprecated_argument( __CLASS__ . '->' . __FUNCTION__, '2.1', '"order" is no longer used to pass an order ID. Use the order-pay or order-received endpoint instead.' );
 
 			// Get the order to work out what we are showing
-			$order_id             = absint( $_GET['order'] );
-			$order                = wc_get_order( $order_id );
+			$order_id = absint( $_GET['order'] );
+			$order    = wc_get_order( $order_id );
 
-			if ( $order->has_status( 'pending' ) ) {
+			if ( $order && $order->has_status( 'pending' ) ) {
 				$wp->query_vars['order-pay'] = absint( $_GET['order'] );
 			} else {
 				$wp->query_vars['order-received'] = absint( $_GET['order'] );
@@ -69,7 +66,9 @@ class WC_Shortcode_Checkout {
 	}
 
 	/**
-	 * Show the pay page
+	 * Show the pay page.
+	 *
+	 * @param int $order_id
 	 */
 	private static function order_pay( $order_id ) {
 
@@ -85,7 +84,6 @@ class WC_Shortcode_Checkout {
 			// Pay for existing order
 			$order_key            = $_GET[ 'key' ];
 			$order                = wc_get_order( $order_id );
-			$valid_order_statuses = apply_filters( 'woocommerce_valid_order_statuses_for_payment', array( 'pending', 'failed' ), $order );
 
 			if ( ! current_user_can( 'pay_for_order', $order_id ) ) {
 				echo '<div class="woocommerce-error">' . __( 'Invalid order. If you have an account please log in and try again.', 'woocommerce' ) . ' <a href="' . wc_get_page_permalink( 'myaccount' ) . '" class="wc-forward">' . __( 'My Account', 'woocommerce' ) . '</a>' . '</div>';
@@ -94,17 +92,30 @@ class WC_Shortcode_Checkout {
 
 			if ( $order->id == $order_id && $order->order_key == $order_key ) {
 
-				if ( $order->has_status( $valid_order_statuses ) ) {
+				if ( $order->needs_payment() ) {
 
 					// Set customer location to order location
-					if ( $order->billing_country )
+					if ( $order->billing_country ) {
 						WC()->customer->set_country( $order->billing_country );
-					if ( $order->billing_state )
+					}
+					if ( $order->billing_state ) {
 						WC()->customer->set_state( $order->billing_state );
-					if ( $order->billing_postcode )
+					}
+					if ( $order->billing_postcode ) {
 						WC()->customer->set_postcode( $order->billing_postcode );
+					}
 
-					wc_get_template( 'checkout/form-pay.php', array( 'order' => $order ) );
+					$available_gateways = WC()->payment_gateways->get_available_payment_gateways();
+
+					if ( sizeof( $available_gateways ) ) {
+						current( $available_gateways )->set_current();
+					}
+
+					wc_get_template( 'checkout/form-pay.php', array(
+						'order'              => $order,
+						'available_gateways' => $available_gateways,
+						'order_button_text'  => apply_filters( 'woocommerce_pay_order_button_text', __( 'Pay for order', 'woocommerce' ) )
+					) );
 
 				} else {
 					wc_add_notice( sprintf( __( 'This order&rsquo;s status is &ldquo;%s&rdquo;&mdash;it cannot be paid for. Please contact us if you need assistance.', 'woocommerce' ), wc_get_order_status_name( $order->get_status() ) ), 'error' );
@@ -119,11 +130,10 @@ class WC_Shortcode_Checkout {
 			// Pay for order after checkout step
 			$order_key            = isset( $_GET['key'] ) ? wc_clean( $_GET['key'] ) : '';
 			$order                = wc_get_order( $order_id );
-			$valid_order_statuses = apply_filters( 'woocommerce_valid_order_statuses_for_payment', array( 'pending', 'failed' ), $order );
 
 			if ( $order->id == $order_id && $order->order_key == $order_key ) {
 
-				if ( $order->has_status( $valid_order_statuses ) ) {
+				if ( $order->needs_payment() ) {
 
 					?>
 					<ul class="order_details">
@@ -172,7 +182,9 @@ class WC_Shortcode_Checkout {
 	}
 
 	/**
-	 * Show the thanks page
+	 * Show the thanks page.
+	 *
+	 * @param int $order_id
 	 */
 	private static function order_received( $order_id = 0 ) {
 
@@ -197,7 +209,7 @@ class WC_Shortcode_Checkout {
 	}
 
 	/**
-	 * Show the checkout
+	 * Show the checkout.
 	 */
 	private static function checkout() {
 
@@ -205,7 +217,7 @@ class WC_Shortcode_Checkout {
 		wc_print_notices();
 
 		// Check cart has contents
-		if ( sizeof( WC()->cart->get_cart() ) == 0 ) {
+		if ( WC()->cart->is_empty() ) {
 			return;
 		}
 

@@ -1,4 +1,9 @@
 <?php
+
+if (!defined('ABSPATH')) {
+	exit;
+}
+
 /**
 * class for managing the plugin
 */
@@ -41,7 +46,7 @@ class FlxMapPlugin {
 		else {
 			// non-admin actions and filters for this plugin
 			add_action('wp_enqueue_scripts', array($this, 'enqueueScripts'));
-			add_action('wp_print_footer_scripts', array($this, 'justInTimeLocalisation'), 9);
+			add_action('wp_footer', array($this, 'justInTimeLocalisation'));
 
 			// custom actions and filters for this plugin
 			add_filter('flexmap_getmap', array($this, 'getMap'), 10, 1);
@@ -61,7 +66,7 @@ class FlxMapPlugin {
 		$this->locale = get_locale();
 
 		// load translation strings for the admin
-		load_plugin_textdomain('flexible-map', false, basename(dirname(FLXMAP_PLUGIN_FILE)) . '/languages/');
+		load_plugin_textdomain('wp-flexible-map', false, basename(dirname(FLXMAP_PLUGIN_FILE)) . '/languages/');
 	}
 
 	/**
@@ -79,9 +84,8 @@ class FlxMapPlugin {
 	*/
 	public function enqueueScripts() {
 		// allow others to override the Google Maps API URL
-		$protocol = is_ssl() ? 'https' : 'http';
-		$args = apply_filters('flexmap_google_maps_api_args', array('v' => '3.19', 'sensor' => 'false'));
-		$apiURL = apply_filters('flexmap_google_maps_api_url', add_query_arg($args, "$protocol://maps.google.com/maps/api/js"));
+		$args = apply_filters('flexmap_google_maps_api_args', array('v' => '3.22'));
+		$apiURL = apply_filters('flexmap_google_maps_api_url', add_query_arg($args, 'https://maps.google.com/maps/api/js'));
 		if (!empty($apiURL)) {
 			wp_register_script('google-maps', $apiURL, false, null, true);
 		}
@@ -108,7 +112,7 @@ class FlxMapPlugin {
 	*/
 	public function justInTimeLocalisation() {
 		if (!empty($this->locales)) {
-			$domain = 'flexible-map';
+			$domain = 'wp-flexible-map';
 			$i18n = array();
 
 			// map old two-character language-only locales that now need to target language_country translations
@@ -338,6 +342,16 @@ HTML;
 				$script .= " f.dirShowSearch = false;\n";
 			}
 
+			if (isset($attrs['dirtravelmode']) && in_array(strtolower($attrs['dirtravelmode']), array('bicycling', 'driving', 'transit', 'walking'))) {
+				$dirTravelMode = strtolower($attrs['dirtravelmode']);
+				$script .= " f.dirTravelMode = \"$dirTravelMode\";\n";
+			}
+
+			if (isset($attrs['dirunitsystem']) && in_array(strtolower($attrs['dirunitsystem']), array('imperial', 'metric'))) {
+				$dirUnitSystem = strtolower($attrs['dirunitsystem']);
+				$script .= " f.dirUnitSystem = \"$dirUnitSystem\";\n";
+			}
+
 			if (isset($attrs['maptype'])) {
 				$script .= " f.mapTypeId = \"{$this->str2js($attrs['maptype'])}\";\n";
 			}
@@ -394,6 +408,14 @@ HTML;
 				if (!empty($attrs['link'])) {
 					$link = self::str2js($attrs['link']);
 					$script .= " f.markerLink = \"$link\";\n";
+				}
+
+				if (!empty($attrs['linktarget'])) {
+					$script .= " f.markerLinkTarget = \"{$this->str2js($attrs['linktarget'])}\";\n";
+				}
+
+				if (!empty($attrs['linktext'])) {
+					$script .= " f.markerLinkText = \"{$this->unhtml($attrs['linktext'])}\";\n";
 				}
 
 				if (!empty($attrs['icon'])) {

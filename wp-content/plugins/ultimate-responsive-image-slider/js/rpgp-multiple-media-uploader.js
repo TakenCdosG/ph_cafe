@@ -42,6 +42,13 @@ jQuery(function(jQuery) {
                 });
                 file_frame.open();
             });
+			
+			jQuery('#uris_delete_all_button').on('click', function() {
+                if (confirm('Are you sure you want to delete all the image slides?')) {
+                    rpggallery.admin_thumb_ul.empty();
+                }
+                return false;
+            });
 
            
         },

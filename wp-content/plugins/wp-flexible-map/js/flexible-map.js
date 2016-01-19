@@ -202,6 +202,8 @@ function FlexibleMap() {
 	this.markerDescription = "";						// description for marker info window
 	this.markerHTML = "";								// HTML for marker info window (overrides title and description)
 	this.markerLink = "";								// link for marker title
+	this.markerLinkTarget = "";							// link target for marker link, e.g. _blank
+	this.markerLinkText = false;						// link text for marker link, overriding default text
 	this.markerIcon = "";								// link for marker icon, leave blank for default
 	this.markerShowInfo = true;							// if have infowin for marker, show it immediately
 	this.markerDirections = false;						// show directions link in info window
@@ -215,6 +217,8 @@ function FlexibleMap() {
 	this.dirSuppressMarkers = false;					// suppress A/B markers on directions route
 	this.dirShowSteps = true;							// show the directions steps (turn-by-turn)
 	this.dirShowSearch = true;							// show the directions form for searching directions
+	this.dirTravelMode = "driving";						// can be bicycling, driving, transit, walking
+	this.dirUnitSystem = undefined;						// can be imperial or metric
 	this.region = "";
 	this.locale = "en";
 	this.localeActive = false;
@@ -488,7 +492,7 @@ FlexibleMap.prototype = (function() {
 					featureData._flxmapOnce = true;
 
 					// stop links opening in a new window
-					if (self.targetFix) {
+					if (self.targetFix && featureData.description) {
 						var reTargetFix = / target="_blank"/ig;
 						featureData.description = featureData.description.replace(reTargetFix, "");
 						featureData.infoWindowHtml = featureData.infoWindowHtml.replace(reTargetFix, "");
@@ -540,20 +544,22 @@ FlexibleMap.prototype = (function() {
 				this.markerTitle = this.markerAddress;
 			}
 
-			if (this.markerTitle) {
+			if (this.markerTitle || this.markerHTML || this.markerDescription || this.markerLink || this.markerDirections) {
 				var i, len, lines, infowin, element, a,
 					self = this,
 					container = document.createElement("DIV");
 
 				container.className = "flxmap-infowin";
 
-				// add tooltip title for marker
-				point.setTitle(this.markerTitle);
-
 				// heading for info window
 				element = document.createElement("DIV");
 				element.className = "flxmap-marker-title";
-				element.appendChild(document.createTextNode(this.markerTitle));
+				if (this.markerTitle) {
+					element.appendChild(document.createTextNode(this.markerTitle));
+
+					// add tooltip title for marker
+					point.setTitle(this.markerTitle);
+				}
 				container.appendChild(element);
 
 				// add precomposed HTML for infowindow
@@ -574,13 +580,17 @@ FlexibleMap.prototype = (function() {
 								element.appendChild(document.createElement("BR"));
 							element.appendChild(document.createTextNode(lines[i]));
 						}
-						if (this.markerLink)
+						if (this.markerLink) {
 							element.appendChild(document.createElement("BR"));
+						}
 					}
 					if (this.markerLink) {
 						a = document.createElement("A");
 						a.href = this.markerLink;
-						a.appendChild(document.createTextNode(this.gettext("Click for details")));
+						if (this.markerLinkTarget) {
+							a.target = this.markerLinkTarget;
+						}
+						a.appendChild(document.createTextNode(this.markerLinkText || this.gettext("Click for details")));
 						element.appendChild(a);
 					}
 					container.appendChild(element);
@@ -594,24 +604,13 @@ FlexibleMap.prototype = (function() {
 					a.href = "#";
 					a.dataLatitude = marker[0];
 					a.dataLongitude = marker[1];
-					a.dataTitle = this.markerTitle;
 					addEventListener(a, "click", function(event) {
 						stopEvent(event);
-						self.showDirections(this.dataLatitude, this.dataLongitude, this.dataTitle, true);
+						self.showDirections(this.dataLatitude, this.dataLongitude, true);
 					});
 					a.appendChild(document.createTextNode(this.gettext("Directions")));
 					element.appendChild(a);
 					container.appendChild(element);
-				}
-
-				// add a directions service if needed
-				if (this.markerDirections || this.markerDirectionsShow) {
-					this.startDirService(map);
-
-					// show directions immediately if required
-					if (this.markerDirectionsShow) {
-						this.showDirections(marker[0], marker[1], this.markerTitle, false);
-					}
 				}
 
 				infowin = new google.maps.InfoWindow({content: container});
@@ -636,6 +635,16 @@ FlexibleMap.prototype = (function() {
 				google.maps.event.addListenerOnce(map, "tilesloaded", googleLink);
 			}
 
+			// add a directions service if needed
+			if (this.markerDirections || this.markerDirectionsShow) {
+				this.startDirService(map);
+
+				// show directions immediately if required
+				if (this.markerDirectionsShow) {
+					this.showDirections(marker[0], marker[1], false);
+				}
+			}
+
 		},
 
 		/**
@@ -649,8 +658,9 @@ FlexibleMap.prototype = (function() {
 
 			this.markerAddress = address;
 
-			if (this.markerTitle === "")
+			if (this.markerTitle === "") {
 				this.markerTitle = address;
+			}
 
 			geocoder.geocode({address: address, region: this.region}, function(results, status) {
 				if (status == google.maps.GeocoderStatus.OK) {
@@ -719,8 +729,9 @@ FlexibleMap.prototype = (function() {
 		*/
 		startDirService: function(map) {
 			// make sure we have a directions service
-			if (!this.dirService)
+			if (!this.dirService) {
 				this.dirService = new google.maps.DirectionsService();
+			}
 
 			// make sure we have a directions renderer
 			if (!this.dirRenderer) {
@@ -737,10 +748,9 @@ FlexibleMap.prototype = (function() {
 		* show directions for specified latitude / longitude and title
 		* @param {Number} latitude
 		* @param {Number} longitude
-		* @param {String} title
 		* @param {bool} focus [optional]
 		*/
-		showDirections: function(latitude, longitude, title, focus) {
+		showDirections: function(latitude, longitude, focus) {
 			var	self = this;
 
 			/**
@@ -803,10 +813,40 @@ FlexibleMap.prototype = (function() {
 				var	dest = (self.markerAddress === "") ? new google.maps.LatLng(latitude, longitude) : self.markerAddress,
 					request = {
 						origin: from,
-						region: self.region || '',
-						destination: dest,
-						travelMode: google.maps.DirectionsTravelMode.DRIVING
+						destination: dest
 					};
+
+				if (self.region) {
+					request.region = self.region;
+				}
+
+				switch (self.dirTravelMode) {
+					case "bicycling":
+						request.travelMode = google.maps.TravelMode.BICYCLING;
+						break;
+
+					case "driving":
+						request.travelMode = google.maps.TravelMode.DRIVING;
+						break;
+
+					case "transit":
+						request.travelMode = google.maps.TravelMode.TRANSIT;
+						break;
+
+					case "walking":
+						request.travelMode = google.maps.TravelMode.WALKING;
+						break;
+				}
+
+				switch (self.dirUnitSystem) {
+					case "imperial":
+						request.unitSystem = google.maps.UnitSystem.IMPERIAL;
+						break;
+
+					case "metric":
+						request.unitSystem = google.maps.UnitSystem.METRIC;
+						break;
+				}
 
 				self.dirService.route(request, dirResponseHander);
 			}

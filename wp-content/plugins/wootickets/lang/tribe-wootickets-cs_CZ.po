@@ -1,130 +1,119 @@
+# Translation of WooCommerce Tickets in Czech
+# This file is distributed under the same license as the WooCommerce Tickets package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Tickets 3.5\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-23 17:00-0800\n"
-"PO-Revision-Date: 2014-04-29 15:48-0800\n"
-"Last-Translator: \n"
-"Language-Team: Modern Tribe, Inc. <pro@tri.be>\n"
-"Language: cs_CZ\n"
+"PO-Revision-Date: 2015-09-10 15:55:34+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.5\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:1,2,4c;_n_noop:1,2;"
-"_nx_noop:1,2,3c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;"
-"esc_html_x:1,2c\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Poedit-SearchPath-0: ..\n"
+"X-Generator: GlotPress/1.0-alpha-1100\n"
+"Project-Id-Version: WooCommerce Tickets\n"
 
-#: ../admin-views/metabox-advanced.php:3
-msgid "Stock:"
-msgstr "Skladem:"
+#. Plugin Name of the plugin/theme
+msgid "The Events Calendar: WooCommerce Tickets"
+msgstr "The Events Calendar: WooCommerce Tickets"
 
-#: ../admin-views/metabox-advanced.php:7
-msgid ""
-"(Total available # of this ticket type. Once they're gone, ticket type is "
-"sold out)"
-msgstr ""
-"(Celkový počet vstupenek tohoto typu k dispozici. Jakmile jsou pryč, tento "
-"typ je vyprodán.)"
+#. Description of the plugin/theme
+msgid "The Events Calendar: WooCommerce Tickets allows you to sell tickets to events through WooCommerce"
+msgstr "The Events Calendar: WooCommerce Tickets vám umožní prodej vstupenek na akce pomocí pluginu WooCommerce"
 
-#: ../admin-views/metabox-advanced.php:12
-msgid "SKU:"
-msgstr "Katalogové číslo:"
+#. Author of the plugin/theme
+msgid "Modern Tribe, Inc."
+msgstr "Modern Tribe, Inc."
 
-#: ../admin-views/metabox-advanced.php:16
-msgid "(A unique identifying code for each ticket type you're selling)"
-msgstr "(Jedinečný identifikační kód pro každý typ prodávané vstupenky)"
+#. Author URI of the plugin/theme
+msgid "http://m.tri.be/28"
+msgstr "http://m.tri.be/28"
 
-#: ../admin-views/metabox-advanced.php:25
-msgid ""
-"Currently, WooTickets will only show up on the frontend once per full event. "
-"For PRO users this means the same ticket will appear across all events in "
-"the series. Please configure your events accordingly."
-msgstr ""
-"Momentálně se vstupenky z WooTickets zobrazí na webu pouze jednou pro celou "
-"akci. Pro uživatele PRO verze to znamená, že stejná vstupenka se zobrazí u "
-"všech opakujících se akcí ze stejné série. Nastavte si prosím své akce "
-"odpovídajícím způsobem."
-
-#: ../classes/class-ticket-email.php:13 ../views/wootickets/tickets.php:82
+#: src/Tribe/Email.php:13 src/views/wootickets/tickets.php:10
 msgid "Tickets"
 msgstr "Vstupenky"
 
-#: ../classes/class-ticket-email.php:14
-msgid ""
-"Email the user will recieve after a completed order with the tickets he "
-"purchased."
-msgstr ""
-"Emailová zpráva, kterou uživatel obdrží po dokončení objednávky společně se "
-"zakoupenými vstupenkami."
+#: src/Tribe/Email.php:14
+msgid "Email the user will receive after a completed order with the tickets he purchased."
+msgstr "Emailová zpráva, kterou uživatel obdrží po dokončení objednávky společně se zakoupenými vstupenkami."
 
-#: ../classes/class-ticket-email.php:16
+#: src/Tribe/Email.php:16
 msgid "Your tickets from {sitename}"
 msgstr "Vaše vstupenky z webu {sitename}"
 
-#: ../classes/class-ticket-email.php:97
+#: src/Tribe/Email.php:101
 msgid "Subject"
 msgstr "Předmět"
 
-#: ../classes/class-ticket-email.php:99
-#, php-format
+#: src/Tribe/Email.php:103
 msgid "Defaults to <code>%s</code>"
 msgstr "Výchozí je <code>%s</code>"
 
-#: ../classes/class-wootickets.php:306
+#: src/Tribe/Main.php:357
 msgid "You'll receive your tickets in another email."
 msgstr "Vstupenky obdržíte v dalším emailu."
 
-#: ../classes/class-wootickets.php:586
-#, php-format
+#: src/Tribe/Main.php:848
 msgid "In trash (was %s)"
 msgstr "V koši (bylo %s)"
 
-#: ../classes/class-wootickets.php:592
+#: src/Tribe/Main.php:854
 msgid "Deleted"
 msgstr "Smazáno"
 
-#: ../classes/class-wootickets.php:597
+#: src/Tribe/Main.php:859
 msgid "(deleted)"
 msgstr "(smazáno)"
 
-#: ../classes/class-wootickets.php:693
+#: src/Tribe/Main.php:897
+msgid "Unknown"
+msgstr "Neznámý"
+
+#: src/Tribe/Main.php:969
 msgid "Event sales report"
 msgstr "Přehled prodejů vstupenek"
 
-#: ../classes/class-wootickets.php:715
+#: src/Tribe/Main.php:992
 msgid "Report"
 msgstr "Přehled"
 
-#: ../classes/class-wootickets.php:738
+#: src/Tribe/Main.php:1015
 msgid "This is a ticket for the event:"
 msgstr "Toto je vstupenka na akci:"
 
-#: ../views/wootickets/tickets.php:59
+#: src/admin-views/metabox-advanced.php:3
+msgid "Stock:"
+msgstr "Skladem:"
+
+#: src/admin-views/metabox-advanced.php:7
+msgid "(Total available # of this ticket type. Once they're gone, ticket type is sold out)"
+msgstr "(Celkový počet vstupenek tohoto typu k dispozici. Jakmile jsou pryč, tento typ je vyprodán.)"
+
+#: src/admin-views/metabox-advanced.php:12
+msgid "SKU:"
+msgstr "Katalogové číslo:"
+
+#: src/admin-views/metabox-advanced.php:16
+msgid "(A unique identifying code for each ticket type you're selling)"
+msgstr "(Jedinečný identifikační kód pro každý typ prodávané vstupenky)"
+
+#: src/admin-views/metabox-advanced.php:25
+msgid "Currently, WooTickets will only show up on the frontend once per full event. For PRO users this means the same ticket will appear across all events in the series. Please configure your events accordingly."
+msgstr "Momentálně se vstupenky z WooTickets zobrazí na webu pouze jednou pro celou akci. Pro uživatele PRO verze to znamená, že stejná vstupenka se zobrazí u všech opakujících se akcí ze stejné série. Nastavte si prosím své akce odpovídajícím způsobem."
+
+#: src/views/wootickets/tickets.php:64
 msgid "Out of stock!"
 msgstr "Není skladem!"
 
-#: ../views/wootickets/tickets.php:89
+#: src/views/wootickets/tickets.php:90
 msgid "Add to cart"
 msgstr "Přidat do košíku"
 
-#: ../wootickets.php:127
+#: wootickets.php:167
 msgid "The Events Calendar"
 msgstr "The Events Calendar"
 
-#: ../wootickets.php:128
+#: wootickets.php:168
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
-#: ../wootickets.php:133 ../wootickets.php:135
-#, php-format
-msgid ""
-"To begin using WooTickets, please install the latest version of <a href=\"%s"
-"\" class=\"thickbox\" title=\"%s\">%s</a>."
-msgstr ""
-"Než začnete používat plugin WooTickets, nainstalujte si prosím aktuální "
-"verzi pluginu <a href=\"%s\" class=\"thickbox\" title=\"%s\">%s</a>."
+#: wootickets.php:173 wootickets.php:175
+msgid "To begin using WooTickets, please install and activate the latest version of <a href=\"%s\" class=\"thickbox\" title=\"%s\">%s</a>."
+msgstr "Než začnete používat plugin WooTickets, nainstalujte si a aktivujte aktuální verzi pluginu <a href=\"%s\" class=\"thickbox\" title=\"%s\">%s</a>."

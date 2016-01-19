@@ -12,3 +12,53 @@ wp-content/upgrade/
 wp-content/uploads/
 wp-content/wp-cache-config.php
 .idea/
+
+favicon.ico
+old-cafe-site/
+pondhousegrille/
+test-grille/
+test-cafe/
+
+error_log
+wp-admin/error_log
+wp-content/themes/wpex-elegant/error_log
+
+
+# @TODO writable paths
+wp-content/cache/
+wp-content/backups/
+
+
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.bz2
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.tgz
+
+# Logs and databases #
+######################
+*.log
+*.sql
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+._*
+
+# Vim generated files #
+######################
+*.un~
+
+# SASS #
+##########
+.sass-cache

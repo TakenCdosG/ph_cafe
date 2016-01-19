@@ -25,13 +25,35 @@ if( isset ( $settings['delete_on_uninstall'] ) && 1 == $settings['delete_on_unin
 	// Remove our options.
 	delete_option( 'ninja_forms_settings' );
 	delete_option( 'nf_version_upgraded_from' );
+    delete_option( 'nf_upgrade_notice' );
+
+    delete_option( 'nf_database_migrations' );
+
+    delete_option( 'nf_convert_notifications_forms' );
 	delete_option( 'nf_convert_notifications_complete' );
+
 	delete_option( 'nf_convert_subs_step' );
-	delete_option( 'nf_upgrade_notice' );
+
+    delete_option( 'nf_email_fav_updated' );
 	delete_option( 'nf_update_email_settings_complete' );
+
 	delete_option( 'nf_converted_subs' );
 	delete_option( 'nf_convert_subs_num' );
-	delete_option( 'nf_email_fav_updated' );
+	delete_option( 'nf_convert_subs_step' );
+
+    delete_option( 'nf_converted_forms' );
+	delete_option( 'nf_converted_form_reset' );
+	delete_option( 'nf_convert_forms_complete' );
+
+
+    // Remove upgrade last step options
+    $upgrades = NF_UpgradeHandler()->upgrades;
+
+    if( $upgrades AND is_array( $upgrades ) ) {
+        foreach ($upgrades as $upgrade) {
+            delete_option('nf_upgrade_' . $upgrade->name . '_last_step');
+        }
+    }
 	
 	// Remove all of our submissions
 	$items = get_posts( array( 'post_type' => 'nf_sub', 'post_status' => 'any', 'numberposts' => -1, 'fields' => 'ids' ) );

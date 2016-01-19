@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2013, 2014 MasterCard International Incorporated
+ * Copyright (c) 2013 - 2015 MasterCard International Incorporated
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without modification, are 
@@ -104,11 +104,6 @@ class Simplify_AccessToken extends Simplify_Object {
         return $this;
     }
 
-    /**
-     * @param string $props
-     * @param string $context
-     * @param Simplify_Authentication $authentication
-     */
     private static function sendRequest($props, $context, $authentication){
 
         $url = Simplify_Constants::OAUTH_BASE_URL.'/'.$context;

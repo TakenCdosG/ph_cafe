@@ -254,7 +254,7 @@ function smpl_shortcode_button( $atts, $content = null ) {
         'align' => 'right'
     ), $atts));
     $button ='';
-    $button .= '<div class="button '.$size.' '. $align.' '. $class.'">';
+    $button .= '<div class="button-container '.$size.' '. $align.' '. $class.'">';
     $button .= '<a target="'.$target.'" class="button '.$color.'" href="'.$link.'">';
     $button .= $content;
     if ($caption != '') {

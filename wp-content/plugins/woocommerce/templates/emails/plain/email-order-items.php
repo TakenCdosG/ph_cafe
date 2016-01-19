@@ -2,6 +2,14 @@
 /**
  * Email Order Items (plain)
  *
+ * This template can be overridden by copying it to yourtheme/woocommerce/emails/plain/email-order-items.php.
+ *
+ * HOWEVER, on occasion WooCommerce will need to update template files and you (the theme developer).
+ * will need to copy the new files to your theme to maintain compatibility. We try to do this.
+ * as little as possible, but it does happen. When this occurs the version of the template file will.
+ * be bumped and the readme will list any important changes.
+ *
+ * @see 	    http://docs.woothemes.com/document/template-structure/
  * @author 		WooThemes
  * @package 	WooCommerce/Templates/Emails/Plain
  * @version     2.1.2
@@ -13,12 +21,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 foreach ( $items as $item_id => $item ) :
 	$_product     = apply_filters( 'woocommerce_order_item_product', $order->get_product_from_item( $item ), $item );
-	$item_meta    = new WC_Order_Item_Meta( $item['item_meta'], $_product );
+	$item_meta    = new WC_Order_Item_Meta( $item, $_product );
 
 	if ( apply_filters( 'woocommerce_order_item_visible', true, $item ) ) {
 
 		// Title
-		echo apply_filters( 'woocommerce_order_item_name', $item['name'], $item );
+		echo apply_filters( 'woocommerce_order_item_name', $item['name'], $item, false );
 
 		// SKU
 		if ( $show_sku && $_product->get_sku() ) {
@@ -32,7 +40,7 @@ foreach ( $items as $item_id => $item ) :
 		echo ( $item_meta_content = $item_meta->display( true, true ) ) ? "\n" . $item_meta_content : '';
 
 		// Quantity
-		echo "\n" . sprintf( __( 'Quantity: %s', 'woocommerce' ), $item['qty'] );
+		echo "\n" . sprintf( __( 'Quantity: %s', 'woocommerce' ), apply_filters( 'woocommerce_email_order_item_quantity', $item['qty'], $item ) );
 
 		// Cost
 		echo "\n" . sprintf( __( 'Cost: %s', 'woocommerce' ), $order->get_formatted_line_subtotal( $item ) );

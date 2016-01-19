@@ -1,6 +1,6 @@
 <?php
 /**
- * This class provides functions for converting CSS styles into inline style attributes in your HTML code.
+ * This class provides functions for converting CSS styles into inline style attributes in your HTML code
  *
  * For more information, please see the README.md file.
  *
@@ -35,14 +35,14 @@ class Emogrifier {
 	const CACHE_KEY_CSS_DECLARATION_BLOCK = 3;
 
 	/**
-	 * for calculating nth-of-type and nth-child selectors
+	 * for calculating nth-of-type and nth-child selectors.
 	 *
 	 * @var integer
 	 */
 	const INDEX = 0;
 
 	/**
-	 * for calculating nth-of-type and nth-child selectors
+	 * for calculating nth-of-type and nth-child selectors.
 	 *
 	 * @var integer
 	 */
@@ -84,15 +84,15 @@ class Emogrifier {
 	);
 
 	/**
-	 * the visited nodes with the XPath paths as array keys
+	 * the visited nodes with the XPath paths as array keys.
 	 *
 	 * @var array<\DOMNode>
 	 */
 	private $visitedNodes = array();
 
 	/**
-	 * the styles to apply to the nodes with the XPath paths as array keys for the outer array and the attribute names/values
-	 * as key/value pairs for the inner array
+	 * the styles to apply to the nodes with the XPath paths as array keys for the outer array and the attribute names/values.
+	 * as key/value pairs for the inner array.
 	 *
 	 * @var array<array><string>
 	 */
@@ -137,8 +137,6 @@ class Emogrifier {
 	 * Sets the HTML to emogrify.
 	 *
 	 * @param string $html the HTML to emogrify, must be UTF-8-encoded
-	 *
-	 * @return void
 	 */
 	public function setHtml($html = '') {
 		$this->html = $html;
@@ -148,8 +146,6 @@ class Emogrifier {
 	 * Sets the CSS to merge with the HTML.
 	 *
 	 * @param string $css the CSS to merge, must be UTF-8-encoded
-	 *
-	 * @return void
 	 */
 	public function setCss($css = '') {
 		$this->css = $css;
@@ -157,8 +153,6 @@ class Emogrifier {
 
 	/**
 	 * Clears all caches.
-	 *
-	 * @return void
 	 */
 	private function clearAllCaches() {
 		$this->clearCache(self::CACHE_KEY_CSS);
@@ -171,8 +165,6 @@ class Emogrifier {
 	 * Clears a single cache by key.
 	 *
 	 * @param integer $key the cache key, must be CACHE_KEY_CSS, CACHE_KEY_SELECTOR, CACHE_KEY_XPATH or CACHE_KEY_CSS_DECLARATION_BLOCK
-	 *
-	 * @return void
 	 *
 	 * @throws InvalidArgumentException
 	 */
@@ -187,8 +179,6 @@ class Emogrifier {
 
 	/**
 	 * Purges the visited nodes.
-	 *
-	 * @return void
 	 */
 	private function purgeVisitedNodes() {
 		$this->visitedNodes = array();
@@ -204,8 +194,6 @@ class Emogrifier {
 	 * Note: The tags will not be removed if they have any content.
 	 *
 	 * @param string $tagName the tag name, e.g., "p"
-	 *
-	 * @return void
 	 */
 	public function addUnprocessableHtmlTag($tagName) {
 		$this->unprocessableHtmlTags[] = $tagName;
@@ -215,8 +203,6 @@ class Emogrifier {
 	 * Drops a tag from the removal list.
 	 *
 	 * @param string $tagName the tag name, e.g., "p"
-	 *
-	 * @return void
 	 */
 	public function removeUnprocessableHtmlTag($tagName) {
 		$key = array_search($tagName, $this->unprocessableHtmlTags, true);
@@ -368,9 +354,9 @@ class Emogrifier {
 
 
 	/**
-	 * This method merges old or existing name/value array with new name/value array
+	 * This method merges old or existing name/value array with new name/value array.
 	 * and then generates a string of the combined style suitable for placing inline.
-	 * This becomes the single point for CSS string generation allowing for consistent
+	 * This becomes the single point for CSS string generation allowing for consistent.
 	 * CSS output no matter where the CSS originally came from.
 	 * @param array $oldStyles
 	 * @param array $newStyles
@@ -391,7 +377,6 @@ class Emogrifier {
 	 *
 	 * @param array $cssParts
 	 * @param DOMDocument $xmlDocument
-	 * @return void
 	 */
 	public function copyCssWithMediaToStyleNode(array $cssParts, DOMDocument $xmlDocument) {
 		if (isset($cssParts['media']) && $cssParts['media'] !== '') {
@@ -427,7 +412,6 @@ class Emogrifier {
 	 *
 	 * @param DOMDocument $document
 	 * @param string $css
-	 * @return void
 	 */
 	private function addStyleElementToDocument(DOMDocument $document, $css) {
 		$styleElement = $document->createElement('style', $css);
@@ -460,12 +444,12 @@ class Emogrifier {
 	/**
 	 * Splits input CSS code to an array where:
 	 *
-	 * - key "css" will be contains clean CSS code
-	 * - key "media" will be contains all valuable media queries
+	 * - key "css" will be contains clean CSS code.
+	 * - key "media" will be contains all valuable media queries.
 	 *
 	 * Example:
 	 *
-	 * The CSS code
+	 * The CSS code.
 	 *
 	 *   "@import "file.css"; h1 { color:red; } @media { h1 {}} @media tv { h1 {}}"
 	 *
@@ -768,9 +752,9 @@ class Emogrifier {
 	 *
 	 * Example:
 	 *
-	 * The declaration block
+	 * The declaration block.
 	 *
-	 *   "color: #000; font-weight: bold;"
+	 *   "color: #000; font-weight: bold;".
 	 *
 	 * will be parsed into the following array:
 	 *

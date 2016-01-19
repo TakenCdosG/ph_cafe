@@ -90,7 +90,6 @@ function woocommerce_get_formatted_product_name( $product ) {
  * Handle IPN requests for the legacy paypal gateway by calling gateways manually if needed.
  *
  * @access public
- * @return void
  */
 function woocommerce_legacy_paypal_ipn() {
 	if ( ! empty( $_GET['paypalListener'] ) && $_GET['paypalListener'] == 'paypal_standard_IPN' ) {
@@ -103,7 +102,7 @@ function woocommerce_legacy_paypal_ipn() {
 add_action( 'init', 'woocommerce_legacy_paypal_ipn' );
 
 /**
- * get_product soft deprecated for wc_get_product
+ * get_product soft deprecated for wc_get_product.
  *
  * @deprecated
  */
@@ -112,7 +111,7 @@ function get_product( $the_product = false, $args = array() ) {
 }
 
 /**
- * Cart functions (soft deprecated)
+ * Cart functions (soft deprecated).
  */
 /**
  * @deprecated
@@ -182,7 +181,7 @@ function woocommerce_cart_totals_shipping_method_label( $method ) {
 }
 
 /**
- * Core functions (soft deprecated)
+ * Core functions (soft deprecated).
  */
 /**
  * @deprecated
@@ -210,7 +209,7 @@ function woocommerce_mail( $to, $subject, $message, $headers = "Content-Type: te
 }
 
 /**
- * Customer functions (soft deprecated)
+ * Customer functions (soft deprecated).
  */
 /**
  * @deprecated
@@ -256,7 +255,7 @@ function woocommerce_customer_has_capability( $allcaps, $caps, $args ) {
 }
 
 /**
- * Formatting functions (soft deprecated)
+ * Formatting functions (soft deprecated).
  */
 /**
  * @deprecated
@@ -388,7 +387,7 @@ if ( ! function_exists( 'woocommerce_format_hex' ) ) {
 }
 
 /**
- * Order functions (soft deprecated)
+ * Order functions (soft deprecated).
  */
 /**
  * @deprecated
@@ -458,7 +457,7 @@ function woocommerce_processing_order_count() {
 }
 
 /**
- * Page functions (soft deprecated)
+ * Page functions (soft deprecated).
  */
 /**
  * @deprecated
@@ -488,13 +487,13 @@ function woocommerce_customer_edit_account_url() {
  * @deprecated
  */
 function woocommerce_nav_menu_items( $items, $args ) {
-	return wc_nav_menu_items( $items, $args );
+	return wc_nav_menu_items( $items );
 }
 /**
  * @deprecated
  */
 function woocommerce_nav_menu_item_classes( $menu_items, $args ) {
-	return wc_nav_menu_item_classes( $menu_items, $args );
+	return wc_nav_menu_item_classes( $menu_items );
 }
 /**
  * @deprecated
@@ -504,7 +503,7 @@ function woocommerce_list_pages( $pages ) {
 }
 
 /**
- * Handle renamed filters
+ * Handle renamed filters.
  */
 global $wc_map_deprecated_filters;
 
@@ -539,7 +538,7 @@ function woocommerce_deprecated_filter_mapping( $data, $arg_1 = '', $arg_2 = '',
  */
 
 /**
- * Attribute functions - soft deprecated
+ * Attribute functions - soft deprecated.
  */
 /**
  * @deprecated
@@ -593,11 +592,11 @@ function woocommerce_recount_after_stock_change( $product_id ) {
  * @deprecated
  */
 function woocommerce_change_term_counts( $terms, $taxonomies, $args ) {
-	return wc_change_term_counts( $terms, $taxonomies, $args );
+	return wc_change_term_counts( $terms, $taxonomies );
 }
 
 /**
- * Product functions - soft deprecated
+ * Product functions - soft deprecated.
  */
 /**
  * @deprecated
@@ -667,11 +666,10 @@ function woocommerce_track_product_view() {
 }
 
 /**
- * Shop order status
+ * Shop order status.
  *
  * @since 2.2
  * @param WP_Query $q
- * @return void
  */
 function wc_shop_order_status_backwards_compatibility( $q ) {
 	if ( $q->is_main_query() ) {
@@ -705,11 +703,11 @@ function wc_shop_order_status_backwards_compatibility( $q ) {
 			$q->set( 'post_status', $order_status );
 			$q->set( 'tax_query', $tax_query );
 
-			_doing_it_wrong( 'WP_Query', sprintf( __( 'The shop_order_status taxonomy is no more in WooCommerce 2.2! You should use the new WooCommerce post_status instead, <a href="%s">read more...</a>', 'woocommerce' ), 'http://develop.woothemes.com/woocommerce/2014/08/wc-2-2-order-statuses-plugin-compatibility/' ), 'WooCommerce 2.2' );
+			_doing_it_wrong( 'WP_Query', sprintf( __( 'The shop_order_status taxonomy is no more in WooCommerce 2.2! You should use the new WooCommerce post_status instead, <a href="%s">read more...</a>', 'woocommerce' ), 'https://woocommerce.wordpress.com/2014/08/wc-2-2-order-statuses-plugin-compatibility/' ), 'WooCommerce 2.2' );
 		} else {
 			$q->set( 'post_status', array_keys( wc_get_order_statuses() ) );
 
-			_doing_it_wrong( 'WP_Query', sprintf( __( 'The "publish" order status is no more in WooCommerce 2.2! You should use the new WooCommerce post_status instead, <a href="%s">read more...</a>', 'woocommerce' ), 'http://develop.woothemes.com/woocommerce/2014/08/wc-2-2-order-statuses-plugin-compatibility/' ), 'WooCommerce 2.2' );
+			_doing_it_wrong( 'WP_Query', sprintf( __( 'The "publish" order status is no more in WooCommerce 2.2! You should use the new WooCommerce post_status instead, <a href="%s">read more...</a>', 'woocommerce' ), 'https://woocommerce.wordpress.com/2014/08/wc-2-2-order-statuses-plugin-compatibility/' ), 'WooCommerce 2.2' );
 		}
 	}
 }
@@ -719,7 +717,6 @@ add_action( 'pre_get_posts', 'wc_shop_order_status_backwards_compatibility' );
 /**
  * @since 2.3
  * @deprecated has no replacement
- * @return void
  */
 function woocommerce_compile_less_styles() {
 	_deprecated_function( 'woocommerce_compile_less_styles', '2.3' );

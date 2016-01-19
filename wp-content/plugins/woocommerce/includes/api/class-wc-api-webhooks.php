@@ -164,9 +164,12 @@ class WC_API_Webhooks extends WC_API_Resource {
 	 */
 	public function create_webhook( $data ) {
 
-		$data = isset( $data['webhook'] ) ? $data['webhook'] : array();
-
 		try {
+			if ( ! isset( $data['webhook'] ) ) {
+				throw new WC_API_Exception( 'woocommerce_api_missing_webhook_data', sprintf( __( 'No %1$s data specified to create %1$s', 'woocommerce' ), 'webhook' ), 400 );
+			}
+
+			$data = $data['webhook'];
 
 			// permission check
 			if ( ! current_user_can( 'publish_shop_webhooks' ) ) {
@@ -237,9 +240,12 @@ class WC_API_Webhooks extends WC_API_Resource {
 	 */
 	public function edit_webhook( $id, $data ) {
 
-		$data = isset( $data['webhook'] ) ? $data['webhook'] : array();
-
 		try {
+			if ( ! isset( $data['webhook'] ) ) {
+				throw new WC_API_Exception( 'woocommerce_api_missing_webhook_data', sprintf( __( 'No %1$s data specified to edit %1$s', 'woocommerce' ), 'webhook' ), 400 );
+			}
+
+			$data = $data['webhook'];
 
 			$id = $this->validate_request( $id, 'shop_webhook', 'edit' );
 
@@ -337,32 +343,35 @@ class WC_API_Webhooks extends WC_API_Resource {
 	 * Helper method to get webhook post objects
 	 *
 	 * @since 2.2
-	 * @param array $args request arguments for filtering query
+	 * @param array $args request arguments for filtering query.
 	 * @return WP_Query
 	 */
 	private function query_webhooks( $args ) {
 
-		// Set base query arguments
+		// Set base query arguments.
 		$query_args = array(
 			'fields'      => 'ids',
 			'post_type'   => 'shop_webhook',
 		);
 
-		// Add status argument
+		// Add status argument.
 		if ( ! empty( $args['status'] ) ) {
-
 			switch ( $args['status'] ) {
-				case 'active':
+				case 'active' :
 					$query_args['post_status'] = 'publish';
 					break;
-				case 'paused':
+				case 'paused' :
 					$query_args['post_status'] = 'draft';
 					break;
-				case 'disabled':
+				case 'disabled' :
 					$query_args['post_status'] = 'pending';
 					break;
-				default:
+				case 'all' :
+					$query_args['post_status'] = 'any';
+					break;
+				default :
 					$query_args['post_status'] = 'publish';
+					break;
 			}
 			unset( $args['status'] );
 		}

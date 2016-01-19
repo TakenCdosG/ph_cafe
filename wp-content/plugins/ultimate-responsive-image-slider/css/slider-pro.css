@@ -1,5 +1,5 @@
 /*!
-*  - v1.1.0
+*  - v1.2.4
 * Homepage: http://bqworks.com/slider-pro/
 * Author: bqworks
 * Author URL: http://bqworks.com/
@@ -9,7 +9,8 @@
 .slider-pro {
 	position: relative;
 	margin: 0 auto;
-	margin-bottom: 10px;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
 }
 
 .sp-slides-container {
@@ -745,8 +746,8 @@ a.sp-video:after {
 --------------------------------------------------*/
 .slider-pro img.sp-image,
 .slider-pro img.sp-thumbnail {
-	max-width: none !important;
-	max-height: none !important;
+	max-width: none;
+	max-height: none;
 	border: none !important;
 	border-radius: 0 !important;
 	padding: 0 !important;
@@ -777,7 +778,7 @@ a.sp-video:after {
 }
 
 .slider-pro p.sp-layer {
-	font-size: 14px ;
+	font-size: 14px;
 	line-height: 1.4;
 	margin: 0;
 }
@@ -820,13 +821,4 @@ a.sp-video:after {
 
 .slider-pro img.sp-layer {
 	border: none;
-}
-
-.uris-slider-title{
-	font-weight: bolder !important;
-	padding-bottom: 5px !important;
-	border-bottom: 2px solid #f2f2f2 !important;
-	text-align: center !important;
-	margin-bottom: 20px !important;
-	font-size: 18px !important;
 }

@@ -445,8 +445,18 @@ jQuery(document).ready(function(jQuery) {
 									}
 
 									if ( typeof ninja_forms_settings.currency_symbol !== 'undefined' ) {
-										new_value = new_value.replace( ninja_forms_settings.currency_symbol, "" );
-										new_value = new_value.replace( /,/g, "" );
+                                        // Strip the Currency Symbol
+                                        f_value = new_value.replace( ninja_forms_settings.currency_symbol, "" );
+
+                                        // Strip the Thousands Separator
+                                        f_value = f_value.replace( /thousandsSeparator/g, "" );
+
+                                        // If the Decimal Point is not `.`
+                                        if ( '.' != decimalPoint ) {
+
+                                            // Replace the Decimal Point
+                                            f_value = f_value.replace( decimalPoint, "." );
+                                        }
 									}
 
 									if ( isNaN( new_value ) ) {
@@ -488,8 +498,20 @@ jQuery(document).ready(function(jQuery) {
 
 							// Make sure that our current total is made up of numbers.
 							if ( typeof ninja_forms_settings.currency_symbol !== 'undefined' && typeof current_value != 'undefined' ) {
-								current_value = current_value.replace( ninja_forms_settings.currency_symbol, "" );
-								current_value = current_value.replace( /,/g, "" );
+
+                                // Strip the Currency Symbol
+                                f_value = current_value.replace( ninja_forms_settings.currency_symbol, "" );
+
+                                // Strip the Thousands Separator
+                                f_value = f_value.replace( /thousandsSeparator/g, "" );
+
+                                // If the Decimal Point is not `.`
+                                if ( '.' != decimalPoint ) {
+
+                                    // Replace the Decimal Point
+                                    f_value = f_value.replace( decimalPoint, "." );
+                                }
+
 							}
 							if ( !isNaN( current_value ) ) {
 								// Convert those string numbers into operable ones.
@@ -613,8 +635,19 @@ jQuery(document).ready(function(jQuery) {
 								}
 
 								if ( typeof ninja_forms_settings.currency_symbol !== 'undefined' && isNaN( f_value ) && typeof f_value != 'undefined' ) {
+
+                                    // Strip the Currency Symbol
 									f_value = f_value.replace( ninja_forms_settings.currency_symbol, "" );
-									f_value = f_value.replace( /,/g, "" );
+
+                                    // Strip the Thousands Separator
+									f_value = f_value.replace( /thousandsSeparator/g, "" );
+
+                                    // If the Decimal Point is not `.`
+                                    if ( '.' != decimalPoint ) {
+
+                                        // Replace the Decimal Point
+                                        f_value = f_value.replace( decimalPoint, "." );
+                                    }
 								}
 
 								if ( isNaN( f_value ) || f_value == '' || !f_value || typeof f_value === 'undefined' ) {

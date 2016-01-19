@@ -15,12 +15,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'WC_Admin_Duplicate_Product' ) ) :
 
 /**
- * WC_Admin_Duplicate_Product Class
+ * WC_Admin_Duplicate_Product Class.
  */
 class WC_Admin_Duplicate_Product {
 
 	/**
-	 * Constructor
+	 * Constructor.
 	 */
 	public function __construct() {
 		add_action( 'admin_action_duplicate_product', array( $this, 'duplicate_product_action' ) );
@@ -30,7 +30,7 @@ class WC_Admin_Duplicate_Product {
 	}
 
 	/**
-	 * Show the "Duplicate" link in admin products list
+	 * Show the "Duplicate" link in admin products list.
 	 * @param  array   $actions
 	 * @param  WP_Post $post Post object
 	 * @return array
@@ -44,14 +44,14 @@ class WC_Admin_Duplicate_Product {
 			return $actions;
 		}
 
-		$actions['duplicate'] = '<a href="' . wp_nonce_url( admin_url( 'edit.php?post_type=product&action=duplicate_product&amp;post=' . $post->ID ), 'woocommerce-duplicate-product_' . $post->ID ) . '" title="' . __( 'Make a duplicate from this product', 'woocommerce' )
+		$actions['duplicate'] = '<a href="' . wp_nonce_url( admin_url( 'edit.php?post_type=product&action=duplicate_product&amp;post=' . $post->ID ), 'woocommerce-duplicate-product_' . $post->ID ) . '" title="' . esc_attr__( 'Make a duplicate from this product', 'woocommerce' )
 			. '" rel="permalink">' .  __( 'Duplicate', 'woocommerce' ) . '</a>';
 
 		return $actions;
 	}
 
 	/**
-	 * Show the dupe product link in admin
+	 * Show the dupe product link in admin.
 	 */
 	public function dupe_button() {
 		global $post;
@@ -168,13 +168,11 @@ class WC_Admin_Duplicate_Product {
 		$this->duplicate_post_meta( $post->ID, $new_post_id );
 
 		// Copy the children (variations)
-		if ( $children_products = get_children( 'post_parent='.$post->ID.'&post_type=product_variation' ) ) {
+		$exclude = apply_filters( 'woocommerce_duplicate_product_exclude_children', false );
 
-			if ( $children_products ) {
-
-				foreach ( $children_products as $child ) {
-					$this->duplicate_product( $this->get_product_to_duplicate( $child->ID ), $new_post_id, $child->post_status );
-				}
+		if ( ! $exclude && ( $children_products = get_children( 'post_parent=' . $post->ID . '&post_type=product_variation' ) ) ) {
+			foreach ( $children_products as $child ) {
+				$this->duplicate_product( $this->get_product_to_duplicate( $child->ID ), $new_post_id, $child->post_status );
 			}
 		}
 
@@ -182,7 +180,7 @@ class WC_Admin_Duplicate_Product {
 	}
 
 	/**
-	 * Get a product from the database to duplicate
+	 * Get a product from the database to duplicate.
 	 *
 	 * @param mixed $id
 	 * @return WP_Post|bool
@@ -209,29 +207,28 @@ class WC_Admin_Duplicate_Product {
 	}
 
 	/**
-	 * Copy the taxonomies of a post to another post
+	 * Copy the taxonomies of a post to another post.
 	 *
 	 * @param mixed $id
 	 * @param mixed $new_id
 	 * @param mixed $post_type
 	 */
 	private function duplicate_post_taxonomies( $id, $new_id, $post_type ) {
-
-		$taxonomies = get_object_taxonomies( $post_type );
+		$exclude    = array_filter( apply_filters( 'woocommerce_duplicate_product_exclude_taxonomies', array() ) );
+		$taxonomies = array_diff( get_object_taxonomies( $post_type ), $exclude );
 
 		foreach ( $taxonomies as $taxonomy ) {
-
-			$post_terms = wp_get_object_terms( $id, $taxonomy );
+			$post_terms       = wp_get_object_terms( $id, $taxonomy );
 			$post_terms_count = sizeof( $post_terms );
 
-			for ( $i=0; $i<$post_terms_count; $i++ ) {
-				wp_set_object_terms( $new_id, $post_terms[$i]->slug, $taxonomy, true );
+			for ( $i = 0; $i < $post_terms_count; $i++ ) {
+				wp_set_object_terms( $new_id, $post_terms[ $i ]->slug, $taxonomy, true );
 			}
 		}
 	}
 
 	/**
-	 * Copy the meta information of a post to another post
+	 * Copy the meta information of a post to another post.
 	 *
 	 * @param mixed $id
 	 * @param mixed $new_id
@@ -239,24 +236,27 @@ class WC_Admin_Duplicate_Product {
 	private function duplicate_post_meta( $id, $new_id ) {
 		global $wpdb;
 
-		$post_meta_infos = $wpdb->get_results( $wpdb->prepare( "SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id=%d AND meta_key NOT IN ( 'total_sales' );", absint( $id ) ) );
+		$sql     = $wpdb->prepare( "SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id = %d", absint( $id ) );
+		$exclude = array_map( 'esc_sql', array_filter( apply_filters( 'woocommerce_duplicate_product_exclude_meta', array( 'total_sales' ) ) ) );
 
-		if ( count( $post_meta_infos ) != 0 ) {
+		if ( sizeof( $exclude ) ) {
+			$sql .= " AND meta_key NOT IN ( '" . implode( "','", $exclude ) . "' )";
+		}
 
+		$post_meta = $wpdb->get_results( $sql );
+
+		if ( sizeof( $post_meta ) ) {
 			$sql_query_sel = array();
-			$sql_query = "INSERT INTO $wpdb->postmeta (post_id, meta_key, meta_value) ";
+			$sql_query     = "INSERT INTO $wpdb->postmeta (post_id, meta_key, meta_value) ";
 
-			foreach ( $post_meta_infos as $meta_info ) {
-				$meta_key = $meta_info->meta_key;
-				$meta_value = addslashes( $meta_info->meta_value );
-				$sql_query_sel[]= "SELECT $new_id, '$meta_key', '$meta_value'";
+			foreach ( $post_meta as $post_meta_row ) {
+				$sql_query_sel[] = $wpdb->prepare( "SELECT %d, %s, %s", $new_id, $post_meta_row->meta_key, $post_meta_row->meta_value );
 			}
 
-			$sql_query.= implode( " UNION ALL ", $sql_query_sel );
-			$wpdb->query($sql_query);
+			$sql_query .= implode( " UNION ALL ", $sql_query_sel );
+			$wpdb->query( $sql_query );
 		}
 	}
-
 }
 
 endif;

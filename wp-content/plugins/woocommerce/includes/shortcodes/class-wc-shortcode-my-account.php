@@ -14,7 +14,6 @@ class WC_Shortcode_My_Account {
 	/**
 	 * Get the shortcode content.
 	 *
-	 * @access public
 	 * @param array $atts
 	 * @return string
 	 */
@@ -25,9 +24,7 @@ class WC_Shortcode_My_Account {
 	/**
 	 * Output the shortcode.
 	 *
-	 * @access public
 	 * @param array $atts
-	 * @return void
 	 */
 	public static function output( $atts ) {
 		global $wp;
@@ -71,7 +68,7 @@ class WC_Shortcode_My_Account {
 
 			} elseif ( isset( $wp->query_vars['add-payment-method'] ) ) {
 
-				self::add_payment_method( $wp->query_vars['add-payment-method'] );
+				self::add_payment_method();
 
 			} else {
 
@@ -82,7 +79,7 @@ class WC_Shortcode_My_Account {
 	}
 
 	/**
-	 * My account page
+	 * My account page.
 	 *
 	 * @param  array $atts
 	 */
@@ -98,7 +95,7 @@ class WC_Shortcode_My_Account {
 	}
 
 	/**
-	 * View order page
+	 * View order page.
 	 *
 	 * @param  int $order_id
 	 */
@@ -124,7 +121,7 @@ class WC_Shortcode_My_Account {
 	}
 
 	/**
-	 * Edit account details page
+	 * Edit account details page.
 	 */
 	private static function edit_account() {
 		wc_get_template( 'myaccount/form-edit-account.php', array( 'user' => get_user_by( 'id', get_current_user_id() ) ) );
@@ -182,12 +179,9 @@ class WC_Shortcode_My_Account {
 	}
 
 	/**
-	 * Lost password page
+	 * Lost password page.
 	 */
 	public static function lost_password() {
-
-		global $post;
-
 		// arguments to pass to template
 		$args = array( 'form' => 'lost_password' );
 
@@ -212,7 +206,7 @@ class WC_Shortcode_My_Account {
 	/**
 	 * Handles sending password retrieval email to customer.
 	 *
-	 * Based on retrieve_password() in core wp-login.php
+	 * Based on retrieve_password() in core wp-login.php.
 	 *
 	 * @access public
 	 * @uses $wpdb WordPress Database object
@@ -221,20 +215,21 @@ class WC_Shortcode_My_Account {
 	public static function retrieve_password() {
 		global $wpdb, $wp_hasher;
 
-		if ( empty( $_POST['user_login'] ) ) {
+		$login = trim( $_POST['user_login'] );
+
+		if ( empty( $login ) ) {
 
 			wc_add_notice( __( 'Enter a username or e-mail address.', 'woocommerce' ), 'error' );
 			return false;
 
 		} else {
 			// Check on username first, as customers can use emails as usernames.
-			$login = trim( $_POST['user_login'] );
 			$user_data = get_user_by( 'login', $login );
 		}
 
 		// If no user found, check if it login is email and lookup user based on email.
-		if ( ! $user_data && is_email( $_POST['user_login'] ) && apply_filters( 'woocommerce_get_username_from_email', true ) ) {
-			$user_data = get_user_by( 'email', trim( $_POST['user_login'] ) );
+		if ( ! $user_data && is_email( $login ) && apply_filters( 'woocommerce_get_username_from_email', true ) ) {
+			$user_data = get_user_by( 'email', $login );
 		}
 
 		do_action( 'lostpassword_post' );
@@ -251,7 +246,6 @@ class WC_Shortcode_My_Account {
 
 		// redefining user_login ensures we return the right case in the email
 		$user_login = $user_data->user_login;
-		$user_email = $user_data->user_email;
 
 		do_action( 'retrieve_password', $user_login );
 
@@ -260,13 +254,11 @@ class WC_Shortcode_My_Account {
 		if ( ! $allow ) {
 
 			wc_add_notice( __( 'Password reset is not allowed for this user', 'woocommerce' ), 'error' );
-
 			return false;
 
 		} elseif ( is_wp_error( $allow ) ) {
 
 			wc_add_notice( $allow->get_error_message(), 'error' );
-
 			return false;
 		}
 
@@ -293,7 +285,7 @@ class WC_Shortcode_My_Account {
 	}
 
 	/**
-	 * Retrieves a user row based on password reset key and login
+	 * Retrieves a user row based on password reset key and login.
 	 *
 	 * @uses $wpdb WordPress Database object
 	 *
@@ -338,10 +330,8 @@ class WC_Shortcode_My_Account {
 	/**
 	 * Handles resetting the user's password.
 	 *
-	 * @access public
 	 * @param object $user The user
 	 * @param string $new_pass New password for the user in plaintext
-	 * @return void
 	 */
 	public static function reset_password( $user, $new_pass ) {
 		do_action( 'password_reset', $user, $new_pass );
@@ -352,7 +342,7 @@ class WC_Shortcode_My_Account {
 	}
 
 	/**
-	 * Show the add payment method page
+	 * Show the add payment method page.
 	 */
 	private static function add_payment_method() {
 

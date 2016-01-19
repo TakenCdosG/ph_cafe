@@ -111,7 +111,7 @@ function nf_admin_save_builder() {
 
 	if( $form_id != '' && $form_id != 0 && $form_id != 'new' ){
 		foreach ( $field_data as $field_id => $vals )  {
-			$field_order = $order_array[$field_id];
+			$field_order = isset( $order_array[$field_id] ) ? $order_array[$field_id] : '';
 			$field_row = ninja_forms_get_field_by_id( $field_id );
 			$data = $field_row['data'];
 			foreach( $vals as $k => $v ){
@@ -126,6 +126,9 @@ function nf_admin_save_builder() {
 		Ninja_Forms()->form( $form_id )->update_setting( 'date_updated', $date_updated );
 		Ninja_Forms()->form( $form_id )->update_setting( 'status', '' );
 	}
+
+	// Dump our current form transient.
+	delete_transient( 'nf_form_' . $form_id );
 
 	die();
 }
@@ -210,7 +213,9 @@ function ninja_forms_remove_field(){
 	check_ajax_referer( 'nf_ajax', 'nf_ajax_nonce' );
 
 	$field_id = absint( $_REQUEST['field_id'] );
+	$form_id = absint( $_REQUEST['form_id'] );
 	$wpdb->query($wpdb->prepare("DELETE FROM ".NINJA_FORMS_FIELDS_TABLE_NAME." WHERE id = %d", $field_id));
+	Ninja_Forms()->form( $form_id )->dump_cache();
 	die();
 }
 

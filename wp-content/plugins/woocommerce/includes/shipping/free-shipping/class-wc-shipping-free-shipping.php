@@ -5,40 +5,44 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Free Shipping Method
+ * Free Shipping Method.
  *
- * A simple shipping method for free shipping
+ * A simple shipping method for free shipping.
  *
  * @class   WC_Shipping_Free_Shipping
- * @version 2.3.0
+ * @version 2.4.0
  * @package WooCommerce/Classes/Shipping
  * @author  WooThemes
  */
 class WC_Shipping_Free_Shipping extends WC_Shipping_Method {
 
-	/** @var float Min amount to be valid */
+	/**
+	 * Min amount to be valid.
+	 *
+	 * @var float
+	 */
 	public $min_amount;
 
-	/** @var string Requires option */
+	/**
+	 * Requires option.
+	 *
+	 * @var string
+	 */
 	public $requires;
 
 	/**
-	 * __construct function.
-	 *
-	 * @return void
+	 * Constructor.
 	 */
-	function __construct() {
+	public function __construct() {
 		$this->id 			= 'free_shipping';
 		$this->method_title = __( 'Free Shipping', 'woocommerce' );
 		$this->init();
 	}
 
 	/**
-	 * init function.
-	 *
-	 * @return void
+	 * Initialize free shipping.
 	 */
-	function init() {
+	public function init() {
 
 		// Load the settings.
 		$this->init_form_fields();
@@ -56,20 +60,16 @@ class WC_Shipping_Free_Shipping extends WC_Shipping_Method {
 		add_action( 'woocommerce_update_options_shipping_' . $this->id, array( $this, 'process_admin_options' ) );
 	}
 
-
 	/**
-	 * Initialise Gateway Settings Form Fields
-	 *
-	 * @return void
+	 * Initialize Gateway Settings Form Fields.
 	 */
-	function init_form_fields() {
-
+	public function init_form_fields() {
 		$this->form_fields = array(
 			'enabled' => array(
 				'title' 		=> __( 'Enable/Disable', 'woocommerce' ),
 				'type' 			=> 'checkbox',
 				'label' 		=> __( 'Enable Free Shipping', 'woocommerce' ),
-				'default' 		=> 'yes'
+				'default' 		=> 'no'
 			),
 			'title' => array(
 				'title' 		=> __( 'Method Title', 'woocommerce' ),
@@ -123,36 +123,13 @@ class WC_Shipping_Free_Shipping extends WC_Shipping_Method {
 		);
 	}
 
-
 	/**
-	 * Admin Panel Options
-	 * - Options for bits like 'title' and availability on a country-by-country basis
+	 * Check if free shipping is available.
 	 *
-	 * @since 1.0.0
-	 * @return void
-	 */
-	public function admin_options() {
-
-		?>
-		<h3><?php _e( 'Free Shipping', 'woocommerce' ); ?></h3>
-		<table class="form-table">
-		<?php
-			// Generate the HTML For the settings form.
-			$this->generate_settings_html();
-		?>
-		</table><!--/.form-table-->
-		<?php
-	}
-
-
-	/**
-	 * is_available function.
-	 *
-	 * @param mixed $package
+	 * @param array $package
 	 * @return bool
 	 */
-	function is_available( $package ) {
-
+	public function is_available( $package ) {
 		if ( 'no' == $this->enabled ) {
 			return false;
 		}
@@ -184,7 +161,6 @@ class WC_Shipping_Free_Shipping extends WC_Shipping_Method {
 		}
 
 		if ( in_array( $this->requires, array( 'min_amount', 'either', 'both' ) ) && isset( WC()->cart->cart_contents_total ) ) {
-
 			if ( WC()->cart->prices_include_tax ) {
 				$total = WC()->cart->cart_contents_total + array_sum( WC()->cart->taxes );
 			} else {
@@ -225,13 +201,12 @@ class WC_Shipping_Free_Shipping extends WC_Shipping_Method {
 		return apply_filters( 'woocommerce_shipping_' . $this->id . '_is_available', $is_available, $package );
 	}
 
-
 	/**
-	 * calculate_shipping function.
+	 * Calculate free shipping.
 	 *
 	 * @return array
 	 */
-	function calculate_shipping() {
+	public function calculate_shipping() {
 		$args = array(
 			'id' 	=> $this->id,
 			'label' => $this->title,
@@ -240,5 +215,4 @@ class WC_Shipping_Free_Shipping extends WC_Shipping_Method {
 		);
 		$this->add_rate( $args );
 	}
-
 }

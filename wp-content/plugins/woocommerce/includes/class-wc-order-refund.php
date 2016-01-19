@@ -1,4 +1,9 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
 /**
  * Order refund
  *
@@ -42,7 +47,7 @@ class WC_Order_Refund extends WC_Abstract_Order {
 	}
 
 	/**
-	 * Gets an refund from the database
+	 * Gets an refund from the database.
 	 *
 	 * @since 2.2
 	 * @param int $id
@@ -63,11 +68,9 @@ class WC_Order_Refund extends WC_Abstract_Order {
 	}
 
 	/**
-	 * Populates an refund from the loaded post data
+	 * Populates an refund from the loaded post data.
 	 *
-	 * @since 2.2
 	 * @param mixed $result
-	 * @return void
 	 */
 	public function populate( $result ) {
 		// Standard post data
@@ -78,7 +81,7 @@ class WC_Order_Refund extends WC_Abstract_Order {
 	}
 
 	/**
-	 * Get refunded amount
+	 * Get refunded amount.
 	 *
 	 * @since 2.2
 	 * @return int|float
@@ -88,7 +91,18 @@ class WC_Order_Refund extends WC_Abstract_Order {
 	}
 
 	/**
-	 * Get refunded amount
+	 * Get formatted refunded amount.
+	 *
+	 * @since 2.4
+	 * @return string
+	 */
+	public function get_formatted_refund_amount() {
+		return apply_filters( 'woocommerce_formatted_refund_amount', wc_price( $this->refund_amount, array('currency' => $this->get_order_currency()) ), $this );
+	}
+
+
+	/**
+	 * Get refunded amount.
 	 *
 	 * @since 2.2
 	 * @return int|float

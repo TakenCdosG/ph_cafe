@@ -424,7 +424,7 @@ function ninja_forms_output_field_calc_row( $field_id, $c = array(), $x = 0 ){
  * @return void
  */
 function ninja_forms_field_calc_pre_process(){
-	global $ninja_forms_loading, $ninja_forms_processing;
+	global $ninja_forms_loading, $ninja_forms_processing, $wp_locale;
 
 	if ( isset ( $ninja_forms_loading ) ) {
 		$form_id = $ninja_forms_loading->get_form_ID();
@@ -602,6 +602,7 @@ function ninja_forms_field_calc_pre_process(){
 									} else {
 										$calc_value = ninja_forms_field_calc_value( $field['id'], $field_value, $calc_method );
 									}
+
 									if ( $calc_value !== false ) {
 										$calc_eq = preg_replace('/\bfield_'.$field['id'].'\b/', $calc_value, $calc_eq );
 									}
@@ -613,13 +614,22 @@ function ninja_forms_field_calc_pre_process(){
 
 				if ( $calc_method == 'eq' ) {
 					$eq = new eqEOS();
+
+					// Swap out decimal separator
+					$decimal_point = $wp_locale->number_format['decimal_point'];
+					$calc_eq = str_replace( $decimal_point, '.', $calc_eq );
+
 					$result = $eq->solveIF($calc_eq);
+
+					// Swap back decimal separator
+					$result = str_replace( '.', $decimal_point, $result );
 				}
 
 				if ( isset ( $calc_places ) ) {
 					if ( empty( $calc_places ) ) {
 						$calc_places = 0;
 					}
+
 					$result = number_format( round( $result, $calc_places ), $calc_places );
 				}
 				$result = str_replace( ',', '', $result );
@@ -951,7 +961,11 @@ function ninja_forms_field_calc_value( $field_id, $field_value = '', $calc_metho
 			$field_value = 0;
 		}
 		$decimal_point = $wp_locale->number_format['decimal_point'];
-		$calc_value = (float) preg_replace('/[^0-9' . $decimal_point . '-]*/','',$field_value);
+
+		/* Casting to a Float removes decimal */
+//		$calc_value = (float) preg_replace('/[^0-9' . $decimal_point . '-]*/','',$field_value);
+		$calc_value = preg_replace('/[^0-9' . $decimal_point . '-]*/','',$field_value);
+
 	}
 
 	if ( is_string( $calc_value ) AND strpos( $calc_value, "%" ) !== false ) {

@@ -1,4 +1,9 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
 /**
  * WC_Report_Sales_By_Product
  *
@@ -9,12 +14,29 @@
  */
 class WC_Report_Sales_By_Product extends WC_Admin_Report {
 
+	/**
+	 * Chart colours.
+	 *
+	 * @var array
+	 */
 	public $chart_colours      = array();
+
+	/**
+	 * Product ids.
+	 *
+	 * @var array
+	 */
 	public $product_ids        = array();
+
+	/**
+	 * Product ids with titles.
+	 *
+	 * @var array
+	 */
 	public $product_ids_titles = array();
 
 	/**
-	 * Constructor
+	 * Constructor.
 	 */
 	public function __construct() {
 		if ( isset( $_GET['product_ids'] ) && is_array( $_GET['product_ids'] ) ) {
@@ -25,7 +47,7 @@ class WC_Report_Sales_By_Product extends WC_Admin_Report {
 	}
 
 	/**
-	 * Get the legend for the main chart sidebar
+	 * Get the legend for the main chart sidebar.
 	 * @return array
 	 */
 	public function get_chart_legend() {
@@ -97,7 +119,7 @@ class WC_Report_Sales_By_Product extends WC_Admin_Report {
 	}
 
 	/**
-	 * Output the report
+	 * Output the report.
 	 */
 	public function output_report() {
 
@@ -124,7 +146,7 @@ class WC_Report_Sales_By_Product extends WC_Admin_Report {
 	}
 
 	/**
-	 * [get_chart_widgets description]
+	 * Get chart widgets.
 	 *
 	 * @return array
 	 */
@@ -148,7 +170,7 @@ class WC_Report_Sales_By_Product extends WC_Admin_Report {
 	}
 
 	/**
-	 * Show current filters
+	 * Output current filters.
 	 */
 	public function current_filters() {
 
@@ -170,7 +192,7 @@ class WC_Report_Sales_By_Product extends WC_Admin_Report {
 	}
 
 	/**
-	 * Product selection
+	 * Output products widget.
 	 */
 	public function products_widget() {
 		?>
@@ -178,8 +200,8 @@ class WC_Report_Sales_By_Product extends WC_Admin_Report {
 		<div class="section">
 			<form method="GET">
 				<div>
-					<input type="hidden" class="wc-product-search" style="width:203px;" name="product_ids[]" data-placeholder="<?php _e( 'Search for a product&hellip;', 'woocommerce' ); ?>" data-action="woocommerce_json_search_products_and_variations" />
-					<input type="submit" class="submit button" value="<?php _e( 'Show', 'woocommerce' ); ?>" />
+					<input type="hidden" class="wc-product-search" style="width:203px;" name="product_ids[]" data-placeholder="<?php esc_attr_e( 'Search for a product&hellip;', 'woocommerce' ); ?>" data-action="woocommerce_json_search_products_and_variations" />
+					<input type="submit" class="submit button" value="<?php esc_attr_e( 'Show', 'woocommerce' ); ?>" />
 					<input type="hidden" name="range" value="<?php if ( ! empty( $_GET['range'] ) ) echo esc_attr( $_GET['range'] ) ?>" />
 					<input type="hidden" name="start_date" value="<?php if ( ! empty( $_GET['start_date'] ) ) echo esc_attr( $_GET['start_date'] ) ?>" />
 					<input type="hidden" name="end_date" value="<?php if ( ! empty( $_GET['end_date'] ) ) echo esc_attr( $_GET['end_date'] ) ?>" />
@@ -351,7 +373,7 @@ class WC_Report_Sales_By_Product extends WC_Admin_Report {
 	}
 
 	/**
-	 * Output an export link
+	 * Output an export link.
 	 */
 	public function get_export_button() {
 
@@ -362,7 +384,7 @@ class WC_Report_Sales_By_Product extends WC_Admin_Report {
 			download="report-<?php echo esc_attr( $current_range ); ?>-<?php echo date_i18n( 'Y-m-d', current_time('timestamp') ); ?>.csv"
 			class="export_csv"
 			data-export="chart"
-			data-xaxes="<?php _e( 'Date', 'woocommerce' ); ?>"
+			data-xaxes="<?php esc_attr_e( 'Date', 'woocommerce' ); ?>"
 			data-groupby="<?php echo $this->chart_groupby; ?>"
 		>
 			<?php _e( 'Export CSV', 'woocommerce' ); ?>
@@ -371,7 +393,7 @@ class WC_Report_Sales_By_Product extends WC_Admin_Report {
 	}
 
 	/**
-	 * Get the main chart
+	 * Get the main chart.
 	 *
 	 * @return string
 	 */

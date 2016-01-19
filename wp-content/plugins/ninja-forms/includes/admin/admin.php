@@ -29,7 +29,7 @@ function nf_add_submenus() {
 	$import = add_submenu_page("ninja-forms", __( 'Import/Export', 'ninja-forms' ), __( 'Import / Export', 'ninja-forms' ), apply_filters( 'ninja_forms_admin_import_export_capabilities', 'manage_options' ), "ninja-forms-impexp", "ninja_forms_admin");
 	$settings = add_submenu_page("ninja-forms", __( 'Ninja Form Settings', 'ninja-forms' ), __( 'Settings', 'ninja-forms' ), apply_filters( 'ninja_forms_admin_settings_capabilities', 'manage_options' ), "ninja-forms-settings", "ninja_forms_admin");
 	$system_status = add_submenu_page("ninja-forms", __( 'System Status', 'ninja-forms' ), __( 'System Status', 'ninja-forms' ), apply_filters( 'ninja_forms_admin_status_capabilities', 'manage_options' ), "ninja-forms-system-status", "ninja_forms_admin");
-	$extend = add_submenu_page("ninja-forms", __( 'Ninja Form Extensions', 'ninja-forms' ), __( 'Extend', 'ninja-forms' ), apply_filters( 'ninja_forms_admin_extend_capabilities', 'manage_options' ), "ninja-forms-extend", "ninja_forms_admin");
+	$extend = add_submenu_page("ninja-forms", __( 'Add-Ons', 'ninja-forms' ), __( 'Add-Ons', 'ninja-forms' ), apply_filters( 'ninja_forms_admin_extend_capabilities', 'manage_options' ), "ninja-forms-extend", "ninja_forms_admin");
 
 	add_action('admin_print_styles-' . $settings, 'ninja_forms_admin_js');
 	add_action('admin_print_styles-' . $settings, 'ninja_forms_admin_css');
@@ -192,23 +192,7 @@ function ninja_forms_admin(){
 		<?php
 	}
 	?>
-	<div id="nf-admin-modal-backdrop" style="display: none;"></div>
-	<div id="nf-admin-modal-wrap" class="wp-core-ui" style="display: none;">
-		<div id="nf-admin-modal" tabindex="-1">
-			<div id="admin-modal-title">
-				<span id="nf-modal-title"></span>
-				<button type="button" id="nf-admin-modal-close" class="modal-close"><span class="screen-reader-text modal-close">Close</span></button>
-		 	</div>
-		 	<div id="modal-contents-wrapper" style="padding:20px;">
-				<div id="nf-admin-modal-content" class="admin-modal-inside">
-					
-				</div>
-				<div class="submitbox" style="display:block;">
-					
-				</div>
-			</div>
-		</div>
-	</div>
+
 
 	<?php
 } //End ninja_edit_forms function

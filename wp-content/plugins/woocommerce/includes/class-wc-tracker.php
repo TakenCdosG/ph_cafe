@@ -19,22 +19,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 class WC_Tracker {
 
 	/**
-	 * URL to the WooThemes Tracker API endpoint
+	 * URL to the WooThemes Tracker API endpoint.
 	 * @var string
 	 */
 	private static $api_url = 'https://tracking.woocommerce.com/v1/';
 
 	/**
-	 * Hook into cron event
+	 * Hook into cron event.
 	 */
 	public static function init() {
 		add_action( 'woocommerce_tracker_send_event', array( __CLASS__, 'send_tracking_data' ) );
 	}
 
 	/**
-	 * Decide whether to send tracking data or not
-	 * @param  boolean $override
-	 * @return void
+	 * Decide whether to send tracking data or not.
+	 *
+	 * @param boolean $override
 	 */
 	public static function send_tracking_data( $override = false ) {
 		// Dont trigger this on AJAX Requests
@@ -60,7 +60,7 @@ class WC_Tracker {
 		update_option( 'woocommerce_tracker_last_send', time() );
 
 		$params   = self::get_tracking_data();
-		$response = wp_remote_post( self::$api_url, array(
+		$response = wp_safe_remote_post( self::$api_url, array(
 				'method'      => 'POST',
 				'timeout'     => 45,
 				'redirection' => 5,
@@ -74,7 +74,7 @@ class WC_Tracker {
 	}
 
 	/**
-	 * Get the last time tracking data was sent
+	 * Get the last time tracking data was sent.
 	 * @return int|bool
 	 */
 	private static function get_last_send_time() {
@@ -82,7 +82,7 @@ class WC_Tracker {
 	}
 
 	/**
-	 * Get all the tracking data
+	 * Get all the tracking data.
 	 * @return array
 	 */
 	private static function get_tracking_data() {
@@ -125,7 +125,7 @@ class WC_Tracker {
 	}
 
 	/**
-	 * Get the current theme info, theme name and version
+	 * Get the current theme info, theme name and version.
 	 * @return array
 	 */
 	public static function get_theme_info() {
@@ -154,17 +154,23 @@ class WC_Tracker {
 		$wp_data = array();
 
 		$memory = wc_let_to_num( WP_MEMORY_LIMIT );
+
+		if ( function_exists( 'memory_get_usage' ) ) {
+			$system_memory = wc_let_to_num( @ini_get( 'memory_limit' ) );
+			$memory        = max( $memory, $system_memory );
+		}
+
 		$wp_data['memory_limit'] = size_format( $memory );
-		$wp_data['debug_mode'] = ( defined('WP_DEBUG') && WP_DEBUG ) ? 'Yes' : 'No';
-		$wp_data['locale'] = get_locale();
-		$wp_data['version'] = get_bloginfo( 'version' );
-		$wp_data['multisite'] = is_multisite() ? 'Yes' : 'No';
+		$wp_data['debug_mode']   = ( defined('WP_DEBUG') && WP_DEBUG ) ? 'Yes' : 'No';
+		$wp_data['locale']       = get_locale();
+		$wp_data['version']      = get_bloginfo( 'version' );
+		$wp_data['multisite']    = is_multisite() ? 'Yes' : 'No';
 
 		return $wp_data;
 	}
 
 	/**
-	 * Get server related info
+	 * Get server related info.
 	 * @return array
 	 */
 	private static function get_server_info() {
@@ -198,7 +204,7 @@ class WC_Tracker {
 	}
 
 	/**
-	 * Get all plugins grouped into activated or not
+	 * Get all plugins grouped into activated or not.
 	 * @return array
 	 */
 	private static function get_all_plugins() {
@@ -240,12 +246,12 @@ class WC_Tracker {
 	}
 
 	/**
-	 * Get user totals based on user role
+	 * Get user totals based on user role.
 	 * @return array
 	 */
 	private static function get_user_counts() {
-		$user_count = array();
-		$user_count_data = count_users();
+		$user_count          = array();
+		$user_count_data     = count_users();
 		$user_count['total'] = $user_count_data['total_users'];
 
 		// Get user count based on user role
@@ -257,93 +263,97 @@ class WC_Tracker {
 	}
 
 	/**
-	 * Get product totals based on product type
+	 * Get product totals based on product type.
 	 * @return array
 	 */
 	private static function get_product_counts() {
-		$product_count = array();
-		$product_count_data = wp_count_posts( 'product' );
+		$product_count          = array();
+		$product_count_data     = wp_count_posts( 'product' );
 		$product_count['total'] = $product_count_data->publish;
 
 		$product_statuses = get_terms( 'product_type', array( 'hide_empty' => 0 ) );
 		foreach ( $product_statuses as $product_status ) {
 			$product_count[ $product_status->name ] = $product_status->count;
 		}
+
 		return $product_count;
 	}
 
 	/**
-	 * Get order counts based on order status
+	 * Get order counts based on order status.
 	 * @return array
 	 */
 	private static function get_order_counts() {
-		$order_count = array();
+		$order_count      = array();
 		$order_count_data = wp_count_posts( 'shop_order' );
 
 		foreach ( wc_get_order_statuses() as $status_slug => $status_name ) {
 			$order_count[ $status_slug ] = $order_count_data->{ $status_slug };
 		}
+
 		return $order_count;
 	}
 
 	/**
-	 * Get a list of all active payment gateways
+	 * Get a list of all active payment gateways.
 	 * @return array
 	 */
 	private static function get_active_payment_gateways() {
 		$active_gateways = array();
-		$gateways = WC()->payment_gateways->payment_gateways();
+		$gateways        = WC()->payment_gateways->payment_gateways();
 		foreach ( $gateways as $id => $gateway ) {
 			if ( isset( $gateway->enabled ) && $gateway->enabled == 'yes' ) {
 				$active_gateways[ $id ] = array( 'title' => $gateway->title, 'supports' => $gateway->supports );
 			}
 		}
+
 		return $active_gateways;
 	}
 
 	/**
-	 * Get a list of all active shipping methods
+	 * Get a list of all active shipping methods.
 	 * @return array
 	 */
 	private static function get_active_shipping_methods() {
-		$active_methods = array();
+		$active_methods   = array();
 		$shipping_methods = WC()->shipping->get_shipping_methods();
 		foreach ( $shipping_methods as $id => $shipping_method ) {
 			if ( isset( $shipping_method->enabled ) && $shipping_method->enabled == 'yes' ) {
 				$active_methods[ $id ] = array( 'title' => $shipping_method->title, 'tax_status' => $shipping_method->tax_status );
 			}
 		}
+
 		return $active_methods;
 	}
 
 	/**
-	 * Get all options starting with woocommerce_ prefix
+	 * Get all options starting with woocommerce_ prefix.
 	 * @return array
 	 */
 	private static function get_all_woocommerce_options_values() {
 		return array(
-			'version'								=> WC()->version,
-			'currency'								=> get_woocommerce_currency(),
-			'base_location'							=> WC()->countries->get_base_country(),
-			'selling_locations'						=> WC()->countries->get_allowed_countries(),
-			'api_enabled'							=> get_option( 'woocommerce_api_enabled' ),
-			'weight_unit'							=> get_option( 'woocommerce_weight_unit' ),
-			'dimension_unit'						=> get_option( 'woocommerce_dimension_unit' ),
-			'download_method'						=> get_option( 'woocommerce_file_download_method' ),
-			'download_require_login'				=> get_option( 'woocommerce_downloads_require_login' ),
-			'calc_taxes'							=> get_option( 'woocommerce_calc_taxes' ),
-			'coupons_enabled'						=> get_option( 'woocommerce_enable_coupons' ),
-			'guest_checkout'						=> get_option( 'woocommerce_enable_guest_checkout'),
-			'secure_checkout'						=> get_option( 'woocommerce_force_ssl_checkout' ),
-			'enable_signup_and_login_from_checkout'	=> get_option( 'woocommerce_enable_signup_and_login_from_checkout' ),
-			'enable_myaccount_registration'			=> get_option( 'woocommerce_enable_myaccount_registration' ),
-			'registration_generate_username'		=> get_option( 'woocommerce_registration_generate_username' ),
-			'registration_generate_password'		=> get_option( 'woocommerce_registration_generate_password' ),
+			'version'                               => WC()->version,
+			'currency'                              => get_woocommerce_currency(),
+			'base_location'                         => WC()->countries->get_base_country(),
+			'selling_locations'                     => WC()->countries->get_allowed_countries(),
+			'api_enabled'                           => get_option( 'woocommerce_api_enabled' ),
+			'weight_unit'                           => get_option( 'woocommerce_weight_unit' ),
+			'dimension_unit'                        => get_option( 'woocommerce_dimension_unit' ),
+			'download_method'                       => get_option( 'woocommerce_file_download_method' ),
+			'download_require_login'                => get_option( 'woocommerce_downloads_require_login' ),
+			'calc_taxes'                            => get_option( 'woocommerce_calc_taxes' ),
+			'coupons_enabled'                       => get_option( 'woocommerce_enable_coupons' ),
+			'guest_checkout'                        => get_option( 'woocommerce_enable_guest_checkout'),
+			'secure_checkout'                       => get_option( 'woocommerce_force_ssl_checkout' ),
+			'enable_signup_and_login_from_checkout' => get_option( 'woocommerce_enable_signup_and_login_from_checkout' ),
+			'enable_myaccount_registration'         => get_option( 'woocommerce_enable_myaccount_registration' ),
+			'registration_generate_username'        => get_option( 'woocommerce_registration_generate_username' ),
+			'registration_generate_password'        => get_option( 'woocommerce_registration_generate_password' ),
 		);
 	}
 
 	/**
-	 * Look for any template override and return filenames
+	 * Look for any template override and return filenames.
 	 * @return array
 	 */
 	private static function get_all_template_overrides() {
@@ -370,7 +380,8 @@ class WC_Tracker {
 				} else {
 					$theme_file = false;
 				}
-				if ( $theme_file ) {
+
+				if ( $theme_file !== false ) {
 					$override_data[] = basename( $theme_file );
 				}
 			}

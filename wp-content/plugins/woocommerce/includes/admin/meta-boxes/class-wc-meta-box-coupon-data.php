@@ -15,12 +15,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * WC_Meta_Box_Coupon_Data Class
+ * WC_Meta_Box_Coupon_Data Class.
  */
 class WC_Meta_Box_Coupon_Data {
 
 	/**
-	 * Output the metabox
+	 * Output the metabox.
+	 *
+	 * @param WP_Post $post
 	 */
 	public static function output( $post ) {
 		wp_nonce_field( 'woocommerce_save_data', 'woocommerce_meta_nonce' );
@@ -81,10 +83,10 @@ class WC_Meta_Box_Coupon_Data {
 				echo '<div class="options_group">';
 
 				// minimum spend
-				woocommerce_wp_text_input( array( 'id' => 'minimum_amount', 'label' => __( 'Minimum spend', 'woocommerce' ), 'placeholder' => __( 'No minimum', 'woocommerce' ), 'description' => __( 'This field allows you to set the minimum subtotal needed to use the coupon.', 'woocommerce' ), 'data_type' => 'price', 'desc_tip' => true ) );
+				woocommerce_wp_text_input( array( 'id' => 'minimum_amount', 'label' => __( 'Minimum spend', 'woocommerce' ), 'placeholder' => __( 'No minimum', 'woocommerce' ), 'description' => __( 'This field allows you to set the minimum spend (subtotal, including taxes) allowed to use the coupon.', 'woocommerce' ), 'data_type' => 'price', 'desc_tip' => true ) );
 
 				// maximum spend
-				woocommerce_wp_text_input( array( 'id' => 'maximum_amount', 'label' => __( 'Maximum spend', 'woocommerce' ), 'placeholder' => __( 'No maximum', 'woocommerce' ), 'description' => __( 'This field allows you to set the maximum subtotal allowed when using the coupon.', 'woocommerce' ), 'data_type' => 'price', 'desc_tip' => true ) );
+				woocommerce_wp_text_input( array( 'id' => 'maximum_amount', 'label' => __( 'Maximum spend', 'woocommerce' ), 'placeholder' => __( 'No maximum', 'woocommerce' ), 'description' => __( 'This field allows you to set the maximum spend (subtotal, including taxes) allowed when using the coupon.', 'woocommerce' ), 'data_type' => 'price', 'desc_tip' => true ) );
 
 				// Individual use
 				woocommerce_wp_checkbox( array( 'id' => 'individual_use', 'label' => __( 'Individual use only', 'woocommerce' ), 'description' => __( 'Check this box if the coupon cannot be used in conjunction with other coupons.', 'woocommerce' ) ) );
@@ -97,7 +99,7 @@ class WC_Meta_Box_Coupon_Data {
 				// Product ids
 				?>
 				<p class="form-field"><label><?php _e( 'Products', 'woocommerce' ); ?></label>
-				<input type="hidden" class="wc-product-search" data-multiple="true" style="width: 50%;" name="product_ids" data-placeholder="<?php _e( 'Search for a product&hellip;', 'woocommerce' ); ?>" data-action="woocommerce_json_search_products_and_variations" data-selected="<?php
+				<input type="hidden" class="wc-product-search" data-multiple="true" style="width: 50%;" name="product_ids" data-placeholder="<?php esc_attr_e( 'Search for a product&hellip;', 'woocommerce' ); ?>" data-action="woocommerce_json_search_products_and_variations" data-selected="<?php
 					$product_ids = array_filter( array_map( 'absint', explode( ',', get_post_meta( $post->ID, 'product_ids', true ) ) ) );
 					$json_ids    = array();
 
@@ -109,13 +111,13 @@ class WC_Meta_Box_Coupon_Data {
 					}
 
 					echo esc_attr( json_encode( $json_ids ) );
-				?>" value="<?php echo implode( ',', array_keys( $json_ids ) ); ?>" /> <img class="help_tip" data-tip='<?php _e( 'Products which need to be in the cart to use this coupon or, for "Product Discounts", which products are discounted.', 'woocommerce' ); ?>' src="<?php echo WC()->plugin_url(); ?>/assets/images/help.png" height="16" width="16" /></p>
+					?>" value="<?php echo implode( ',', array_keys( $json_ids ) ); ?>" /> <?php echo wc_help_tip( __( 'Products which need to be in the cart to use this coupon or, for "Product Discounts", which products are discounted.', 'woocommerce' ) ); ?></p>
 				<?php
 
 				// Exclude Product ids
 				?>
 				<p class="form-field"><label><?php _e( 'Exclude products', 'woocommerce' ); ?></label>
-				<input type="hidden" class="wc-product-search" data-multiple="true" style="width: 50%;" name="exclude_product_ids" data-placeholder="<?php _e( 'Search for a product&hellip;', 'woocommerce' ); ?>" data-action="woocommerce_json_search_products_and_variations" data-selected="<?php
+				<input type="hidden" class="wc-product-search" data-multiple="true" style="width: 50%;" name="exclude_product_ids" data-placeholder="<?php esc_attr_e( 'Search for a product&hellip;', 'woocommerce' ); ?>" data-action="woocommerce_json_search_products_and_variations" data-selected="<?php
 					$product_ids = array_filter( array_map( 'absint', explode( ',', get_post_meta( $post->ID, 'exclude_product_ids', true ) ) ) );
 					$json_ids    = array();
 
@@ -127,7 +129,7 @@ class WC_Meta_Box_Coupon_Data {
 					}
 
 					echo esc_attr( json_encode( $json_ids ) );
-				?>" value="<?php echo implode( ',', array_keys( $json_ids ) ); ?>" /> <img class="help_tip" data-tip='<?php _e( 'Products which must not be in the cart to use this coupon or, for "Product Discounts", which products are not discounted.', 'woocommerce' ); ?>' src="<?php echo WC()->plugin_url(); ?>/assets/images/help.png" height="16" width="16" /></p>
+				?>" value="<?php echo implode( ',', array_keys( $json_ids ) ); ?>" /> <?php echo wc_help_tip( __( 'Products which must not be in the cart to use this coupon or, for "Product Discounts", which products are not discounted.', 'woocommerce' ) ); ?></p>
 				<?php
 
 				echo '</div><div class="options_group">';
@@ -135,7 +137,7 @@ class WC_Meta_Box_Coupon_Data {
 				// Categories
 				?>
 				<p class="form-field"><label for="product_categories"><?php _e( 'Product categories', 'woocommerce' ); ?></label>
-				<select id="product_categories" name="product_categories[]" style="width: 50%;"  class="wc-enhanced-select" multiple="multiple" data-placeholder="<?php _e( 'Any category', 'woocommerce' ); ?>">
+				<select id="product_categories" name="product_categories[]" style="width: 50%;"  class="wc-enhanced-select" multiple="multiple" data-placeholder="<?php esc_attr_e( 'Any category', 'woocommerce' ); ?>">
 					<?php
 						$category_ids = (array) get_post_meta( $post->ID, 'product_categories', true );
 						$categories   = get_terms( 'product_cat', 'orderby=name&hide_empty=0' );
@@ -144,13 +146,13 @@ class WC_Meta_Box_Coupon_Data {
 							echo '<option value="' . esc_attr( $cat->term_id ) . '"' . selected( in_array( $cat->term_id, $category_ids ), true, false ) . '>' . esc_html( $cat->name ) . '</option>';
 						}
 					?>
-				</select> <img class="help_tip" data-tip='<?php _e( 'A product must be in this category for the coupon to remain valid or, for "Product Discounts", products in these categories will be discounted.', 'woocommerce' ); ?>' src="<?php echo WC()->plugin_url(); ?>/assets/images/help.png" height="16" width="16" /></p>
+				</select> <?php echo wc_help_tip( __( 'A product must be in this category for the coupon to remain valid or, for "Product Discounts", products in these categories will be discounted.', 'woocommerce' ) ); ?></p>
 				<?php
 
 				// Exclude Categories
 				?>
 				<p class="form-field"><label for="exclude_product_categories"><?php _e( 'Exclude categories', 'woocommerce' ); ?></label>
-				<select id="exclude_product_categories" name="exclude_product_categories[]" style="width: 50%;"  class="wc-enhanced-select" multiple="multiple" data-placeholder="<?php _e( 'No categories', 'woocommerce' ); ?>">
+				<select id="exclude_product_categories" name="exclude_product_categories[]" style="width: 50%;"  class="wc-enhanced-select" multiple="multiple" data-placeholder="<?php esc_attr_e( 'No categories', 'woocommerce' ); ?>">
 					<?php
 						$category_ids = (array) get_post_meta( $post->ID, 'exclude_product_categories', true );
 						$categories   = get_terms( 'product_cat', 'orderby=name&hide_empty=0' );
@@ -159,7 +161,7 @@ class WC_Meta_Box_Coupon_Data {
 							echo '<option value="' . esc_attr( $cat->term_id ) . '"' . selected( in_array( $cat->term_id, $category_ids ), true, false ) . '>' . esc_html( $cat->name ) . '</option>';
 						}
 					?>
-				</select> <img class="help_tip" data-tip='<?php _e( 'Product must not be in this category for the coupon to remain valid or, for "Product Discounts", products in these categories will not be discounted.', 'woocommerce' ) ?>' src="<?php echo WC()->plugin_url(); ?>/assets/images/help.png" height="16" width="16" /></p>
+				</select> <?php echo wc_help_tip( __( 'Product must not be in this category for the coupon to remain valid or, for "Product Discounts", products in these categories will not be discounted.', 'woocommerce' ) ); ?></p>
 				<?php
 
 				echo '</div><div class="options_group">';
@@ -208,7 +210,10 @@ class WC_Meta_Box_Coupon_Data {
 	}
 
 	/**
-	 * Save meta box data
+	 * Save meta box data.
+	 *
+	 * @param int $post_id
+	 * @param WP_Post $post
 	 */
 	public static function save( $post_id, $post ) {
 		global $wpdb;
@@ -267,6 +272,9 @@ class WC_Meta_Box_Coupon_Data {
 		update_post_meta( $post_id, 'minimum_amount', $minimum_amount );
 		update_post_meta( $post_id, 'maximum_amount', $maximum_amount );
 		update_post_meta( $post_id, 'customer_email', $customer_email );
+
+		// Clear cache
+		WC_Cache_Helper::incr_cache_prefix( 'coupons' );
 
 		do_action( 'woocommerce_coupon_options_save', $post_id );
 	}

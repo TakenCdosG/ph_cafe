@@ -56,5 +56,5 @@ jQuery(document).ready(function($) {
 
 	$( '.screen-options' ).prepend( $( '#nf-subs-screen-options' ).html() );
 	$( '#nf-subs-screen-options' ).remove();
-
+	
 });

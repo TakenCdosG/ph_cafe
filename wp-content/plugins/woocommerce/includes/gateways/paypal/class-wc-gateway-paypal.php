@@ -1,11 +1,6 @@
 <?php
-
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 /**
- * PayPal Standard Payment Gateway
+ * PayPal Standard Payment Gateway.
  *
  * Provides a PayPal Standard Payment Gateway.
  *
@@ -15,9 +10,17 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package		WooCommerce/Classes/Payment
  * @author 		WooThemes
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * WC_Gateway_Paypal Class.
+ */
 class WC_Gateway_Paypal extends WC_Payment_Gateway {
 
-	/** @var boolean Whether or not logging is enabled */
+	/** @var bool Whether or not logging is enabled */
 	public static $log_enabled = false;
 
 	/** @var WC_Logger Logger instance */
@@ -31,7 +34,7 @@ class WC_Gateway_Paypal extends WC_Payment_Gateway {
 		$this->has_fields         = false;
 		$this->order_button_text  = __( 'Proceed to PayPal', 'woocommerce' );
 		$this->method_title       = __( 'PayPal', 'woocommerce' );
-		$this->method_description = __( 'PayPal standard works by sending customers to PayPal where they can enter their payment information.', 'woocommerce' );
+		$this->method_description = sprintf( __( 'PayPal standard sends customers to PayPal to enter their payment information. PayPal IPN requires fsockopen/cURL support to update order statuses after payment. Check the %ssystem status%s page for more details.', 'woocommerce' ), '<a href="' . admin_url( 'admin.php?page=wc-status' ) . '">', '</a>' );
 		$this->supports           = array(
 			'products',
 			'refunds'
@@ -41,7 +44,7 @@ class WC_Gateway_Paypal extends WC_Payment_Gateway {
 		$this->init_form_fields();
 		$this->init_settings();
 
-		// Define user set variables
+		// Define user set variables.
 		$this->title          = $this->get_option( 'title' );
 		$this->description    = $this->get_option( 'description' );
 		$this->testmode       = 'yes' === $this->get_option( 'testmode', 'no' );
@@ -68,8 +71,8 @@ class WC_Gateway_Paypal extends WC_Payment_Gateway {
 	}
 
 	/**
-	 * Logging method
-	 * @param  string $message
+	 * Logging method.
+	 * @param string $message
 	 */
 	public static function log( $message ) {
 		if ( self::$log_enabled ) {
@@ -81,8 +84,7 @@ class WC_Gateway_Paypal extends WC_Payment_Gateway {
 	}
 
 	/**
-	 * get_icon function.
-	 *
+	 * Get gateway icon.
 	 * @return string
 	 */
 	public function get_icon() {
@@ -90,7 +92,7 @@ class WC_Gateway_Paypal extends WC_Payment_Gateway {
 		$icon      = (array) $this->get_icon_image( WC()->countries->get_base_country() );
 
 		foreach ( $icon as $i ) {
-			$icon_html .= '<img src="' . esc_attr( $i ) . '" alt="' . __( 'PayPal Acceptance Mark', 'woocommerce' ) . '" />';
+			$icon_html .= '<img src="' . esc_attr( $i ) . '" alt="' . esc_attr__( 'PayPal Acceptance Mark', 'woocommerce' ) . '" />';
 		}
 
 		$icon_html .= sprintf( '<a href="%1$s" class="about_paypal" onclick="javascript:window.open(\'%1$s\',\'WIPaypal\',\'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700\'); return false;" title="' . esc_attr__( 'What is PayPal?', 'woocommerce' ) . '">' . esc_attr__( 'What is PayPal?', 'woocommerce' ) . '</a>', esc_url( $this->get_icon_url( WC()->countries->get_base_country() ) ) );
@@ -99,30 +101,26 @@ class WC_Gateway_Paypal extends WC_Payment_Gateway {
 	}
 
 	/**
-	 * Get the link for an icon based on country
+	 * Get the link for an icon based on country.
 	 * @param  string $country
 	 * @return string
 	 */
-	private function get_icon_url( $country ) {
-		switch ( $country ) {
-			case 'MX' :
-			case 'ZA' :
-				$link = 'https://www.paypal.com/' . strtolower( $country ) . '/cgi-bin/webscr?cmd=xpt/Marketing/general/WIPaypal-outside';
-			break;
-			default :
-				$link = 'https://www.paypal.com/' . strtolower( $country ) . '/webapps/mpp/paypal-popup';
-			break;
+	protected function get_icon_url( $country ) {
+		$countries = array( 'DZ', 'AU', 'BH', 'BE', 'BQ', 'BW', 'CA', 'CN', 'CW', 'CZ', 'DK', 'FI', 'FR', 'DE', 'GR', 'HK', 'HU', 'IN', 'ID', 'IT', 'JO', 'KE', 'KW', 'LU', 'MY', 'MA', 'NL', 'NO', 'OM', 'PH', 'PL', 'PT', 'QA', 'IE', 'RU', 'BL', 'SX', 'MF', 'SA', 'SG', 'SK', 'KR', 'SS', 'ES', 'SE', 'TW', 'TH', 'TR', 'AE', 'GB', 'US', 'VN' );
+
+		if ( in_array( $country, $countries ) ) {
+			return 'https://www.paypal.com/' . strtolower( $country ) . '/webapps/mpp/paypal-popup';
 		}
 
-		return $link;
+		return 'https://www.paypal.com/' . strtolower( $country ) . '/cgi-bin/webscr?cmd=xpt/Marketing/general/WIPaypal-outside';
 	}
 
 	/**
-	 * Get PayPal images for a country
+	 * Get PayPal images for a country.
 	 * @param  string $country
 	 * @return array of image URLs
 	 */
-	private function get_icon_image( $country ) {
+	protected function get_icon_image( $country ) {
 		switch ( $country ) {
 			case 'US' :
 			case 'NZ' :
@@ -173,6 +171,9 @@ class WC_Gateway_Paypal extends WC_Payment_Gateway {
 			case 'TH' :
 				$icon = 'https://www.paypalobjects.com/webstatic/en_TH/mktg/Logos/AM_mc_vs_dc_ae.jpg';
 			break;
+			case 'JP' :
+				$icon = 'https://www.paypal.com/ja_JP/JP/i/bnr/horizontal_solution_4_jcb.gif';
+				break;
 			default :
 				$icon = WC_HTTPS::force_https_url( WC()->plugin_url() . '/includes/gateways/paypal/assets/images/paypal.png' );
 			break;
@@ -181,8 +182,7 @@ class WC_Gateway_Paypal extends WC_Payment_Gateway {
 	}
 
 	/**
-	 * Check if this gateway is enabled and available in the user's country
-	 *
+	 * Check if this gateway is enabled and available in the user's country.
 	 * @return bool
 	 */
 	public function is_valid_for_use() {
@@ -190,8 +190,8 @@ class WC_Gateway_Paypal extends WC_Payment_Gateway {
 	}
 
 	/**
-	 * Admin Panel Options
-	 * - Options for bits like 'title' and availability on a country-by-country basis
+	 * Admin Panel Options.
+	 * - Options for bits like 'title' and availability on a country-by-country basis.
 	 *
 	 * @since 1.0.0
 	 */
@@ -206,7 +206,7 @@ class WC_Gateway_Paypal extends WC_Payment_Gateway {
 	}
 
 	/**
-	 * Initialise Gateway Settings Form Fields
+	 * Initialise Gateway Settings Form Fields.
 	 */
 	public function init_form_fields() {
 		$this->form_fields = include( 'includes/settings-paypal.php' );
@@ -214,9 +214,7 @@ class WC_Gateway_Paypal extends WC_Payment_Gateway {
 
 	/**
 	 * Get the transaction URL.
-	 *
 	 * @param  WC_Order $order
-	 *
 	 * @return string
 	 */
 	public function get_transaction_url( $order ) {
@@ -229,9 +227,8 @@ class WC_Gateway_Paypal extends WC_Payment_Gateway {
 	}
 
 	/**
-	 * Process the payment and return the result
-	 *
-	 * @param int $order_id
+	 * Process the payment and return the result.
+	 * @param  int $order_id
 	 * @return array
 	 */
 	public function process_payment( $order_id ) {
@@ -256,18 +253,18 @@ class WC_Gateway_Paypal extends WC_Payment_Gateway {
 	}
 
 	/**
-	 * Process a refund if supported
-	 * @param  int $order_id
-	 * @param  float $amount
+	 * Process a refund if supported.
+	 * @param  int    $order_id
+	 * @param  float  $amount
 	 * @param  string $reason
-	 * @return  boolean True or false based on success, or a WP_Error object
+	 * @return bool True or false based on success, or a WP_Error object
 	 */
 	public function process_refund( $order_id, $amount = null, $reason = '' ) {
 		$order = wc_get_order( $order_id );
 
 		if ( ! $this->can_refund_order( $order ) ) {
 			$this->log( 'Refund Failed: No transaction ID' );
-			return false;
+			return new WP_Error( 'error', __( 'Refund Failed: No transaction ID', 'woocommerce' ) );
 		}
 
 		include_once( 'includes/class-wc-gateway-paypal-refund.php' );
@@ -280,7 +277,7 @@ class WC_Gateway_Paypal extends WC_Payment_Gateway {
 
 		if ( is_wp_error( $result ) ) {
 			$this->log( 'Refund Failed: ' . $result->get_error_message() );
-			return false;
+			return new WP_Error( 'error', $result->get_error_message() );
 		}
 
 		$this->log( 'Refund Result: ' . print_r( $result, true ) );
@@ -293,6 +290,6 @@ class WC_Gateway_Paypal extends WC_Payment_Gateway {
 			break;
 		}
 
-		return false;
+		return isset( $result['L_LONGMESSAGE0'] ) ? new WP_Error( 'error', $result['L_LONGMESSAGE0'] ) : false;
 	}
 }

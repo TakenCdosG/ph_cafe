@@ -196,11 +196,11 @@ class Ninja_Forms_Loading {
 					} else {
 						$date_format = 'm/d/Y';
 					}
-					$default_value = date( $date_format, strtotime( 'now' ) );
+					$default_value = date( $date_format, current_time( 'timestamp' ) );
 					break;
 				default:
 					if ( 'querystring' == $default_value_type ) {
-						$default_value = isset ( $_GET[ $default_value ] ) ? $_GET[ $default_value ] : '';
+						$default_value = isset ( $_GET[ $default_value ] ) ? esc_html( $_GET[ $default_value ] ) : '';
 					}
 					break;
 			}

@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2013, 2014 MasterCard International Incorporated
+ * Copyright (c) 2013 - 2015 MasterCard International Incorporated
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without modification, are 
@@ -122,7 +122,6 @@ class Simplify_ApiConnectionException extends Simplify_ApiException {
 
     /**
      * @ignore
-     * @param string $message
      */
     function __construct($message, $status = null, $errorData = null) {
         parent::__construct($message, $status, $errorData);
@@ -136,7 +135,6 @@ class Simplify_AuthenticationException extends Simplify_ApiException {
 
     /**
      * @ignore
-     * @param string $message
      */
     function __construct($message, $status = null, $errorData = null) {
         parent::__construct($message, $status, $errorData);
@@ -152,7 +150,6 @@ class Simplify_BadRequestException extends Simplify_ApiException {
 
     /**
      * @ignore
-     * @param string $message
      */
     function __construct($message, $status = null, $errorData = null) {
         parent::__construct($message, $status, $errorData);
@@ -178,7 +175,6 @@ class Simplify_BadRequestException extends Simplify_ApiException {
      * @return boolean true if there are field errors; false otherwise.
      */
     function hasFieldErrors() {
-        return true;
         return count($this->fieldErrors) > 0;
     }
 
@@ -261,7 +257,6 @@ class Simplify_ObjectNotFoundException extends Simplify_ApiException {
 
     /**
      * @ignore
-     * @param string $message
      */
     function __construct($message, $status = null, $errorData = null) {
         parent::__construct($message, $status, $errorData);
@@ -275,7 +270,6 @@ class Simplify_NotAllowedException extends Simplify_ApiException {
 
     /**
      * @ignore
-     * @param string $message
      */
     function __construct($message, $status = null, $errorData = null) {
         parent::__construct($message, $status, $errorData);
@@ -289,7 +283,6 @@ class Simplify_SystemException extends Simplify_ApiException {
 
     /**
      * @ignore
-     * @param string $message
      */
     function __construct($message, $status = null, $errorData = null) {
         parent::__construct($message, $status, $errorData);

@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Custom Menu Wizard WordPress Plugin, Documentation</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style type="text/css">
+.gototop, .gotoprev {
+    display: inline-block;
+    opacity: 0;
+    position: fixed;
+    text-shadow: 1px 1px 1px #000000;
+    -webkit-transition: opacity 1s ease 0s, bottom 1s ease 0s, left 1s ease 0s, right 1s ease 0s, top 1s ease 0s;
+    -o-transition:      opacity 1s ease 0s, bottom 1s ease 0s, left 1s ease 0s, right 1s ease 0s, top 1s ease 0s;
+    transition:         opacity 1s ease 0s, bottom 1s ease 0s, left 1s ease 0s, right 1s ease 0s, top 1s ease 0s;
+}
+.gototop a, .gotoprev a {
+    -webkit-transition: border-radius 1s ease 0s;
+    -o-transition:      border-radius 1s ease 0s;
+    transition:         border-radius 1s ease 0s;
+}
+.gototop {
+    bottom: -3em;
+    right: 0;
+}
+.gototop.affix {
+    bottom: 0;
+    opacity: 0.6;
+}
+.gotoprev {
+    left: -3em;
+    top: 0;
+}
+.gotoprev.affix {
+    left: 0;
+    opacity: 0.6;
+}
+.offsite-link {
+    margin-left: 0.3em;
+}
+.toggle-a-z {
+    color: #808080;
+    margin: -16px -16px 2px 15px;
+    padding: 5px 8px 1px;
+}
+.tabpane-index .panel-body > span:last-child .hidden-md {
+    display: none;
+}
+.panel-heading[aria-expanded="false"] .glyphicon-triangle-top {
+    display: none;
+}
+.panel-heading[aria-expanded="true"] .glyphicon-triangle-bottom {
+    display: none;
+}
+h1 .small {
+    line-height: 2;
+}
+ol, ul {
+    margin-left: 0;
+    padding-left: 1.1em;
+}
+div > ul > li > ul, div > ol > li > ul {
+    margin-bottom: 10px;
+}
+@media (max-width: 767px) {
+    .gotoprev a {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    .gototop a {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+}
+@media (min-width: 768px) {
+    .gotoprev {
+        top: 1em;
+    }
+    .gotoprev.affix {
+        left: 1em;
+    }
+    .gototop {
+        right: 1em;
+    }
+    .gototop.affix {
+        bottom: 1em;
+    }
+}
+</style>
+</head>
+<body>
+    <div id='Top' class="container">
+
+        <div class="page-header">
+            <h1>Custom Menu Wizard Widget <em class="small visible-xs-block visible-sm-block visible-md-inline visible-lg-inline">&hellip;a <a href="https://wordpress.org/plugins/custom-menu-wizard/" target="_blank">WordPress Plugin<small class="glyphicon glyphicon-new-window offsite-link" aria-hidden="true"></small></a></em></h1>
+
+	<h4>Show branches or levels of your menu in a widget, or in content using a shortcode, with full customisation.</h4>
+
+	        </div>
+        
+
+	<p>
+	<strong>Contributors:</strong> <a href='https://profiles.wordpress.org/wizzud/' target='_blank'>wizzud<small class="glyphicon glyphicon-new-window offsite-link" aria-hidden="true"></small></a></p>
+<p>
+	<strong>Donate link:</strong> <a class="btn btn-success btn-xs" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&#038;hosted_button_id=KP2LVCBXNCEB4">Donate to this plugin</a></p>
+<p>
+	<strong>Tags:</strong> menu, widget, navigation, custom menu, partial menu, current item, current page, menu level, menu branch, menu shortcode, menu widget, advanced, enhanced</p>
+<p>
+	<strong>Requires at least:</strong> 3.6</p>
+<p>
+	<strong>Tested up to:</strong> 4.3.1</p>
+<p>
+	<strong>Stable tag:</strong> 3.2.2</p>
+<p>
+	<strong>License:</strong> GPLv2 or Later	</p>
+
+	        <hr id="scroll-default" />
+
+        <div role="tabpanel">
+
+            <!-- Nav tabs -->
+            <nav>
+                <ul class="nav nav-pills" role="tablist">
+                    <li role="presentation" class="active"><a href="#Description" aria-controls="Description" role="tab" data-toggle="pill">Description</a></li>
+                    <li role="presentation"><a href="#Installation" aria-controls="Installation" role="tab" data-toggle="pill">Installation</a></li>
+                    <li role="presentation"><a href="#Widget-Options" aria-controls="Widget-Options" role="tab" data-toggle="pill">Widget Options</a></li>
+                    <li role="presentation"><a href="#Shortcode-Attributes" aria-controls="Shortcode-Attributes" role="tab" data-toggle="pill">Shortcode Attributes</a></li>
+                    <li role="presentation"><a href="#FAQs" aria-controls="FAQs" role="tab" data-toggle="pill">FAQs</a></li>
+                    <li role="presentation"><a href="#Changelog" aria-controls="Changelog" role="tab" data-toggle="pill">Changelog</a></li>
+                </ul>
+            </nav>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="Description">
+                    <h2>Description</h2>
+	<p>This plugin is a boosted version of the WordPress "Custom Menu" widget.
+It provides full control over most of the parameters available when calling WP's <a href="http://codex.wordpress.org/Function_Reference/wp_nav_menu" target='_blank'>wp_nav_menu()<small class="glyphicon glyphicon-new-window offsite-link" aria-hidden="true"></small></a> function, as well as providing pre-filtering of the menu items in order to be able to select a specific portion of the custom menu. It also automatically adds a couple of custom classes. And there's a shortcode that enables you to include the widget's output in your content.</p>
+
+<p>Features include:</p>
+
+<ul>
+<li>Display an entire menu, just a branch of it, just certain level(s) of it, or even just specific items from it!</li>
+<li>Select a branch based on a specific menu item, or the current menu item (currently displayed page)</li>
+<li>Specify a relative or absolute level to start at, and the number of levels to output</li>
+<li>Include ancestor item(s) in the output, with or without siblings</li>
+<li>Exclude certain menu items, or levels of items</li>
+<li>Make the output conditional upon the current menu item being found in different stages of the filter selection process</li>
+<li>Automatically add cmw-level-N and cmw-has-submenu classes to output menu items</li>
+<li>Allow the widget title to be entered but not output, or to be set from the current menu item or selected branch item</li>
+<li>Select hierarchical or flat output, both options still abiding by the specified number of levels to output</li>
+<li>Specify custom class(es) for the widget block, the menu container, and the menu itself</li>
+<li>Modify the link's output with additional HTML around the link's text and/or the link element itself</li>
+<li>Use Ordered Lists (OL) for the top and/or sub levels instead of Unordered Lists (UL)</li>
+<li>Shortcode, <code>[cmwizard]</code>, available to run the widget from within content</li>
+<li>Shortcode can reference a widget instance, making maintenance of multiple occurences of the same (or very similar) shortcode a lot easier</li>
+<li>Interactive "assist" to help with the widget settings and/or shortcode definition</li>
+<li>Utility to find posts containing this plugin's shortcode</li>
+<li>Specify an alternative configuration to use under certain conditions (dual-scenario capability)</li>
+</ul>
+
+<p>Current documentation for the <strong>Widget Options</strong> can be found
+under <a href="#Widget-Options">Widget Options</a>.
+The associated <strong>Shortcode Attributes</strong> are documented
+under <a href="#Shortcode-Attributes">Shortcode Attributes</a>.</p>
+
+
+
+<p><strong>Please, do not be put off by the number of options available!</strong> I suspect (and I admit that I'm guessing!) that for the majority of users
+there are probably a couple of very common scenarios:</p>
+
+<ol>
+<li><p>Show an entire menu...</p>
+
+<ul>
+<li>Drag a new Custom Menu Wizard widget into the sidebar, and give it a title (if you want one)</li>
+<li>Select the menu you wish to use (if it's not already selected)</li>
+<li>Save the widget!</li>
+<li><em>Equivalent shortcode resembles...</em></li>
+</ul>
+
+<pre><code>[cmwizard menu=N title="Your Title"/]</code></pre></li>
+<li><p>Show the current menu item, plus any descendants...</p>
+
+<ul>
+<li>Drag a new Custom Menu Wizard widget into the sidebar, and give it a title (if you want one)</li>
+<li>Select the menu you wish to use (if it's not already selected)</li>
+<li>Open the FILTERS section :
+
+<ul>
+<li>under Primary Filter, click on the <em>Branch</em> radio</li>
+</ul></li>
+<li>Save the widget!</li>
+<li><em>Equivalent shortcode resembles...</em></li>
+</ul>
+
+<pre><code>[cmwizard menu=N title="Your Title" branch=current/]</code></pre></li>
+<li><p>Show just the descendants of the current menu item (if there are any)...</p>
+
+<ul>
+<li>Drag a new Custom Menu Wizard widget into the sidebar, and give it a title (if you want one)</li>
+<li>Select the menu you wish to use (if it's not already selected)</li>
+<li>Open the FILTERS section :
+
+<ul>
+<li>under Primary Filter, click on the <em>Branch</em> radio</li>
+<li>under Secondary Filter, set <em>Starting at</em> to "+1 (children)"</li>
+</ul></li>
+<li>Save the widget!</li>
+<li><em>Equivalent shortcode resembles...</em></li>
+</ul>
+
+<pre><code>[cmwizard menu=N title="Your Title" branch=current start_at="+1"/]</code></pre></li>
+<li><p>Always show the top level items, but when the menu contains the current item then also show that current item, with its ancestors and immediate children...</p>
+
+<ul>
+<li>Drag a new Custom Menu Wizard widget into the sidebar, and give it a title (if you want one)</li>
+<li>Select the menu you wish to use (if it's not already selected)</li>
+<li>Open the FILTERS section :
+
+<ul>
+<li>under Primary Filter, click on the <em>Branch</em> radio</li>
+<li>under Secondary Filter, set <em>Depth</em> to "2 levels" (ie. current item plus immediate children)</li>
+<li>under Inclusions, set <em>Branch Ancestors</em> to "to level 1 (root)", and set <em>Level</em> to "1"</li>
+</ul></li>
+<li>Open the ALTERNATIVE section :
+
+<ul>
+<li>set <em>On condition</em> to "Current Item is NOT in..." and "Menu" (the 2nd dropdown)</li>
+<li>in the <em>Then switch settings to</em> textarea, type in "[cmwizard depth=1/]" (without the quotes!)</li>
+</ul></li>
+<li>Save the widget!</li>
+<li><em>Equivalent shortcode resembles...</em></li>
+</ul>
+
+<pre><code>[cmwizard menu=N branch=current depth=2 ancestors=1 include_level="1" alternative="no-current,menu"]depth=1[/cmwizard]</code></pre></li>
+</ol>
+
+<p>If you like this widget (or if you don't?), please consider taking a moment or two to give it a
+<a href="https://wordpress.org/support/view/plugin-reviews/custom-menu-wizard" target='_blank'>Review<small class="glyphicon glyphicon-new-window offsite-link" aria-hidden="true"></small></a> : it helps others, and gives me valuable feedback.</p>
+
+<p><em>Documentation for version 2 of the widget
+can be found <a href="http://plugins.svn.wordpress.org/custom-menu-wizard/tags/2.0.6/readme.txt" target='_blank'>here<small class="glyphicon glyphicon-new-window offsite-link" aria-hidden="true"></small></a>
+or <a href="http://www.wizzud.com/v210-readme.html" target='_blank'>here<small class="glyphicon glyphicon-new-window offsite-link" aria-hidden="true"></small></a>.</em></p>                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Installation">
+                    <h2>Installation</h2>
+	<ol>
+<li><p>EITHER Upload the zip package via 'Plugins &gt; Add New &gt; Upload' in your WP Admin</p>
+
+<p>OR Extract the zip package and upload <code>custom-menu-wizard</code> folder to the <code>/wp-content/plugins/</code> directory</p></li>
+<li><p>Activate the plugin through the 'Plugins' menu in your WP Admin</p></li>
+</ol>
+
+<p>The widget will now be available in the 'Widgets' admin page.
+As long as you already have at least one Custom Menu defined, you can add the new widget to a sidebar and configure it however you want.
+Alternatively, you can use the shortcode in your content.</p>
+
+<p>Current documentation for the <strong>Widget Options</strong> can be found
+under <a href="#Widget-Options">Widget Options</a>.</p>                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Widget-Options">
+                    <h2>Widget Options</h2>
+<div class="row"><div class="col-md-4 col-md-push-8 col-lg-3 col-lg-push-9"><div class="tabpane-index panel panel-default"><div class="panel-body">
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Widget-Options" data-scroll="#woption-12-Title">Title</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Widget-Options" data-scroll="#woption-13-Hide">Hide</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Widget-Options" data-scroll="#woption-14-Select-Menu">Select Menu</a></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><br class="hidden-md hidden-lg"/><strong>Filters Section</strong><span class="hidden-md hidden-lg"> :</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><em>Primary Filter</em><span class="hidden-md hidden-lg">:</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-15-Level">Level</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-16-Branch">Branch</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-17-Items">Items</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><em>Secondary Filter</em><span class="hidden-md hidden-lg">:</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-18-Starting-at">Starting at</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-19-Item-if-possible">Item, if possible</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-20-Level">Level</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-21-Allow-all-Root-Items">Allow all Root Items</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-22-For-Depth">For Depth</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-23-Relative-to-Current-Item">Relative to Current Item</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><em>Inclusions</em><span class="hidden-md hidden-lg">:</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-24-Branch-Ancestors">Branch Ancestors</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-25--with-Siblings">... with Siblings</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-26-Branch-Siblings">Branch Siblings</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-27-Level">Level</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><em>Exclusions</em><span class="hidden-md hidden-lg">:</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-28-Item-Ids">Item Ids</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-29-Level">Level</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><em>Qualifier</em><span class="hidden-md hidden-lg">:</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-30-Current-Item-is-in">Current Item is in</a></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><br class="hidden-md hidden-lg"/><strong>Fallbacks Section</strong><span class="hidden-md hidden-lg"> :</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><em>If Current Item has no children</em><span class="hidden-md hidden-lg">:</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-31-Unlabelled-Select">Unlabelled Select</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-32-and-Include-its-Siblings">...and Include its Siblings</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-33-For-Depth">For Depth</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><em>If no Current Item can be found</em><span class="hidden-md hidden-lg">:</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-34-Try-items-marked-Parent-of-Current">Try items marked Parent of Current</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><em>If more than 1 possible Current Item</em><span class="hidden-md hidden-lg">:</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-35-Use-the-last-one-found">Use the last one found</a></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><br class="hidden-md hidden-lg"/><strong>Output Section</strong><span class="hidden-md hidden-lg"> :</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><a href="#Widget-Options" data-scroll="#woption-36-Hierarchical">Hierarchical</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><a href="#Widget-Options" data-scroll="#woption-37-Flat">Flat</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><em>Set Title from</em><span class="hidden-md hidden-lg">:</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-38-Current-Item">Current Item</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-39-Branch-Item">Branch Item</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-40-Make-it-a-Link">Make it a Link</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><em>Change UL to OL</em><span class="hidden-md hidden-lg">:</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-41-Top-Level">Top Level</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-42-Sub-Levels">Sub-Levels</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><em>Pre WordPress 3.6</em><span class="hidden-md hidden-lg">:</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:1em;"></span><a href="#Widget-Options" data-scroll="#woption-43-Hide-Widget-if-Empty">Hide Widget if Empty</a></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><br class="hidden-md hidden-lg"/><strong>Container Section</strong><span class="hidden-md hidden-lg"> :</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><a href="#Widget-Options" data-scroll="#woption-44-Element">Element</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><a href="#Widget-Options" data-scroll="#woption-45-Unique-ID">Unique ID</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><a href="#Widget-Options" data-scroll="#woption-46-Class">Class</a></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><br class="hidden-md hidden-lg"/><strong>Classes Section</strong><span class="hidden-md hidden-lg"> :</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><a href="#Widget-Options" data-scroll="#woption-47-Menu-Class">Menu Class</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><a href="#Widget-Options" data-scroll="#woption-48-Widget-Class">Widget Class</a></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><br class="hidden-md hidden-lg"/><strong>Links Section</strong><span class="hidden-md hidden-lg"> :</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><a href="#Widget-Options" data-scroll="#woption-49-Before-the-Link">Before the Link</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><a href="#Widget-Options" data-scroll="#woption-50-After-the-Link">After the Link</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><a href="#Widget-Options" data-scroll="#woption-51-Before-the-Link-Text">Before the Link Text</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><a href="#Widget-Options" data-scroll="#woption-52-After-the-Link-Text">After the Link Text</a></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><br class="hidden-md hidden-lg"/><strong>Alternative Section</strong><span class="hidden-md hidden-lg"> :</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><a href="#Widget-Options" data-scroll="#woption-53-On-condition">On condition</a><span class="hidden-md hidden-lg"> ,</span></span>
+ <span class="text-nowrap visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><span class="hidden-xs hidden-sm" style="margin-left:0.5em;"></span><a href="#Widget-Options" data-scroll="#woption-54-Then-switch-settings-to">Then switch settings to</a></span>
+</div></div></div>
+<div class="col-md-8 col-md-pull-4 col-lg-9 col-lg-pull-3">
+<p>There are quite a few options, which makes the widget settings box very long. I have therefore grouped most of the options into
+collapsible logical sections (with remembered state once saved).</p>
+
+<p>The associated <strong>Shortcode Attributes</strong> are documented
+under <a href="#Shortcode-Attributes">Shortcode Attributes</a>.</p>
+
+<p><em><strong>Always Visible</strong></em></p>
+
+<ul>
+<li><p><strong id="woption-12-Title">Title</strong> <em>(textbox)</em></p>
+
+<p>Set the title for your widget.</p></li>
+<li><p><strong id="woption-13-Hide">Hide</strong> <em>(checkbox)</em></p>
+
+<p>Prevents the entered <code>Title</code> being displayed in the front-end widget output.</p>
+
+<p>In the Widgets admin page, I find it useful to still be able to see the <code>Title</code> in the sidebar when the widget is closed, but I
+don't necessarily want that <code>Title</code> to actually be output when the widget is displayed at the front-end. Hence this checkbox.</p></li>
+<li><p><strong id="woption-14-Select-Menu">Select Menu</strong> <em>(select)</em></p>
+
+<p>Choose the appropriate menu from the dropdown list of Custom Menus currently defined in your WordPress application. The
+first one available (alphabetically) is already selected for you by default.</p></li>
+</ul>
+<h3 id='Filters-Section'>Filters Section</h3>
+<p>Filters are applied in the order they are presented.</p>
+
+<p><strong><em id="woption-1-Primary-Filter">Primary Filter</em></strong></p>
+
+<ul>
+<li><p><strong id="woption-15-Level">Level</strong> <em>(radio, default On, &amp; select)</em></p>
+
+<p>Filters by level within the selected menu, starting at the level selected here. This is the default setting
+for a new widget instance, which, if left alone and with all other options at their default, will show the entire selected menu.</p>
+
+<p>Example : If you wanted to show all the options that were at level 3 or below, you could check this radio and set the select to "3".</p></li>
+<li><p><strong id="woption-16-Branch">Branch</strong> <em>(radio &amp; select)</em></p>
+
+<p>Filters by branch, with the head item of the branch being selected from the dropdown. The dropdown presents all the
+items from the selected menu, plus a "Current Item" option (the default). Selecting "Current Item" means that the head item of the
+branch is the current menu item (as indicated by WordPress), provided, of course, that the current menu item actually corresponds to
+a menu item from the currently selected menu!</p></li>
+<li><p><strong id="woption-17-Items">Items</strong> <em>(radio &amp; textbox)</em></p>
+
+<p>Filters by the menu items that you specifically pick (by menu item id, as a comma-separated list). The simplest way
+to get your list of ids is to use the "assist", and [un]check the green tick box at the right hand side of each depicted menu item that
+you want. Alternatively, just type your list of ids into the box.</p>
+
+<p>If the id is appended with a '+', eg. '23+', then all the item's descendants will also be included.</p>
+
+<p>Example : If you only wanted to show, say, 5 of your many available menu items, and those 5 items are not in one handy branch of the menu,
+then you might want to use this option.</p>
+
+<p>Example : If your menu has 6 root branches - "A" thru to "F" - and you were only interested in branches "B" (id of, say, 11) and
+"E" (id of, say, 19), you could set <code>Items</code> to be "11+,19+", which would include "B" with all its descendants, and "E" with all its
+descendants.</p></li>
+</ul>
+
+<p><strong><em id="woption-2-Secondary-Filter">Secondary Filter</em></strong> <em>(not applicable to an <code>Items</code> filter)</em></p>
+
+<ul>
+<li><p><strong id="woption-18-Starting-at">Starting at</strong> <em>(select)</em></p>
+
+<p>This is only applicable to a <code>Branch</code> filter and it allows you to shift the starting point of your output within the confines
+of the selected branch. By default it is set to the selected branch item itself, but it can be changed to a relative of the branch item (eg.
+parent, grandparent, children, etc) or to an absolute, fixed level within the branch containing the selected branch item (eg. the root
+level item for the branch, or one level below the branch's root item, etc).</p>
+
+<p>Example : If you wanted the entire "current" branch then, with <code>Branch</code> set to "Current Item", you might set <code>Starting at</code> to "1 (root)".
+Alternatively, if you wanted the children of the current menu item then <code>Starting at</code> could be set to "+1 (children)".</p></li>
+<li><p><strong id="woption-19-Item-if-possible">Item, if possible</strong> <em>(radio, default On)</em></p>
+
+<p>This is the default filter mechanism whereby, if <code>Starting at</code> can only result in a single item (ie. it is the branch item itself, or
+an ancestor thereof) then only that item and its descendants are considered for filtering.</p></li>
+<li><p><strong id="woption-20-Level">Level</strong> <em>(radio)</em></p>
+
+<p>Changes the default filter mechanism such that if <code>Starting at</code> results in the selection of the branch item or one of its ancestors,
+then all siblings of that resultant item are also included in the secondary filtering process.</p>
+
+<p>Example : If Joe and Fred are siblings (ie. they have a common parent) and Joe is the selected branch item - with <code>Starting at</code> set
+to Joe - then the secondary filter would normally only consider Joe and its descendants. However, if <code>Level</code> was enabled instead of
+<code>Item</code>, then both Joe and Fred, <em>and all their descendants</em>, would be considered for filtering.</p>
+
+<p>Note that there is one exception, and that is that if <code>Starting at</code> results in a root-level item, then <code>Allow all Root Items</code> must
+be enabled in order to allow the other sibling root items to be added into the filter process.</p></li>
+<li><p><strong id="woption-21-Allow-all-Root-Items">Allow all Root Items</strong> <em>(checkbox)</em></p>
+
+<p>In the right conditions - see <code>Level</code> above - this allows sibling root items to be considered for secondary filtering.</p></li>
+<li><p><strong id="woption-22-For-Depth">For Depth</strong> <em>(select)</em></p>
+
+<p>This the number of levels of the menu structure that will be considered for inclusion in the final output (in complete
+ignorance of any subsequent Inclusions or Exclusions).</p>
+
+<p>The first level of output is the starting level, regardless of
+how that starting level is determined (see <code>Starting at</code> and <code>Relative to Current Item</code> options). So if you ask
+for a Depth of 1 level, you get just the starting level; if you ask for a Depth of 2, you get the starting level and
+the one below it.</p></li>
+<li><p><strong id="woption-23-Relative-to-Current-Item">Relative to Current Item</strong> <em>(checkbox)</em></p>
+
+<p>By default, <code>For Depth</code> (above) is relative to the first item found, but this may be overridden to be relative to the
+current menu item <strong><em>if</em></strong>  <code>For Depth</code> is not unlimited <strong>and</strong> the current menu item can found within the selected menu.
+If the current menu item is not within the selected menu then it falls back to being relative to the first item found.</p>
+
+<p>Please note that the current item must also be within the constraints set by the <code>Starting at</code> option. In other words, if
+current item is <em>above</em> the <code>Starting at</code> level in the menu structure then it will <strong>not</strong> be used to alter the determination of
+Depth.</p></li>
+</ul>
+
+<p><strong><em id="woption-3-Inclusions">Inclusions</em></strong></p>
+
+<p>These allow certain other items to be added to the output from the secondary filters.</p>
+
+<p>The first 3 are only applicable to a <code>Branch</code> filter. Please note that they only come into effect when the <code>Branch</code> filter item is at
+or below the <code>Starting at</code> level, and do not include any items that would break the depth limit set in the Secondary Filter options.</p>
+
+<ul>
+<li><p><strong id="woption-24-Branch-Ancestors">Branch Ancestors</strong> <em>(select)</em></p>
+
+<p>Include any ancestors (parent, grandparent, etc) of the items selected as the <code>Branch</code> filter.
+Ancestors can be set to go up to an absolute level, or to go up a certain number of levels relative to the <code>Branch</code> filter item.</p></li>
+<li><p><strong id="woption-25--with-Siblings">... with Siblings</strong> <em>(select)</em></p>
+
+<p>In conjunction with <code>Branch Ancestors</code>, also include all siblings of those ancestors.
+As with Ancestors, their siblings can be set to go up to an absolute level, or to go up a certain number of levels relative
+to the <code>Branch</code> filter item. Note that while it is possibe to set a larger range for siblings than ancestors, the final output
+is limited by <code>Branch Ancestors</code> setting.</p></li>
+<li><p><strong id="woption-26-Branch-Siblings">Branch Siblings</strong> <em>(checkbox)</em></p>
+
+<p>Include any siblings of the item selected as the <code>Branch</code> filter (ie. any items at the same level and within
+the same branch as the <code>Branch</code> item).</p></li>
+<li><p><strong id="woption-27-Level">Level</strong> <em>(select)</em></p>
+
+<p>This allows an entire level of items to be included, optionally also including all levels either above or below it.
+This replaces the <code>All Root Items</code> checkbox (pre v3.0.4), which only allowed for the inclusion of the root level items.</p></li>
+</ul>
+
+<p><strong><em id="woption-4-Exclusions">Exclusions</em></strong></p>
+
+<ul>
+<li><p><strong id="woption-28-Item-Ids">Item Ids</strong> <em>(textbox)</em></p>
+
+<p>This is a comma-separated list of the ids of menu items that you do <em>not</em> want to appear in the final output.
+The simplest way to get your list of ids is to use the "assist", and [un]check
+the red cross box at the left hand side of each depicted menu item. Alternatively, just type your list of ids into the box.</p>
+
+<p>If the id is appended with a '+', eg. '23+', then all the item's descendants will also be excluded.</p>
+
+<p>Example : If you wanted to show the entire "A" branch, with the sole exception of one grandchild of "A", say "ABC", then you could
+set <code>Branch</code> to "A", and <code>Exclusions</code> to the id of the "ABC" item.</p>
+
+<p>Example : If you have a menu with 4 root items - "A", "B", "C" &amp; "D" - and you wanted to show all items, with descendants, for all bar
+the "C" branch, then you could set <code>Level</code> to "1 (root)" and <code>Exclusions</code> to, say, "12+", where "12" is the menu item id for "C" and
+the "+" indicates that all the descendants of "C" should also be excluded.</p></li>
+<li><p><strong id="woption-29-Level">Level</strong> <em>(select)</em></p>
+
+<p>This allows an entire level of items to be excluded, optionally also excluding all levels either above or below it.</p></li>
+</ul>
+
+<p><strong><em id="woption-5-Qualifier">Qualifier</em></strong></p>
+
+<ul>
+<li><p><strong id="woption-30-Current-Item-is-in">Current Item is in</strong> <em>(select)</em></p>
+
+<p>This allows you to specify that there only be any output shown when/if the current menu item is one of the menu items selected
+for output at a particular stage in the filter processing.</p>
+
+<ul>
+<li><em>"Menu"</em> : the current menu item has to be somewhere within the selected menu.</li>
+<li><em>"Primary Filter"</em> : the current menu item has to be within the scope of the selected primary filter. So if you selected, say, a child
+of "A" as the <code>Branch</code> item, then if "A" was the current menu item there would be no output with this qualifier.</li>
+<li><em>"Secondary Filter"</em> : the current menu item has to be within the items as restricted by the secondary filters. So if you
+selected <code>Branch</code> as "A", with <code>Starting at</code> set to "+1 (children)", then if "A" was the current menu item there would be no output with this qualifier.</li>
+<li><em>"Inclusions"</em> : the current menu item has to be in within the items as set by the primary and secondary filters, and the inclusions.</li>
+<li><em>"Final Output"</em> : the current menu item has to be in the final output.</li>
+</ul></li>
+</ul>
+<h3 id='Fallbacks-Section'>Fallbacks Section</h3>
+<p><strong><em id="woption-6-If-Current-Item-has-no-children">If Current Item has no children</em></strong></p>
+
+<p>This gets applied at the Secondary Filter stage, and its eligibility and
+application are therefore determined and governed by the other Secondary Filter settings.</p>
+
+<p>It only comes into play (possibly) when a <code>Branch</code> filter is set as "Current Item", and the <code>Starting at</code>
+and <code>For Depth</code> settings are such that the output should start at or below the current item,
+and would normally include some of the current item's descendants (eg. <code>Starting at</code> "the Branch",</p>
+
+<pre><code>For Depth</code></pre>
+
+<p>"1 level" does <em>not</em> invoke the fallback).
+The fallback allows for the occasion when the current menu item <em>does not have</em> any immediate children.</p>
+
+<ul>
+<li><p><strong id="woption-31-Unlabelled-Select">Unlabelled Select</strong> <em>(select)</em></p>
+
+<p>Enable the fallback by selecting one of</p>
+
+<ul>
+<li><em>Start at : -1 (parent)</em> : overrides the <code>Starting at</code> option to be the immediate parent of the Current Item</li>
+<li><em>Start at : the Current Item</em> : overrides the <code>Starting at</code> option to be the Current Item</li>
+<li><em>No output!</em> : self-explanatory</li>
+</ul></li>
+<li><p><strong id="woption-32-and-Include-its-Siblings">...and Include its Siblings</strong> <em>(checkbox)</em></p>
+
+<p>This will add in the siblings of the item selected above (excluding the "No output!" setting!).</p>
+
+<p>Note : This <em>only</em> adds the siblings, not the siblings' descendants! However, if the <code>Level</code> radio (in Secondary Filter stage above) is
+set, then all the item's siblings <em>and their descendants</em> will automatically be included, and [un]setting this option will have no effect.
+Also note that if the fallback results in a root-level item being selected as the new <code>Starting at</code> item, then the inclusion of siblings
+outside the current branch depends on the setting of the <code>Allow all Root Items</code> checkbox.</p></li>
+<li><p><strong id="woption-33-For-Depth">For Depth</strong> <em>(select)</em></p>
+
+<p>Override the current <code>For Depth</code> setting. Note that any depth value set here will be relative to the current item, regardless
+of the current setting of <code>...Relative to</code>!</p>
+
+<p>As an example, this option may be useful in the following scenario : item A has 2 children, B and C; B is the current menu item but has
+no children, whereas C has loads of children/grandchildren. If you fallback to B's parent - A - with Unlimited depth set, then you will
+get A, B, C, and <em>all</em> C's dependents! You may well want to override depth to limit the output to, say, just A, B and C, by setting this
+fallback option to "1"? Or maybe A, B, C, and C's immediate children, by setting "2"?</p></li>
+</ul>
+
+<p><strong><em id="woption-7-If-no-Current-Item-can-be-found">If no Current Item can be found</em></strong></p>
+
+<ul>
+<li><p><strong id="woption-34-Try-items-marked-Parent-of-Current">Try items marked Parent of Current</strong> <em>(checkbox)</em></p>
+
+<p>This gets applied right at the start of processing, when determining
+which of the menu items (if any) should be regarded as the unique "Current Item" by this widget.
+Under certain conditions, WordPress will mark an item as being the parent of a current item ...
+but there won't actually be a current item marked! This occurs, for example, when displaying a full post for which there is
+no specific related menu item, yet there <em>is</em> a menu item for a Category that the displayed post belongs to :
+WordPress will then mark the related Category as being the parent of the current item (the post) even though
+it can't mark the post as being the current item (because there's no specific item for it within the menu).</p>
+
+<p>Enabling this fallback will make the widget look for these situations - only as a last resort! -
+and set (one of) the found "parent" item(s) as the Current Item.</p></li>
+</ul>
+
+<p><strong><em id="woption-8-If-more-than-1-possible-Current-Item">If more than 1 possible Current Item</em></strong></p>
+
+<ul>
+<li><p><strong id="woption-35-Use-the-last-one-found">Use the last one found</strong> <em>(checkbox)</em></p>
+
+<p>Occasionally it is possible for CMW to have more than one possible candidate for Current Item. Since there can only be one
+Current Item, CMW picks the <em>first one</em> encountered. However, this may cause a problem where, for example, a root level item <strong>and</strong>
+one of its sub-menu items are <em>both</em> set to list items from Category A, and the page being displayed is a full post that belongs
+to category A : CMW will more than likely determine that the root level item is the Current Item, whereas you really need the
+sub-menu item to be the Current Item (probably to maintain consistency with what is produced when other sub-menu items are "current").</p>
+
+<p>Enabling this fallback will make CMW use the last-found (instead of first-found) candidate for Current item, ie. when
+the choice is between a submenu item or its parent item, the submenu item will be used.</p>
+
+<p>Note that this option is most likely to only have any effect when the <code>If no Current Item can be found</code> fallback (above) is
+enabled, but given that any other plugin/theme could affect the menu item structure that gets passed thru to CMW it is not
+impossible for other configurations to also be affected.</p></li>
+</ul>
+<h3 id='Output-Section'>Output Section</h3>
+<ul>
+<li><p><strong id="woption-36-Hierarchical">Hierarchical</strong> <em>(radio, default On)</em></p>
+
+<p>Output in the standard nested list format. The alternative is <code>Flat</code>.</p></li>
+<li><p><strong id="woption-37-Flat">Flat</strong> <em>(radio)</em></p>
+
+<p>Output in a single list format, ignoring any parent-child relationship other than to maintain the same physical order as would be
+presented in a <code>Hierarchical</code> output (which is the alternative and default).</p></li>
+</ul>
+
+<p><strong><em id="woption-9-Set-Title-from">Set Title from</em></strong></p>
+
+<p>These allow you to set the <code>Title</code> option from a menu item, and, if brought into play, the <code>Hide</code> flag is ignored.
+Note that the item providing the <code>Title</code> only has to be within the selected menu; it does not have to be present in the final output!
+Note also that a <code>Current Item</code> setting will be used in preference to a <code>Branch Item</code> setting.</p>
+
+<p>A relative setting - such as <code>Currrent Item</code> "-2 levels" - will top out at the root-level ancestor (which
+could be the Current/Branch Item!) if there aren't enough ancestors available.
+Also, an absolute setting - such as <code>Branch Item</code> "level 4" - will bottom out at the Current/Branch Item
+if it's at/above the absolute level specified.</p>
+
+<ul>
+<li><p><strong id="woption-38-Current-Item">Current Item</strong> <em>(select)</em></p>
+
+<p>Sets <code>Title</code> from the current menu item (if current menu item is in the selected menu), or an ancestor
+of that item, either at an absolute or relative level.</p></li>
+<li><p><strong id="woption-39-Branch-Item">Branch Item</strong> *(select)</p>
+
+<p>Only applicable to a <code>Branch</code> filter, and sets <code>Title</code> from the <code>Branch</code> item, or an ancestor
+of that item, either at an absolute or relative level.</p></li>
+<li><p><strong id="woption-40-Make-it-a-Link">Make it a Link</strong> <em>(checkbox)</em></p>
+
+<p>If the widget <code>Title</code> does actually get set using one of the options above, then this will
+put an anchor around the title, using the information from the menu item that supplies the title.</p></li>
+</ul>
+
+<p><strong><em id="woption-10-Change-UL-to-OL">Change UL to OL</em></strong></p>
+
+<p>The standard for menus is to use UL (unordered list) elements to display the output. These settings give you the option to
+swap the ULs out for OLs (ordered lists).</p>
+
+<ul>
+<li><p><strong id="woption-41-Top-Level">Top Level</strong> <em>(checkbox)</em></p>
+
+<p>Swap the outermost UL for an OL.</p></li>
+<li><p><strong id="woption-42-Sub-Levels">Sub-Levels</strong> <em>(checkbox)</em></p>
+
+<p>Swap any nested (ie. not the outermost) ULs for an OLs.</p></li>
+</ul>
+
+<p><strong><em id="woption-11-Pre-WordPress-3.6">Pre WordPress 3.6</em></strong></p>
+
+<p>Please note that as of WordPress v3.6, the <code>Hide Widget if Empty</code> option becomes superfluous and will <strong>not</strong>
+be presented (the wp_nav_menu() function has been modified to automatically suppress all HTML output if there
+are no items to be displayed).</p>
+
+<ul>
+<li><p><strong id="woption-43-Hide-Widget-if-Empty">Hide Widget if Empty</strong> <em>(checkbox)</em></p>
+
+<p>If checked, the widget will not output <em>any</em> HTML unless it finds at least one menu item that matches the Filter settings.</p></li>
+</ul>
+<h3 id='Container-Section'>Container Section</h3>
+<ul>
+<li><p><strong id="woption-44-Element">Element</strong> <em>(textbox, default "div")</em></p>
+
+<p>The menu list is usually wrapped in a "container" element, and this is the tag for that element.
+You may change it for another tag, or you may clear it out and the container will be completely removed. Please note that
+WordPress is set by default to only accept "div" or "nav", but that could be changed or extended by any theme or plugin.</p></li>
+<li><p><strong id="woption-45-Unique-ID">Unique ID</strong> <em>(textbox)</em></p>
+
+<p>This allows you to specify your own id (which should be unique) for the container.</p></li>
+<li><p><strong id="woption-46-Class">Class</strong> <em>(textbox)</em></p>
+
+<p>This allows you to add your own class to the container element.</p></li>
+</ul>
+<h3 id='Classes-Section'>Classes Section</h3>
+<ul>
+<li><p><strong id="woption-47-Menu-Class">Menu Class</strong> <em>(textbox, default "menu-widget")</em></p>
+
+<p>This is the class that will be applied to the list element that holds the entire menu.</p></li>
+<li><p><strong id="woption-48-Widget-Class">Widget Class</strong> <em>(textbox)</em></p>
+
+<p>This allows you to add your own class to the outermost element of the widget, the one that wraps the entire widget output.</p></li>
+</ul>
+<h3 id='Links-Section'>Links Section</h3>
+<ul>
+<li><p><strong id="woption-49-Before-the-Link">Before the Link</strong> <em>(textbox)</em></p>
+
+<p>Text or HTML that will be placed immediately before each menu item's link.</p></li>
+<li><p><strong id="woption-50-After-the-Link">After the Link</strong> <em>(textbox)</em></p>
+
+<p>Text or HTML that will be placed immediately after each menu item's link.</p></li>
+<li><p><strong id="woption-51-Before-the-Link-Text">Before the Link Text</strong> <em>(textbox)</em></p>
+
+<p>Text or HTML that will be placed immediately before each menu item's link text.</p></li>
+<li><p><strong id="woption-52-After-the-Link-Text">After the Link Text</strong> <em>(textbox)</em></p>
+
+<p>Text or HTML that will be placed immediately after each menu item's link text.</p></li>
+</ul>
+<h3 id='Alternative-Section'>Alternative Section</h3>
+<p>This is new at v3.1.0 and provides a limited dual-scenario capability, based on a couple of conditions. For example, let's say you
+want to show the Current Item and its immediate children, <em>but</em> if there isn't a Current Item then you want to show the top 2 levels
+of the menu : previously this was not possible solely with CMW, but now you can configure the main widget settings for the "current item"
+scenario, and add an Alternative setting for when no Current Item can be determined.</p>
+
+<ul>
+<li><p><strong id="woption-53-On-condition">On condition</strong> <em>(2 selects)</em></p>
+
+<p>Select the appropriate condition for when your Alternative configuration should be used, and also the stage within the
+Filter processing when this condition should be tested for (similar to the Qualifier, <code>Current Item is in</code>). You need
+values in both selects for the Alternative to be considered.</p></li>
+<li><p><strong id="woption-54-Then-switch-settings-to">Then switch settings to</strong> <em>(textarea)</em></p>
+
+<p>This should contain a CMW-generated shortcode equivalent of the configuration that you want to switch to. Please note that leaving
+this empty will <strong>not</strong> prevent the Alternative kicking in if the conditions are set and met! An empty <code>switch to</code> will merely default
+to the CMW's base settings (Level 1, unlimited Depth). Also note that Alternatives cannot be nested : a primary configuration is
+allowed one chance to switch and that's it, so providing an Alternative-that-has-an-Alternative will not work.</p>
+
+<p>The Assist <em>will work</em> with an Alternative - in that it displays the appropriate output - but it can get confusing as to which
+configuration set is being used. There is a message displayed whenever the Alternative kicks in (green if successful, red if it
+should have kicked in but couldn't due to an error in the alternative settings) so please take note of it.</p></li>
+</ul>
+
+<p>A bit more information about the <strong>Alternative</strong> is available
+in <a href="http://www.wizzud.com/2014/10/03/custom-menu-wizard-wordpress-plugin-version-3-1/" target='_blank'>this article<small class="glyphicon glyphicon-new-window offsite-link" aria-hidden="true"></small></a>.</p>
+</div></div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Shortcode-Attributes">
+                    <h2>Shortcode Attributes</h2>
+<div class="row"><div class="col-md-3 col-lg-2 col-md-push-9 col-lg-push-10"><div class="tabpane-index panel panel-default"><div class="panel-body"><button class="toggle-a-z btn btn-default btn-lg pull-right" data-toggle="button" aria-pressed="false"><span class="glyphicon glyphicon-sort-by-alphabet"></span></button>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-widget" data-natural-pos="0" data-az-pos="32">widget</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-title" data-natural-pos="1" data-az-pos="28">title</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-menu" data-natural-pos="2" data-az-pos="21">menu</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-level" data-natural-pos="3" data-az-pos="20">level</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-branch" data-natural-pos="4" data-az-pos="4">branch</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-items" data-natural-pos="5" data-az-pos="19">items</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-start_at" data-natural-pos="6" data-az-pos="26">start_at</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-start_mode" data-natural-pos="7" data-az-pos="27">start_mode</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-allow_all_root" data-natural-pos="8" data-az-pos="0">allow_all_root</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-depth" data-natural-pos="9" data-az-pos="9">depth</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-depth_rel_current" data-natural-pos="10" data-az-pos="10">depth_rel_current</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-ancestors" data-natural-pos="11" data-az-pos="3">ancestors</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-ancestor_siblings" data-natural-pos="12" data-az-pos="2">ancestor_siblings</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-siblings" data-natural-pos="13" data-az-pos="25">siblings</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-include_level" data-natural-pos="14" data-az-pos="18">include_level</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-exclude" data-natural-pos="15" data-az-pos="11">exclude</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-exclude_level" data-natural-pos="16" data-az-pos="12">exclude_level</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-contains_current" data-natural-pos="17" data-az-pos="8">contains_current</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-fallback" data-natural-pos="18" data-az-pos="13">fallback</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-fallback_ci_parent" data-natural-pos="19" data-az-pos="15">fallback_ci_parent</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-fallback_ci_lifo" data-natural-pos="20" data-az-pos="14">fallback_ci_lifo</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-flat_output" data-natural-pos="21" data-az-pos="17">flat_output</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-title_from" data-natural-pos="22" data-az-pos="29">title_from</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-title_linked" data-natural-pos="23" data-az-pos="30">title_linked</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-ol_root" data-natural-pos="24" data-az-pos="23">ol_root</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-ol_sub" data-natural-pos="25" data-az-pos="24">ol_sub</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-container" data-natural-pos="26" data-az-pos="5">container</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-container_id" data-natural-pos="27" data-az-pos="7">container_id</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-container_class" data-natural-pos="28" data-az-pos="6">container_class</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-menu_class" data-natural-pos="29" data-az-pos="22">menu_class</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-widget_class" data-natural-pos="30" data-az-pos="33">widget_class</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-wrap_link" data-natural-pos="31" data-az-pos="34">wrap_link</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-wrap_link_text" data-natural-pos="32" data-az-pos="35">wrap_link_text</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-alternative" data-natural-pos="33" data-az-pos="1">alternative</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-title_tag" data-natural-pos="34" data-az-pos="31">title_tag</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+ <span class="visible-xs-inline visible-sm-inline visible-md-block visible-lg-block"><a href="#Shortcode-Attributes" data-scroll="#sattribute-findme" data-natural-pos="35" data-az-pos="16">findme</a><span class="hidden-md hidden-lg">&nbsp;, </span></span>
+</div></div></div>
+<div class="col-md-9 col-lg-10 col-md-pull-3 col-lg-pull-2">
+
+<p>The shortcode is <strong><code>[cmwizard]</code></strong>.
+Most of the attributes reflect the options available to the widget, but some have been simplified for easier use in the shortcode format.
+Please note that the <strong>Hide Widget if Empty</strong> option is not available to the shortcode : it is set to enabled, and if there are no menu items
+found then there will be no output from the shortcode.</p>
+
+<p>The simplest way to build a shortcode is to use a widget : as you set options, the equivalent shortcode is displayed at the base of
+the widget (v3+) and the base of the "assist". The widget itself need not be assigned to a widget area, so you can construct your
+shortcode using a widget in the Inactive Widgets area if you have no need for an active one. Please remember that any options you play
+with while constructing your shortcode <strong><em>do not have to be Saved</em></strong> to the widget itself! Just copy-paste the shortcode when
+you are happy with it.</p>
+
+<h4 id="sattribute-widget">widget</h4>
+
+<p><em>integer</em> : <strong>!NEW!</strong> <em>from v3.1.5</em>, the shortcode will accept a <code>widget=N</code> attribute which will load an
+existing widget instance.</p>
+
+<p>The shortcode - resembling <strong><code>[cmwizard widget=N/]</code></strong>, where <strong>N</strong> is an integer - is provided at the base
+of each widget, below the widget's "equivalent" shortcode.</p>
+
+<p>It will look for the instance in all active sidebars, <em>and</em> the Inactive Widgets area.
+You can prevent inspection of the Inactive Widgets area by adding an <code>inactive=0</code> attribute.
+It will <strong><em>not</em></strong> look in any other <em>Inactive Sidebar...</em> area unless you specifically tell it to do so by
+adding an <code>orphaned=1</code> attribute.</p>
+
+<p>Using this attribute reduces the shortcode length, and may cut down on maintenance where
+you have the same shortcode in a number of places ... as long as you are prepared to keep the widget instance (even if it's in the
+Inactive Widgets area). You can override the widget instance's settings by supplying any of the standard shortcode attributes.</p>
+
+<h4 id="sattribute-title">title</h4>
+
+<p><em>string</em> : The output's <code>Title</code>, which may be overridden by <strong>title_from</strong>. Note that there is no shortcode equivalent of the widget's <code>Hide</code> option for the title.</p>
+
+<h4 id="sattribute-menu">menu</h4>
+
+<p><em>string or integer</em> : Accepts a menu name or id. If not provided, the shortcode will attempt to find the first menu (alphabetically)
+that has menu items attached to it, and use that.</p>
+
+<h4 id="sattribute-level">level</h4>
+
+<p><em>integer</em> : Sets the <code>Level</code> filter to the specified (greater than zero) value. Defaults to 1, and is ignored if either <strong>branch</strong> or <strong>items</strong> is specified.</p>
+
+<h4 id="sattribute-branch">branch</h4>
+
+<p><em>string or integer</em> : If not empty then <code>Branch</code> is set as the primary filter, with the branch item being set from the assigned value:</p>
+
+<ul>
+<li>If numeric, it is taken as being the id of a menu item.</li>
+<li>If set to either <em>"current"</em> or <em>"current-item"</em> then the <code>Branch</code> item is set to "Current Item".</li>
+<li>If any other string, it is taken to be the title of a menu item (within the selected menu). The widget will look for the first <em>caseless</em> title match, so specifying <code>branch="my menu item"</code> will match against a menu item with the title "My Menu Item".</li>
+</ul>
+
+<h4 id="sattribute-items">items</h4>
+
+<p><em>string</em> : Comma-separated list of meu item ids, where an id can optionally be followed by a '+' to include all its descendants (eg. "23+"). Takes priority over <strong>branch</strong>.</p>
+
+<h4 id="sattribute-start_at">start_at</h4>
+
+<p><em>string</em> : This is only relevant to a <code>Branch</code> filter, and consists of a signed or unsigned integer that indicates either a relative
+(to the selected branch item) or absolute level to start your output at (ref. the widget's <code>Starting at</code> option under <em>Secondary Filter</em>,
+<a href="#Widget-Options" data-scroll="#Filters-Section">Filters Section</a>).
+By default the starting level for output is the branch item's level. A relative level is indicated by a signed (ie. preceded by
+a "+" or "-") integer, eg. <code>start_at="+1"</code>, while an absolute level is unsigned, eg. <code>start_at="1"</code>. Some examples :</p>
+
+<ul>
+<li><code>start_at="+1"</code> : (relative) start at the branch item's level + 1 (also accepts <code>start_at="children"</code>)</li>
+<li><code>start_at="-1"</code> : (relative) start at the branch item's level - 1 (also accepts <code>start_at="parent"</code>)</li>
+<li><code>start_at="-2"</code> : (relative) would be the "grandparent" level</li>
+<li><code>start_at="1"</code> : (absolute) start at the root item of the selected branch (also accepts <code>start_at="root"</code>)</li>
+<li><code>start_at="2"</code> : (absolute) start at one level below root (still within the selected branch)</li>
+</ul>
+
+<h4 id="sattribute-start_mode">start_mode</h4>
+
+<p><em>string</em> : This has only one accepted value - "level" - and is only applicable for a <code>Branch</code> filter whose <strong>start_at</strong> setting returns
+in an item that is at or above the selected branch item (relatively or absolutely).
+Setting <code>start_mode="level"</code> forces the widget to use not only the resultant starting item
+and its relevant descendants, but also all that item's siblings <em>and their descendants</em>
+(ref. the widget's <code>Level</code> radio option under <em>Secondary Filter</em>,
+<a href="#Widget-Options" data-scroll="#Filters-Section">Filters Section</a>).</p>
+
+<h4 id="sattribute-allow_all_root">allow_all_root</h4>
+
+<p><em>switch, off by default, 1 to enable</em> : See widget's <code>Allow all Root Items</code> option, under <em>Secondary Filter</em>,
+<a href="#Widget-Options" data-scroll="#Filters-Section">Filters Section</a>.</p>
+
+<h4 id="sattribute-depth">depth</h4>
+
+<p><em>integer, default 0 (unlimited)</em> : See widget's <code>For Depth</code> option, under <em>Secondary Filter</em>,
+<a href="#Widget-Options" data-scroll="#Filters-Section">Filters Section</a>.</p>
+
+<h4 id="sattribute-depth_rel_current">depth_rel_current</h4>
+
+<p><em>switch, off by default, 1 to enable</em> : See widget's <code>Relative to Current Item</code> option, under <em>Secondary Filter</em>,
+<a href="#Widget-Options" data-scroll="#Filters-Section">Filters Section</a>.</p>
+
+<h4 id="sattribute-ancestors">ancestors</h4>
+
+<p><em>integer, default 0 (off)</em> : Sets an absolute level (positive integer), or a relative number of levels (negative integer), for which
+the ancestors of the <code>Branch</code> filter item should be included. See widget's <code>Branch Ancestors</code> option, under <em>Inclusions</em>,
+<a href="#Widget-Options" data-scroll="#Filters-Section">Filters Section</a>. (only relevant to a <code>Branch</code> filter)</p>
+
+<h4 id="sattribute-ancestor_siblings">ancestor_siblings</h4>
+
+<p><em>integer, default 0 (off)</em> : Sets an absolute level (positive integer), or a relative number of levels (negative integer), for which
+the siblings of ancestors of the <code>Branch</code> filter item should be included. See widget's <code>... with Siblings</code> option, under <em>Inclusions</em>,
+<a href="#Widget-Options" data-scroll="#Filters-Section">Filters Section</a>. (only relevant to a <code>Branch</code> filter)</p>
+
+<h4 id="sattribute-siblings">siblings</h4>
+
+<p><em>switch, off by default, 1 to enable</em> : See widget's <code>Branch Siblings</code> option, under <em>Inclusions</em>,
+<a href="#Widget-Options" data-scroll="#Filters-Section">Filters Section</a>. (only relevant to a <code>Branch</code> filter)</p>
+
+<h4 id="sattribute-include_level">include_level</h4>
+
+<p><em>string</em> : A level (1, 2, 3, etc), optionally followed by a "+" or "-" to include all subsequent (lower) or prior (higher)
+levels respectively. For example :</p>
+
+<ul>
+<li><code>include_level="2"</code> : include all items at level 2</li>
+<li><code>include_level="2-"</code> : include all level 1 <strong>and</strong> level 2 items</li>
+<li><code>include_level="2+"</code> : include all items at level 2 or greater.</li>
+</ul>
+
+<p>Note that prior to v3.0.4, this was <strong>include_root</strong> (a switch), which only included the root level : <code>include_root=1</code> is still accepted, even
+though now deprecated, and is equivalent to setting <code>include_level="1"</code>. However, if <strong>include_level</strong> is specified then it takes precedence.</p>
+
+<h4 id="sattribute-exclude">exclude</h4>
+
+<p><em>string</em> : Comma-separated list of meu item ids, where an id can optionally be followed by a '+' to include all its descendants (eg. "23+").</p>
+
+<h4 id="sattribute-exclude_level">exclude_level</h4>
+
+<p><em>string</em> : A level (1, 2, 3, etc), optionally followed by a "+" or "-" to exclude all subsequent (lower) or prior (higher)
+levels respectively. See the examples for <strong>include_level</strong> above.</p>
+
+<h4 id="sattribute-contains_current">contains_current</h4>
+
+<p><em>string</em> : Accepted values : "menu", "primary", "secondary", "inclusions", or "output". See widget's <em>Qualifier</em> options,
+under <a href="#Widget-Options" data-scroll="#Filters-Section">Filters Section</a>,
+for an explanation of the respective settings.</p>
+
+<h4 id="sattribute-fallback">fallback</h4>
+
+<p><em>string</em> : This enables the widget's <em>If Current Item has no children</em> fallback (ref. <a href="#Widget-Options" data-scroll="#Fallbacks-Section">Fallbacks Section</a>)...</p>
+
+<ul>
+<li><em>"parent"</em> : Sets the widget's Fallback option to "Start at : -1 (parent)"</li>
+<li><em>"current"</em> : Sets the widget's Fallback option to "Start at : the Current Item"</li>
+<li><em>"quit"</em> : Sets the widget's Fallback option to "No output!"</li>
+</ul>
+
+<p>The first two values can be further qualified by appending a comma and a digit, eg. <code>fallback="current,1"</code>
+or <code>fallback="parent,2"</code>, which will also set the widget's <code>For Depth</code> fallback option to the value of the
+digit(s).</p>
+
+<p>Optionally, "+siblings" can also be used (comma-separated, with or without a depth digit) to indicate that
+siblings of the "parent" or "current" fallback item should also be included. The order of the comma-separated
+values is not important, so <code>fallback="current,+siblings,1"</code> is the same as <code>fallback="current,1,+siblings"</code>,
+and <code>fallback="2,parent"</code> is the same as <code>fallback="parent,2"</code>, etc.</p>
+
+<h4 id="sattribute-fallback_ci_parent">fallback_ci_parent</h4>
+
+<p><em>switch, off by default, 1 to enable</em> : See widget's <em>If no Current Item can be found</em> entry in the
+<a href="#Widget-Options" data-scroll="#Fallbacks-Section">Fallbacks Section</a>.</p>
+
+<h4 id="sattribute-fallback_ci_lifo">fallback_ci_lifo</h4>
+
+<p><em>switch, off by default, 1 to enable</em> : See widget's <em>If more than 1 possible Current Item</em> entry in the
+<a href="#Widget-Options" data-scroll="#Fallbacks-Section">Fallbacks Section</a>.</p>
+
+<h4 id="sattribute-flat_output">flat_output</h4>
+
+<p><em>switch, off by default, 1 to enable</em> : See widget's <code>Flat</code> option, under <a href="#Widget-Options" data-scroll="#Output-Section">Output Section</a>.</p>
+
+<h4 id="sattribute-title_from">title_from</h4>
+
+<p><em>string</em> : Supply a "current" and/or a "branch" item (comma-separated), corresponding to the 2 selects in the widget's <code>Set Title from</code> options,
+under <a href="#Widget-Options" data-scroll="#Output-Section">Output Section</a>.</p>
+
+<ul>
+<li><em>"current"</em> : take the title from the Current Item</li>
+<li><em>"currentN"</em> : take the title from an ancestor of the Current Item, where <strong>N</strong> is the literal level of the ancestor, eg. "current2" would be the Current Item's ancestor that sits at level 2</li>
+<li><em>"current-N"</em> : take the title from an ancestor of the Current Item, where <strong>N</strong> is the number of levels above the current item, eg. "current-2" would be the Current Item's grand-parent</li>
+<li><em>"current-root"</em> : equivalent to <em>"current1"</em>; takes the title from the Current Item's root-level ancestor</li>
+<li><em>"current-parent"</em> : equivalent to <em>"current-1"</em>; takes the title from the Current Item's parent</li>
+</ul>
+
+<p>All the above are also available for the Branch Item, eg. <em>"branch"</em>, <em>"branch1"</em>, <em>"branch-2"</em>, etc.
+As an example, <code>title_from="current-1,branch"</code> will take the title from either the Current Item's parent - if
+there is a Current Item found in the menu - or the Primary Filter's Branch setting if there isn't a Current
+Item available.</p>
+
+<h4 id="sattribute-title_linked">title_linked</h4>
+
+<p><em>switch, off by default, 1 to enable</em> : Makes the title into a link if the title comes from one of the <code>title_from</code> options.</p>
+
+<h4 id="sattribute-ol_root">ol_root</h4>
+
+<p><em>switch, off by default, 1 to enable</em> : See widget's <code>Top Level</code> option, under <em>Change UL to OL</em> in the <a href="#Widget-Options" data-scroll="#Output-Section">Output Section</a>.</p>
+
+<h4 id="sattribute-ol_sub">ol_sub</h4>
+
+<p><em>switch, off by default, 1 to enable</em> : See widget's <code>Sub-Levels</code> option, under <em>Change UL to OL</em> in the <a href="#Widget-Options" data-scroll="#Output-Section">Output Section</a>.</p>
+
+<h4 id="sattribute-container">container</h4>
+
+<p><em>string</em> : See widget's <code>Element</code> option, under <a href="#Widget-Options" data-scroll="#Container-Section">Container Section</a>.</p>
+
+<h4 id="sattribute-container_id">container_id</h4>
+
+<p><em>string</em> : See widget's <code>Unique ID</code> option, under <a href="#Widget-Options" data-scroll="#Container-Section">Container Section</a>.</p>
+
+<h4 id="sattribute-container_class">container_class</h4>
+
+<p><em>string</em> : See widget's <code>Class</code> option, under <a href="#Widget-Options" data-scroll="#Container-Section">Container Section</a>.</p>
+
+<h4 id="sattribute-menu_class">menu_class</h4>
+
+<p><em>string</em> : See widget's <code>Menu Class</code> option, under <a href="#Widget-Options" data-scroll="#Classes-Section">Classes Section</a>.</p>
+
+<h4 id="sattribute-widget_class">widget_class</h4>
+
+<p><em>string</em> : See widget's <code>Widget Class</code> option, under <a href="#Widget-Options" data-scroll="#Classes-Section">Classes Section</a>.</p>
+
+<h4 id="sattribute-wrap_link">wrap_link</h4>
+
+<p><em>string</em> : This is an optional tag name (eg. "div", "p", "span") that, if provided, will be made into HTML start/end tags
+and sent through to the widget as its <code>Before the Link</code> and <code>After the Link</code> options (ref. <a href="#Widget-Options" data-scroll="#Links-Section">Links Section</a>).
+Please note that the shortcode usage - a simple tag name - is much more restrictive than the widget's options, which allow HTML.</p>
+
+<h4 id="sattribute-wrap_link_text">wrap_link_text</h4>
+
+<p><em>string</em> : This is an optional tag name (eg. "span", "em", "strong") that, if provided, will be made into HTML start/end tags
+and sent through to the widget as its <code>Before the Link Text</code> and <code>After the Link Text</code> options (ref. <a href="#Widget-Options" data-scroll="#Links-Section">Links Section</a>).
+Please note that the shortcode usage - a simple tag name - is much more restrictive than the widget's options, which allow HTML.</p>
+
+<h4 id="sattribute-alternative">alternative</h4>
+
+<p><em>string</em> : This is 2 settings separated by a comma, reflecting the <code>On condition</code> options under the
+<a href="#Widget-Options" data-scroll="#Alternative-Section">Alternative Section</a>.
+Possible values are:</p>
+
+<ul>
+<li>One of "current", "no-current" or "no-output" : the condition to test for</li>
+<li>One of "menu", "primary", "secondary", "inclusions", or "output" : the stage at which to test the condition</li>
+</ul>
+
+<p>Eg. <code>alternative="no-current,inclusions"</code> would test for the absence of a Current Item in the filtered menu items, having completed
+the Inclusions stage, and attempt to switch to the Alternative settings.</p>
+
+<p>The actual Alternative settings - a cut-down shortcode - are placed as content between the shortcodes start and end tags, and this is
+the only time that the use of a self-terminating shortcode is not sufficient. When specifiying the Alternative settings, <em>do not</em>
+include the square brackets, otherwise WordPress will interpret it as a nested shortcode!</p>
+
+<p>For example, to set a primary configuration of "show Current Branch plus any kids", with an Alternative of "show top 2 levels" if no
+current item can be found anywhere in the menu...</p>
+
+<pre><code>[cmwizard menu=NN branch=current alternative=&quot;no-current,menu&quot;]depth=2[/cmwizard]</code></pre>
+
+<p>Alternatively, you could switch it around and say the primary configuration is "show top 2 levels", with an Alternative of
+"show Current Branch plus kids" if a current item <em>can</em> be found within the menu...</p>
+
+<pre><code>[cmwizard menu=NN depth=2 alternative=&quot;current,menu&quot;]branch=current[/cmwizard]</code></pre>
+
+<p>Note that Alternative (eg. "branch=current") does not require a <code>menu</code> option, because you can't change the menu so the primary
+configuration's setting is always used.</p>
+
+<p>As ever, the best way to construct a full shortcode, including an alternative, is to use the Assist : Use one instance of the CMW
+widget to build your Alternative settings, copy the equivalent shortcode into the Alternative option of a second instance of the CMW
+widget, and then continue configuring that second instance to be your primary configuration; your final shortcode can simply be lifted
+from the second instance!</p>
+
+<p>A bit more information about the Alternative option is available
+in <a href="http://www.wizzud.com/2014/10/03/custom-menu-wizard-wordpress-plugin-version-3-1/" target='_blank'>this article<small class="glyphicon glyphicon-new-window offsite-link" aria-hidden="true"></small></a>.</p>
+
+<h4 id="sattribute-title_tag">title_tag</h4>
+
+<p><em>string</em> : An optional tag name (eg. "h1", "h3", etc) to replace the default "h2" used to enclose the widget title.
+Please note that this attribute has no equivalent in the widget options, because it <em>only</em> applies when a widget is instantiated via a shortcode.</p>
+
+<h4 id="sattribute-findme">findme</h4>
+
+<p><em>switch, off by default, 1 to enable</em> : This is a utility intended for editors only, and output is restricted to those with edit_pages capability.
+If enabled it will return a list of posts that contain a CMW shortcode. If <code>findme</code> is set, the only other attribute that is taken any
+notice of is <code>title</code>, which will be output (if supplied) as an H3 in front of the list. Example :</p>
+
+<pre><code>[cmwizard findme=1 title=&quot;Posts containing a CMW shortcode...&quot;/]</code></pre>
+
+<p>Note that the information provided by this utility is also available from any widget's "assist".</p>
+
+
+</div></div>
+<h3>Shortcode Examples</h3>
+
+<ul>
+<li><p>Show the entire "main" menu</p>
+
+<pre><code>[cmwizard menu=main/]</code></pre></li>
+<li><p>Show the children of the current menu item within the "main" menu, for unlimited depth, setting the widget title from the current menu item</p>
+
+<pre><code>[cmwizard menu=main branch=current start_at=children title_from=current/]</code></pre></li>
+<li><p>From the "animals" menu, show all the items <em>immediately</em> below "Small Dogs", plus "Small Dogs" and its sibling items, as ordered lists</p>
+
+<pre><code>[cmwizard menu="animals" branch="small dogs" depth=2 include="siblings" ol_root=1 ol_sub=1/]</code></pre></li>
+<li><p>From the "animals" menu, show the entire "Small Animals" branch, with the sole exception of the "Small Animals" item itself, whenever "Small Animals" or one of its descendants is the current menu item</p>
+
+<pre><code>[cmwizard menu="animals" branch="small animals" start_at=children contains_current=primary/]</code></pre></li>
+<li><p>Show the entire "main" menu entitled "Main Menu" <em>unless</em> there's a current menu item, in which case show the current menu item, its siblings and its immediate children, and entitle it "Nearest and Dearest!"</p>
+
+<pre><code>[cmwizard menu=main title="Main Menu" alternative="current,menu"]title="Nearest and Dearest!" branch=current depth=2 siblings=1[/cmwizard]</code></pre></li>
+</ul>                </div>
+                <div role="tabpanel" class="tab-pane fade" id="FAQs">
+                    <div class="panel-group" role="tablist" aria-multiselectable="true">
+<h2>FAQs</h2>
+<div class="row"><div class="col-sm-9">
+	<p>If you have a question or problem that is not covered here, please use the <a href="https://wordpress.org/support/plugin/custom-menu-wizard" target='_blank'>Support forum<small class="glyphicon glyphicon-new-window offsite-link" aria-hidden="true"></small></a>.</p>
+
+</div>
+<div class="col-sm-3 text-right"><div class="btn-group" role="group" aria-label="..."><button type="button" class="faqs-all btn btn-default">Show All</button><button type="button" class="faqs-all btn btn-default">Hide All</button></div></div>
+<div class="col-xs-12">&nbsp;</div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-1-heading" data-toggle="collapse" href="#faq-1" aria-expanded="false" aria-controls="faq-1"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>Are there any known problems/restrictions?</h4></a><div id="faq-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-1-heading"><div class="panel-body">
+
+
+<p>Yep, 'fraid so :</p>
+
+<ol>
+<li>The widget will only recognise one "current" item (prior to v2.0.2 it was the last one found; as of v2.0.2, it's the first one encountered, but v3.1.5 add a switch that lets you opt for the last one found). It is perfectly possible to have more than one menu item marked as "current", but if CMW has been configured to filter on anything related to a "current menu item" it can only choose one. The simplest example of multiple "current" items is if you add the same page to a menu more than once, but any other plugin that adds and/or manipulates menu items could potentially cause problems for CMW.</li>
+<li>The widget's "assist" uses jQuery UI's Dialog, which unfortunately (in versions 1.10.3/4) has a <em>really</em> annoying bug in its handling of a draggable (ie. when you drag the Dialog's title bar to reposition it on the page) when the page has been scrolled. It is due to be fixed in UI v1.11.0, but meantime I have defaulted the Dialog to fixed position, with an option to toggle back to absolute : it's not perfect but it's the best compromise I can come up with to maintain some sort of useability.</li>
+</ol>
+
+
+</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-2-heading" data-toggle="collapse" href="#faq-2" aria-expanded="false" aria-controls="faq-2"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>Why isn't it working? Why is there no output?</h4></a><div id="faq-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-2-heading"><div class="panel-body">
+
+
+<p>I don't know. With all due respect (and a certain amount of confidence in the widget) I would venture to suggest that it is probably due to
+the option settings on the widget/shortcode. The quickest way to resolve any such issues is to use the widget's interactive "assist", and
+ensure that you set the current menu item correctly for the page(s) that you are having problems with. However, I am well aware that I not
+infallible (and it's been proven a fair few times!), so if you still have problems then please let me have as much information as possible
+(the shortcode equivalent of your settings is a good start?) and I will endeavour to help.</p>
+
+<p>Please note that simply reporting "It doesn't work" is not
+the most useful of feedbacks, and is unlikely to get a response other than, possibly, a request for more details.</p>
+
+
+</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-3-heading" data-toggle="collapse" href="#faq-3" aria-expanded="false" aria-controls="faq-3"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>How do I use the "assist"?</h4></a><div id="faq-3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-3-heading"><div class="panel-body">
+
+
+<p>The widget's interactive "assist" is specific to each widget instance. It is a javascript-driven <em>emulator</em> that uses the widget instance's
+option settings - including the menu selected - to build a pictorial representation of the menu and show you, in blue, which menu items will
+be output according to the current option settings. It also shows a very basic output list of those menu items, although it will not apply
+some of the more advanced HTML-modifying options such as can be found under the Container, Classes or Links sections.
+Any of the displayed menu items can be designated as the "current menu item" simply by clicking on it (click again to deselect, or another
+item to change). The "current menu item" is shaded red, with its parent shaded orange and ancestors shaded yellow. All changes in the
+"current menu item" and the widget options are immediately reflected by the "assist" (text fields in the widget options simply need to lose
+focus).</p>
+
+<p>The red cross to the left of each menu item toggles the Exclusions setting for the item and/or its descendants. The button has 3 settings :</p>
+
+<ul>
+<li>Off (dimmed)</li>
+<li>Just this item (white on red)</li>
+<li>This item <em>plus</em> all its descendants (white on red, with a small yellow plus sign)</li>
+</ul>
+
+<p>Just click through the toggle states. When the Primary Filter is set to "Items", the green tick buttons to the right of each menu item
+work in the same way.</p>
+
+<p>Note that if a green "Alternate settings" message is showing then the ticks and crosses buttons will show the approriate Alternative
+settings but they will be slightly opaque and they will <em>not</em> be clickable!</p>
+
+<p>Once you are happy with the results, having tested all possible settings of "current menu item" (if it applies), then simply Save the widget.
+If you are using a shortcode implementation, then copy-paste the shortcode text - at the base of either the "assist" or the widget form - straight into your post.</p>
+
+
+</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-4-heading" data-toggle="collapse" href="#faq-4" aria-expanded="false" aria-controls="faq-4"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>Is there an easy way to construct the shortcode?</h4></a><div id="faq-4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-4-heading"><div class="panel-body">
+
+
+<p>Yes, use a widget form. The shortcode for all the selected/specified options is show at the base of the widget (v3+) and the base of the
+"assist". The widget does not have to be placed within a widget area, it can also be used from the Inactive Widgets area.</p>
+
+
+</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-5-heading" data-toggle="collapse" href="#faq-5" aria-expanded="false" aria-controls="faq-5"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>Do I have to Save the widget if I am using a shortcode?</h4></a><div id="faq-5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-5-heading"><div class="panel-body">
+
+
+<p>Only if (as of v3.1.5) you are using the <code>widget=N</code> attribute, which refers back to an existing widget instance
+for its settings.</p>
+
+
+</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-6-heading" data-toggle="collapse" href="#faq-6" aria-expanded="false" aria-controls="faq-6"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>How do I get the menu item ids for the 'Items' option?</h4></a><div id="faq-6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-6-heading"><div class="panel-body">
+
+
+<p>Use the widget's interactive "assist" (see above). Within the representative menu structure, each menu item's id is set in its title
+attribute, so should be seen when the cursor is moved over the item. A simpler way is to check the <code>Items</code> option : the "assist" will
+then show a green tick "checkbox" to the right of each menu item and you simply [un]check the items as required. Each selection will be reflected back into the
+widget's <code>Items</code> settings, and also in the shortcode texts.</p>
+
+<p>The more painstaking way is to go to Appearance, Menus and select the relevant menu; hover over the <em>edit</em>, <em>Remove</em>, or <em>Cancel</em> link for an item and look in
+the URL (the link's href) for <code>menu-item=NNN</code> ... the NNN is the menu item id.</p>
+
+
+</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-7-heading" data-toggle="collapse" href="#faq-7" aria-expanded="false" aria-controls="faq-7"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>How do I get the menu item ids for the 'Exclude Ids' option?</h4></a><div id="faq-7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-7-heading"><div class="panel-body">
+
+
+<p>The "assist" shows a red cross "checkbox" to the left of each menu item, and [un]checking the items will reflect back into the options and
+shortcode texts. Otherwise, it's the same principle as outlined above for <code>Items</code> ids.</p>
+
+
+</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-8-heading" data-toggle="collapse" href="#faq-8" aria-expanded="false" aria-controls="faq-8"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>What's the difference between including Branch Siblings (or Branch Ancestors + Siblings), and switching to 'Level' instead of 'Item' in the Secondary Filter section?</h4></a><div id="faq-8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-8-heading"><div class="panel-body">
+
+
+<p>If you elect to include Branch [Ancestor] Siblings, you will <em>only</em> get the siblings, <strong>not</strong> their descendants (assuming they have any).
+On the other hand, if you make <code>Starting at</code> use 'Level' instead of 'Item' then siblings <em>and their descendants</em> will be added to the filter.</p>
+
+<p>For example, let's say that Bravo and Charlie are sibling items immediately below Alpha, and that Bravo is the selected Branch Item,
+with <code>Starting at</code> set to "the Branch" (ie. Bravo). If you switch from "Item" to "Level" then both Bravo, Charlie, <em>and all their descendants</em>,
+will become eligible for filtering. If you left "Item" enabled, and switched on the inclusion of Branch Siblings, then Bravo and Charlie
+would both still be eligible, but only <em>Bravo's descendants</em> would be; not Charlie's!</p>
+
+
+</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-9-heading" data-toggle="collapse" href="#faq-9" aria-expanded="false" aria-controls="faq-9"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>Where is the styling of the output coming from, and how do I change it?</h4></a><div id="faq-9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-9-heading"><div class="panel-body">
+
+
+<p>The widget does not supply any ouput styling (at all!). This is because I have absolutely no idea where you are going to place either the
+widget (sidebar, footer, header, ad-hoc, etc?) or the shortcode (page content, post content, widget content, custom field, etc?) and everyone's
+requirements for styling are likely to be different ... possibly even within the same web page's output. So all styling is down to your theme,
+and if you wish to modify it you will need to add to your theme's stylesheet.</p>
+
+<p>The safest way to do this is via a child theme, so that any changes you make will not be lost if/when the main theme gets updated. The best
+way to test your changes is by utilising the developer capabilities that are available in most modern browsers (personally, I could not
+do without Firefox and the Firebug extension!) and dynamically applying/modifying styles, possibly utilising the custom classes that the
+widget applies to its output, or the Container options for a user-defined id or class.</p>
+
+
+</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-10-heading" data-toggle="collapse" href="#faq-10" aria-expanded="false" aria-controls="faq-10"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>How can I find all my posts/pages that have a CMW shortcode so that I can upgrade them?</h4></a><div id="faq-10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-10-heading"><div class="panel-body">
+
+
+<p>There is a button on the widget's "assist" - <code>[...]</code> - that will provide a list of posts/pages whose content, or meta data (custom fields),
+contains any CMW shortcode. Each entry is a link that opens the item in a new tab/window. The link's title gives a bit more information :
+post type, id, whether the shortcode(s) are in content and/or meta data, and the shortcode(s) concerned.
+This utility does not check things like text widgets, plugin-specific tables, theme-provided textareas, etc.</p>
+
+<p>There is also an extension to the shortcode - <code>[cmwizard findme=1/]</code> - that will output the same information, should you not be able to use
+the "assist" (for some unknown reason). You may optionally provide a title attribute; any other attributes are ignored.
+Note that output from this shortcode extension is restricted to users with edit_pages capability.</p>
+
+
+</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-11-heading" data-toggle="collapse" href="#faq-11" aria-expanded="false" aria-controls="faq-11"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>Is Version 2 of the widget, including the old [custom_menu_wizard/] shortcode, still supported?</h4></a><div id="faq-11" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-11-heading"><div class="panel-body">
+
+
+<p>In Version 3, Yes. However, I highly recommend that you upgrade your widgets &amp; shortcodes to the latest versions,
+because Version 2 will <strong>not</strong> be supported beyond Version 3.</p>
+</div></div></div></div>                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Changelog">
+                    <h2>Changelog</h2>
+	<h4>3.2.2</h4>
+
+<ul>
+<li>bugfix : fixed initial widget display when adding new widget instance in the customizer</li>
+</ul>
+
+<h4>3.2.1</h4>
+
+<ul>
+<li>bugfix : missing echo statement for the update message</li>
+</ul>
+
+<h4>3.2.0</h4>
+
+<ul>
+<li>internationalization</li>
+</ul>
+
+<h4>3.1.5</h4>
+
+<ul>
+<li>addition : expanded Title From to allow absolute ancestor levels (besides root) and relative ancestor levels</li>
+<li>addition : added a fallback option to switch determination of Current Item from first-found to last-found</li>
+<li>addition : added a shortcode attribute that loads an existing widget instance : <code>[cmwizard widget=N/]</code></li>
+<li>documentation : updated, and provided an html version in the plugin download</li>
+</ul>
+
+<h4>3.1.4</h4>
+
+<ul>
+<li>bugfix : in shortcode processing, any supplied Alternative settings weren't being used. thanks corrideat</li>
+<li>bugfix : prevent texturization of shortcode's content, for when it is being used with an Alternative setting</li>
+<li>addition : the ability to make a title into a link when the title has been set from a menu item</li>
+</ul>
+
+<h4>3.1.3</h4>
+
+<ul>
+<li>tweak : minor change to css for the assist when running under the Customizer (WordPress 4.1)</li>
+</ul>
+
+<h4>3.1.2</h4>
+
+<ul>
+<li>modified the readme : documentation for the Shortcode Attributes has been moved to the Installation page (to avoid being truncated)</li>
+</ul>
+
+<h4>3.1.1</h4>
+
+<ul>
+<li>bugfix : only show the allow_all_root setting in the shortcode equivalent if the primary filter is by branch</li>
+<li>addition : work-around for when a theme inadvertently(!) de-registers the widget, which then prevents the shortcode working</li>
+</ul>
+
+<h4>3.1.0</h4>
+
+<ul>
+<li>addition : new Alternative section which takes a cmwizard shortcode and conditionally applies it as an entirely new widget configuration</li>
+<li>addition : new fallback switch which enables an item marked as current_item_parent to be used as current item when no other current item is found</li>
+<li>bugfix : updated the determination of current item so that a paged (?paged=2, etc) Home page still shows Home page as being current</li>
+<li>bugfix : fixed code introduced in v3.0.4 that prevented CMW script loading on the customizer page - when the Widget Customizer plugin is loaded - for WordPress v3.8 and below</li>
+<li>bugfix : stop disabling selected fields based on other settings, because this caused the customizer to wipe values that may have been still required</li>
+</ul>
+
+<h4>3.0.4</h4>
+
+<ul>
+<li>bugfix : corrected the display of the "No Current Item!" warning in the "assist"</li>
+<li>bugfix : corrected the enabling/disabling of a couple of fields in the widget form, and tweaked the indentation for better responsiveness</li>
+<li>bugfix : corrected the options setup when in accessibility mode with javascript enabled</li>
+<li>addition : added a warning about the accuracy of the shortcode when javascript is disabled</li>
+<li>addition : extended the All Root Items inclusion to be a selectable number of levels (as per the Exclusions by Level)</li>
+</ul>
+
+<h4>3.0.3</h4>
+
+<ul>
+<li>bugfix : removed all occurrences of "Plugin " followed by "Name" from everywhere except the main plugin file to avoid update() reporting Invalid Header when activating straight from installation (rather than from the Plugins page)</li>
+<li>tweak : eliminate the over-use of get_title() when determining the widget title</li>
+<li>tweak : added self-terminating forward slash to generated shortcodes</li>
+<li>change : prepare for WordPress v4 (avoid use of deprecated functions)</li>
+</ul>
+
+<h4>3.0.2</h4>
+
+<ul>
+<li>bugfix : the shortcode display on new instances of the widget (in admin) did not initially reflect the automatically-selected menu</li>
+</ul>
+
+<h4>3.0.1</h4>
+
+<ul>
+<li>bugfix : changed the determination of pre-existing legacy widgets versus brand new widget instances, to get round problems encountered when other plugins utilise the widget_form_callback filter to inject fields into a widget</li>
+<li>addition : added a couple of filters</li>
+</ul>
+
+<h4>3.0.0</h4>
+
+<ul>
+<li><p><strong>! Rewrite, and Change of Approach !</strong> The widget has had a major rewrite! The <code>Children of</code> filter has been replaced with a <code>Branch</code> filter, with a subsequent shift in focus for the secondary filter options, from the children's level (0, 1 or more items) up to the branch level (a single item!). This should provide a more intuitive interface, and is definitely easier to code for. <strong>However</strong>, it only affects <em>new instances</em> of the widget; v2 instances are still <strong><em>fully supported</em></strong>.</p>
+
+<p>Please also note that the shortcode tag for v3 has changed to <strong><code>[cmwizard]</code></strong>, with a revised set of attributes. The old shortcode tag is still supported, but only with the v2 attribute set, and only providing v2 functionality, ie. it is the shortcode tag that determines which widget version to use, and the appropriate attribute set for that version.</p>
+
+<p>There is no automatic upgrade of widget settings from v2 to v3! I suggest bringing up the "assist" for the existing v2 widget, running it side-by-side with the "assist" of a new instance of the widget, and using them to the compare the desired outputs. I would also strongly recommend that you put your old widgets into the inactive area until you are completely happy with their new replacements. If you are upgrading from version 2, and you would like a bit more information, <a href="http://www.wizzud.com/2014/06/16/custom-menu-wizard-wordpress-plugin-version-3/" target='_blank'>this article<small class="glyphicon glyphicon-new-window offsite-link" aria-hidden="true"></small></a> might help.</p></li>
+<li>change : <strong>the minmum requirement for WordPress is v3.6</strong></li>
+<li>addition : more options for requiring that the "current" menu item be present at some point in the filter process</li>
+<li>addition : Branch filter levels can be either relative (to the selected Branch item) or absolute (within the menu structure)</li>
+<li>addition : menu items can now be excluded from the final output, either explicitly by id (optionally including descendants), or by level</li>
+<li>addition : the ids of Items can be set to include all descendants</li>
+<li>addition : the inclusion of branch ancestors, and optionally their siblings, can be set by absolute level or relative number of levels</li>
+<li>addition : the widget title can now be automatically set from the root level item of the Branch item or current menu item</li>
+<li>addition : the shortcode for a widget's current settings is now also displayed at the base of the widget (as well as at the base of the "assist")</li>
+<li>addition : "title_tag" has been added to the shortcode options, enabling the default H2 to be changed without having to resort to coding a filter</li>
+<li>addition : as an alternative to using the "assist", "findme" has been addded to the shortcode options to aid editors with the location of posts containing a CMW shortcode ([cmwizard findme=1])</li>
+<li>This release includes an upgrade to v2.1.0 for all existing version 2 widgets/shortcodes - please read the v2.1.0 changes below.</li>
+</ul>
+
+<h4>2.1.0 (incorporated into v3.0.0 release)</h4>
+
+<ul>
+<li>change : <strong>the minmum requirement for WordPress is v3.6</strong></li>
+<li>bugfix : handle duplicate menu item ids which were causing elements to be ignored</li>
+<li>bugfix : fix IE8 levels indentation in the "assist"</li>
+<li>bugfix : the "assist" is now "fixed" position (toggle-able back to absolute), mainly to get around a bug in jQuery UI draggable</li>
+<li>remove : take out the automatic selection of shortcode text (inconsistent cross-browser, so just triple click as usual; paste-as-text if possible!)</li>
+<li>addition : in the "assist", provide collapsible options for those larger menus</li>
+<li>addition : added utility to the "assist" enabling posts containing a CMW shortcode to be located</li>
+<li>change : in the "assist", swap the menu Items checkboxes for clickable Ticks</li>
+<li>change : in the "assist", tweak styling and make more responsive to re-sizing</li>
+<li>change : made compatible with Widget Customizer</li>
+<li>Note : there is no separate release available for this version!</li>
+</ul>
+
+<h4>2.0.6</h4>
+
+<ul>
+<li>change : modified determination of current item to cope better with multiple occurences (still first-found, but within prioritised groups)</li>
+<li>change : display of the upgrade notice in the plugins list has been replaced with a simple request to read the changelog before upgrading</li>
+</ul>
+
+<h4>2.0.5</h4>
+
+<ul>
+<li>bugfix : prevent PHP warnings of Undefined index/offset</li>
+</ul>
+
+<h4>2.0.4</h4>
+
+<ul>
+<li>bugfix : clearing the container field failed to remove the container from the output</li>
+<li>addition : in the "assist", added automatic selection of the shortcode text when it is clicked</li>
+<li>addition : remove WordPress's menu-item-has-children class (introduced in v3.7) when the filtered item no longer has children</li>
+<li>change : tweaked styles and javascript in admin for WordPress v3.8</li>
+</ul>
+
+<h4>2.0.3</h4>
+
+<ul>
+<li>bugfix : missing global when enqueuing scripts and styles for admin</li>
+</ul>
+
+<h4>2.0.2</h4>
+
+<ul>
+<li>bugfix : the Include Ancestors option was not automatically including the Parent</li>
+<li>bugfix : the "assist" was incorrectly calculating Depth Relative to Current Item when the current menu item was outside the scope of the Filtered items</li>
+<li>behaviour change : only recognise the first "current" item found (used to allow subsequent "current" items to override any already encountered)</li>
+</ul>
+
+<h4>2.0.1</h4>
+
+<ul>
+<li>bugfix : an incorrect test for a specific-items filter prevented show-all producing any output</li>
+</ul>
+
+<h4>2.0.0</h4>
+
+<ul>
+<li><strong>! Possible Breaker !</strong> The calculation of <code>Start Level</code> has been made consistent across the <code>Show all</code> and <code>Children of</code> filters : if you previously had a setup where you were filtering for the children of an item at level 2, with start level set to 4, there would have been no output because the immediate children (at level 3) were outside the start level. Now, there <em>will</em> be output, starting with the grand-children (at level 4).</li>
+<li><strong>! Possible Breaker !</strong> There is now deemed to be an artificial "root" item above the level 1 items, which mean that a <code>Children of</code> filter set to "Current Parent Item" or "Current Root Item" will no longer fail for a top-level "current menu item". If you have the "no ancestor" fallback set then this change will have no impact (but you may now want to consider turning the fallback off?); if you <em>don't</em> currently use the "no ancestor" fallback, then where there was previously no output there will now be some!</li>
+<li>added new option : Items, a comma- or space-delimited list of menu item ids, as an alternative Filter</li>
+<li>added new option : Depth Relative to Current Item to the Filter section (depth_rel_current=1 in the shortcode)</li>
+<li>added new option : Must Contain Current Item to the Output section (contains_current=1 in the shortcode)</li>
+<li>changed the widget's "demo" facility to "assist" and brought it into WordPress admin, with full interactivity with the widget</li>
+<li>refactored code</li>
+</ul>
+
+<h4>1.2.2</h4>
+
+<ul>
+<li>bugfix : fallback for Current Item with no children was failing because the parent's children weren't being picked out correctly</li>
+</ul>
+
+<h4>1.2.1</h4>
+
+<ul>
+<li>added some extra custom classes, when applicable : cmw-fellback-to-current &amp; cmw-fellback-to-parent (on outer UL/OL) and cmw-the-included-parent, cmw-an-included-parent-sibling &amp; cmw-an-included-ancestor (on relevant LIs)</li>
+<li>corrected 'show all from start level 1' processing so that custom classes get applied and 'Title from "Current" Item' works (regardless of filter settings)</li>
+<li>changed the defaults for new widgets such that only the Filter section is open by default; all the others are collapsed</li>
+<li>in demo.html, added output of the shortcode applicable to the selections made</li>
+<li>in demo.html, added a link to the documentation page</li>
+<li>corrected 2 of the shortcode examples in the readme.txt, and made emulator (demo) available from the readme</li>
+</ul>
+
+<h4>1.2.0</h4>
+
+<ul>
+<li>added custom_menu_wizard shortcode, to run the widget from within content</li>
+<li>moved the 'no ancestor' fallback into new Fallback collapsible section, and added a fallback for Current Item with no children</li>
+<li>added an option allowing setting of title from current menu item's title</li>
+<li>fixed a bug with optgroups/options made available for the 'Children of' selector after the widget has been saved (also affected disabled fields and styling)</li>
+<li>don't include menus with no items</li>
+<li>updated demo.html</li>
+</ul>
+
+<h4>1.1.0</h4>
+
+<ul>
+<li>added 'Current Root Item' and 'Current Parent Item' to the <code>Children of</code> filter</li>
+<li>added <code>Fallback to Current Item</code> option, with subsidiary options for overriding a couple of Output options, as a means to enable Current Root &amp; Current Parent to match a Current Item at root level</li>
+<li>added an Output option to include both the parent item <strong>and</strong> the parent's siblings (for a successful <code>Children of</code> filter)</li>
+<li>added max-width style (100%) to the <code>Children of</code> SELECT in the widget options</li>
+<li>added widget version to the admin js enqueuer</li>
+<li>ignore/disable Hide Empty option for WP &gt;= v3.6 (wp_nav_menu() now does it automatically)</li>
+<li>included a stand-alone helper/demo html page</li>
+<li>rebuilt the <code>Children of</code> SELECT in the widget options to cope with IE's lack of OPTGROUP/OPTION styling</li>
+<li>moved the setting of 'disabled' attributes on INPUTs/SELECTs from PHP into javascript</li>
+</ul>
+
+<h4>1.0.0</h4>
+
+<ul>
+<li>Initial release</li>
+</ul>                </div>
+            </div>
+
+        </div>
+
+        <hr />
+    </div>
+
+    <div class="gotoprev"><a class='btn btn-warning' href='#Description'><span class="glyphicon glyphicon-chevron-left"></span><span class="sr-only">return to previous tab and location</span></a></div>
+    <div class="gototop" data-spy="affix" data-offset-top="100"><a class='btn btn-info' href='#Top'><span class="glyphicon glyphicon-chevron-up"></span><span class="sr-only">go to top of page</span></a></div>
+
+    <script type="text/javascript">
+    jQuery(function($){
+        var scrollWin = function(to){
+                if(to.toString().substr(0, 1) === '#'){
+                    to = $(to).offset().top;
+                }
+                $('html,body').animate({'scrollTop':to});
+            };
+        //show/hide all faqs...
+        $('.faqs-all').on('click', function(){
+            $('#FAQs .collapse').collapse( $(this).text().toLowerCase().split(' ')[0] );
+            this.blur();
+            return false;
+        });
+        //toggle A-Z clicked...
+        $('.toggle-a-z').on('click', function(){
+            var self = $(this),
+                az = !self.hasClass('active'),
+                items = self.siblings(),
+                parent = self.parent(),
+                reorder = [],
+                i;
+            this.blur();
+            items.each(function(i, el){
+                reorder[ $(el).find('a').data()[az ? 'azPos' : 'naturalPos'] ] = i;
+            });
+            for(i = 0; i < items.length; i++){
+                parent.append( items.eq( reorder[i] ) );
+            }
+        });
+        //gototop clicked...
+        $('.gototop a').on('click', function(){
+            this.blur();
+            scrollWin(0);
+            return false;
+        });
+        //gotoprev clicked...
+        $('.gotoprev a').on('click', function(){
+            var div = $(this).parent(),
+                data = div.data(),
+                target;
+            this.blur();
+            if(!data.prev){
+                data.prev = [];
+            }else{
+                target = data.prev.pop();
+                //if a tab switch is required, set the target tab's scroller data and trigger the tab switch...
+                if(!$('.nav-pills').children().not('.active')
+                        .find('a[href="' + target.tab + '"]').data('scroller', {scrollto:target.scrollto,back:1}).tab('show').length){
+                    //...otherwise simply scroll to the target...
+                    scrollWin(target.scrollto);
+                }
+            }
+            if(!data.prev.length){
+                div.removeClass('affix');
+            }
+            return false;
+        });
+        //any tab-pane anchor clicked...
+        $('.tab-pane').on('click', 'a', function(e){
+            var self = $(this),
+                //this is the id of the *tab-pane*...
+                href = self.attr('href'),
+                scrollto, pill, prevdata;
+            //check for bookmark...
+            if(href.substr(0,1) === '#' && !self.hasClass('panel-heading')){
+                e.preventDefault();
+                //get the actual target within the tab-pane...
+                scrollto = self.data('scroll') || '#scroll-default';
+                //if the target is within the current tab-pane, store the prevdata and do the scroll...
+                if(href === '#' + $(this).closest('.tab-pane').attr('id')){
+                    prevdata = $('.gotoprev').addClass('affix').data();
+                    if(!prevdata.prev){
+                        prevdata.prev = [];
+                    }
+                    prevdata.prev.push({tab:href, scrollto:$(window).scrollTop()});
+                    scrollWin(scrollto);
+                }else{
+                    //otherwise, set data on the target pill and switch tabs to it (the
+                    //tab handlers will store the prevdata and do the final scroll)...
+                    $('.nav-pills').find('a[href="' + href + '"]')
+                        .data('scroller', {scrollto:scrollto}).tab('show');
+                }
+            }
+        });
+        $('.nav-pills').on('hide.bs.tab', function(e){
+            var next = $(e.relatedTarget),
+                prevdata = next.data('scroller');
+            //the only time we DON'T want to store current tab is switching tabs as a result of
+            //a.gotoprev being clicked, which would be HAS prevdata AND prevdata.back is ON...
+            if(!prevdata || !prevdata.back){
+                //put the *current* tab data into prevdata...
+                prevdata = $('.gotoprev').addClass('affix').data();
+                if(!prevdata.prev){
+                    prevdata.prev = [];
+                }
+                prevdata.prev.push({tab:$(e.target).attr('href'), scrollto:$(window).scrollTop()});
+            }
+        });
+        $('.nav-pills').on('shown.bs.tab', function(e){
+            var active = $(e.target),
+                prevdata = active.data('scroller');
+            if(prevdata){
+                active.removeData('scroller');
+                scrollWin(prevdata.scrollto);
+            }
+        });
+    });
+    </script>
+</body>
+</html>

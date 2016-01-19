@@ -125,11 +125,10 @@ Author URI: http://www.simplethemes.com/
   	@include border-radius (6px);
 	@include box-shadow (0px 0px 4px hsl(0, 0%, 90%));
 	margin-bottom: 20px;
-  	//behavior: $pie-behavior;
   	position: relative;
 }
 
-.st-callout .button.center a.button {
+.st-callout .button-container.center a.button {
 	float: none !important;
 }
 
@@ -325,8 +324,8 @@ Author URI: http://www.simplethemes.com/
 	color: #f1fece;
 }
 
-.st-callout div.button a,
-.st-callout div.button a:active {
+.st-callout div.button-container a,
+.st-callout div.button-container a:active {
 	@include box-shadow (0px 0px 0px 0px transparent);
 }
 
@@ -857,10 +856,10 @@ $pie-behavior: url("PIE.htc");
 // Defaults
 
 div.button-alt,
-div.button,
-div.button.small,
-div.button.large,
-div.button.medium {
+div.button-container,
+div.button-container.small,
+div.button-container.large,
+div.button-container.medium {
 	background-image: none;
 	margin: .5em 1em;
 	padding: 0;
@@ -871,13 +870,13 @@ div.button.medium {
   white-space: nowrap;
 }
 
-div.button {font-size: $base-font-size;}
+div.button-container {font-size: $base-font-size;}
 
-div.button.left {float: left;}
-div.button.right {float: right;}
+div.button-container.left {float: left;}
+div.button-container.right {float: right;}
 
-div.button.center,
-div.button.middle {
+div.button-container.center,
+div.button-container.middle {
 	margin: 10px auto;
 	text-align: center;
 	display: inherit;
@@ -885,18 +884,18 @@ div.button.middle {
 }
 
 
-.button.mini a {
+.button-container.mini a {
   padding: 3px 6px !important;
   font-size: .75em;
   line-height: 1em;
 }
 
-.button.small a {
+.button-container.small a {
   padding: .5em 1em !important;
   font-size: .85em !important;
   line-height: .85em !important;
 }
-.button.small {
+.button-container.small {
   border-bottom:none !important;
 }
 
@@ -904,27 +903,27 @@ button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
-.button a,
-.button.medium a {
+.button-container a,
+.button-container.medium a {
   padding: .5em 1em !important;
   font-size: 1em !important;
   line-height: 1em !important;
   margin-bottom:0 !important;
 }
 
-.button.large a {
+.button-container.large a {
   padding: .5em 1.5em !important;
   font-size: 1.2em !important;
   line-height: 1.2em !important;
 }
-.button.huge a {
+.button-container.huge a {
   padding: .5em 1.55em !important;
   font-size: 1.5em !important;
   line-height: 1.5em !important;
   font-weight: bold !important;
 }
 
-.button a:hover {
+.button-container a:hover {
   text-decoration: none !important;
 }
 
@@ -1168,31 +1167,31 @@ a.button.warn span.btn_caption {
 
 
 
-.button.pill a {
+.button-container.pill a {
     @include border-radius(2em);
     padding: 1em 2em !important;
 }
-.button.uppercase a {
+.button-container.uppercase a {
     text-transform: uppercase !important;
     letter-spacing:(.25em);
     font-size: .75em !important;
 }
-.button.nomargin {
+.button-container.nomargin {
     margin-left: 0px !important;
     margin-right: 0px !important;
 }
-.button.squeeze {
+.button-container.squeeze {
     margin-left: 4px !important;
     margin-right: 4px !important;
 }
-.button.lr {
+.button-container.lr {
     margin-right: 0px !important;
     a {
         @include border-top-right-radius(0);
         @include border-bottom-right-radius(0);
     }
 }
-.button.rr {
+.button-container.rr {
     margin-left: 0px !important;
     a {
         @include border-top-left-radius(0);

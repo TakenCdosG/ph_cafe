@@ -14,7 +14,6 @@
 .widget-custom-menu-wizard-onchange input[type="text"] {max-width:100%;}
 .widget-custom-menu-wizard-onchange textarea {height:5em;}
 .widget-custom-menu-wizard-onchange optgroup option {padding-left:0.75em;}
-.widget-custom-menu-wizard-onchange .cmw-border-top {border-top:1px solid #e5e5e5;}
 .widget-custom-menu-wizard-onchange .cmw-colour-grey,
 .widget-custom-menu-wizard-onchange .cmw-colour-grey input,
 .widget-custom-menu-wizard-onchange .cmw-colour-grey select,
@@ -24,6 +23,7 @@
 .widget-custom-menu-wizard-onchange .cmw-followed-by:after {content:""; display:inline-block; width:1em;}
 .widget-custom-menu-wizard-onchange .cmw-indented {margin-left:1em; text-indent:-1em;}
 .widget-custom-menu-wizard-onchange .cmw-maxwidth-twothirds {max-width:66% !important;}
+.widget-custom-menu-wizard-onchange .cmw-mock-fieldset {border-top:1px solid #E5E5E5; color:#0074a2; font-weight:bold; line-height:1.7; margin:0.5em 0 0; padding:0.4em 0 0; text-transform:uppercase;}
 .widget-custom-menu-wizard-onchange .cmw-off-the-page {display:none; position:absolute; left:-5000px; top:-5000px;}
 .widget-custom-menu-wizard-onchange .cmw-pseudo-para {margin:1em 0;}
 .widget-custom-menu-wizard-onchange .cmw-small-block {display:block; font-size:0.769em;}
@@ -61,7 +61,8 @@ a.widget-custom-menu-wizard-fieldset.cmw-collapsed-fieldset:active {background-p
 .widget-custom-menu-wizard-no-menus {background-color:#ffffff; font-size:1em; padding:0.5em 1em;}
 /*shortcodes...*/
 .widget-custom-menu-wizard-dialog .cmw-demo-theshortcode {clear:both; margin:1em 0 0.5em; width:100%;}
-.widget-custom-menu-wizard-onchange .cmw-shortcode-wrap {clear:both; margin:0.75em 0 1em; width:100%;}
+.widget-custom-menu-wizard-onchange .cmw-the-shortcodes {border-bottom:1px solid #e5e5e5; margin:0 0 1em;}
+.widget-custom-menu-wizard-onchange .cmw-shortcode-wrap {clear:both; margin:0.2em 0 0.5em 0; width:100%;}
 .widget-custom-menu-wizard-dialog code,
 .widget-custom-menu-wizard-onchange code {border:1px solid #CCCCCC; display:inline-block; line-height:1.5; padding:0.25em 0.5em;}
 .widget-custom-menu-wizard-onchange code {padding:0.1em 0.2em; font-size:0.846em;}

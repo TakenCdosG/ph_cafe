@@ -75,7 +75,7 @@ function nf_step_processing_js() {
  * @return void
  */
 function nf_output_step_processing_page() {
-	$page_title = isset ( $_REQUEST['title'] ) ? urldecode( $_REQUEST['title'] ) : __( 'Ninja Forms - Processing', 'ninja-forms' );
+	$page_title = isset ( $_REQUEST['title'] ) ? urldecode( esc_html ( $_REQUEST['title'] ) ) : __( 'Ninja Forms - Processing', 'ninja-forms' );
 	?>
 	<style>
 		.ui-progressbar {
@@ -110,7 +110,7 @@ function nf_output_step_processing_page() {
 		if ( isset ( $_REQUEST['action'] ) && ! empty ( $_REQUEST['action'] ) ) {
 			$action = __( 'Loading...', 'ninja-forms' );
 			?>
-			var nfProcessingAction = 'nf_<?php echo $_REQUEST['action']; ?>';
+			var nfProcessingAction = 'nf_<?php echo esc_html( $_REQUEST['action'] ); ?>';
 			<?php
 		} else {
 			$action = __( 'No Action Specified...', 'ninja-forms' );

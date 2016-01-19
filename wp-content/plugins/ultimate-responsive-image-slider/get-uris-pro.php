@@ -2,8 +2,8 @@
 
 	<div class="purchase_btn_div" style="margin-top:20px;text-align: center;">
 	  <a  style= "margin-right:10px;" href="http://demo.weblizar.com/ultimate-responsive-image-slider-pro/" target="_new" class="btn btn-primary btn-lg">View Demo</a>
-	  <a style= "margin-right:10px;" href="http://weblizar.com/ultimate-responsive-image-slider-pro/" target="_new" class="btn btn-success btn-lg">Try Before Buy</a>
-	  <a href="http://weblizar.com/ultimate-responsive-image-slider-pro/" target="_new" class="btn btn-danger btn-lg">Upgrade To Pro</a>
+	  <a style= "margin-right:10px;" href="https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/" target="_new" class="btn btn-success btn-lg">Try Before Buy</a>
+	  <a href="https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/" target="_new" class="btn btn-danger btn-lg">Upgrade To Pro</a>
 		
 	</div>
 	
@@ -14,20 +14,19 @@
 	<div class="plan-name"><!-- SLIDER-INTRO-->
 				<!--===============================================================-->
 			<div class="col-md-12 col-sm-12">
-				<a href="http://weblizar.com/ultimate-responsive-image-slider-pro/" target="_new"><h2 style="font-weight: bold;font-size: 26px;padding-top: 20px;padding-bottom: 20px; text-align:center">Pro Version Demos</h2>
+				<a href="https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/" target="_new"><h2 style="font-weight: bold;font-size: 26px;padding-top: 20px;padding-bottom: 20px; text-align:center">Pro Version Demos</h2>
 				<img class="img-responsive" style="width:100%;border: 1px solid #e3e3e3;background: #f7f7f7;padding:10px" src="<?php echo  WRIS_PLUGIN_URL.'img/detail-product.jpg'; ?>" alt=""/>
 				</a>
 			</div>
 			
 		</div>
-					
 </div>
 <div class="plan-name" style="padding-top:40px; text-align: center;display:block;width:100%;overflow:hidden">
  
 	<div class="purchase_btn_div" style="margin-top:20px;text-align: center;">
 	  <a  style= "margin-right:10px;" href="http://demo.weblizar.com/ultimate-responsive-image-slider-pro/" target="_new" class="btn btn-primary btn-lg">View Demo</a>
-	  <a style= "margin-right:10px;" href="http://weblizar.com/ultimate-responsive-image-slider-pro/" target="_new" class="btn btn-success btn-lg">Try Before Buy</a>
-	  <a href="http://weblizar.com/ultimate-responsive-image-slider-pro/" target="_new" class="btn btn-danger btn-lg">Upgrade To Pro</a>
+	  <a style= "margin-right:10px;" href="https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/" target="_new" class="btn btn-success btn-lg">Try Before Buy</a>
+	  <a href="https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/" target="_new" class="btn btn-danger btn-lg">Upgrade To Pro</a>
 	
 	</div>
 </div>
@@ -116,7 +115,7 @@
 				
 				<li class="plan-feature">
 					<a class="btn btn-primary btn-lg" target="_new" href="http://demo.weblizar.com/ultimate-responsive-image-slider-pro/" target="_new" ><i class="fa fa-check-circle"></i> Demo</a>
-					<a class="btn btn-danger btn-lg" href="http://weblizar.com/ultimate-responsive-image-slider-pro/"  ><i class="fa fa-shopping-cart"></i> Buy</a>
+					<a class="btn btn-danger btn-lg" href="https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/"  ><i class="fa fa-shopping-cart"></i> Buy</a>
 				</li>
 			</ul>
 		</div>

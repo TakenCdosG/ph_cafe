@@ -2,6 +2,14 @@
 /**
  * Add payment method form form
  *
+ * This template can be overridden by copying it to yourtheme/woocommerce/myaccount/form-add-payment-method.php.
+ *
+ * HOWEVER, on occasion WooCommerce will need to update template files and you (the theme developer).
+ * will need to copy the new files to your theme to maintain compatibility. We try to do this.
+ * as little as possible, but it does happen. When this occurs the version of the template file will.
+ * be bumped and the readme will list any important changes.
+ *
+ * @see 	    http://docs.woothemes.com/document/template-structure/
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
  * @version     2.1
@@ -46,7 +54,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<div class="form-row">
 			<?php wp_nonce_field( 'woocommerce-add-payment-method' ); ?>
-			<input type="submit" class="button alt" id="place_order" value="<?php _e( 'Add Payment Method', 'woocommerce' ); ?>" />
+			<input type="submit" class="button alt" id="place_order" value="<?php esc_attr_e( 'Add Payment Method', 'woocommerce' ); ?>" />
 			<input type="hidden" name="woocommerce_add_payment_method" value="1" />
 		</div>
 

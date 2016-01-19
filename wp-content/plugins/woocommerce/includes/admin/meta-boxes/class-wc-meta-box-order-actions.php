@@ -15,12 +15,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * WC_Meta_Box_Order_Actions Class
+ * WC_Meta_Box_Order_Actions Class.
  */
 class WC_Meta_Box_Order_Actions {
 
 	/**
-	 * Output the metabox
+	 * Output the metabox.
+	 *
+	 * @param WP_Post $post
 	 */
 	public static function output( $post ) {
 		global $theorder;
@@ -39,10 +41,10 @@ class WC_Meta_Box_Order_Actions {
 			<li class="wide" id="actions">
 				<select name="wc_order_action">
 					<option value=""><?php _e( 'Actions', 'woocommerce' ); ?></option>
-					<optgroup label="<?php _e( 'Resend order emails', 'woocommerce' ); ?>">
+					<optgroup label="<?php esc_attr_e( 'Resend order emails', 'woocommerce' ); ?>">
 						<?php
 						$mailer           = WC()->mailer();
-						$available_emails = apply_filters( 'woocommerce_resend_order_emails_available', array( 'new_order', 'cancelled_order', 'customer_processing_order', 'customer_completed_order', 'customer_invoice' ) );
+						$available_emails = apply_filters( 'woocommerce_resend_order_emails_available', array( 'new_order', 'cancelled_order', 'customer_processing_order', 'customer_completed_order', 'customer_invoice', 'customer_refunded_order' ) );
 						$mails            = $mailer->get_emails();
 
 						if ( ! empty( $mails ) ) {
@@ -62,7 +64,7 @@ class WC_Meta_Box_Order_Actions {
 					<?php } ?>
 				</select>
 
-				<button class="button wc-reload" title="<?php _e( 'Apply', 'woocommerce' ); ?>"><span><?php _e( 'Apply', 'woocommerce' ); ?></span></button>
+				<button class="button wc-reload" title="<?php esc_attr_e( 'Apply', 'woocommerce' ); ?>"><span><?php _e( 'Apply', 'woocommerce' ); ?></span></button>
 			</li>
 
 			<li class="wide">
@@ -89,7 +91,10 @@ class WC_Meta_Box_Order_Actions {
 	}
 
 	/**
-	 * Save meta box data
+	 * Save meta box data.
+	 *
+	 * @param int $post_id
+	 * @param WP_Post $post
 	 */
 	public static function save( $post_id, $post ) {
 
@@ -120,6 +125,7 @@ class WC_Meta_Box_Order_Actions {
 					foreach ( $mails as $mail ) {
 						if ( $mail->id == $email_to_send ) {
 							$mail->trigger( $order->id );
+							$order->add_order_note( sprintf( __( '%s email notification manually sent.', 'woocommerce' ), $mail->title ), false, true );
 						}
 					}
 				}
@@ -144,9 +150,9 @@ class WC_Meta_Box_Order_Actions {
 	}
 
 	/**
-	 * Set the correct message ID
+	 * Set the correct message ID.
 	 *
-	 * @param $location
+	 * @param string $location
 	 *
 	 * @since  2.3.0
 	 *

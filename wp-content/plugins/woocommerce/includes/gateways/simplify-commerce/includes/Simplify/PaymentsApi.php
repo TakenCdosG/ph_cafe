@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2013, 2014 MasterCard International Incorporated
+ * Copyright (c) 2013 - 2015 MasterCard International Incorporated
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without modification, are 
@@ -43,7 +43,6 @@ class Simplify_PaymentsApi
 
     /**
      * @ignore
-     * @param Simplify_Authentication $authentication
      */
     static public function createObject($object, $authentication = null)
     {
@@ -58,7 +57,6 @@ class Simplify_PaymentsApi
 
     /**
      * @ignore
-     * @param Simplify_Authentication $authentication
      */
     static public function findObject($object, $authentication = null)
     {
@@ -72,7 +70,6 @@ class Simplify_PaymentsApi
 
     /**
      * @ignore
-     * @param Simplify_Authentication $authentication
      */
     static public function updateObject($object, $authentication = null) {
         $paymentsApi = new Simplify_PaymentsApi();
@@ -85,7 +82,6 @@ class Simplify_PaymentsApi
 
     /**
      * @ignore
-     * @param Simplify_Authentication $authentication
      */
     static public function deleteObject($object, $authentication = null) {
         $paymentsApi = new Simplify_PaymentsApi();
@@ -97,7 +93,6 @@ class Simplify_PaymentsApi
 
     /**
      * @ignore
-     * @param Simplify_Authentication $authentication
      */
     static public function listObject($object, $criteria = null, $authentication =null) {
         if ($criteria != null) {
@@ -159,7 +154,6 @@ class Simplify_PaymentsApi
 
     /**
      * @ignore
-     * @param string $action
      */
     public function getUrl($publicKey, $action, $object)
     {
@@ -201,7 +195,6 @@ class Simplify_PaymentsApi
 
     /**
      * @ignore
-     * @param string $action
      */
     public function getMethod($action)
     {
@@ -213,8 +206,6 @@ class Simplify_PaymentsApi
 
     /**
      * @ignore
-     * @param string $action
-     * @param Simplify_Authentication|null $authentication
      */
     private function execute($action, $object, $authentication)
     {
@@ -226,7 +217,6 @@ class Simplify_PaymentsApi
 
     /**
      * @ignore
-     * @param Simplify_Authentication $authentication
      */
     public function jwsDecode($hash, $authentication)
     {
@@ -257,7 +247,6 @@ class Simplify_PaymentsApi
 
     /**
      * @ignore
-     * @param string $c
      */
     private function endsWith($s, $c)
     {
@@ -273,7 +262,7 @@ class Simplify_PaymentsApi
      * @ignore
      * @param $authentication
      * @param $args
-     * @param integer $expectedArgCount
+     * @param $expectedArgCount
      * @return Simplify_Authentication
      */
     static function buildAuthenticationObject($authentication = null, $args, $expectedArgCount){

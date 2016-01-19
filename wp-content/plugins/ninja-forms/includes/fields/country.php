@@ -510,6 +510,7 @@ function ninja_forms_field_country_display( $field_id, $data, $form_id = '' ) {
 		__( 'Somalia', 'ninja-forms' ) => 'SO',
 		__( 'South Africa', 'ninja-forms' ) => 'ZA',
 		__( 'South Georgia, South Sandwich Islands', 'ninja-forms' ) => 'GS',
+		__( 'South Sudan', 'ninja-forms' ) => 'SS',
 		__( 'Spain', 'ninja-forms' ) => 'ES',
 		__( 'Sri Lanka', 'ninja-forms' ) => 'LK',
 		__( 'St. Helena', 'ninja-forms' ) => 'SH',

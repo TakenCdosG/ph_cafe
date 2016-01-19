@@ -19,7 +19,7 @@ class NF_Notifications
 {
 	/**
 	 * Get things rolling
-	 * 
+	 *
 	 * @access public
 	 *
 	 * @since 2.8
@@ -36,7 +36,7 @@ class NF_Notifications
 
 		// Register our notification tab
 		add_action( 'admin_init', array( $this, 'register_tab' ) );
-		
+
 		// Only add these actions if we are actually on the notification tab.
 		if ( 'admin.php' == $pagenow && isset ( $_REQUEST['page'] ) && $_REQUEST['page'] == 'ninja-forms' && isset ( $_REQUEST['tab'] ) && $_REQUEST['tab'] == 'notifications' ) {
 			add_action( 'admin_init', array( $this, 'add_js' ) );
@@ -58,15 +58,15 @@ class NF_Notifications
 
 	/**
 	 * Register our setting tab.
-	 * 
+	 *
 	 * @access public
 	 *
 	 * @since 2.8
 	 * @return void
 	 */
 	public function register_tab() {
-		$form_id = isset ( $_REQUEST['form_id'] ) ? $_REQUEST['form_id'] : '';
-		$action = isset ( $_REQUEST['notification-action'] ) ? $_REQUEST['notification-action'] : '';
+		$form_id = isset ( $_REQUEST['form_id'] ) ? absint( $_REQUEST['form_id'] ) : '';
+		$action = isset ( $_REQUEST['notification-action'] ) ? esc_html( $_REQUEST['notification-action'] ) : '';
 		$output_form = false;
 		$show_save = false;
 		if ( 'edit' == $action || 'new' == $action ) {
@@ -90,7 +90,7 @@ class NF_Notifications
 
 	/**
 	 * Enqueue JS
-	 * 
+	 *
 	 * @access public
 	 * @since 2.8
 	 * @return void
@@ -98,7 +98,7 @@ class NF_Notifications
 	public function add_js() {
 		global $ninja_forms_fields;
 
-		$form_id = isset ( $_REQUEST['form_id'] ) ? $_REQUEST['form_id'] : '';
+		$form_id = isset ( $_REQUEST['form_id'] ) ? absint( $_REQUEST['form_id'] ) : '';
 		if ( empty ( $form_id ) )
 			return false;
 
@@ -116,7 +116,7 @@ class NF_Notifications
 
 		wp_enqueue_script( 'nf-tokenize',
 		NF_PLUGIN_URL . 'assets/js/' . $src .'/bootstrap-tokenfield' . $suffix . '.js',
-		array( 'jquery', 'jquery-ui-autocomplete' ) );		
+		array( 'jquery', 'jquery-ui-autocomplete' ) );
 
 		wp_enqueue_script( 'nf-combobox',
 		NF_PLUGIN_URL . 'assets/js/' . $src .'/combobox' . $suffix . '.js',
@@ -165,8 +165,8 @@ class NF_Notifications
 		// Add our "process_fields" to our form global
 		Ninja_Forms()->form( $form_id )->process_fields = $process_fields;
 
-		$js_vars = apply_filters( 'nf_notification_admin_js_vars', array( 
-			'activate' 			=> __( 'Activate', 'ninja-forms' ), 
+		$js_vars = apply_filters( 'nf_notification_admin_js_vars', array(
+			'activate' 			=> __( 'Activate', 'ninja-forms' ),
 			'deactivate' 		=> __( 'Deactivate', 'ninja-forms' ),
 			'search_fields' 	=> $search_fields,
 			'tokens'			=> array(),
@@ -176,22 +176,22 @@ class NF_Notifications
 		) );
 
 		wp_localize_script( 'nf-notifications', 'nf_notifications', $js_vars );
-	
+
 	}
 
 	/**
 	 * Enqueue CSS
-	 * 
+	 *
 	 * @access public
 	 * @since 2.8
 	 * @return void
 	 */
 	public function add_css() {
 		wp_enqueue_style( 'nf-notifications',
-		NF_PLUGIN_URL . 'assets/css/notifications.css' );		
+		NF_PLUGIN_URL . 'assets/css/notifications.css' );
 
 		wp_enqueue_style( 'nf-tokenize',
-		NF_PLUGIN_URL . 'assets/css/bootstrap-tokenfield.css' );		
+		NF_PLUGIN_URL . 'assets/css/bootstrap-tokenfield.css' );
 
 		wp_enqueue_style( 'nf-combobox',
 		NF_PLUGIN_URL . 'assets/css/combobox.css' );
@@ -202,14 +202,14 @@ class NF_Notifications
 
 	/**
 	 * Output our notifications admin.
-	 * 
+	 *
 	 * @access public
 	 *
 	 * @since 2.8
 	 * @return void
 	 */
 	public function output_admin() {
-		$action = isset ( $_REQUEST['notification-action'] ) ? $_REQUEST['notification-action'] : '';
+		$action = isset ( $_REQUEST['notification-action'] ) ? esc_html( $_REQUEST['notification-action'] ) : '';
 
 		?>
 		<div class="wrap">
@@ -235,7 +235,7 @@ class NF_Notifications
         	</form>
             <?php
 		} else {
-			$id = isset ( $_REQUEST['id'] ) ? $_REQUEST['id'] : '';
+			$id = isset ( $_REQUEST['id'] ) ? absint( $_REQUEST['id'] ) : '';
 			if ( $id == '' ) {
 				$id = 'new';
 				$this_type = 'email';
@@ -265,8 +265,9 @@ class NF_Notifications
 									<option value="<?php echo $slug; ?>" <?php selected ( $this_type, $slug ); ?>><?php echo $nicename; ?></option>
 									<?php
 								}
-								?>						
+								?>
 							</select>
+							<span class="nf-more-actions"><a href="https://ninjaforms.com/extensions/?display=actions&utm_medium=plugin&utm_source=action-single&utm_campaign=Ninja+Forms+Upsell&utm_content=Ninja+Forms+Actions" target="_blank"><?php _e( 'Get More Actions', 'ninja-forms' ); ?> <span class="dashicons dashicons-external"></span></a></span>
 						</td>
 					</tr>
 				</tbody>
@@ -287,18 +288,18 @@ class NF_Notifications
 					</tbody>
 					<?php
 				}
-				?>			
+				?>
 			</table>
 			<?php
 		} ?>
-		
+
     	</div>
     	<?php
 	}
 
 	/**
 	 * Save our notifications admin.
-	 * 
+	 *
 	 * @access public
 	 *
 	 * @since 2.8
@@ -323,7 +324,7 @@ class NF_Notifications
 		$data = Ninja_Forms()->notification_types[ $type ]->save_admin( $n_id, $data );
 
 		foreach ( $settings as $meta_key => $meta_value ) {
-			nf_update_object_meta( $n_id, $meta_key, $meta_value );
+			nf_update_object_meta( $n_id, $meta_key, nf_wp_kses_post_deep( $meta_value ) );
 		}
 
 		do_action( 'nf_save_notification', $n_id, $data, $new );
@@ -340,7 +341,7 @@ class NF_Notifications
 
 	/**
 	 * Get our registered notification types
-	 * 
+	 *
 	 * @access public
 	 * @since 2.8
 	 * @return array $types
@@ -356,7 +357,7 @@ class NF_Notifications
 	/**
 	 * Delete a notification.
 	 * Hooked into the ajax action for nf_delete_notification
-	 * 
+	 *
 	 * @access public
 	 * @since 2.8
 	 * @return void
@@ -365,14 +366,14 @@ class NF_Notifications
 		// Bail if our nonce doesn't verify.
 		check_ajax_referer( 'nf_ajax', 'nf_ajax_nonce' );
 
-		$n_id = $_REQUEST['n_id'];
+		$n_id = absint( $_REQUEST['n_id'] );
 		Ninja_Forms()->notification( $n_id )->delete();
 	}
 
 	/**
 	 * Activate a notification.
 	 * Hooked into the ajax action for nf_activate_notification
-	 * 
+	 *
 	 * @access public
 	 * @since 2.8
 	 * @return void
@@ -381,14 +382,14 @@ class NF_Notifications
 		// Bail if our nonce doesn't verify.
 		check_ajax_referer( 'nf_ajax', 'nf_ajax_nonce' );
 
-		$n_id = $_REQUEST['n_id'];
+		$n_id = absint( $_REQUEST['n_id'] );
 		Ninja_Forms()->notification( $n_id )->activate();
 	}
 
 	/**
 	 * Deactivate a notification.
 	 * Hooked into the ajax action for nf_deactivate_notification
-	 * 
+	 *
 	 * @access public
 	 * @since 2.8
 	 * @return void
@@ -397,13 +398,13 @@ class NF_Notifications
 		// Bail if our nonce doesn't verify.
 		check_ajax_referer( 'nf_ajax', 'nf_ajax_nonce' );
 
-		$n_id = $_REQUEST['n_id'];
+		$n_id = absint( $_REQUEST['n_id'] );
 		Ninja_Forms()->notification( $n_id )->deactivate();
 	}
 
 	/**
 	 * Duplicate our notification
-	 * 
+	 *
 	 * @access public
 	 * @since 2.8
 	 * @return void
@@ -412,8 +413,8 @@ class NF_Notifications
 		if ( ! isset ( $_REQUEST['notification-action'] ) || $_REQUEST['notification-action'] != 'duplicate' )
 			return false;
 
-		$n_id = isset ( $_REQUEST['id'] ) ? $_REQUEST['id'] : '';
-		
+		$n_id = isset ( $_REQUEST['id'] ) ? absint( $_REQUEST['id'] ) : '';
+
 		// Bail if we don't have an ID.
 		if ( '' === $n_id )
 			return false;
@@ -426,7 +427,7 @@ class NF_Notifications
 
 	/**
 	 * Create a new notification
-	 * 
+	 *
 	 * @access public
 	 * @since 2.8
 	 * @return int $n_id
@@ -446,7 +447,7 @@ class NF_Notifications
 
 	/**
 	 * Handle bulk actions
-	 * 
+	 *
 	 * @access public
 	 * @since 2.8
 	 * @return void
@@ -455,12 +456,12 @@ class NF_Notifications
 		$action = '';
 
 		if ( isset( $_REQUEST['action2'] ) && -1 != $_REQUEST['action2'] )
-			$action = $_REQUEST['action2'];	
-				
-		if ( isset( $_REQUEST['action'] ) && -1 != $_REQUEST['action'] )
-			$action = $_REQUEST['action'];
+			$action = esc_html( $_REQUEST['action2'] );
 
-		$n_ids = isset ( $_REQUEST['notification'] ) ? $_REQUEST['notification'] : '';
+		if ( isset( $_REQUEST['action'] ) && -1 != $_REQUEST['action'] )
+			$action = esc_html( $_REQUEST['action'] );
+
+		$n_ids = isset ( $_REQUEST['notification'] ) ? esc_html( $_REQUEST['notification'] ) : '';
 
 		if ( ! is_array( $n_ids ) || empty( $n_ids ) )
 			return false;
@@ -485,13 +486,13 @@ class NF_Notifications
 
 	/**
 	 * Output our tinyMCE field buttons
-	 * 
+	 *
 	 * @access public
 	 * @since 2.8
 	 * @return void
 	 */
 	public function tinymce_buttons( $context ) {
-		$form_id = isset ( $_REQUEST['form_id'] ) ? $_REQUEST['form_id'] : '';
+		$form_id = isset ( $_REQUEST['form_id'] ) ? absint( $_REQUEST['form_id'] ) : '';
 		if ( empty ( $form_id ) )
 			return $context;
 
@@ -516,7 +517,7 @@ class NF_Notifications
 
 	/**
 	 * Loop through our notifications and add their processing functions to the appropriate hook.
-	 * 
+	 *
 	 * @access public
 	 * @since 2.8
 	 * @return void

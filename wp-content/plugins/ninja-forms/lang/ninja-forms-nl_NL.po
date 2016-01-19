@@ -1,17 +1,23 @@
-# This file is distributed under the same license as the Ninja Forms package.
+#
+# Translators:
+# Ron Willemse <info@ronwillemse.nl>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Ninja Forms\n"
 "POT-Creation-Date: 2015-03-02 21:39-0500\n"
-"PO-Revision-Date: 2015-03-07 18:25+0100\n"
-"Last-Translator: Roland Lemminga <roland@robeliki.nl>\n"
-"Language-Team: R.Lemminga <roland@robeliki.nl>\n"
-"Language: nl_NL\n"
+"PO-Revision-Date: 2015-06-05 10:37-0500\n"
+"Last-Translator: Ron Willemse <info@ronwillemse.nl>\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/"
+"ninja-forms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.7.4\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;_x;_n;_ex\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: ninja-forms.php:167 ninja-forms.php:179
 msgid "Cheatin&#8217; huh?"
@@ -20,7 +26,7 @@ msgstr "Valsspelen, hé?"
 #: ninja-forms.php:675
 #, php-format
 msgid "Fields marked with an %s*%s are required"
-msgstr "Velden die gemarkeerd zijn met een %s*%s zijn verplichte velden"
+msgstr "Velden die gemarkeerd zijn met een %s*%s zijn verplichte velden."
 
 #: ninja-forms.php:677
 msgid "Please ensure all required fields are completed."
@@ -40,7 +46,7 @@ msgstr "Laat alstublieft het spam veld leeg."
 
 #: ninja-forms.php:681
 msgid "Please wait to submit the form."
-msgstr "Even wachten voordat het formulier verzend."
+msgstr "Even wachten totdat het formulier verzonden is."
 
 #: ninja-forms.php:682
 msgid "You cannot submit the form without Javascript enabled."
@@ -48,15 +54,15 @@ msgstr "Je kunt geen formulier versturen wanneer Javascript is uitgeschakeld."
 
 #: ninja-forms.php:683 includes/fields/textbox.php:309
 msgid "Please enter a valid email address."
-msgstr "Voer a.u.b. een geldig email adres in."
+msgstr "Voer alstublieft een geldig email adres in."
 
 #: ninja-forms.php:684 includes/admin/step-processing.php:11
 msgid "Processing"
-msgstr "Bezig te verwerken"
+msgstr "Bezig met verwerken"
 
 #: ninja-forms.php:685
 msgid "The passwords provided do not match."
-msgstr "Wachtwoorden komen niet overeen."
+msgstr "De wachtwoorden komen niet overeen."
 
 #: classes/notification-email.php:19
 msgid "Email"
@@ -72,7 +78,7 @@ msgstr "Naam of velden"
 
 #: classes/notification-email.php:59
 msgid "Email will appear to be from this name."
-msgstr "E-mail zal lijken te zijn van deze naam."
+msgstr "De email is afkomstig van deze naam."
 
 #: classes/notification-email.php:63
 msgid "From Address"
@@ -84,7 +90,7 @@ msgstr "Eén email adres of veld"
 
 #: classes/notification-email.php:66
 msgid "Email will appear to be from this email address."
-msgstr "E-mail zal te lijken zijn van dit e-mailadres."
+msgstr "De email is afkomstig van dit e-mailadres."
 
 #: classes/notification-email.php:70
 msgid "To"
@@ -105,15 +111,15 @@ msgstr "Onderwerp"
 
 #: classes/notification-email.php:79
 msgid "Subject Text or search for a field"
-msgstr "Onderwerp Tekst of zoek voor een veld"
+msgstr "Onderwerp-tekst of zoek naar een veld"
 
 #: classes/notification-email.php:80
 msgid "This will be the subject of the email."
-msgstr "Dit zal het onderwerp worden van de email."
+msgstr "Dit wordt het onderwerp van de email."
 
 #: classes/notification-email.php:84
 msgid "Email Message"
-msgstr "E-mailbericht"
+msgstr "Emailbericht"
 
 #: classes/notification-email.php:95
 msgid "Attachments"
@@ -126,7 +132,7 @@ msgstr "Bijlage CSV"
 #: classes/notification-email.php:126 includes/admin/edit-field/li.php:428
 #: includes/admin/pages/ninja-forms-settings/tabs/general-settings/general-settings.php:57
 msgid "Advanced Settings"
-msgstr "Geavanceerd Instellingen"
+msgstr "Geavanceerde Instellingen"
 
 #: classes/notification-email.php:130
 msgid "Format"
@@ -142,7 +148,7 @@ msgstr "Platte Tekst"
 
 #: classes/notification-email.php:139
 msgid "Reply To"
-msgstr "Reageren naar"
+msgstr "Reageren op"
 
 #: classes/notification-email.php:145
 msgid "Cc"
@@ -155,7 +161,7 @@ msgstr "Bcc"
 #: classes/notification-redirect.php:19
 #: includes/admin/upgrades/convert-notifications.php:280
 msgid "Redirect"
-msgstr "Nazenden"
+msgstr "Verwijzen"
 
 #: classes/notification-redirect.php:32
 msgid "Url"
@@ -168,11 +174,11 @@ msgstr "Succes Bericht"
 
 #: classes/notification-success-message.php:35
 msgid "Before Form"
-msgstr "Voordat Formulier"
+msgstr "Vooraf aan het Formulier"
 
 #: classes/notification-success-message.php:36
 msgid "After Form"
-msgstr "Nadat Formulier"
+msgstr "Na het Formulier"
 
 #: classes/notification-success-message.php:41
 msgid "Location"
@@ -199,18 +205,18 @@ msgstr "Activeren"
 #: classes/notifications-table.php:129 classes/subs-cpt.php:389
 #: includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:189
 msgid "Edit"
-msgstr "Bewerk"
+msgstr "Bewerken"
 
 #: classes/notifications-table.php:130 classes/notifications-table.php:223
 #: includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:103
 #: includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:190
 msgid "Delete"
-msgstr "Verwijder"
+msgstr "Verwijderen"
 
 #: classes/notifications-table.php:131
 #: includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:191
 msgid "Duplicate"
-msgstr "Dupliceer"
+msgstr "Dupliceren"
 
 #: classes/notifications-table.php:175
 msgid "Name"
@@ -224,7 +230,7 @@ msgstr "Type"
 #: includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:161
 #: includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:221
 msgid "Date Updated"
-msgstr "Datum Geüpdatet"
+msgstr "Datum Bijgewerkt"
 
 #: classes/notifications-table.php:241
 msgid "- View All Types"
@@ -238,7 +244,7 @@ msgstr "Email en Acties"
 #: includes/admin/admin.php:6 includes/admin/admin.php:101
 #: includes/fields/list.php:149
 msgid "Add New"
-msgstr "Voeg Nieuw Toe"
+msgstr "Voeg Nieuwe Toe"
 
 #: classes/notifications.php:242
 msgid "New Action"
@@ -250,7 +256,7 @@ msgstr "Bewerk Actie"
 
 #: classes/notifications.php:249
 msgid "Back To List"
-msgstr "Terug Naar Lijst"
+msgstr "Terug Naar De Lijst"
 
 #: classes/notifications.php:255
 msgid "Action Name"
@@ -262,7 +268,7 @@ msgstr "Actie Bijgewerkt"
 
 #: classes/notifications.php:499
 msgid "Select a field or type to search"
-msgstr "Selecteer veld of type om te zoeken"
+msgstr "Selecteer een veld of type om te zoeken"
 
 #: classes/notifications.php:512
 msgid "Insert Field"
@@ -288,11 +294,11 @@ msgstr "Inzendingen"
 
 #: classes/subs-cpt.php:117
 msgid "Submission"
-msgstr "Inzendingen"
+msgstr "Inzending"
 
 #: classes/subs-cpt.php:119
 msgid "Add New Submission"
-msgstr "Toevoeg Nieuwe Inzending"
+msgstr "Voeg Een Nieuwe Inzending Toe"
 
 #: classes/subs-cpt.php:120
 msgid "Edit Submission"
@@ -332,11 +338,11 @@ msgstr "Exporteer dit item"
 
 #: classes/subs-cpt.php:390 classes/subs-cpt.php:690 classes/subs-cpt.php:691
 msgid "Export"
-msgstr "Exporteer"
+msgstr "Exporteren"
 
 #: classes/subs-cpt.php:396
 msgid "Move this item to the Trash"
-msgstr "Verplaats deze item naar de prullenbak."
+msgstr "Verplaats dit item naar de prullenbak."
 
 #: classes/subs-cpt.php:396
 msgid "Trash"
@@ -344,7 +350,7 @@ msgstr "Prullenbak"
 
 #: classes/subs-cpt.php:402
 msgid "Restore this item from the Trash"
-msgstr "Dit item herstellen vanuit de prullenbak"
+msgstr "Herstel dit item vanuit de prullenbak"
 
 #: classes/subs-cpt.php:402
 msgid "Restore"
@@ -356,7 +362,7 @@ msgstr "Dit item permanent verwijderen"
 
 #: classes/subs-cpt.php:403
 msgid "Delete Permanently"
-msgstr "Permanent verwijderen"
+msgstr "Permanent Verwijderen"
 
 #: classes/subs-cpt.php:410
 msgid "Unpublished"
@@ -387,27 +393,28 @@ msgstr "Eind Datum"
 #: classes/subs-cpt.php:619
 #, php-format
 msgid "%s submission updated."
-msgstr "%s inzendingen geüpdatet."
+msgstr "%s inzendingen bijgewerkt."
 
 #: classes/subs-cpt.php:620
 #, php-format
 msgid "%s submission not updated, somebody is editing it."
-msgstr "%s inzending is geüpdatet, iemand is het aan het bewerken."
+msgstr ""
+"%s inzending is niet bijgewerkt, iemand anders is het aan het bewerken."
 
 #: classes/subs-cpt.php:621
 #, php-format
 msgid "%s submission permanently deleted."
-msgstr "%s inzendingen permanent verwijderd"
+msgstr "%s inzending permanent verwijderd."
 
 #: classes/subs-cpt.php:622
 #, php-format
 msgid "%s submission moved to the Trash."
-msgstr "%s inzendingen zijn verplaatst naar de prullenbak."
+msgstr "%s inzending is verplaatst naar de prullenbak."
 
 #: classes/subs-cpt.php:623
 #, php-format
 msgid "%s submission restored from the Trash."
-msgstr "%s inzendingen hersteld vanuit de prullenbak."
+msgstr "%s inzending is hersteld vanuit de prullenbak."
 
 #: classes/subs-cpt.php:646
 msgid "updated"
@@ -419,15 +426,15 @@ msgstr "Download alle inzendingen"
 
 #: classes/subs-cpt.php:805
 msgid "Back to list"
-msgstr "Terug naar lijst"
+msgstr "Terug naar de lijst"
 
 #: classes/subs-cpt.php:863
 msgid "User Submitted Values"
-msgstr "Gebruiker Ingevoerde Waardes"
+msgstr "Door Gebruiker Ingevoerde Waarden"
 
 #: classes/subs-cpt.php:865
 msgid "Submission Stats"
-msgstr "Inzendingen Statistieken"
+msgstr "Statistieken inzending"
 
 #: classes/subs-cpt.php:895
 msgid "Field"
@@ -472,12 +479,12 @@ msgid ""
 "Ninja Forms cannot be network activated. Please visit each site's dashboard "
 "to activate the plugin."
 msgstr ""
-"Ninja Forms kan niet via netwerk worden geactiveerd, Bezoek voor elke site "
-"het dashboard om de plugin te activeren."
+"Ninja Forms kan niet via het netwerk worden geactiveerd, Bezoek voor elke "
+"site het dashboard om de plugin te activeren."
 
 #: includes/class-extension-updater.php:65
 msgid "You will find this included with your purchase email."
-msgstr "U vind dit bijgevoegd in je aankoop email."
+msgstr "Je vind dit bijgevoegd in je aankoop email."
 
 #: includes/class-extension-updater.php:75
 msgid "Key"
@@ -493,7 +500,7 @@ msgstr "Deactiveren Licentie"
 
 #: includes/deprecated.php:464 includes/deprecated.php:473
 msgid "User Submitted Values:"
-msgstr "Gebruiker Ingevoerde Waarde:"
+msgstr "Door Gebruiker Ingevoerde Waarden:"
 
 #: includes/deprecated.php:662
 msgid "Thank you for filling out this form."
@@ -518,8 +525,8 @@ msgid ""
 "Please rate %sNinja Forms%s %s on %sWordPress.org%s to help us keep this "
 "plugin free.  Thank you from the WP Ninjas team!"
 msgstr ""
-"Gelieve beoordeel %sNinja Forms%s %s op %sWordPress.org%s om te helpen dat "
-"deze plugin gratis blijft.  Alvast bedankt van de WP Ninjas team!"
+"Beoordeel alstublieft %sNinja Forms%s %s op %sWordPress.org%s om er voor te "
+"zorgen dat deze plugin gratis blijft.  Alvast bedankt van het WP Ninjas team!"
 
 #: includes/widget.php:14 includes/admin/welcome.php:360
 msgid "Ninja Forms Widget"
@@ -527,7 +534,7 @@ msgstr "Ninja Forms Widget"
 
 #: includes/widget.php:89
 msgid "Display Title"
-msgstr "Venster titel"
+msgstr "Toon titel"
 
 #: includes/widget.php:96 includes/admin/post-metabox.php:39
 #: includes/admin/edit-field/desc.php:40
@@ -535,7 +542,7 @@ msgstr "Venster titel"
 #: includes/fields/hidden.php:52 includes/fields/number.php:72
 #: includes/fields/textbox.php:137 includes/fields/textbox.php:184
 msgid "None"
-msgstr "Niets"
+msgstr "Geen"
 
 #: includes/admin/admin.php:4 includes/admin/admin.php:5
 #: includes/admin/admin.php:101
@@ -635,7 +642,7 @@ msgstr "Je moet een naam invoeren voor deze favoriet."
 
 #: includes/admin/scripts.php:51
 msgid "Really deactivate all licenses?"
-msgstr "Weet je het zeker om alle licenties te deactiveren?"
+msgstr "Weet je het zeker dat je alle licenties wilt deactiveren?"
 
 #: includes/admin/scripts.php:70
 msgid "Edit Form"
@@ -652,7 +659,8 @@ msgstr "Opslaan..."
 #: includes/admin/scripts.php:70
 msgid "Remove this field? It will be removed even if you do not save."
 msgstr ""
-"Verwijder dit veld? Het zal worden verwijderd, ondanks je het niet opslaat."
+"Dit veld verwijderen? Het zal worden verwijderd, ook als  je het niet "
+"opslaat."
 
 #: includes/admin/sidebar.php:155
 #: includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:193
@@ -684,7 +692,7 @@ msgid ""
 "You will be automatically redirected when the process is finished."
 msgstr ""
 "Het proces is begonnen, wees geduldig. Dit kan enige minuten duren. Je zult "
-"automatisch gedirigeerd worden, wanneer het proces is geëindigd."
+"automatisch doorgestuurd worden, wanneer het proces is beëindigd."
 
 #: includes/admin/welcome.php:42 includes/admin/welcome.php:408
 #, php-format
@@ -697,8 +705,8 @@ msgid ""
 "Thank you for updating! Ninja Forms %s makes form building easier than ever "
 "before!"
 msgstr ""
-"Bedankt voor het updaten! Ninja Forms %s maakt het bouwen van formulieren "
-"makkelijker dat te voren!"
+"Bedankt voor het updaten! Ninja Forms %s maakt het creëren van formulieren "
+"makkelijker dan ooit!"
 
 #: includes/admin/welcome.php:57 includes/admin/welcome.php:58
 msgid "Welcome to Ninja Forms"
@@ -714,15 +722,15 @@ msgstr "Aan de slag met Ninja Forms"
 
 #: includes/admin/welcome.php:84 includes/admin/welcome.php:85
 msgid "The people who build Ninja Forms"
-msgstr "De mensen die Ninja Forms hebben gebouwd"
+msgstr "De mensen die Ninja Forms hebben gecreëerd "
 
 #: includes/admin/welcome.php:161
 msgid "What's New"
-msgstr "Wat is Nieuw"
+msgstr "Wat is er nieuw"
 
 #: includes/admin/welcome.php:164
 msgid "Getting Started"
-msgstr "Aan de Slag"
+msgstr "Aan De Slag"
 
 #: includes/admin/welcome.php:167
 msgid "Credits"
@@ -736,19 +744,19 @@ msgstr "Versie %s"
 
 #: includes/admin/welcome.php:194
 msgid "A simplified and more powerful form building experience."
-msgstr "Een simpel en krachtiger formulier bouw ervaring."
+msgstr "Een simpele en krachtigere ervaring om een formulier te creëren."
 
 #: includes/admin/welcome.php:200
 msgid "New Builder Tab"
-msgstr "Nieuw Bouw Tab"
+msgstr "Nieuw Creëer  Tab"
 
 #: includes/admin/welcome.php:201
 msgid ""
 "When creating and editing forms, go directly to the section that matters "
 "most."
 msgstr ""
-"Wanneer je een formulier creëert of bewerkt, ga direct naar de sectie dat "
-"het belangrijkste is."
+"Wanneer je een formulier creëert of bewerkt, ga dan direct naar de sectie "
+"die het belangrijkste is."
 
 #: includes/admin/welcome.php:206
 msgid "Better Organized Field Settings"
@@ -759,8 +767,8 @@ msgid ""
 "The most common settings are shown immediately, while other, non-essential, "
 "settings are tucked away inside expandable sections."
 msgstr ""
-"De meest voorkomede instellingen is direct te zien, terwijl andere, niet "
-"essentiële instellingen, worden weggestopt in uitvouwbare secties."
+"De meest voorkomede instellingen zijn direct te zien, terwijl andere, niet "
+"essentiële instellingen, in uitvouwbare secties zijn geplaatst."
 
 #: includes/admin/welcome.php:218
 msgid "Improved clarity"
@@ -772,9 +780,9 @@ msgid ""
 "favor of \"Emails & Actions.\" This is a much clearer indication of what can "
 "be done on this tab."
 msgstr ""
-"Samen met de \"Build Your Form\" tab, hebben we verwijderd \"Notifications\" "
-"ten gunste van \"Emails & Actions.\" . Dit is duidelijker indicatie wat kan "
-"gedaan worden in deze tab."
+"Samen met de \"Creëer Jou Formulier\" tab, hebben we \"Notificaties\" "
+"verwijderd ten gunste van \"Emails & Acties.\" . Dit geeft een betere "
+"indicatie wat kan gedaan worden in deze tab."
 
 #: includes/admin/welcome.php:224
 msgid "Remove all Ninja Forms data"
@@ -787,11 +795,11 @@ msgid ""
 msgstr ""
 "We hebben een optie geplaatst om alle Ninja Forms data te verwijderen "
 "(inzendingen, velden, opties), wanneer je deze plugin verwijderd, Wij noemen "
-"het de nucleair optie."
+"het de nucleaire optie."
 
 #: includes/admin/welcome.php:230
 msgid "Better license management"
-msgstr "Betere licentie management"
+msgstr "Verbeterde licentie management"
 
 #: includes/admin/welcome.php:231
 msgid ""
@@ -803,7 +811,7 @@ msgstr ""
 
 #: includes/admin/welcome.php:241
 msgid "More to come"
-msgstr "Komt nog meer"
+msgstr "Er komt nog meer"
 
 #: includes/admin/welcome.php:242
 msgid ""
@@ -811,10 +819,10 @@ msgid ""
 "improvements in the future. Version 3.0 will build on these changes to make "
 "Ninja Forms an even more stable, powerful, and user-friendly form builder."
 msgstr ""
-"De interface updates in deze versie, ligt het grondwerk voor een aantal "
-"grote verbeteringen in de toekomst. Versie 3.0 zal gebouwd op deze "
-"veranderingen, om Ninja Forms nog meer een stabiele, krachtige, "
-"gebruiksvriendelijke formulier bouwer te zijn."
+"De interface updates in deze versie, zijn de basis voor een groot aantal "
+"toekomstige verbeteringen. Versie 3.0 zal worden gebouwd op deze "
+"veranderingen, om met Ninja Forms nog stabielere, krachtigere en "
+"gebruiksvriendelijkere formulieren te creëren."
 
 #: includes/admin/welcome.php:246
 #: includes/admin/pages/ninja-forms-addons/tabs/addons/addons.php:40
@@ -823,7 +831,8 @@ msgstr "Documentatie"
 
 #: includes/admin/welcome.php:247
 msgid "Take a look at our in-depth Ninja Forms documentation below."
-msgstr "Neem een kijkje op onze diepgaande Ninja Forms documentatie hieronder."
+msgstr ""
+"Neem hieronder een kijkje in onze uitgebreide Ninja Forms documentatie."
 
 #: includes/admin/welcome.php:249
 msgid "Ninja Forms Documentation"
@@ -854,8 +863,8 @@ msgid ""
 "Use the tips below to get started using Ninja Forms. You will be up and "
 "running in no time!"
 msgstr ""
-"Gebruik deze tips hieronder om te starten met gebruik van Ninja Forms. Je "
-"hebt in een korte tijd een werkend formulier gebouwd."
+"Gebruik de tips hieronder om met Ninja Forms te beginnen. Je hebt in een "
+"korte tijd een werkend formulier gebouwd."
 
 #: includes/admin/welcome.php:320
 msgid "All About Forms"
@@ -868,14 +877,14 @@ msgid ""
 "already created your first %scontact form%s so that you have an example. You "
 "can also create your own by clicking %sAdd New%s."
 msgstr ""
-"De Forms menu is uw toegangspunt voor alle Ninja Forms items, We hebben "
-"alvast je eerst %scontact form%s zodat je voorbeeld hebt. Je kunt alsnog je "
-"eigen creëren door te klikken op %sAdd New%s."
+"Het formulier menu is je menu voor alle Ninja Forms items, We hebben alvast "
+"je eerste %scontact formulier%s aangemaakt zodat je een voorbeeld hebt. Je "
+"kunt alsnog je eigen formulier creëren door te klikken op %sVoeg Toe%s."
 
 #: includes/admin/welcome.php:325
 #: includes/admin/pages/ninja-forms/tabs/field-settings/field-settings.php:11
 msgid "Build Your Form"
-msgstr "Bouw Je Formulier"
+msgstr "Creëer Je Formulier"
 
 #: includes/admin/welcome.php:326
 msgid ""
@@ -883,13 +892,13 @@ msgid ""
 "the order you want them to appear. Each field will have an assortment of "
 "options such as label, label position, and placeholder."
 msgstr ""
-"Dit is de plek, waar het formulier gebouwd wordt door het toevoegen van "
+"Dit is de plek, waar het formulier gecreëerd wordt door het toevoegen van "
 "velden en het verslepen van de velden in de volgorde die je wilt. Elk veld "
 "heeft een assortiment van opties, zoals label, labelpositie en plaatshouder."
 
 #: includes/admin/welcome.php:328
 msgid "Emails & Actions"
-msgstr "E-mails en Acties"
+msgstr "Emails en Acties"
 
 #: includes/admin/welcome.php:329
 msgid ""
@@ -897,10 +906,10 @@ msgid ""
 "submit, you can set those up on this tab. You can create an unlimited number "
 "of emails, including emails sent to the user who filled out the form."
 msgstr ""
-"Als je wilt dat per email geïnformeerd wordt, wanneer een gebruiker een "
-"formulier verzend, kun je dit opzetten in deze tab. Je kunt onbeperkt aantal "
-"e-mails creëren, inclusief e-mails die naar de gebruiker van ingevulde "
-"formulier worden verzonden."
+"Als je wilt dat je per email geïnformeerd wordt, wanneer een gebruiker een "
+"formulier verzend, kun je dit activeren in deze tab. Je kunt een onbeperkt "
+"aantal emails creëren, inclusief emails die naar de gebruiker van het "
+"ingevulde formulier worden verzonden."
 
 #: includes/admin/welcome.php:332
 msgid ""
@@ -908,9 +917,9 @@ msgid ""
 "well as display settings like hiding a form when it is successfully "
 "completed."
 msgstr ""
-"In deze tab staan algemene formulier instellingen, zoals titel en inzending "
-"methode, evenals scherm instellingen, bijvoorbeeld het formulier verbergen "
-"wanneer het succesvol is verstuurd."
+"In deze tab staan algemene formulier instellingen, zoals de titel en de "
+"inzending methode, evenals de scherm instellingen, bijvoorbeeld het "
+"formulier verbergen wanneer het succesvol is verstuurd."
 
 #: includes/admin/welcome.php:341
 msgid "Displaying Your Form"
@@ -928,9 +937,9 @@ msgid ""
 "in its sidebar."
 msgstr ""
 "Onder Basis Formulier Gedragingen in de Formulier Instellingen, kun je "
-"gemakkelijk een pagina selecteren waar automatisch het formulier onderaan de "
-"pagina wordt geplaatst. Een vergelijkbaar optie is beschikbaar in elke "
-"inhoud bewerkscherm in zijn zijbalk."
+"gemakkelijk een pagina selecteren waar automatisch het formulier onderaan op "
+"de pagina wordt geplaatst. Een vergelijkbaar optie is beschikbaar in elk "
+"content bewerkscherm in de zijbalk."
 
 #: includes/admin/welcome.php:351
 #: includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:159
@@ -944,8 +953,8 @@ msgid ""
 "Place %s in any area that accepts shortcodes to display your form anywhere "
 "you like. Even in the middle of your page or posts content."
 msgstr ""
-"Plaats %s in elk gebied dat shortcodes accepteert om jouw formulier te "
-"vertonen waar je maar wilt. Zelfs in het midden van je pagina of bericht."
+"Je kunt op elke plek, dat shortcodes accepteert, %s plaatsen. Zelfs in het "
+"midden van je pagina of bericht."
 
 #: includes/admin/welcome.php:361
 msgid ""
@@ -953,9 +962,9 @@ msgid ""
 "your site and select exactly which form you would like displayed in that "
 "space."
 msgstr ""
-"Ninja Forms biedt een widget die je kunt plaatsen in elk widget zijbalk "
-"gebied van uw site en selecteer welk formulier u wilt weergegeven in die "
-"ruimte."
+"Ninja Forms biedt een eigen widget aan, die je kunt plaatsen in elke widget "
+"zijbalk van je website. Selecteer vervolgens welk formulier u wilt "
+"weergegeven in deze ruimte."
 
 #: includes/admin/welcome.php:365
 #: includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:160
@@ -3678,423 +3687,3 @@ msgid ""
 msgstr ""
 "Je hebt Javascript nodig om dit formulier te verzenden, Schakel het in en "
 "probeer opnieuw."
-
-#~ msgid "Login"
-#~ msgstr "Inloggen"
-
-#~ msgid "Username"
-#~ msgstr "Gebruikensnaam"
-
-#~ msgid "Reset Password (Opens in a new window)"
-#~ msgstr "Reset Paswoord (opent in een nieuw venster)"
-
-#~ msgid "Login failed, please try again."
-#~ msgstr "Inloggen mislukt, probeer opnieuw"
-
-#~ msgid "Register"
-#~ msgstr "Registreer"
-
-#~ msgid "Email Address"
-#~ msgstr "Email adres"
-
-#~ msgid "There was an error registering you for this site."
-#~ msgstr "Er is een fout opgetreden bij het registreren voor deze site"
-
-#~ msgid "4 + 9 = "
-#~ msgstr "4 + 9 ="
-
-#~ msgid "13"
-#~ msgstr "13"
-
-#~ msgid "Ninja Forms Password"
-#~ msgstr "Ninja Forms Paswoord"
-
-#~ msgid ""
-#~ "You are receiving this email because you have an incomplete form. Your "
-#~ "username is now your email address and your password has been reset. It "
-#~ "is now "
-#~ msgstr ""
-#~ "Je krijgt deze mail, omdat je een incomplete formulier hebt. Je "
-#~ "gebruikersnaam is nu je email adres en je paswoord is gereset. Het is nu "
-
-#~ msgid "Save Form Settings"
-#~ msgstr "Bewaar formulier instellingen"
-
-#~ msgid "Field Settings Saved"
-#~ msgstr "Veld instellingen bewaard"
-
-#~ msgid "Add New Form"
-#~ msgstr "Voeg Nieuwe Formulier Toe"
-
-#~ msgid "Export Forms"
-#~ msgstr "Exporteer Formulieren"
-
-#~ msgid "Save form submissions?"
-#~ msgstr "Bewaar formulier inzending?"
-
-#~ msgid "Require Logged-in?"
-#~ msgstr "Vereist Ingelogd zijn?"
-
-#~ msgid "Submit via ajax?"
-#~ msgstr "Verstuur via Ajax"
-
-#~ msgid "Success Page"
-#~ msgstr "Succes Pagina"
-
-#~ msgid ""
-#~ "If you want to include field data entered by the user, for instance a "
-#~ "name, you can use the following shortcode: [ninja_forms_field id=23] "
-#~ "where 23 is the ID of the field you want to insert. This will tell Ninja "
-#~ "Forms to replace the bracketed text with whatever input the user placed "
-#~ "in that field. You can find the field ID when you expand the field for "
-#~ "editing."
-#~ msgstr ""
-#~ "Als u veldgegevens, die ingevoerd zijn door de gebruiker, wilt gebruiken, "
-#~ "bijvoorbeeld een naam, kunt u de volgende shortcode gebruiken: "
-#~ "[Ninja_forms_field id = 23], waar 23 is het ID van het veld dat u wilt "
-#~ "invoegen Dit zal Ninja Forms vertellen, dat  tussen de haakjes, de tekst "
-#~ "te vervangen door de waarde  van het veld wat de gebruiker ingevuld "
-#~ "heeft. U kunt het veld ID vinden wanneer u het veld uitklapt om te "
-#~ "bewerken."
-
-#~ msgid "Steve Jones <steve@myurl.com>"
-#~ msgstr "Steve Jones <steve@myurl.com>"
-
-#~ msgid "Email message sent to the user"
-#~ msgstr "E-mailbericht verzonden naar de gebruiker"
-
-#~ msgid "Include a list of fields?"
-#~ msgstr "Sluit een lijst van velden in?"
-
-#~ msgid "Administrator Email"
-#~ msgstr "Administrator Email"
-
-#~ msgid "Administrator Email Addresses"
-#~ msgstr "Administrator Email Adressen"
-
-#~ msgid "Attach CSV of submission?"
-#~ msgstr "In de bijlage CSV van de inzending?"
-
-#~ msgid "Please enter all the addresses this form should be sent to."
-#~ msgstr ""
-#~ "Vul alle email adressen in, waarnaar dit formulier dient te worden "
-#~ "gezonden."
-
-#~ msgid "Ajax Message Settings"
-#~ msgstr "Ajax Bericht Instellingen"
-
-#~ msgid "Ajax Message Format"
-#~ msgstr "Ajax Berichten Formaat"
-
-#~ msgid ""
-#~ "(Advanced setting: Ninja Forms will require you to create two javascript "
-#~ "functions: one to handle the beforeSubmit call and one to handle the "
-#~ "server response. These should be named "
-#~ "ninja_forms_custom_ajax_before_submit and "
-#~ "ninja_forms_custom_ajax_response.)"
-#~ msgstr ""
-#~ "(Geavanceerde instelling: Ninja Forms zal vereisen dat u twee javascript "
-#~ "functies maken:. Een om het gesprek van de functie beforeSubmit te "
-#~ "behandelen en één om de server antwoord te  behandelen Deze moeten worden "
-#~ "genoemd ninja_forms_custom_ajax_before_submit en "
-#~ "ninja_forms_custom_ajax_response.)"
-
-#~ msgid "Ajax Loading Gif"
-#~ msgstr "Ajax Laden Gif"
-
-#~ msgid "Favorite Field Settings"
-#~ msgstr "Favoriete Veld Instellingen"
-
-#~ msgid "e.g. $, &pound;, &euro;"
-#~ msgstr "v.b. $, &pound;, &euro;"
-
-#~ msgid "Ajax submitting message"
-#~ msgstr "Ajax inzendingen bericht"
-
-#~ msgid ""
-#~ "If your form is submitted via ajax, what message should appear to let "
-#~ "users know it is being processed?"
-#~ msgstr ""
-#~ "Als je formulier via ajax is verstuurd, welek bericht zou moeten "
-#~ "verschijnen om je gebruikers te laten weten dat het verwerkt wordt?"
-
-#~ msgid "View Form Submissions"
-#~ msgstr "Bekijk Formulier Inzendingen"
-
-#~ msgid "Submissions Per Page"
-#~ msgstr "Inzendingen Per Pagina"
-
-#~ msgid "Back"
-#~ msgstr "Terug"
-
-#~ msgid "Submissions Deleted"
-#~ msgstr "Inzendingen Verwijderd"
-
-#~ msgid "Save Sub"
-#~ msgstr "Bewaar Inzending"
-
-#~ msgid "Select A Form"
-#~ msgstr "Selecteer Een Formulier"
-
-#~ msgid "Date Range"
-#~ msgstr "Datum Reeks"
-
-#~ msgid "Optional"
-#~ msgstr "Optioneel"
-
-#~ msgid ""
-#~ "If both Begin Date and End Date are left blank, all submissions will be "
-#~ "displayed."
-#~ msgstr ""
-#~ "Als zowel Begin Datum en Eind Datum leeg gelaten worden, alle inzendingen "
-#~ "zullen worden vertoond."
-
-#~ msgid "Expand / Collapse Options"
-#~ msgstr "Ineen / Uiteen Opties"
-
-#~ msgid "Import Options"
-#~ msgstr "Importeer Opties"
-
-#~ msgid ""
-#~ "Use this as the \"From\" email address for Administrative recipients of "
-#~ "this form?"
-#~ msgstr ""
-#~ "Gebruik dit als de  \"Van \" e-mailadres voor Administratieve ontvangers "
-#~ "van dit formulier?"
-
-#~ msgid ""
-#~ "Use this as the \"From\" email name for Administrative recipients of this "
-#~ "form?"
-#~ msgstr ""
-#~ "Gebruik dit als de  \"Van \" e-mail naam voor Administratieve ontvangers "
-#~ "van dit formulier?"
-
-#~ msgid "Include in payment details list?"
-#~ msgstr "Opnemen in betalingsgegevens lijst?"
-
-#~ msgid ""
-#~ " - Should this field be considered as pertinant to a payment/product? i."
-#~ "e. an item option, a product size or color, etc."
-#~ msgstr ""
-#~ "- Moet dit gebied worden beschouwd als pertinant voor een ​​betaling / "
-#~ "product? Dat wil zeggen een item optie, een maat of kleur product, enz."
-
-#~ msgid "label"
-#~ msgstr "label"
-
-#~ msgid "help"
-#~ msgstr "help"
-
-#~ msgid "calc_name"
-#~ msgstr "calc_naam"
-
-#~ msgid "Display Options"
-#~ msgstr "Venster Opties"
-
-#~ msgid "Form Settings"
-#~ msgstr "Formulier Instellingen"
-
-#~ msgid "Enter form title here"
-#~ msgstr "Voer formuliertitel hier in"
-
-#~ msgid "http://ninjaforms.com/ninja-forms/"
-#~ msgstr "http://ninjaforms.com/ninja-forms/"
-
-#~ msgid ""
-#~ "Ninja Forms is a webform builder with unparalleled ease of use and "
-#~ "features."
-#~ msgstr ""
-#~ "Ninja Forms is een webformulier bouwer met een ongeëvenaard gebruiksgemak "
-#~ "en functies."
-
-#~ msgid "The WP Ninjas"
-#~ msgstr "De WP Ninjas"
-
-#~ msgid "http://ninjaforms.com"
-#~ msgstr "http://ninjaforms.com"
-
-#~ msgid "2.2.31"
-#~ msgstr "2.2.31"
-
-#~ msgid "Field Settings"
-#~ msgstr "Veld Instellingen"
-
-#~ msgid "F d, Y"
-#~ msgstr "F d, Y"
-
-#~ msgid "Layout and Styles"
-#~ msgstr "Lay-out en Stijlen"
-
-#~ msgid ""
-#~ "This extension gives you power over the look and feel of your Ninja Forms "
-#~ "from within your WordPress admin. It gives you the ability to style "
-#~ "almost every part of your form, down to the the smallest detail, with "
-#~ "little to no …"
-#~ msgstr ""
-#~ "Deze uitbreiding geeft je de macht over de stijl van uw Ninja formulieren "
-#~ "vanuit uw WordPress admin. Het geeft je de mogelijkheid om bijna elk deel "
-#~ "van uw formulier, de stijl, tot in de het kleinste detail, met weinig tot "
-#~ "geen ..."
-
-#~ msgid "Save User Progress"
-#~ msgstr "Save User Progress"
-
-#~ msgid ""
-#~ "Sometimes forms can grow quite large, and it would be very helpful for "
-#~ "users to be able to save their progress and come back at a later time. "
-#~ "This extension does just that for you. Using the built-in WordPress user …"
-#~ msgstr ""
-#~ "Soms kunnen formulieren erg groot worden, en het zou zeer nuttig zijn om "
-#~ "voor gebruikers in staat  te kunnen zijn, om hun voortgang op te slaan en "
-#~ "terug te komen op een later tijdstip. Deze uitbreiding doet precies dat "
-#~ "voor je. Met behulp van de ingebouwde WordPress gebruiker ..."
-
-#~ msgid "File Uploads"
-#~ msgstr "File Uploads"
-
-#~ msgid ""
-#~ "File Uploads for Ninjas Forms gives you the ability to insert file upload "
-#~ "fields to your forms. This will allow users the ability to upload images, "
-#~ "docs, audio or video files, or anything else you may need. You can easily "
-#~ "…"
-#~ msgstr ""
-#~ "File Uploads voor Ninjas Forms, geeft u de mogelijkheid om velden voor "
-#~ "bestanden te uploaden toe te voegen aan uw formulieren. Dit zal "
-#~ "gebruikers de mogelijkheid geven om beelden, documenten, audio-of "
-#~ "videobestanden, of iets anders dat u nodig heeft, uploaden. U kunt "
-#~ "eenvoudig ..."
-
-#~ msgid "Front-End Posting"
-#~ msgstr "Front-End Posting"
-
-#~ msgid ""
-#~ "The Ninja Forms Front-end Posting extension gives you the power of the "
-#~ "WordPress post editor on any publicly viewable page you choose. You can "
-#~ "allow users the ability to create content and have it assigned to any "
-#~ "publicly available built-in or custom …"
-#~ msgstr ""
-#~ "De Ninja Forms Front-end Posting uitbreiding, geeft je de kracht van de "
-#~ "WordPress bericht editor op een voor iedereen zichtbaar pagina die u "
-#~ "kiest. U kunt gebruikers de mogelijkheid geven om content te creëren en  "
-#~ "het toegewijzen aan een openbaar ingebouwde of aangepaste ..."
-
-#~ msgid "Front-End Editor"
-#~ msgstr "Front-End Editor"
-
-#~ msgid ""
-#~ "The Front-End Editor Extension brings the power of your WordPress admin "
-#~ "to your front-facing site. It is a one-stop solution for almost all your "
-#~ "front-end editing needs. Users can now be allowed to create, edit, or "
-#~ "delete posts, pages, or any custom post type without the need to see the "
-#~ "WordPress admin."
-#~ msgstr ""
-#~ "De Front-End Editor Uitbreiding brengt de kracht van uw WordPress admin "
-#~ "om uw front-facing-site. Het is een one-stop oplossing voor vrijwel al uw "
-#~ "front-end editing behoeften. Gebruikers kunnen nu worden toegestaan ​​om "
-#~ "berichten, pagina's, of een aangepaste berich type te maken, bewerken of "
-#~ "verwijderen zonder de noodzaak om de WordPress admin zien."
-
-#~ msgid "Multi-Part Forms"
-#~ msgstr "Multi-Part Forms"
-
-#~ msgid ""
-#~ "The Multi-Part Forms extension allows you to break long forms into "
-#~ "sections, creating a natural flow for your visitors. You can add a "
-#~ "breadcrumb trail through the various sections of the form and a progress "
-#~ "bar so that your users …"
-#~ msgstr ""
-#~ "De Multi-Part-formulieren uitbreiding kunt u lange formulieren breken in "
-#~ "delen, het creëren van een natuurlijke stroom voor uw bezoekers. U kunt "
-#~ "een broodkruimelspoor maken, door de verschillende secties van het "
-#~ "formulier en een voortgangsbalk, zodat uw gebruikers ..."
-
-#~ msgid "Conditional Logic"
-#~ msgstr "Conditional Logic"
-
-#~ msgid ""
-#~ "This extension for Ninja Forms allows you to create “smart” forms. Fields "
-#~ "within these forms can dynamically change based upon user input; show or "
-#~ "hide fields based on a selected item, set field values based upon a list "
-#~ "selection, or …"
-#~ msgstr ""
-#~ "Deze uitbreiding voor Ninja Formulieren kunt u 'slimme' formulieren te "
-#~ "maken. Velden binnen deze formulieren kan dynamisch veranderen op basis "
-#~ "van input van de gebruiker; weergeven of verbergen van velden op basis "
-#~ "van een geselecteerd item, ingesteld veld waarden op basis van een "
-#~ "keuzelijst, of ..."
-
-#~ msgid "MailChimp"
-#~ msgstr "MailChimp"
-
-#~ msgid ""
-#~ "The MailChimp extension allows you to quickly create newsletter signup "
-#~ "forms for your MailChimp account using the power and flexibility that "
-#~ "Ninja Forms provides. …"
-#~ msgstr ""
-#~ "De MailChimp uibreiding kunt u  nieuwsbrief aanmeldformulieren voor uw "
-#~ "MailChimp Groep maken, gebruik van de kracht en flexibiliteit die Ninja "
-#~ "Forms biedt. .... ..."
-
-#~ msgid "Campaign Monitor"
-#~ msgstr "Campaign Monitor"
-
-#~ msgid ""
-#~ "The Campaign Monitor extension allows you to quickly create newsletter "
-#~ "signup forms for your Campaign Monitor account using the power and "
-#~ "flexibility that Ninja Forms provides. …"
-#~ msgstr ""
-#~ "De Campaign Monitor uitbreiding kunt u snel nieuwsbrief "
-#~ "aanmeldformulieren voor uw Campaign Monitor Groep  maken, gebruik van de "
-#~ "kracht en flexibiliteit die Ninja Forms biedt. ..."
-
-#~ msgid "User Analytics"
-#~ msgstr "User Analytics"
-
-#~ msgid ""
-#~ "The User Analytics extension will help website owners understand how hot "
-#~ "a lead is based on extra data automatically collected about the user. …"
-#~ msgstr ""
-#~ "De User Analytics uitbreiding zal helpen website-eigenaren begrijpen hoe "
-#~ "hot een lead is, gebaseerd op extra gegevens automatisch verzameld over "
-#~ "de gebruiker. ..."
-
-#~ msgid "Constant Contact"
-#~ msgstr "Constant Contact"
-
-#~ msgid ""
-#~ "The Constant Contact extension allows you to quickly create newsletter "
-#~ "signup forms for your Constant Contact account using the power and…"
-#~ msgstr ""
-#~ "Met de Constant Contact uitbreiding, kunt u snel  nieuwsbrief "
-#~ "aanmeldformulieren voor uw Constant Contact Groep maken, gebruik van de "
-#~ "kracht en ..."
-
-#~ msgid "Pushover"
-#~ msgstr "Pushover"
-
-#~ msgid ""
-#~ "When email and SMS notifications just do not cut it, send yourself push "
-#~ "notifications of form submissions with Pushover. Pushover makes…"
-#~ msgstr ""
-#~ "Wanneer e-mail en sms-berichten gewoon niet voldoen, stuur je push-"
-#~ "notificaties van formulierinzendingen met Pushover. Pushover maakt ..."
-
-#~ msgid "Freshbooks"
-#~ msgstr "Freshbooks"
-
-#~ msgid ""
-#~ "Automatically insert Ninja Forms data right into Freshbooks when your "
-#~ "potential clients submit forms. Go from lead to invoice that much quicker…"
-#~ msgstr ""
-#~ "Automatisch invoegen van Ninja Formulieren gegevens, rechtsstreeks in "
-#~ "FreshBooks, wanneer uw potentiële klanten formulieren in dienen. Ga van "
-#~ "lead tot factuur die veel sneller ..."
-
-#~ msgid "Ajax Settings"
-#~ msgstr "Ajax instellingen"
-
-#~ msgid "Inline Messages (Default)"
-#~ msgstr "Inline Berichten (Standaard)"
-
-#~ msgid "Custom Message Display (Advanced)"
-#~ msgstr "Aangepaste melding in een venster (Gevorderd)"

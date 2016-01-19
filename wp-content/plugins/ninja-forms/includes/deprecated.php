@@ -125,16 +125,25 @@ function ninja_forms_get_subs( $args = array() ) {
 			);
 		}
 
-		if( isset( $args['user_id'] ) ) {
-			$query_args['author'] = $args['user_id'];
-		}
-
 		if( isset( $args['action'])){
 			$meta_query[] = array(
 				'key' => '_action',
 				'value' => $args['action'],
 			);
 		}
+		
+		$query_args = array(
+			'post_type' 	=> 'nf_sub',
+			'date_query' 	=> $date_query,
+			'meta_query' 	=> $meta_query,
+			'posts_per_page'	=> -1,
+		);
+
+		if( isset( $args['user_id'] ) ) {
+			$query_args['author'] = $args['user_id'];
+		}
+
+
 
 		if( isset( $args['begin_date'] ) AND $args['begin_date'] != '') {
 			$query_args['date_query']['after'] = nf_get_begin_date( $args['begin_date'] )->format("Y-m-d G:i:s");
@@ -143,13 +152,6 @@ function ninja_forms_get_subs( $args = array() ) {
 		if( isset( $args['end_date'] ) AND $args['end_date'] != '' ) {
 			$query_args['date_query']['before'] = nf_get_end_date( $args['end_date'] )->format("Y-m-d G:i:s");
 		}
-
-		$query_args = array(
-			'post_type' 	=> 'nf_sub',
-			'date_query' 	=> $date_query,
-			'meta_query' 	=> $meta_query,
-			'posts_per_page'	=> -1,
-		);
 
 		$subs = get_posts( $query_args );
 
@@ -967,5 +969,10 @@ function ninja_forms_update_form( $args ){
 	foreach ( $update_array as $key => $val ) {
 		Ninja_Forms()->form( $form_id )->update_setting( $key, $val );
 	}
+
+	Ninja_Forms()->form( $form_id )->dump_cache();
 	
 }
+
+// Add our old form fields
+require_once( NINJA_FORMS_DIR . "/includes/fields/honeypot.php" );

@@ -1,6 +1,11 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
 /**
- * Allows log files to be written to for debugging purposes.
+ * Allows log files to be written to for debugging purposes
  *
  * @class 		WC_Logger
  * @version		1.6.4
@@ -11,16 +16,15 @@
 class WC_Logger {
 
 	/**
-	 * @var array Stores open file _handles.
+	 * Stores open file _handles.
+	 *
+	 * @var array
 	 * @access private
 	 */
 	private $_handles;
 
 	/**
 	 * Constructor for the logger.
-	 *
-	 * @access public
-	 * @return void
 	 */
 	public function __construct() {
 		$this->_handles = array();
@@ -29,13 +33,10 @@ class WC_Logger {
 
 	/**
 	 * Destructor.
-	 *
-	 * @access public
-	 * @return void
 	 */
 	public function __destruct() {
 		foreach ( $this->_handles as $handle ) {
-	       @fclose( escapeshellarg( $handle ) );
+			@fclose( $handle );
 		}
 	}
 
@@ -63,30 +64,30 @@ class WC_Logger {
 	/**
 	 * Add a log entry to chosen file.
 	 *
-	 * @access public
 	 * @param string $handle
 	 * @param string $message
-	 * @return void
 	 */
 	public function add( $handle, $message ) {
 		if ( $this->open( $handle ) && is_resource( $this->_handles[ $handle ] ) ) {
 			$time = date_i18n( 'm-d-Y @ H:i:s -' ); // Grab Time
 			@fwrite( $this->_handles[ $handle ], $time . " " . $message . "\n" );
 		}
+
+		do_action( 'woocommerce_log_add', $handle, $message );
 	}
 
 
 	/**
 	 * Clear entries from chosen file.
 	 *
-	 * @access public
 	 * @param mixed $handle
-	 * @return void
 	 */
 	public function clear( $handle ) {
 		if ( $this->open( $handle ) && is_resource( $this->_handles[ $handle ] ) ) {
 			@ftruncate( $this->_handles[ $handle ], 0 );
 		}
+
+		do_action( 'woocommerce_log_clear', $handle );
 	}
 
 }

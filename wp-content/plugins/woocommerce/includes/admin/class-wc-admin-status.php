@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * WC_Admin_Status Class
+ * WC_Admin_Status Class.
  */
 class WC_Admin_Status {
 
@@ -25,14 +25,14 @@ class WC_Admin_Status {
 	}
 
 	/**
-	 * Handles output of report
+	 * Handles output of report.
 	 */
 	public static function status_report() {
 		include_once( 'views/html-admin-page-status-report.php' );
 	}
 
 	/**
-	 * Handles output of tools
+	 * Handles output of tools.
 	 */
 	public static function status_tools() {
 		global $wpdb;
@@ -51,42 +51,26 @@ class WC_Admin_Status {
 				break;
 				case 'clear_expired_transients' :
 
-					// http://w-shadow.com/blog/2012/04/17/delete-stale-transients/
-					$rows = $wpdb->query( "
-						DELETE
-							a, b
-						FROM
-							{$wpdb->options} a, {$wpdb->options} b
-						WHERE
-							a.option_name LIKE '_transient_%' AND
-							a.option_name NOT LIKE '_transient_timeout_%' AND
-							b.option_name = CONCAT(
-								'_transient_timeout_',
-								SUBSTRING(
-									a.option_name,
-									CHAR_LENGTH('_transient_') + 1
-								)
-							)
-							AND b.option_value < UNIX_TIMESTAMP()
-					" );
+					/*
+					 * Deletes all expired transients. The multi-table delete syntax is used.
+					 * to delete the transient record from table a, and the corresponding.
+					 * transient_timeout record from table b.
+					 *
+					 * Based on code inside core's upgrade_network() function.
+					 */
+					$sql = "DELETE a, b FROM $wpdb->options a, $wpdb->options b
+						WHERE a.option_name LIKE %s
+						AND a.option_name NOT LIKE %s
+						AND b.option_name = CONCAT( '_transient_timeout_', SUBSTRING( a.option_name, 12 ) )
+						AND b.option_value < %d";
+					$rows = $wpdb->query( $wpdb->prepare( $sql, $wpdb->esc_like( '_transient_' ) . '%', $wpdb->esc_like( '_transient_timeout_' ) . '%', time() ) );
 
-					$rows2 = $wpdb->query( "
-						DELETE
-							a, b
-						FROM
-							{$wpdb->options} a, {$wpdb->options} b
-						WHERE
-							a.option_name LIKE '_site_transient_%' AND
-							a.option_name NOT LIKE '_site_transient_timeout_%' AND
-							b.option_name = CONCAT(
-								'_site_transient_timeout_',
-								SUBSTRING(
-									a.option_name,
-									CHAR_LENGTH('_site_transient_') + 1
-								)
-							)
-							AND b.option_value < UNIX_TIMESTAMP()
-					" );
+					$sql = "DELETE a, b FROM $wpdb->options a, $wpdb->options b
+						WHERE a.option_name LIKE %s
+						AND a.option_name NOT LIKE %s
+						AND b.option_name = CONCAT( '_site_transient_timeout_', SUBSTRING( a.option_name, 17 ) )
+						AND b.option_value < %d";
+					$rows2 = $wpdb->query( $wpdb->prepare( $sql, $wpdb->esc_like( '_site_transient_' ) . '%', $wpdb->esc_like( '_site_transient_timeout_' ) . '%', time() ) );
 
 					echo '<div class="updated"><p>' . sprintf( __( '%d Transients Rows Cleared', 'woocommerce' ), $rows + $rows2 ) . '</p></div>';
 
@@ -112,10 +96,7 @@ class WC_Admin_Status {
 				break;
 				case 'clear_sessions' :
 
-					$wpdb->query( "
-						DELETE FROM {$wpdb->options}
-						WHERE option_name LIKE '_wc_session_%' OR option_name LIKE '_wc_session_expires_%'
-					" );
+					$wpdb->query( "DELETE FROM {$wpdb->prefix}woocommerce_sessions" );
 
 					wp_cache_flush();
 
@@ -128,8 +109,8 @@ class WC_Admin_Status {
 				case 'delete_taxes' :
 
 					$wpdb->query( "TRUNCATE " . $wpdb->prefix . "woocommerce_tax_rates" );
-
 					$wpdb->query( "TRUNCATE " . $wpdb->prefix . "woocommerce_tax_rate_locations" );
+					WC_Cache_Helper::incr_cache_prefix( 'taxes' );
 
 					echo '<div class="updated"><p>' . __( 'Tax rates successfully deleted', 'woocommerce' ) . '</p></div>';
 				break;
@@ -157,28 +138,6 @@ class WC_Admin_Status {
 			}
 		}
 
-		// Manual translation update messages
-		if ( isset( $_GET['translation_updated'] ) ) {
-			switch ( $_GET['translation_updated'] ) {
-				case 2 :
-					echo '<div class="error"><p>' . __( 'Failed to install/update the translation:', 'woocommerce' ) . ' ' . __( 'Seems you don\'t have permission to do this!', 'woocommerce' ) . '</p></div>';
-					break;
-				case 3 :
-					echo '<div class="error"><p>' . __( 'Failed to install/update the translation:', 'woocommerce' ) . ' ' . sprintf( __( 'An authentication error occurred while updating the translation. Please try again or configure your %sUpgrade Constants%s.', 'woocommerce' ), '<a href="http://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants">', '</a>' ) . '</p></div>';
-					break;
-				case 4 :
-					echo '<div class="error"><p>' . __( 'Failed to install/update the translation:', 'woocommerce' ) . ' ' . __( 'Sorry but there is no translation available for your language =/', 'woocommerce' ) . '</p></div>';
-					break;
-
-				default :
-					// Force WordPress find for new updates and hide the WooCommerce translation update
-					set_site_transient( 'update_plugins', null );
-
-					echo '<div class="updated"><p>' . __( 'Translations installed/updated successfully!', 'woocommerce' ) . '</p></div>';
-					break;
-			}
-		}
-
 		// Display message if settings settings have been saved
 		if ( isset( $_REQUEST['settings-updated'] ) ) {
 			echo '<div class="updated"><p>' . __( 'Your changes have been saved.', 'woocommerce' ) . '</p></div>';
@@ -188,7 +147,7 @@ class WC_Admin_Status {
 	}
 
 	/**
-	 * Get tools
+	 * Get tools.
 	 * @return array of tools
 	 */
 	public static function get_tools() {
@@ -235,19 +194,11 @@ class WC_Admin_Status {
 			)
 		);
 
-		if ( get_locale() !== 'en_US' ) {
-			$tools['translation_upgrade'] = array(
-				'name'    => __( 'Translation Upgrade', 'woocommerce' ),
-				'button'  => __( 'Force Translation Upgrade', 'woocommerce' ),
-				'desc'    => __( '<strong class="red">Note:</strong> This option will force the translation upgrade for your language if a translation is available.', 'woocommerce' ),
-			);
-		}
-
 		return apply_filters( 'woocommerce_debug_tools', $tools );
 	}
 
 	/**
-	 * Show the logs page
+	 * Show the logs page.
 	 */
 	public static function status_logs() {
 
@@ -255,7 +206,7 @@ class WC_Admin_Status {
 
 		if ( ! empty( $_REQUEST['log_file'] ) && isset( $logs[ sanitize_title( $_REQUEST['log_file'] ) ] ) ) {
 			$viewed_log = $logs[ sanitize_title( $_REQUEST['log_file'] ) ];
-		} elseif ( $logs ) {
+		} elseif ( ! empty( $logs ) ) {
 			$viewed_log = current( $logs );
 		}
 
@@ -263,7 +214,7 @@ class WC_Admin_Status {
 	}
 
 	/**
-	 * Retrieve metadata from a file. Based on WP Core's get_file_data function
+	 * Retrieve metadata from a file. Based on WP Core's get_file_data function.
 	 * @since  2.1.1
 	 * @param  string $file Path to the file
 	 * @return string
@@ -295,16 +246,16 @@ class WC_Admin_Status {
 	}
 
 	/**
-	 * Scan the template files
+	 * Scan the template files.
 	 * @param  string $template_path
 	 * @return array
 	 */
 	public static function scan_template_files( $template_path ) {
 
-		$files         = scandir( $template_path );
-		$result        = array();
+		$files  = @scandir( $template_path );
+		$result = array();
 
-		if ( $files ) {
+		if ( ! empty( $files ) ) {
 
 			foreach ( $files as $key => $value ) {
 
@@ -325,12 +276,12 @@ class WC_Admin_Status {
 	}
 
 	/**
-	 * Scan the log files
+	 * Scan the log files.
 	 * @return array
 	 */
 	public static function scan_log_files() {
-		$files         = @scandir( WC_LOG_DIR );
-		$result        = array();
+		$files  = @scandir( WC_LOG_DIR );
+		$result = array();
 
 		if ( $files ) {
 
@@ -342,7 +293,57 @@ class WC_Admin_Status {
 					}
 				}
 			}
+
 		}
+
 		return $result;
+	}
+
+	/**
+	 * Get latest version of a theme by slug.
+	 * @param  object $theme WP_Theme object
+	 * @return string Version number if found
+	 */
+	public static function get_latest_theme_version( $theme ) {
+		$api = themes_api( 'theme_information', array(
+			'slug'     => $theme->get_stylesheet(),
+			'fields'   => array(
+			'sections' => false,
+			'tags'     => false
+		) ) );
+
+		$update_theme_version = 0;
+
+		// Check .org for updates
+		if ( $api && ! is_wp_error( $api ) ) {
+			$update_theme_version = $api->version;
+
+		// Check WooThemes Theme Version
+		} elseif ( strstr( $theme->{'Author URI'}, 'woothemes' ) ) {
+			$theme_dir = substr( strtolower( str_replace( ' ','', $theme->Name ) ), 0, 45 );
+
+			if ( false === ( $theme_version_data = get_transient( $theme_dir . '_version_data' ) ) ) {
+				$theme_changelog = wp_safe_remote_get( 'http://dzv365zjfbd8v.cloudfront.net/changelogs/' . $theme_dir . '/changelog.txt' );
+				$cl_lines  = explode( "\n", wp_remote_retrieve_body( $theme_changelog ) );
+				if ( ! empty( $cl_lines ) ) {
+					foreach ( $cl_lines as $line_num => $cl_line ) {
+						if ( preg_match( '/^[0-9]/', $cl_line ) ) {
+							$theme_date         = str_replace( '.' , '-' , trim( substr( $cl_line , 0 , strpos( $cl_line , '-' ) ) ) );
+							$theme_version      = preg_replace( '~[^0-9,.]~' , '' ,stristr( $cl_line , "version" ) );
+							$theme_update       = trim( str_replace( "*" , "" , $cl_lines[ $line_num + 1 ] ) );
+							$theme_version_data = array( 'date' => $theme_date , 'version' => $theme_version , 'update' => $theme_update , 'changelog' => $theme_changelog );
+							set_transient( $theme_dir . '_version_data', $theme_version_data , DAY_IN_SECONDS );
+							break;
+						}
+					}
+				}
+			}
+
+			if ( ! empty( $theme_version_data['version'] ) ) {
+				$update_theme_version = $theme_version_data['version'];
+			}
+		}
+
+		return $update_theme_version;
 	}
 }

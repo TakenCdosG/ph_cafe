@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Download handler
+ * Download handler.
  *
  * Handle digital downloads.
  *
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class WC_Download_Handler {
 
 	/**
-	 * Hook in methods
+	 * Hook in methods.
 	 */
 	public static function init() {
 		if ( isset( $_GET['download_file'] ) && isset( $_GET['order'] ) && isset( $_GET['email'] ) ) {
@@ -30,7 +30,7 @@ class WC_Download_Handler {
 	}
 
 	/**
-	 * Check if we need to download a file and check validity
+	 * Check if we need to download a file and check validity.
 	 */
 	public static function download_product() {
 		$product_id    = absint( $_GET['download_file'] );
@@ -77,7 +77,7 @@ class WC_Download_Handler {
 	}
 
 	/**
-	 * Perform checks to see if the current user can download the file
+	 * Perform checks to see if the current user can download the file.
 	 * @param  object $download_data
 	 * @access private
 	 */
@@ -89,7 +89,7 @@ class WC_Download_Handler {
 	}
 
 	/**
-	 * Check if an order is valid for downloading from
+	 * Check if an order is valid for downloading from.
 	 * @param  array $download_data
 	 * @access private
 	 */
@@ -100,7 +100,7 @@ class WC_Download_Handler {
 	}
 
 	/**
-	 * Check if there are downloads remaining
+	 * Check if there are downloads remaining.
 	 * @param  array $download_data
 	 * @access private
 	 */
@@ -111,7 +111,7 @@ class WC_Download_Handler {
 	}
 
 	/**
-	 * Check if the download has expired
+	 * Check if the download has expired.
 	 * @param  array $download_data
 	 * @access private
 	 */
@@ -122,7 +122,7 @@ class WC_Download_Handler {
 	}
 
 	/**
-	 * Check if a download requires the user to login first
+	 * Check if a download requires the user to login first.
 	 * @param  array $download_data
 	 * @access private
 	 */
@@ -142,15 +142,14 @@ class WC_Download_Handler {
 	}
 
 	/**
-	 * Log the download + increase counts
-	 * @param  object $download_data
-	 * @access private
+	 * Log the download + increase counts.
+	 * @param object $download_data
 	 */
-	private static function count_download( $download_data ) {
+	public static function count_download( $download_data ) {
 		global $wpdb;
 
 		$wpdb->update(
-			$wpdb->prefix . "woocommerce_downloadable_product_permissions",
+			$wpdb->prefix . 'woocommerce_downloadable_product_permissions',
 			array(
 				'download_count'      => $download_data->download_count + 1,
 				'downloads_remaining' => $download_data->downloads_remaining > 0 ? $download_data->downloads_remaining - 1 : $download_data->downloads_remaining,
@@ -190,7 +189,7 @@ class WC_Download_Handler {
 	}
 
 	/**
-	 * Redirect to a file to start the download
+	 * Redirect to a file to start the download.
 	 * @param  string $file_path
 	 * @param  string $filename
 	 */
@@ -200,7 +199,7 @@ class WC_Download_Handler {
 	}
 
 	/**
-	 * Parse file path and see if its remote or local
+	 * Parse file path and see if its remote or local.
 	 * @param  string $file_path
 	 * @return array
 	 */
@@ -240,26 +239,24 @@ class WC_Download_Handler {
 	}
 
 	/**
-	 * Download a file using X-Sendfile, X-Lighttpd-Sendfile, or X-Accel-Redirect if available
+	 * Download a file using X-Sendfile, X-Lighttpd-Sendfile, or X-Accel-Redirect if available.
 	 * @param  string $file_path
 	 * @param  string $filename
 	 */
 	public static function download_file_xsendfile( $file_path, $filename ) {
 		$parsed_file_path = self::parse_file_path( $file_path );
 
-		extract( $parsed_file_path );
-
 		if ( function_exists( 'apache_get_modules' ) && in_array( 'mod_xsendfile', apache_get_modules() ) ) {
-			self::download_headers( $file_path, $filename );
-			header( "X-Sendfile: $file_path" );
+			self::download_headers( $parsed_file_path['file_path'], $filename );
+			header( "X-Sendfile: " . $parsed_file_path['file_path'] );
 			exit;
 		} elseif ( stristr( getenv( 'SERVER_SOFTWARE' ), 'lighttpd' ) ) {
-			self::download_headers( $file_path, $filename );
-			header( "X-Lighttpd-Sendfile: $file_path" );
+			self::download_headers( $parsed_file_path['file_path'], $filename );
+			header( "X-Lighttpd-Sendfile: " . $parsed_file_path['file_path'] );
 			exit;
 		} elseif ( stristr( getenv( 'SERVER_SOFTWARE' ), 'nginx' ) || stristr( getenv( 'SERVER_SOFTWARE' ), 'cherokee' ) ) {
-			self::download_headers( $file_path, $filename );
-			$xsendfile_path = trim( preg_replace( '`^' . str_replace( '\\', '/', getcwd() ) . '`', '', $file_path ), '/' );
+			self::download_headers( $parsed_file_path['file_path'], $filename );
+			$xsendfile_path = trim( preg_replace( '`^' . str_replace( '\\', '/', getcwd() ) . '`', '', $parsed_file_path['file_path'] ), '/' );
 			header( "X-Accel-Redirect: /$xsendfile_path" );
 			exit;
 		}
@@ -269,19 +266,17 @@ class WC_Download_Handler {
 	}
 
 	/**
-	 * Force download - this is the default method
+	 * Force download - this is the default method.
 	 * @param  string $file_path
 	 * @param  string $filename
 	 */
 	public static function download_file_force( $file_path, $filename ) {
 		$parsed_file_path = self::parse_file_path( $file_path );
 
-		extract( $parsed_file_path );
+		self::download_headers( $parsed_file_path['file_path'], $filename );
 
-		self::download_headers( $file_path, $filename );
-
-		if ( ! self::readfile_chunked( $file_path ) ) {
-			if ( $remote_file ) {
+		if ( ! self::readfile_chunked( $parsed_file_path['file_path'] ) ) {
+			if ( $parsed_file_path['remote_file'] ) {
 				self::download_file_redirect( $file_path );
 			} else {
 				self::download_error( __( 'File not found', 'woocommerce' ) );
@@ -292,7 +287,7 @@ class WC_Download_Handler {
 	}
 
 	/**
-	 * Get content type of a download
+	 * Get content type of a download.
 	 * @param  string $file_path
 	 * @return string
 	 * @access private
@@ -313,7 +308,7 @@ class WC_Download_Handler {
 	}
 
 	/**
-	 * Set headers for the download
+	 * Set headers for the download.
 	 * @param  string $file_path
 	 * @param  string $filename
 	 * @access private
@@ -338,11 +333,11 @@ class WC_Download_Handler {
 	 * Check and set certain server config variables to ensure downloads work as intended.
 	 */
 	private static function check_server_config() {
-		if ( ! ini_get('safe_mode') ) {
-			@set_time_limit(0);
+		if ( function_exists( 'set_time_limit' ) && false === strpos( ini_get( 'disable_functions' ), 'set_time_limit' ) && ! ini_get( 'safe_mode' ) ) {
+			@set_time_limit( 0 );
 		}
-		if ( function_exists( 'get_magic_quotes_runtime' ) && get_magic_quotes_runtime() ) {
-			@set_magic_quotes_runtime(0);
+		if ( function_exists( 'get_magic_quotes_runtime' ) && get_magic_quotes_runtime() && version_compare( phpversion(), '5.4', '<' ) ) {
+			set_magic_quotes_runtime( 0 );
 		}
 		if ( function_exists( 'apache_setenv' ) ) {
 			@apache_setenv( 'no-gzip', 1 );
@@ -352,9 +347,9 @@ class WC_Download_Handler {
 	}
 
 	/**
-	 * Clean all output buffers
+	 * Clean all output buffers.
 	 *
-	 * Can prevent errors, for example: transfer closed with 3 bytes remaining to read
+	 * Can prevent errors, for example: transfer closed with 3 bytes remaining to read.
 	 *
 	 * @access private
 	 */
@@ -370,9 +365,9 @@ class WC_Download_Handler {
 	}
 
 	/**
-	 * readfile_chunked
+	 * readfile_chunked.
 	 *
-	 * Reads file in chunks so big downloads are possible without changing PHP.INI - http://codeigniter.com/wiki/Download_helper_for_large_files/
+	 * Reads file in chunks so big downloads are possible without changing PHP.INI - http://codeigniter.com/wiki/Download_helper_for_large_files/.
 	 *
 	 * @param   string $file
 	 * @return 	bool Success or fail
@@ -398,7 +393,7 @@ class WC_Download_Handler {
 	}
 
 	/**
-	 * Filter headers for IE to fix issues over SSL
+	 * Filter headers for IE to fix issues over SSL.
 	 *
 	 * IE bug prevents download via SSL when Cache Control and Pragma no-cache headers set.
 	 *
@@ -414,7 +409,7 @@ class WC_Download_Handler {
 	}
 
 	/**
-	 * Die with an error message if the download fails
+	 * Die with an error message if the download fails.
 	 * @param  string $message
 	 * @param  string  $title
 	 * @param  integer $status

@@ -1,31 +1,51 @@
 <?php
 /**
  * Plugin Name: Ultimate Responsive Image Slider
- * Version: 1.3
+ * Version: 2.9.1
  * Description: Add unlimited image slides using Ultimate Responsive Image Slider in any Page and Post content to give an attractive mode to represent contents.
  * Author: Weblizar
- * Author URI: http://weblizar.com/plugins/
- * Plugin URI: http://weblizar.com/plugins/
+ * Author URI: https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/
+ * Plugin URI: https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/
  */
  
-/**
- * Constant Variable
- */
+
+//Constant Variable
 define("WRIS_TEXT_DOMAIN", "W_R_I_S" );
 define("WRIS_PLUGIN_URL", plugin_dir_url(__FILE__));
 
 // Apply default settings on activation
 register_activation_hook( __FILE__, 'WRIS_DefaultSettingsPro' );
-function WRIS_DefaultSettingsPro(){
+function WRIS_DefaultSettingsPro() {
     $DefaultSettingsProArray = serialize( array(
 		//layout 3 settings
 		"WRIS_L3_Slide_Title"   		=> 1,
 		"WRIS_L3_Auto_Slideshow"   		=> 1,
+		"WRIS_L3_Transition"   			=> 1,
+		"WRIS_L3_Transition_Speed"   	=> 5000,
 		"WRIS_L3_Sliding_Arrow"   		=> 1,
 		"WRIS_L3_Slider_Navigation"   	=> 1,
 		"WRIS_L3_Navigation_Button"   	=> 1,
 		"WRIS_L3_Slider_Width"   		=> "1000",
-		"WRIS_L3_Slider_Height"   		=> "500"
+		"WRIS_L3_Slider_Height"   		=> "500",
+		"WRIS_L3_Font_Style"			=> "Arial",
+		"WRIS_L3_Title_Color"   		=> "#FFFFFF",
+		"WRIS_L3_Title_BgColor"   		=> "#000000",
+		"WRIS_L3_Desc_Color"   			=> "#FFFFFF",
+		"WRIS_L3_Desc_BgColor"  		=> "#000000",
+		"WRIS_L3_Navigation_Color"  	=> "#000000",
+		"WRIS_L3_Fullscreeen"  			=> 1,
+		"WRIS_L3_Custom_CSS"   			=> "",
+
+		'WRIS_L3_Slide_Order'   		=> "ASC",
+		'WRIS_L3_Navigation_Position'   => "bottom",
+		'WRIS_L3_Slide_Distance'   		=> 5,
+		'WRIS_L3_Thumbnail_Style'   	=> "border",
+		'WRIS_L3_Thumbnail_Width'   	=> 120,
+		'WRIS_L3_Thumbnail_Height'   	=> 100,
+		'WRIS_L3_Width'   				=> "custom",
+		'WRIS_L3_Height'   				=> "custom",
+		'WRIS_L3_Navigation_Bullets_Color' => "#000000",
+		'WRIS_L3_Navigation_Pointer_Color' => "#000000",
     ));
     add_option("WRIS_Settings", $DefaultSettingsProArray);
 }
@@ -34,29 +54,68 @@ function WRIS_DefaultSettingsPro(){
 add_image_size( 'rpggallery_admin_thumb', 300, 300, true ); 
 add_image_size( 'rpggallery_admin_large', 500,9999 ); 
 
-/**
- * Weblizar [URIS] Shortcode Detect Function
- */
-function WeblizarWRISShortCodeDetect() {
-    global $wp_query;
-    $Posts = $wp_query->posts;
-    $Pattern = get_shortcode_regex();
-    foreach ($Posts as $Post) {
-		if ( strpos($Post->post_content, 'URIS' ) ) {
-			/**
-             * js scripts
-             */
-			wp_enqueue_script('ris-jquery-sliderPro-js', WRIS_PLUGIN_URL.'js/jquery.sliderPro.js', array('jquery'), '', true);
+function admin_content_wpse_144936() { 
+	if(get_post_type()=="ris_gallery") { ?>
+		<style>
+		.wlTBlock{
+			background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('<?php echo WRIS_PLUGIN_URL.'/img/bg2.jpg'; ?>') no-repeat fixed;
+			background-position: 50% 0 !important;
+			padding: 27px 0 23px 0;
+			margin-left: -20px;
+			font-family: Myriad Pro ;
+			cursor: pointer;
+			text-align: center;
+		}
+		.wlTBlock .wlTBig{
+			color: white;
+			font-size: 30px;
+			font-weight: bolder;
+			padding: 0 0 15px 0;
+		}
+		.wlTBlock .wlTBig .dashicons{
+			font-size: 40px;
+			position: absolute;
+			margin-left: -45px;
+			margin-top: -10px;
+		}
+		.wlTBlock .WlTSmall{
+			font-weight: bolder;
+			color: white;
+			font-size: 18px;
+			padding: 0 0 15px 15px;
+		}
+
+		.wlTBlock a{
+		text-decoration: none;
+		}
+		@media screen and ( max-width: 600px ) {
+			.wlTBlock{ padding-top: 60px; margin-bottom: -50px; }
+			.wlTBlock .WlTSmall { display: none; }
 			
-			/**   
-             * css scripts
-             */
-			wp_enqueue_style('ris-slider-css', WRIS_PLUGIN_URL.'css/slider-pro.css');
-            break;
-        } //end of if
-    } //end of foreach
+		}
+		</style>
+		<div class="wlTBlock ">
+			<a href="https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/" target="_new">
+				<div class="wlTBig"><span class="dashicons dashicons-cart"></span>Get Pro version</div>
+				<div class="WlTSmall">with PRO version you get more advanced functionality and even more flexibility in settings </div>
+				</a>
+		</div>
+		<?php
+	}
 }
-add_action( 'wp', 'WeblizarWRISShortCodeDetect' );
+add_action('in_admin_header','admin_content_wpse_144936');
+
+/**
+ * URIS Enqueue Scripts
+ */
+function URIS_Plugin_Scripts() {
+	//js scripts
+	wp_enqueue_script('ris-jquery-sliderPro-js', WRIS_PLUGIN_URL.'js/jquery.sliderPro.js', array('jquery'), '1.1.0', true);
+	// css scripts
+	wp_enqueue_style('ris-slider-css', WRIS_PLUGIN_URL.'css/slider-pro.css');
+}
+add_action( 'wp_enqueue_scripts', 'URIS_Plugin_Scripts' );
+add_filter( 'widget_text', 'do_shortcode' );
 
 class WRIS {
 
@@ -82,6 +141,7 @@ class WRIS {
         add_image_size('rpg_gallery_thumb', $this->thumbnail_size_w, $this->thumbnail_size_h, true);
         add_shortcode('rpggallery', array(&$this, 'shortcode'));
         if (is_admin()) {
+			add_action('plugins_loaded', array(&$this, 'WRIS_Translate'), 1);
 			add_action('init', array(&$this, 'ResponsiveImageSlider'), 1);
 			add_action('add_meta_boxes', array(&$this, 'add_all_ris_meta_boxes'));
 			add_action('admin_init', array(&$this, 'add_all_ris_meta_boxes'), 1);
@@ -92,6 +152,13 @@ class WRIS {
 			add_action('wp_ajax_uris_get_thumbnail', array(&$this, 'ajax_get_thumbnail_uris'));
 		}
     }
+	
+	/**
+	 * Translate Plugin
+	 */
+	public function WRIS_Translate() {
+		load_plugin_textdomain('W_R_I_S', FALSE, dirname( plugin_basename(__FILE__)).'/languages/' );
+	}
 	
 	//Required JS & CSS
 	public function ris_admin_print_scripts() {
@@ -117,19 +184,19 @@ class WRIS {
 	// Register Custom Post Type
 	public function ResponsiveImageSlider() {
 		$labels = array(
-			'name' => _x( 'Ultimate Responsive Image Slider', 'ris_gallery' ),
-			'singular_name' => _x( 'Ultimate Responsive Image Slider', 'ris_gallery' ),
-			'add_new' => _x( 'Add New Image Slider', 'ris_gallery' ),
-			'add_new_item' => _x( 'Add New Image Slider', 'ris_gallery' ),
-			'edit_item' => _x( 'Edit Image Slider', 'ris_gallery' ),
-			'new_item' => _x( 'New Image Slider', 'ris_gallery' ),
-			'view_item' => _x( 'View Image Slider', 'ris_gallery' ),
-			'search_items' => _x( 'Search Image Slider', 'ris_gallery' ),
-			'not_found' => _x( 'No Image Slider found', 'ris_gallery' ),
-			'not_found_in_trash' => _x( 'No Image found in Trash', 'ris_gallery' ),
-			'parent_item_colon' => _x( 'Parent Image:', 'ris_gallery' ),
+			'name' => _x( 'Ultimate Responsive Image Slider', WRIS_TEXT_DOMAIN ),
+			'singular_name' => _x( 'Ultimate Responsive Image Slider', WRIS_TEXT_DOMAIN ),
+			'add_new' => __( 'Add New Image Slider', WRIS_TEXT_DOMAIN ),
+			'add_new_item' => __( 'Add New Image Slider', WRIS_TEXT_DOMAIN ),
+			'edit_item' => __( 'Edit Image Slider', WRIS_TEXT_DOMAIN ),
+			'new_item' => __( 'New Image Slider', WRIS_TEXT_DOMAIN ),
+			'view_item' => __( 'View Image Slider', WRIS_TEXT_DOMAIN ),
+			'search_items' => __( 'Search Image Slider', WRIS_TEXT_DOMAIN ),
+			'not_found' => __( 'No Image Slider found', WRIS_TEXT_DOMAIN ),
+			'not_found_in_trash' => __( 'No Image Slider Found in Trash', WRIS_TEXT_DOMAIN ),
+			'parent_item_colon' => __( 'Parent Image Slider:', WRIS_TEXT_DOMAIN ),
 			'all_items' => __( 'All Image Sliders', WRIS_TEXT_DOMAIN ),
-			'menu_name' => _x( 'UR Image Slider', 'ris_gallery' ),
+			'menu_name' => _x( 'UR Image Slider', WRIS_TEXT_DOMAIN ),
 		);
 
 		$args = array(
@@ -181,19 +248,15 @@ class WRIS {
 		add_meta_box( __('Add Images', WRIS_TEXT_DOMAIN), __('Add Images', WRIS_TEXT_DOMAIN), array(&$this, 'ris_generate_add_image_meta_box_function'), 'ris_gallery', 'normal', 'low' );
 		add_meta_box( __('Apply Setting On Ultimate Responsive Image Slider', WRIS_TEXT_DOMAIN), __('Apply Setting On Ultimate Responsive Image Slider', WRIS_TEXT_DOMAIN), array(&$this, 'ris_settings_meta_box_function'), 'ris_gallery', 'normal', 'low');
 		add_meta_box ( __('Copy Image Slider Shortcode', WRIS_TEXT_DOMAIN), __('Copy Image Slider Shortcode', WRIS_TEXT_DOMAIN), array(&$this, 'ris_shotcode_meta_box_function'), 'ris_gallery', 'side', 'low');
-		add_meta_box(__('Show us some love, Rate Us', WRIS_TEXT_DOMAIN) , __('Show us some love, Rate Us', WRIS_TEXT_DOMAIN), array(&$this, 'uris_Rate_us_meta_box_function'), 'ris_gallery', 'side', 'low');
-		add_meta_box(__('Upgrade To Pro Version', WRIS_TEXT_DOMAIN) , __('Upgrade To Pro Version', WRIS_TEXT_DOMAIN), array(&$this, 'uris_upgrade_to_pro_function'), 'ris_gallery', 'side', 'low');
-		add_meta_box(__('Pro Features', WRIS_TEXT_DOMAIN) , __('Pro Features', WRIS_TEXT_DOMAIN), array(&$this ,'uris_pro_features'), 'ris_gallery', 'side', 'low');
-	
-	
+		add_meta_box('Show us some love, Rate Us', 'Show us some love, Rate Us', array(&$this, 'uris_Rate_us_meta_box_function'), 'ris_gallery', 'side', 'low');
+		add_meta_box('Upgrade To Pro Version', 'Upgrade To Pro Version', array(&$this, 'uris_upgrade_to_pro_function'), 'ris_gallery', 'side', 'low');
+		add_meta_box('Pro Features' , 'Pro Features', array(&$this ,'uris_pro_features'), 'ris_gallery', 'side', 'low');
 	}
 	
-	/**
-	 * Rate Us Meta Box
-	 */
+	//Rate Us Meta Box
 	public function uris_Rate_us_meta_box_function() { ?>
 		<style>
-		.fag-rate-us span.dashicons{
+		.fag-rate-us span.dashicons {
 			width: 30px;
 			height: 30px;
 		}
@@ -204,7 +267,7 @@ class WRIS {
 		</style>
 		<div align="center">
 			<p>Please Review & Rate Us On WordPress</p>
-			<a class="upgrade-to-pro-demo fag-rate-us" style=" text-decoration: none; height: 40px; width: 40px;" href="http://wordpress.org/plugins/responsive-portfolio/" target="_blank">
+			<a class="upgrade-to-pro-demo fag-rate-us" style=" text-decoration: none; height: 40px; width: 40px;" href="https://wordpress.org/support/view/plugin-reviews/ultimate-responsive-image-slider?filter=5" target="_blank">
 				<span class="dashicons dashicons-star-filled"></span>
 				<span class="dashicons dashicons-star-filled"></span>
 				<span class="dashicons dashicons-star-filled"></span>
@@ -212,8 +275,8 @@ class WRIS {
 				<span class="dashicons dashicons-star-filled"></span>
 			</a>
 		</div>
-		<div class="upgrade-to-pro " style="text-align:center;margin-bottom:10px;margin-top:10px;">
-			<a href="https://wordpress.org/plugins/ultimate-responsive-image-slider/" target="_blank" class="button button-primary button-hero ">RATE US</a>
+		<div class="upgrade-to-pro" style="text-align:center;margin-bottom:10px;margin-top:10px;">
+			<a href="https://wordpress.org/support/view/plugin-reviews/ultimate-responsive-image-slider?filter=5" target="_blank" class="button button-primary button-hero ">RATE US</a>
 		</div>
 		<?php
 	}
@@ -223,40 +286,36 @@ class WRIS {
 			<a href="http://demo.weblizar.com/ultimate-responsive-image-slider-pro/"  target="_new" class="button button-primary button-hero">View Live Demo</a>
 		</div>
 		<div class="upgrade-to-pro-admin-demo" style="text-align:center;margin-bottom:10px;">
-			<a href="http://weblizar.com/ultimate-responsive-image-slider-pro/" target="_new" class="button button-primary button-hero">View Admin Demo</a>
+			<a href="https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/" target="_new" class="button button-primary button-hero">View Admin Demo</a>
 		</div>
 		<div class="upgrade-to-pro" style="text-align:center;margin-bottom:10px;">
-			<a href="http://weblizar.com/ultimate-responsive-image-slider-pro/" target="_new" class="button button-primary button-hero">Upgarde To Pro</a>
+			<a href="https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/" target="_new" class="button button-primary button-hero">Upgarde To Pro</a>
 		</div>
 	<?php
 	}
 
-	public	function uris_pro_features(){
-			?>
-
-			<ul style="">
-						<li class="plan-feature">Responsive Design</li>
-						<li class="plan-feature">5 Slider Layout</li>
-						<li class="plan-feature">Unlimited Color Scheme</li>
-						<li class="plan-feature">Touch Slider</li>
-						<li class="plan-feature">Full Screen slideshow</li>
-						<li class="plan-feature">Thumbnail Slider</li>
-						<li class="plan-feature">Lightbox Integrated</li>
-						<li class="plan-feature">External Link Button</li>
-						<li class="plan-feature">Carousel Slider</li>
-						<li class="plan-feature">All Gallery Shortcode</li>
-						<li class="plan-feature">Each Gallery has Unique Shortcode</li>
-						<li class="plan-feature">Drag and Drop image Position</li>
-						<li class="plan-feature">Multiple Image uploader</li>
-						<li class="plan-feature">Shortcode Button on post or page</li>
-						<li class="plan-feature">Unique settings for each gallery</li>
-						<li class="plan-feature">Auto Play Pause</li>
-						<li class="plan-feature">All Browser Compatible</li>
-						
-						
-					</ul>
-			<?php 
-	} 
+	public	function uris_pro_features(){ ?>
+		<ul style="">
+			<li class="plan-feature">Responsive Design</li>
+			<li class="plan-feature">5 Slider Layout</li>
+			<li class="plan-feature">Unlimited Color Scheme</li>
+			<li class="plan-feature">Touch Slider</li>
+			<li class="plan-feature">Full Screen slideshow</li>
+			<li class="plan-feature">Thumbnail Slider</li>
+			<li class="plan-feature">Lightbox Integrated</li>
+			<li class="plan-feature">External Link Button</li>
+			<li class="plan-feature">Carousel Slider</li>
+			<li class="plan-feature">All Gallery Shortcode</li>
+			<li class="plan-feature">Each Gallery has Unique Shortcode</li>
+			<li class="plan-feature">Drag and Drop image Position</li>
+			<li class="plan-feature">Multiple Image uploader</li>
+			<li class="plan-feature">Shortcode Button on post or page</li>
+			<li class="plan-feature">Unique settings for each gallery</li>
+			<li class="plan-feature">Auto Play Pause</li>
+			<li class="plan-feature">All Browser Compatible</li>
+		</ul>
+		<?php 
+	}
 
 	/**
 	 * This function display Add New Image interface
@@ -276,27 +335,24 @@ class WRIS {
 						$UniqueString = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 5);
 						$url = $WRIS_SinglePhotoDetails['rpgp_image_url'];
 						$url1 = $WRIS_SinglePhotoDetails['rpggallery_admin_thumb'];
-						$url3 = $WRIS_SinglePhotoDetails['rpggallery_admin_large'];
-						?>
-						
+						$url3 = $WRIS_SinglePhotoDetails['rpggallery_admin_large']; ?>
 						<li class="rpg-image-entry" id="rpg_img">
 							<a class="gallery_remove rpggallery_remove" href="#gallery_remove" id="rpg_remove_bt" ><img src="<?php echo  WRIS_PLUGIN_URL.'img/Close-icon.png'; ?>" /></a>
 							<div class="rpp-admin-inner-div1" >
 								<img src="<?php echo $url1; ?>" class="rpg-meta-image" alt=""  style="">
 								<input type="hidden" id="unique_string[]" name="unique_string[]" value="<?php echo $UniqueString; ?>" />
-								<!--<input type="button" id="upload-background-<?php //echo $UniqueString; ?>" name="upload-background-<?php //echo $UniqueString; ?>" value="Upload Image" class="button-primary " onClick="ris_weblizar_image('<?php //echo $UniqueString; ?>')" />-->
 							</div>
 							<div class="rpp-admin-inner-div2" >
 								<input type="text" id="rpgp_image_url[]" name="rpgp_image_url[]" class="rpg_label_text"  value="<?php echo $url; ?>"  readonly="readonly" style="display:none;" />
 								<input type="text" id="rpggallery_admin_thumb[]" name="rpggallery_admin_thumb[]" class="rpg_label_text"  value="<?php echo $url1; ?>"  readonly="readonly" style="display:none;" />
 								<input type="text" id="rpggallery_admin_large[]" name="rpggallery_admin_large[]" class="rpg_label_text"  value="<?php echo $url3; ?>"  readonly="readonly" style="display:none;" />
 								<p>
-									<label>Slide Title</label>
-									<input type="text" id="rpgp_image_label[]" name="rpgp_image_label[]" value="<?php echo $name; ?>" placeholder="Enter Slide Title" class="rpg_label_text">
+									<label><?php _e('Slide Title', WRIS_TEXT_DOMAIN); ?></label>
+									<input type="text" id="rpgp_image_label[]" name="rpgp_image_label[]" value="<?php echo $name; ?>" placeholder="<?php _e('Enter Slide Title', WRIS_TEXT_DOMAIN); ?>" class="rpg_label_text">
 								</p>
 								<p>
-									<label>Slide Descriptions</label>
-									<textarea rows="4" cols="50" id="rpgp_image_desc[]" name="rpgp_image_desc[]" placeholder="Enter Slide Descriptions" class="rpg_label_text"><?php echo $desc; ?></textarea>
+									<label><?php _e('Slide Descriptions', WRIS_TEXT_DOMAIN); ?></label>
+									<textarea rows="4" cols="50" id="rpgp_image_desc[]" name="rpgp_image_desc[]" placeholder="<?php _e('Enter Slide Description', WRIS_TEXT_DOMAIN); ?>" class="rpg_label_text"><?php echo $desc; ?></textarea>
 								</p>
 							</div>
 						</li>
@@ -307,6 +363,7 @@ class WRIS {
 				}
 				?>
             </ul>
+			
         </div>
 		
 		<!--Add New Image Button-->
@@ -317,6 +374,7 @@ class WRIS {
 			</p>
 		</div>
 		<div style="clear:left;"></div>
+		<input id="uris_delete_all_button" class="button" type="button" value="<?php _e('Remove All Slides', WRIS_TEXT_DOMAIN); ?>">
         <?php
     }
 	
@@ -344,25 +402,23 @@ class WRIS {
 			<a class="gallery_remove rpggallery_remove" href="#gallery_remove" id="rpg_remove_bt" ><img src="<?php echo  WRIS_PLUGIN_URL.'img/Close-icon.png'; ?>" /></a>
 			<div class="rpp-admin-inner-div1" >
 				<img src="<?php echo $image1[0]; ?>" class="rpg-meta-image" alt=""  style="">
-				<!--<input type="button" id="upload-background-<?php //echo $UniqueString; ?>" name="upload-background-<?php //echo $UniqueString; ?>" value="Upload Image" class="button-primary " onClick="ris_weblizar_image('<?php //echo $UniqueString; ?>')" />-->
 				</div>
 			<div class="rpp-admin-inner-div1" >
 				<input type="text" id="rpgp_image_url[]" name="rpgp_image_url[]" class="rpg_label_text"  value="<?php echo $image[0]; ?>"  readonly="readonly" style="display:none;" />
 				<input type="text" id="rpggallery_admin_thumb[]" name="rpggallery_admin_thumb[]" class="rpg_label_text"  value="<?php echo $image1[0]; ?>"  readonly="readonly" style="display:none;" />
 				<input type="text" id="rpggallery_admin_large[]" name="rpggallery_admin_large[]" class="rpg_label_text"  value="<?php echo $image3[0]; ?>"  readonly="readonly" style="display:none;" />
 				<p>
-					<label>Slide Title</label>
-					<input type="text" id="rpgp_image_label[]" name="rpgp_image_label[]" placeholder="Enter Slide Title Here" class="rpg_label_text">
+					<label><?php _e('Slide Title', WRIS_TEXT_DOMAIN); ?></label>
+					<input type="text" id="rpgp_image_label[]" name="rpgp_image_label[]" placeholder="<?php _e('Enter Slide Title Here', WRIS_TEXT_DOMAIN); ?>" class="rpg_label_text">
 				</p>
 				<p>
-					<label>Slide Description</label>
-					<textarea rows="4" cols="50" id="rpgp_image_desc[]" name="rpgp_image_desc[]" placeholder="Enter Slide Description Here" class="rpg_label_text"></textarea>
+					<label><?php _e('Slide Description', WRIS_TEXT_DOMAIN); ?></label>
+					<textarea rows="4" cols="50" id="rpgp_image_desc[]" name="rpgp_image_desc[]" placeholder="<?php _e('Enter Slide Description Here', WRIS_TEXT_DOMAIN); ?>" class="rpg_label_text"></textarea>
 				</p>
 			</div>
 		</li>
         <?php
     }
-	
 	
     public function ajax_get_thumbnail_uris() {
         echo $this->admin_thumb_uris($_POST['imageid']);
@@ -405,21 +461,63 @@ class WRIS {
 
 			$WRIS_L3_Slide_Title				=	$_POST['wl-l3-slide-title'];
 			$WRIS_L3_Auto_Slideshow				=	$_POST['wl-l3-auto-slide'];
+			$WRIS_L3_Transition					=	$_POST['wl-l3-transition'];
+			$WRIS_L3_Transition_Speed			=	$_POST['wl-l3-transition-speed'];
 			$WRIS_L3_Sliding_Arrow				=	$_POST['wl-l3-sliding-arrow'];
 			$WRIS_L3_Slider_Navigation			=	$_POST['wl-l3-navigation'];
 			$WRIS_L3_Navigation_Button			=	$_POST['wl-l3-navigation-button'];
 			$WRIS_L3_Slider_Width				=	$_POST['wl-l3-slider-width'];
 			$WRIS_L3_Slider_Height				=	$_POST['wl-l3-slider-height'];
+			$WRIS_L3_Font_Style					=	$_POST['wl-l3-font-style'];
+			$WRIS_L3_Title_Color   				=	$_POST['wl-l3-title-color'];
+			$WRIS_L3_Title_BgColor   			=	$_POST['wl-l3-title-bgcolor'];
+			$WRIS_L3_Desc_Color   				=	$_POST['wl-l3-desc-color'];
+			$WRIS_L3_Desc_BgColor  				=	$_POST['wl-l3-desc-bgcolor'];
+			$WRIS_L3_Navigation_Color  			=	$_POST['wl-l3-navigation-color'];
+			$WRIS_L3_Fullscreeen  				=	$_POST['wl-l3-fullscreen'];
+			$WRIS_L3_Custom_CSS					=	$_POST['wl-l3-custom-css'];
+			
+			$WRIS_L3_Slide_Order   				= $_POST['wl-l3-slide-order'];
+			$WRIS_L3_Navigation_Position   		= $_POST['wl-l3-navigation-position'];
+			$WRIS_L3_Slide_Distance   			= $_POST['wl-l3-slide-distance'];
+			$WRIS_L3_Thumbnail_Style   			= $_POST['wl-l3-thumbnail-style'];
+			$WRIS_L3_Thumbnail_Width   			= $_POST['wl-l3-navigation-width'];
+			$WRIS_L3_Thumbnail_Height   		= $_POST['wl-l3-navigation-height'];
+			$WRIS_L3_Width   					= $_POST['wl-l3-width'];
+			$WRIS_L3_Height   					= $_POST['wl-l3-height'];
+			$WRIS_L3_Navigation_Bullets_Color	= $_POST['wl-l3-navigation-bullets-color'];
+			$WRIS_L3_Navigation_Pointer_Color	= $_POST['wl-l3-navigation-pointer-color'];
 			
 			$WRIS_Settings_Array = serialize( array(
-				'WRIS_L3_Slide_Title'  			=> $WRIS_L3_Slide_Title,
+				'WRIS_L3_Slide_Title'  				=> $WRIS_L3_Slide_Title,
 				'WRIS_L3_Auto_Slideshow'  			=> $WRIS_L3_Auto_Slideshow,
+				'WRIS_L3_Transition'  				=> $WRIS_L3_Transition,
+				'WRIS_L3_Transition_Speed'  		=> $WRIS_L3_Transition_Speed,
 				'WRIS_L3_Sliding_Arrow'  			=> $WRIS_L3_Sliding_Arrow,
 				'WRIS_L3_Slider_Navigation'  		=> $WRIS_L3_Slider_Navigation,
 				'WRIS_L3_Navigation_Button'  		=> $WRIS_L3_Navigation_Button,
 				'WRIS_L3_Slider_Width'  			=> $WRIS_L3_Slider_Width,
 				'WRIS_L3_Slider_Height'  			=> $WRIS_L3_Slider_Height,
-			) );
+				'WRIS_L3_Font_Style'  				=> $WRIS_L3_Font_Style,
+				'WRIS_L3_Title_Color'   			=> $WRIS_L3_Title_Color,
+				'WRIS_L3_Title_BgColor'   			=> $WRIS_L3_Title_BgColor,
+				'WRIS_L3_Desc_Color'   				=> $WRIS_L3_Desc_Color,
+				'WRIS_L3_Desc_BgColor'  			=> $WRIS_L3_Desc_BgColor,
+				'WRIS_L3_Navigation_Color' 			=> $WRIS_L3_Navigation_Color,
+				'WRIS_L3_Fullscreeen' 				=> $WRIS_L3_Fullscreeen,
+				'WRIS_L3_Custom_CSS'  				=> $WRIS_L3_Custom_CSS,
+				
+				'WRIS_L3_Slide_Order'   			=> $WRIS_L3_Slide_Order,
+				'WRIS_L3_Navigation_Position'   	=> $WRIS_L3_Navigation_Position,
+				'WRIS_L3_Slide_Distance'   			=> $WRIS_L3_Slide_Distance,
+				'WRIS_L3_Thumbnail_Style'   		=> $WRIS_L3_Thumbnail_Style,
+				'WRIS_L3_Thumbnail_Width'   		=> $WRIS_L3_Thumbnail_Width,
+				'WRIS_L3_Thumbnail_Height'   		=> $WRIS_L3_Thumbnail_Height,
+				'WRIS_L3_Width'   					=> $WRIS_L3_Width,
+				'WRIS_L3_Height'   					=> $WRIS_L3_Height,
+				'WRIS_L3_Navigation_Bullets_Color'  => $WRIS_L3_Navigation_Bullets_Color,
+				'WRIS_L3_Navigation_Pointer_Color'  => $WRIS_L3_Navigation_Pointer_Color,
+			));
 			
 			$WRIS_Gallery_Settings = "WRIS_Gallery_Settings_".$PostID;
 			update_post_meta($PostID, $WRIS_Gallery_Settings, $WRIS_Settings_Array);
@@ -435,17 +533,20 @@ $WRIS = WRIS::forge();
  */
 add_action('admin_menu' , 'uris_pro_SettingsPage');
 function uris_pro_SettingsPage() {
-    add_submenu_page('edit.php?post_type=ris_gallery', __('Upgrade To Pro', WRIS_TEXT_DOMAIN), __('Upgrade To Pro', WRIS_TEXT_DOMAIN), 'administrator', 'ris_gallery', 'uris_upgrade_pro_function');
 	function uris_upgrade_pro_function() {
-	
-		 wp_enqueue_style('wl-font-awesome-4', WRIS_PLUGIN_URL.'css/font-awesome/css/font-awesome.min.css');
+		wp_enqueue_style('wl-font-awesome-4', WRIS_PLUGIN_URL.'css/font-awesome/css/font-awesome.min.css');
 		wp_enqueue_style('wl-pricing-table-css', WRIS_PLUGIN_URL.'css/pricing-table.css');
 		wp_enqueue_style('wl-boot-strap-admin', WRIS_PLUGIN_URL.'css/bootstrap-admin.css');
-    
 		require_once("get-uris-pro.php");
 	}
-}
-
+	add_submenu_page('edit.php?post_type=ris_gallery', 'Upgrade To Pro', 'Upgrade To Pro', 'administrator', 'ris_gallery', 'uris_upgrade_pro_function');
+	add_submenu_page('edit.php?post_type=ris_gallery', 'Help and Support', 'Help and Support', 'administrator', 'RIS-Help-page', 'RIS_Help_and_Support_page');
+	
+	}
+	function RIS_Help_and_Support_page(){
+		wp_enqueue_style('bootstrap-admin.css', WRIS_PLUGIN_URL.'css/bootstrap-admin.css');
+    require_once("help_and_support.php");
+	}
 
 /**
  * Weblizar RIS Short Code [URIS]

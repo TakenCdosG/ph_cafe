@@ -5,7 +5,7 @@
 **/
 add_action('init', 'ninja_forms_register_display_req_items');
 function ninja_forms_register_display_req_items(){
-	add_action('ninja_forms_display_after_fields', 'ninja_forms_display_req_items', 12 );
+	add_action('ninja_forms_display_before_fields', 'ninja_forms_display_req_items', 12 );
 }
 
 function ninja_forms_display_req_items( $form_id ){
@@ -26,8 +26,9 @@ function ninja_forms_display_req_items( $form_id ){
 		}
 	}
 	if( $output && $req_div_label != '' ){
+		$class = apply_filters( 'ninja_forms_display_required_items_class', 'ninja-forms-required-items', $form_id );
 		?>
-		<div class="ninja-forms-required-items"><?php echo $req_div_label;?></div>
+		<div class="<?php echo $class; ?>"><?php echo $req_div_label;?></div>
 		<?php
 	}
 }

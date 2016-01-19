@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Product Variation Class
+ * Product Variation Class.
  *
  * The WooCommerce product variation class handles product variation data.
  *
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class WC_Product_Variation extends WC_Product {
 
-	/** @public int ID of the variable product. */
+	/** @public int ID of the variation itself. */
 	public $variation_id;
 
 	/** @public object Parent Variable product object. */
@@ -135,19 +135,7 @@ class WC_Product_Variation extends WC_Product {
 			}
 
 		} elseif ( 'variation_data' === $key ) {
-			$all_meta = get_post_meta( $this->variation_id );
-
-			// The variation data array
-			$this->variation_data = array();
-
-			// Get the variation attributes from meta
-			foreach ( $all_meta as $name => $value ) {
-				if ( ! strstr( $name, 'attribute_' ) ) {
-					continue;
-				}
-				$this->variation_data[ $name ] = sanitize_title( $value[0] );
-			}
-			return $this->variation_data;
+			return $this->variation_data = wc_get_product_variation_attributes( $this->variation_id );
 
 		} elseif ( 'variation_has_stock' === $key ) {
 			return $this->managing_stock();
@@ -157,6 +145,17 @@ class WC_Product_Variation extends WC_Product {
 		}
 
 		return $value;
+	}
+
+	/**
+	 * Return the variation ID
+	 *
+	 * @since 2.5.0
+	 * @return int variation (post) ID
+	 */
+	public function get_id() {
+
+		return $this->variation_id;
 	}
 
 	/**
@@ -175,7 +174,7 @@ class WC_Product_Variation extends WC_Product {
 	 * @return string
 	 */
 	public function get_permalink( $cart_item = null ) {
-		return add_query_arg( array_filter( isset( $cart_item['variation'] ) ? $cart_item['variation'] : $this->variation_data ), get_permalink( $this->id ) );
+		return add_query_arg( array_map( 'urlencode', array_filter( isset( $cart_item['variation'] ) ? $cart_item['variation'] : $this->variation_data ) ), get_permalink( $this->id ) );
 	}
 
 	/**
@@ -184,13 +183,14 @@ class WC_Product_Variation extends WC_Product {
 	 * @return string
 	 */
 	public function add_to_cart_url() {
-		$url = $this->is_purchasable() && $this->is_in_stock() ? remove_query_arg( 'added-to-cart', add_query_arg( array_merge( array( 'variation_id' => $this->variation_id, 'add-to-cart' => $this->id ), $this->variation_data ) ) ) : get_permalink( $this->id );
+		$variation_data = array_map( 'urlencode', $this->variation_data );
+		$url            = $this->is_purchasable() && $this->is_in_stock() ? remove_query_arg( 'added-to-cart', add_query_arg( array_merge( array( 'variation_id' => $this->variation_id, 'add-to-cart' => $this->id ), $variation_data ) ) ) : get_permalink( $this->id );
 
 		return apply_filters( 'woocommerce_product_add_to_cart_url', $url, $this );
 	}
 
 	/**
-	 * Get the add to cart button text
+	 * Get the add to cart button text.
 	 *
 	 * @return string
 	 */
@@ -260,7 +260,7 @@ class WC_Product_Variation extends WC_Product {
 	}
 
 	/**
-	 * Get variation ID
+	 * Get variation ID.
 	 *
 	 * @return int
 	 */
@@ -269,7 +269,7 @@ class WC_Product_Variation extends WC_Product {
 	}
 
 	/**
-	 * Get variation attribute values
+	 * Get variation attribute values.
 	 *
 	 * @return array of attributes and their values for this variation
 	 */
@@ -278,7 +278,7 @@ class WC_Product_Variation extends WC_Product {
 	}
 
 	/**
-	 * Check if all variation's attributes are set
+	 * Check if all variation's attributes are set.
 	 *
 	 * @return boolean
 	 */
@@ -369,7 +369,7 @@ class WC_Product_Variation extends WC_Product {
 	public function managing_stock() {
 		if ( 'yes' === get_option( 'woocommerce_manage_stock', 'yes' ) ) {
 			if ( 'no' === $this->manage_stock ) {
-				if ( $this->parent->managing_stock() ) {
+				if ( $this->parent && $this->parent->managing_stock() ) {
 					return 'parent';
 				}
 			} else {
@@ -386,6 +386,15 @@ class WC_Product_Variation extends WC_Product {
 	 */
 	public function get_stock_quantity() {
 		return true === $this->managing_stock() ? wc_stock_amount( $this->stock ) : $this->parent->get_stock_quantity();
+	}
+
+	/**
+	 * Returns the tax status. Always use parent data.
+	 *
+	 * @return string
+	 */
+	public function get_tax_status() {
+		return $this->parent->get_tax_status();
 	}
 
 	/**
@@ -429,13 +438,13 @@ class WC_Product_Variation extends WC_Product {
 			// Update stock in DB directly
 			switch ( $mode ) {
 				case 'add' :
-					$wpdb->query( "UPDATE {$wpdb->postmeta} SET meta_value = meta_value + {$amount} WHERE post_id = {$this->variation_id} AND meta_key='_stock'" );
+					$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->postmeta} SET meta_value = meta_value + %f WHERE post_id = %d AND meta_key='_stock'", $amount, $this->variation_id ) );
 				break;
 				case 'subtract' :
-					$wpdb->query( "UPDATE {$wpdb->postmeta} SET meta_value = meta_value - {$amount} WHERE post_id = {$this->variation_id} AND meta_key='_stock'" );
+					$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->postmeta} SET meta_value = meta_value - %f WHERE post_id = %d AND meta_key='_stock'", $amount, $this->variation_id ) );
 				break;
 				default :
-					$wpdb->query( "UPDATE {$wpdb->postmeta} SET meta_value = {$amount} WHERE post_id = {$this->variation_id} AND meta_key='_stock'" );
+					$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->postmeta} SET meta_value = %f WHERE post_id = %d AND meta_key='_stock'", $amount, $this->variation_id ) );
 				break;
 			}
 
@@ -443,7 +452,7 @@ class WC_Product_Variation extends WC_Product {
 			wp_cache_delete( $this->variation_id, 'post_meta' );
 
 			// Clear total stock transient
-			delete_transient( 'wc_product_total_stock_' . $this->id );
+			delete_transient( 'wc_product_total_stock_' . $this->id . WC_Cache_Helper::get_transient_version( 'product' ) );
 
 			// Stock status
 			$this->check_stock_status();
@@ -462,7 +471,9 @@ class WC_Product_Variation extends WC_Product {
 	}
 
 	/**
-	 * set_stock_status function.
+	 * Set stock status.
+	 *
+	 * @param string $status
 	 */
 	public function set_stock_status( $status ) {
 		$status = 'outofstock' === $status ? 'outofstock' : 'instock';
@@ -481,9 +492,7 @@ class WC_Product_Variation extends WC_Product {
 		if ( update_post_meta( $this->variation_id, '_stock_status', $status ) ) {
 			do_action( 'woocommerce_variation_set_stock_status', $this->variation_id, $status );
 
-			if ( true === $this->managing_stock() ) {
-				WC_Product_Variable::sync_stock_status( $this->id );
-			}
+			WC_Product_Variable::sync_stock_status( $this->id );
 		}
 	}
 
@@ -581,7 +590,7 @@ class WC_Product_Variation extends WC_Product {
 	}
 
 	/**
-	 * is_on_backorder function.
+	 * Is on backorder?
 	 *
 	 * @param int $qty_in_cart (default: 0)
 	 * @return bool
@@ -645,6 +654,86 @@ class WC_Product_Variation extends WC_Product {
 	}
 
 	/**
+	 * Get formatted variation data with WC < 2.4 back compat and proper formatting of text-based attribute names.
+	 *
+	 * @return string
+	 */
+	public function get_formatted_variation_attributes( $flat = false ) {
+		$variation_data = $this->get_variation_attributes();
+		$attributes     = $this->parent->get_attributes();
+		$description    = array();
+		$return         = '';
+
+		if ( is_array( $variation_data ) ) {
+
+			if ( ! $flat ) {
+				$return = '<dl class="variation">';
+			}
+
+			foreach ( $attributes as $attribute ) {
+
+				// Only deal with attributes that are variations
+				if ( ! $attribute[ 'is_variation' ] ) {
+					continue;
+				}
+
+				$variation_selected_value = isset( $variation_data[ 'attribute_' . sanitize_title( $attribute[ 'name' ] ) ] ) ? $variation_data[ 'attribute_' . sanitize_title( $attribute[ 'name' ] ) ] : '';
+				$description_name         = esc_html( wc_attribute_label( $attribute[ 'name' ] ) );
+				$description_value        = __( 'Any', 'woocommerce' );
+
+				// Get terms for attribute taxonomy or value if its a custom attribute
+				if ( $attribute[ 'is_taxonomy' ] ) {
+
+					$post_terms = wp_get_post_terms( $this->id, $attribute[ 'name' ] );
+
+					foreach ( $post_terms as $term ) {
+						if ( $variation_selected_value === $term->slug ) {
+							$description_value = esc_html( apply_filters( 'woocommerce_variation_option_name', $term->name ) );
+						}
+					}
+
+				} else {
+
+					$options = wc_get_text_attributes( $attribute[ 'value' ] );
+
+					foreach ( $options as $option ) {
+
+						if ( sanitize_title( $variation_selected_value ) === $variation_selected_value ) {
+							if ( $variation_selected_value !== sanitize_title( $option ) ) {
+								continue;
+							}
+						} else {
+							if ( $variation_selected_value !== $option ) {
+								continue;
+							}
+						}
+
+						$description_value = esc_html( apply_filters( 'woocommerce_variation_option_name', $option ) );
+					}
+				}
+
+				if ( $flat ) {
+					$description[] = $description_name . ': ' . rawurldecode( $description_value );
+				} else {
+					$description[] = '<dt>' . $description_name . ':</dt><dd>' . rawurldecode( $description_value ) . '</dd>';
+				}
+			}
+
+			if ( $flat ) {
+				$return .= implode( ', ', $description );
+			} else {
+				$return .= implode( '', $description );
+			}
+
+			if ( ! $flat ) {
+				$return .= '</dl>';
+			}
+		}
+
+		return $return;
+	}
+
+	/**
 	 * Get product name with extra details such as SKU, price and attributes. Used within admin.
 	 *
 	 * @return string Formatted product name, including attributes and price
@@ -656,9 +745,18 @@ class WC_Product_Variation extends WC_Product {
 			$identifier = '#' . $this->variation_id;
 		}
 
-		$attributes = $this->get_variation_attributes();
-		$extra_data = ' &ndash; ' . implode( ', ', $attributes ) . ' &ndash; ' . wc_price( $this->get_price() );
+		$formatted_attributes = $this->get_formatted_variation_attributes( true );
+		$extra_data           = ' &ndash; ' . $formatted_attributes . ' &ndash; ' . wc_price( $this->get_price() );
 
 		return sprintf( __( '%s &ndash; %s%s', 'woocommerce' ), $identifier, $this->get_title(), $extra_data );
+	}
+
+	/**
+	 * Get product variation description.
+	 *
+	 * @return string
+	 */
+	public function get_variation_description() {
+		return wpautop( do_shortcode( wp_kses_post( get_post_meta( $this->variation_id, '_variation_description', true ) ) ) );
 	}
 }

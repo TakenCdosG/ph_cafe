@@ -5,6 +5,7 @@ function ninja_forms_admin_css(){
 
 	wp_enqueue_style( 'jquery-smoothness', NINJA_FORMS_URL .'css/smoothness/jquery-smoothness.css' );
 	wp_enqueue_style( 'ninja-forms-admin', NINJA_FORMS_URL .'css/ninja-forms-admin.css?nf_ver=' . NF_PLUGIN_VERSION );
+	wp_enqueue_style( 'nf-admin-modal', NINJA_FORMS_URL .'assets/css/admin-modal.css?nf_ver=' . NF_PLUGIN_VERSION );
 
 	add_filter('admin_body_class', 'ninja_forms_add_class');
 
@@ -20,7 +21,7 @@ function ninja_forms_add_class($classes) {
 function ninja_forms_admin_js(){
 	global $version_compare, $public_query_vars;
 
-	$form_id = isset ( $_REQUEST['form_id'] ) ? $_REQUEST['form_id'] : '';
+	$form_id = isset ( $_REQUEST['form_id'] ) ? absint( $_REQUEST['form_id'] ) : '';
 
 	if ( defined( 'NINJA_FORMS_JS_DEBUG' ) && NINJA_FORMS_JS_DEBUG ) {
 		$suffix = '';
@@ -46,7 +47,7 @@ function ninja_forms_admin_js(){
 
 	wp_enqueue_script('ninja-forms-admin',
 	NINJA_FORMS_URL . 'js/' . $src .'/ninja-forms-admin' . $suffix . '.js?nf_ver=' . NF_PLUGIN_VERSION,
-	array('jquery', 'jquery-ui-core', 'jquery-ui-sortable', 'jquery-ui-datepicker', 'jquery-ui-draggable', 'jquery-ui-droppable'));
+	array('jquery', 'jquery-ui-core', 'jquery-ui-sortable', 'jquery-ui-datepicker', 'jquery-ui-draggable', 'jquery-ui-droppable', 'nf-admin-modal' ) );
 
 	wp_localize_script( 'ninja-forms-admin', 'ninja_forms_settings', array( 'nf_ajax_nonce' => wp_create_nonce( 'nf_ajax'), 'form_id' => $form_id, 'datepicker_args' => apply_filters( 'ninja_forms_admin_forms_datepicker_args', $datepicker_args ), 'add_fav_prompt' => __( 'What would you like to name this favorite?', 'ninja-forms' ), 'add_fav_error' => __( 'You must supply a name for this favorite.', 'ninja-forms' ), 'deactivate_all_licenses_confirm' => __( 'Really deactivate all licenses?', 'ninja-forms' ) ) );
 	wp_localize_script( 'ninja-forms-admin', 'nf_conversion_title', __( 'Reset the form conversion process for v2.9+', 'ninja-forms' ) );

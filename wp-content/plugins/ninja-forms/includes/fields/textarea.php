@@ -44,7 +44,8 @@ function ninja_forms_register_field_textarea(){
 				'type' => 'textarea',
 			),
 		),
-		'edit_sub_value' => 'nf_field_textarea_edit_sub_value'
+		'edit_sub_value' => 'nf_field_textarea_edit_sub_value',
+		'pre_process'	=> 'nf_field_textarea_pre_process',
 	);
 
 	ninja_forms_register_field('_textarea', $args);
@@ -97,6 +98,9 @@ function ninja_forms_field_textarea_display( $field_id, $data, $form_id = '' ){
 
 	$field_class = ninja_forms_get_field_class( $field_id, $form_id );
 
+	$default_value = filter_var( $default_value, FILTER_SANITIZE_STRING );
+	$default_value = filter_var( $default_value, FILTER_SANITIZE_SPECIAL_CHARS );
+
 	if($textarea_rte == 1){
 		$settings = array( 'media_buttons' => $textarea_media );
 		$args = apply_filters( 'ninja_forms_textarea_rte', $settings );
@@ -118,4 +122,37 @@ function nf_field_textarea_edit_sub_value( $field_id, $user_value ) {
 	?>
 	<textarea name="fields[<?php echo $field_id; ?>]"><?php echo $user_value; ?></textarea>
 	<?php
+}
+
+/**
+ * Make sure we strip nested script tags from our values
+ *
+ * @since  2.9.19
+ * @return  void
+ */
+function nf_field_textarea_pre_process( $field_id, $user_value ) {
+	global $ninja_forms_processing;
+
+	while ( false !== strpos ( $user_value, '&lt;script' )
+		|| false !== strpos ( $user_value, '<script' ) 
+		|| false !== strpos ( $user_value, '&lt;/script' ) 
+		|| false !== strpos ( $user_value, '</script' ) 
+		|| false !== strpos ( $user_value, '<textarea' )
+		|| false !== strpos ( $user_value, '&lt;textarea' )
+		|| false !== strpos ( $user_value, '</textarea' )
+		|| false !== strpos ( $user_value, '&lt;/textarea' )
+		) {
+		
+		$user_value = str_replace( '&lt;script', '', $user_value );
+		$user_value = str_replace( '<script', '', $user_value );
+		$user_value = str_replace( '&lt;/script', '', $user_value );
+		$user_value = str_replace( '</script', '', $user_value );
+
+		$user_value = str_replace( '&lt;textarea', '', $user_value );
+		$user_value = str_replace( '<textarea', '', $user_value );
+		$user_value = str_replace( '&lt;/textarea', '', $user_value );
+		$user_value = str_replace( '</textarea', '', $user_value );
+	}
+
+	$ninja_forms_processing->update_field_value( $field_id, $user_value );
 }

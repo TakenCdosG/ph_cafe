@@ -13,12 +13,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * WC_Meta_Box_Order_Downloads Class
+ * WC_Meta_Box_Order_Downloads Class.
  */
 class WC_Meta_Box_Order_Downloads {
 
 	/**
-	 * Output the metabox
+	 * Output the metabox.
+	 *
+	 * @param WP_Post $post
 	 */
 	public static function output( $post ) {
 		global $post, $wpdb;
@@ -65,7 +67,7 @@ class WC_Meta_Box_Order_Downloads {
 
 			<div class="toolbar">
 				<p class="buttons">
-					<input type="hidden" id="grant_access_id" name="grant_access_id" data-multiple="true" class="wc-product-search" style="width: 400px;" data-placeholder="<?php _e( 'Search for a downloadable product&hellip;', 'woocommerce' ); ?>" data-action="woocommerce_json_search_downloadable_products_and_variations" />
+					<input type="hidden" id="grant_access_id" name="grant_access_id" data-multiple="true" class="wc-product-search" style="width: 400px;" data-placeholder="<?php esc_attr_e( 'Search for a downloadable product&hellip;', 'woocommerce' ); ?>" data-action="woocommerce_json_search_downloadable_products_and_variations" />
 					<button type="button" class="button grant_access"><?php _e( 'Grant Access', 'woocommerce' ); ?></button>
 				</p>
 				<div class="clear"></div>
@@ -76,7 +78,10 @@ class WC_Meta_Box_Order_Downloads {
 	}
 
 	/**
-	 * Save meta box data
+	 * Save meta box data.
+	 *
+	 * @param int $post_id
+	 * @param WP_Post $post
 	 */
 	public static function save( $post_id, $post ) {
 		global $wpdb;
@@ -90,7 +95,6 @@ class WC_Meta_Box_Order_Downloads {
 			$access_expires         = $_POST['access_expires'];
 
 			// Order data
-			$order_key       = get_post_meta( $post->ID, '_order_key', true );
 			$customer_email  = get_post_meta( $post->ID, '_billing_email', true );
 			$customer_user   = get_post_meta( $post->ID, '_customer_user', true );
 			$product_ids_max = max( array_keys( $product_ids ) );

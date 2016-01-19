@@ -66,7 +66,7 @@ function nf_sub_limit_display_msg( $form_id ) {
         $msg = $ninja_forms_loading->get_form_setting( 'sub_limit_msg' );
         $msg = wpautop( $msg );
         $msg = do_shortcode( $msg );
-        $msg = '<div class="sub-limit-reaced-msg">' . $msg . '</div>';
+        $msg = '<div class="sub-limit-reached-msg">' . $msg . '</div>';
         $msg = apply_filters( 'nf_sub_limit_reached_msg', $msg, $form_id );
         echo $msg;
     }

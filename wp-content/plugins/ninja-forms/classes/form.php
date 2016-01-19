@@ -111,7 +111,10 @@ class NF_Form {
 	 * @since 2.7
 	 * @return string $setting
 	 */
-	public function get_setting( $setting ) {
+	public function get_setting( $setting, $bypass_cache = false ) {
+		if ( $bypass_cache ) {
+			return nf_get_object_meta_value( $this->form_id, 'last_sub' );
+		}
 		if ( isset ( $this->settings[ $setting ] ) ) {
 			return $this->settings[ $setting ];
 		} else {
@@ -132,6 +135,7 @@ class NF_Form {
 	public function update_setting( $setting, $value ) {
 		$this->settings[ $setting ] = $value;
 		nf_update_object_meta( $this->form_id, $setting, $value );
+		$this->dump_cache();
 		return true;
 	}
 
@@ -183,5 +187,27 @@ class NF_Form {
 		// Delete any fields on this form.
 		$wpdb->query($wpdb->prepare( "DELETE FROM ".NINJA_FORMS_FIELDS_TABLE_NAME." WHERE form_id = %d", $this->form_id ) );
 	}
+
+    /**
+     * Delete the cached form object (transient)
+     *
+     * @access public
+     * @since 2.9.17
+     */
+    public function dump_cache()
+    {
+        delete_transient( 'nf_form_' . $this->form_id );
+    }
+
+    /**
+     * Deprecated wrapper for dump_cache()
+     *
+     * @access public
+     * @since 2.9.12
+     */
+    public function dumpCache()
+    {
+        $this->dump_cache();
+    }
 
 }

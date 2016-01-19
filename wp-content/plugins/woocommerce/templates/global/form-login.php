@@ -2,6 +2,14 @@
 /**
  * Login form
  *
+ * This template can be overridden by copying it to yourtheme/woocommerce/global/form-login.php.
+ *
+ * HOWEVER, on occasion WooCommerce will need to update template files and you (the theme developer).
+ * will need to copy the new files to your theme to maintain compatibility. We try to do this.
+ * as little as possible, but it does happen. When this occurs the version of the template file will.
+ * be bumped and the readme will list any important changes.
+ *
+ * @see 	    http://docs.woothemes.com/document/template-structure/
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
  * @version     2.1.0
@@ -36,14 +44,14 @@ if ( is_user_logged_in() ) {
 
 	<p class="form-row">
 		<?php wp_nonce_field( 'woocommerce-login' ); ?>
-		<input type="submit" class="button" name="login" value="<?php _e( 'Login', 'woocommerce' ); ?>" />
+		<input type="submit" class="button" name="login" value="<?php esc_attr_e( 'Login', 'woocommerce' ); ?>" />
 		<input type="hidden" name="redirect" value="<?php echo esc_url( $redirect ) ?>" />
 		<label for="rememberme" class="inline">
 			<input name="rememberme" type="checkbox" id="rememberme" value="forever" /> <?php _e( 'Remember me', 'woocommerce' ); ?>
 		</label>
 	</p>
 	<p class="lost_password">
-		<a href="<?php echo esc_url( wc_lostpassword_url() ); ?>"><?php _e( 'Lost your password?', 'woocommerce' ); ?></a>
+		<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php _e( 'Lost your password?', 'woocommerce' ); ?></a>
 	</p>
 
 	<div class="clear"></div>

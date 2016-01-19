@@ -1,16 +1,15 @@
-
 <?php
 /**
  * Load All WRIS Custom Post Type
  */
 $IG_CPT_Name = "ris_gallery";
-$AllSlides = array(  'p' => $Id['id'], 'post_type' => $IG_CPT_Name, 'orderby' => 'ASC');
+$AllSlides = array(  'p' => $Id['id'], 'post_type' => $IG_CPT_Name, 'orderby' => $WRIS_L3_Slide_Order);
 $loop = new WP_Query( $AllSlides );
 
 while ( $loop->have_posts() ) : $loop->the_post();
 //get the post id
 $post_id = get_the_ID();
-	
+
 /**
  * Get All Slides Details Post Meta
  */
@@ -22,38 +21,146 @@ $j = 1;
 <script type="text/javascript">
 	jQuery( document ).ready(function( jQuery ) {
 		jQuery( '#example3_<?php echo $post_id; ?>' ).sliderPro({
+			//width
+			<?php if($WRIS_L3_Width == "100%") { ?>
+			width: "100%",
+			<?php } else if($WRIS_L3_Width == "custom") { ?>
 			width: <?php if($WRIS_L3_Slider_Width != "") echo $WRIS_L3_Slider_Width; else echo "1000"; ?>,
+			<?php } else if($WRIS_L3_Width == "fullWidth") { ?>
+			forceSize: 'fullWidth', //'fullWidth', 'fullWindow', 'none'
+			<?php } ?>
+			
+			//height
+			<?php if($WRIS_L3_Height == "custom") { ?>
 			height: <?php if($WRIS_L3_Slider_Height != "") echo $WRIS_L3_Slider_Height; else echo "500"; ?>,
-			autoplay: <?php if($WRIS_L3_Auto_Slideshow == 1) echo "true"; else echo "false"; ?>,
+			<?php } else { ?>
+			autoHeight: true,
+			<?php } ?>
+			
+			//autoplay
+			<?php if($WRIS_L3_Auto_Slideshow == 1) { ?>
+			autoplay:  true,
+			autoplayOnHover: 'none',
+			<?php } ?>
+			<?php if($WRIS_L3_Auto_Slideshow == 2) { ?>
+			autoplay: true,
+			autoplayOnHover: 'pause',
+			<?php } ?>
+			<?php if($WRIS_L3_Auto_Slideshow == 3) { ?>
+			autoplay:  false,
+			<?php } ?>
+			autoplayDelay: <?php if($WRIS_L3_Transition_Speed != "") echo $WRIS_L3_Transition_Speed; else echo "5000"; ?>,
+			
+			
 			arrows: <?php if($WRIS_L3_Sliding_Arrow == 1) echo "true"; else echo "false"; ?>,
 			buttons: <?php if($WRIS_L3_Navigation_Button == 1) echo "true"; else echo "false"; ?>,
 			smallSize: 500,
 			mediumSize: 1000,
 			largeSize: 3000,
-			//fade: true,
-			thumbnailArrows: true,			
+			fade: <?php if($WRIS_L3_Transition == 1) echo "true"; else echo "false"; ?>,
+			
+			//thumbnail
+			thumbnailArrows: true,
+			thumbnailWidth: <?php if($WRIS_L3_Thumbnail_Width != "") echo $WRIS_L3_Thumbnail_Width; else echo "120"; ?>,
+			thumbnailHeight: <?php if($WRIS_L3_Thumbnail_Height != "") echo $WRIS_L3_Thumbnail_Height; else echo "100"; ?>,
+			<?php if($WRIS_L3_Navigation_Position == "top") { ?>
+			thumbnailsPosition: 'top',
+			<?php } ?>
+			<?php if($WRIS_L3_Navigation_Position == "bottom") { ?>
+			thumbnailsPosition: 'bottom',
+			<?php } ?>
+			<?php if($WRIS_L3_Thumbnail_Style == "pointer") { ?>
+			thumbnailPointer: true, 
+			<?php } ?>
+			centerImage: true,
+			allowScaleUp: true,
+			<?php if($WRIS_L3_Slide_Order == "shuffle") { ?>
+			shuffle: true,
+			<?php } ?>
+			startSlide: 0,
+			loop: true,
+			slideDistance: <?php if($WRIS_L3_Slide_Distance) echo $WRIS_L3_Slide_Distance; else echo "5"; ?>,
+			autoplayDirection: 'normal',
+			touchSwipe: true,
+			fullScreen: <?php if($WRIS_L3_Fullscreeen == 1) echo "true"; else echo "false"; ?>,
 		});
 	});
 </script>
+<script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
+<script type="text/javascript">
+  WebFont.load({
+	google: {
+	  families: ['<?php echo $RISP_Font_Style; ?>'] // saved value
+	}
+  });
+</script>
 <style>
 /* Example 3 */
+
+/* border */
+<?php if($WRIS_L3_Thumbnail_Style == "border") { ?>
 #example3_<?php echo $post_id; ?> .sp-selected-thumbnail {
-	border: 4px solid #000;
+	border: 4px solid <?php echo $WRIS_L3_Navigation_Pointer_Color; ?>;
+}
+<?php } ?>
+
+/* font + color */
+.title-in  {
+	font-family: <?php echo $WRIS_L3_Font_Style; ?> !important;
+	color: <?php echo $WRIS_L3_Title_Color; ?> !important;
+	background-color: <?php echo $WRIS_L3_Title_BgColor; ?> !important;
+	opacity: 0.7 !important;
+}
+.desc-in  {
+	font-family: <?php echo $WRIS_L3_Font_Style; ?> !important;
+	color: <?php echo $WRIS_L3_Desc_Color; ?> !important;
+	background-color: <?php echo $WRIS_L3_Desc_BgColor; ?> !important;
+	opacity: 0.7 !important;
 }
 
-/*
-#example3_<?php //echo $post_id; ?> .title-in {
-	font-weight: bolder;
-	opacity: 0.7 !important;
-	font-size: 1.2em;
+/* bullets color */
+.sp-button  {
+	border: 2px solid <?php echo $WRIS_L3_Navigation_Bullets_Color; ?> !important;
+}
+.sp-selected-button  {
+	background-color: <?php echo $WRIS_L3_Navigation_Bullets_Color; ?> !important;
 }
 
-#example3_<?php //echo $post_id; ?> .desc-in {
-	opacity: 0.7 !important;
-	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
-	font-size: 1em;
+/* pointer color - bottom */
+<?php if( $WRIS_L3_Navigation_Position == "bottom") { ?>
+.sp-selected-thumbnail::before {
+	border-bottom: 5px solid <?php echo $WRIS_L3_Navigation_Pointer_Color; ?> !important;
 }
-*/
+.sp-selected-thumbnail::after {
+	border-bottom: 13px solid <?php echo $WRIS_L3_Navigation_Pointer_Color; ?> !important;
+}
+<?php } ?>
+
+/* pointer color - top */
+<?php if( $WRIS_L3_Navigation_Position == "top") { ?>
+
+.sp-top-thumbnails.sp-has-pointer .sp-selected-thumbnail::before {
+    border-bottom: 5px solid <?php echo $WRIS_L3_Navigation_Pointer_Color; ?>;
+}
+.sp-top-thumbnails.sp-has-pointer .sp-selected-thumbnail::after {
+    border-top: 13px solid <?php echo $WRIS_L3_Navigation_Pointer_Color; ?> !important;
+}
+<?php } ?>
+
+
+/* full screen icon */
+.sp-full-screen-button::before {
+    color: <?php echo $WRIS_L3_Navigation_Color; ?> !important;
+}
+
+/* hover navigation icon color */
+.sp-next-arrow::after, .sp-next-arrow::before {
+	background-color: <?php echo $WRIS_L3_Navigation_Color; ?> !important;
+}
+.sp-previous-arrow::after, .sp-previous-arrow::before {
+	background-color: <?php echo $WRIS_L3_Navigation_Color; ?> !important;
+}
+
 
 #example3_<?php echo $post_id; ?> .title-in {
 	color: <?php echo $RISP_Slide_In_Title_Color; ?> !important;
@@ -67,6 +174,7 @@ $j = 1;
 	max-width: 90%;
 	min-width: 40%;
 	transform: initial !important;
+	-webkit-transform: initial !important;
 	font-size: 14px !important;
 }
 
@@ -80,6 +188,7 @@ $j = 1;
 	width: 80% !important;
 	min-width: 30%;
 	transform: initial !important;
+	-webkit-transform: initial !important;
 	font-size: 13px !important;
 }
 
@@ -98,6 +207,8 @@ $j = 1;
 		display: none;
 	}
 }
+/* Custom CSS */
+<?php echo $WRIS_L3_Custom_CSS; ?>
 </style>
 <?php  if($WRIS_L3_Slide_Title == 1) { ?>
 <h3 class="uris-slider-title"><?php echo get_the_title( $post_id ); ?> </h3>
@@ -113,7 +224,7 @@ $j = 1;
 		$i++;
 		?>
 		<div class="sp-slide">
-			<img class="sp-image" src="" 
+			<img class="sp-image" alt="<?php echo $Title; ?>" src="" 
 				data-src="<?php echo $Url; ?>"
 				data-small="<?php echo $Url; ?>"
 				data-medium="<?php echo $Url; ?>"
@@ -149,10 +260,10 @@ $j = 1;
 	<div class="sp-thumbnails">
 		<?php 
 		foreach($RPGP_AllPhotosDetails as $RPGP_SinglePhotoDetails) {
-		$ThumbUrl = $RPGP_SinglePhotoDetails['rpggallery_admin_thumb'];
-		$j++;
-		?>
-		<img class="sp-thumbnail" src="<?php echo $ThumbUrl; ?>"/>
+			$ThumbUrl = $RPGP_SinglePhotoDetails['rpggallery_admin_thumb'];
+			$j++;
+			?>
+			<img class="sp-thumbnail" src="<?php echo $ThumbUrl; ?>"/>
 		<?php } ?>
 	</div>
 	<?php } ?>

@@ -92,7 +92,6 @@ a.tooltip span
     border-color: #ddd !important;
     border-style: solid;
     border-width: 1px;
-    float: left;
     margin: 13px 5px 5px 1px;
     padding: 3px 5px;
     text-align: center;
@@ -195,6 +194,7 @@ TEXT FIELDS & TEXTAREAS
     width: 100%;
 }
 
+.profile_pass-wrap input,
 .text-wrap.label-above input,
 .text-wrap.label-below input,
 .text-wrap.label-inside input,
@@ -255,6 +255,20 @@ RADIO & CHECKBOX LISTS
 .list-checkbox-wrap.label-right ul li {
     float: left;
 }
+.rtl .list-radio-wrap.label-left label,
+.rtl .list-radio-wrap.label-left ul,
+.rtl .list-radio-wrap.label-left ul li,
+.rtl .list-radio-wrap.label-right label,
+.rtl .list-radio-wrap.label-right ul,
+.rtl .list-radio-wrap.label-right ul li,
+.rtl .list-checkbox-wrap.label-left label,
+.rtl .list-checkbox-wrap.label-left ul,
+.rtl .list-checkbox-wrap.label-left ul li,
+.rtl .list-checkbox-wrap.label-right label,
+.rtl .list-checkbox-wrap.label-right ul,
+.rtl .list-checkbox-wrap.label-right ul li {
+    float: right;
+}
 .list-radio-wrap.label-left ul li,
 .list-radio-wrap.label-right ul li,
 .list-checkbox-wrap.label-left ul li,
@@ -299,6 +313,10 @@ CREDIT CARD BLOCK
 /* ---------------------------------
 HONEYPOT
 ----------------------------------*/
+
+.hp-wrap {
+    display: none;
+}
 
 .honeypot-wrap {
     display: none;

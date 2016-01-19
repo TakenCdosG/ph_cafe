@@ -43,7 +43,7 @@ class WC_API_Resource {
 
 		$response_names = array( 'order', 'coupon', 'customer', 'product', 'report',
 			'customer_orders', 'customer_downloads', 'order_note', 'order_refund',
-			'product_reviews', 'product_category'
+			'product_reviews', 'product_category', 'tax', 'tax_class'
 		);
 
 		foreach ( $response_names as $name ) {
@@ -205,6 +205,11 @@ class WC_API_Resource {
 			unset( $request_args['in'] );
 		}
 
+		// exclude by a list of post id
+		if ( ! empty( $request_args['not_in'] ) ) {
+			$args['post__not_in'] = explode( ',', $request_args['not_in'] );
+			unset( $request_args['not_in'] );
+		}
 
 		// resource page
 		$args['paged'] = ( isset( $request_args['page'] ) ) ? absint( $request_args['page'] ) : 1;

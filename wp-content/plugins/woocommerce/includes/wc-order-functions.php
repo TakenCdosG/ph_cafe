@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Get all order statuses
+ * Get all order statuses.
  *
  * @since 2.2
  * @return array
@@ -51,11 +51,15 @@ function wc_is_order_status( $maybe_status ) {
  * @return WC_Order
  */
 function wc_get_order( $the_order = false ) {
+	if ( ! did_action( 'woocommerce_init' ) ) {
+		_doing_it_wrong( __FUNCTION__, __( 'wc_get_order should not be called before the woocommerce_init action.', 'woocommerce' ), '2.5' );
+		return false;
+	}
 	return WC()->order_factory->get_order( $the_order );
 }
 
 /**
- * Get the nice name for an order status
+ * Get the nice name for an order status.
  *
  * @since  2.2
  * @param  string $status
@@ -86,7 +90,7 @@ function wc_get_order_id_by_order_key( $order_key ) {
 }
 
 /**
- * Get all registered order types
+ * Get all registered order types.
  *
  * $for optionally define what you are getting order types for so only relevent types are returned.
  *
@@ -141,6 +145,13 @@ function wc_get_order_types( $for = '' ) {
 				}
 			}
 		break;
+		case 'order-webhooks' :
+			foreach ( $wc_order_types as $type => $args ) {
+				if ( ! $args['exclude_from_order_webhooks'] ) {
+					$order_types[] = $type;
+				}
+			}
+		break;
 		default :
 			$order_types = array_keys( $wc_order_types );
 		break;
@@ -150,7 +161,7 @@ function wc_get_order_types( $for = '' ) {
 }
 
 /**
- * Get an order type by post type name
+ * Get an order type by post type name.
  * @param  string post type name
  * @return bool|array of datails about the order type
  */
@@ -167,15 +178,15 @@ function wc_get_order_type( $type ) {
 /**
  * Register order type. Do not use before init.
  *
- * Wrapper for register post type, as well as a method of telling WC which
+ * Wrapper for register post type, as well as a method of telling WC which.
  * post types are types of orders, and having them treated as such.
  *
  * $args are passed to register_post_type, but there are a few specific to this function:
- * 		- exclude_from_orders_screen (bool) Whether or not this order type also get shown in the main
+ * 		- exclude_from_orders_screen (bool) Whether or not this order type also get shown in the main.
  * 		orders screen.
  * 		- add_order_meta_boxes (bool) Whether or not the order type gets shop_order meta boxes.
  * 		- exclude_from_order_count (bool) Whether or not this order type is excluded from counts.
- * 		- exclude_from_order_views (bool) Whether or not this order type is visible by customers when
+ * 		- exclude_from_order_views (bool) Whether or not this order type is visible by customers when.
  * 		viewing orders e.g. on the my account page.
  * 		- exclude_from_order_reports (bool) Whether or not to exclude this type from core reports.
  * 		- exclude_from_order_sales_reports (bool) Whether or not to exclude this type from core sales reports.
@@ -208,6 +219,7 @@ function wc_register_order_type( $type, $args = array() ) {
 		'add_order_meta_boxes'             => true,
 		'exclude_from_order_count'         => false,
 		'exclude_from_order_views'         => false,
+		'exclude_from_order_webhooks'      => false,
 		'exclude_from_order_reports'       => false,
 		'exclude_from_order_sales_reports' => false,
 		'class_name'                       => 'WC_Order'
@@ -221,7 +233,7 @@ function wc_register_order_type( $type, $args = array() ) {
 }
 
 /**
- * Grant downloadable product access to the file identified by $download_id
+ * Grant downloadable product access to the file identified by $download_id.
  *
  * @access public
  * @param string $download_id file identifier
@@ -288,11 +300,10 @@ function wc_downloadable_file_permission( $download_id, $product_id, $order, $qt
 }
 
 /**
- * Order Status completed - GIVE DOWNLOADABLE PRODUCT ACCESS TO CUSTOMER
+ * Order Status completed - GIVE DOWNLOADABLE PRODUCT ACCESS TO CUSTOMER.
  *
  * @access public
  * @param int $order_id
- * @return void
  */
 function wc_downloadable_product_permissions( $order_id ) {
 	if ( get_post_meta( $order_id, '_download_permissions_granted', true ) == 1 ) {
@@ -301,7 +312,7 @@ function wc_downloadable_product_permissions( $order_id ) {
 
 	$order = wc_get_order( $order_id );
 
-	if ( $order->has_status( 'processing' ) && get_option( 'woocommerce_downloads_grant_access_after_payment' ) == 'no' ) {
+	if ( $order && $order->has_status( 'processing' ) && get_option( 'woocommerce_downloads_grant_access_after_payment' ) == 'no' ) {
 		return;
 	}
 
@@ -323,7 +334,6 @@ function wc_downloadable_product_permissions( $order_id ) {
 
 	do_action( 'woocommerce_grant_product_download_permissions', $order_id );
 }
-
 add_action( 'woocommerce_order_status_completed', 'wc_downloadable_product_permissions' );
 add_action( 'woocommerce_order_status_processing', 'wc_downloadable_product_permissions' );
 
@@ -370,7 +380,7 @@ function wc_add_order_item( $order_id, $item ) {
 }
 
 /**
- * Update an item for an order
+ * Update an item for an order.
  *
  * @since 2.2
  * @param int $item_id
@@ -392,7 +402,7 @@ function wc_update_order_item( $item_id, $args ) {
 }
 
 /**
- * Delete an item from the order it belongs to based on item id
+ * Delete an item from the order it belongs to based on item id.
  *
  * @access public
  * @param int $item_id
@@ -417,7 +427,7 @@ function wc_delete_order_item( $item_id ) {
 }
 
 /**
- * WooCommerce Order Item Meta API - Update term meta
+ * WooCommerce Order Item Meta API - Update term meta.
  *
  * @access public
  * @param mixed $item_id
@@ -431,7 +441,7 @@ function wc_update_order_item_meta( $item_id, $meta_key, $meta_value, $prev_valu
 }
 
 /**
- * WooCommerce Order Item Meta API - Add term meta
+ * WooCommerce Order Item Meta API - Add term meta.
  *
  * @access public
  * @param mixed $item_id
@@ -445,7 +455,7 @@ function wc_add_order_item_meta( $item_id, $meta_key, $meta_value, $unique = fal
 }
 
 /**
- * WooCommerce Order Item Meta API - Delete term meta
+ * WooCommerce Order Item Meta API - Delete term meta.
  *
  * @access public
  * @param mixed $item_id
@@ -459,7 +469,7 @@ function wc_delete_order_item_meta( $item_id, $meta_key, $meta_value = '', $dele
 }
 
 /**
- * WooCommerce Order Item Meta API - Get term meta
+ * WooCommerce Order Item Meta API - Get term meta.
  *
  * @access public
  * @param mixed $item_id
@@ -472,10 +482,9 @@ function wc_get_order_item_meta( $item_id, $key, $single = true ) {
 }
 
 /**
- * Cancel all unpaid orders after held duration to prevent stock lock for those products
+ * Cancel all unpaid orders after held duration to prevent stock lock for those products.
  *
  * @access public
- * @return void
  */
 function wc_cancel_unpaid_orders() {
 	global $wpdb;
@@ -524,6 +533,7 @@ function wc_processing_order_count() {
  * Return the orders count of a specific order status.
  *
  * @access public
+ * @param string $status
  * @return int
  */
 function wc_orders_count( $status ) {
@@ -569,11 +579,17 @@ function wc_delete_shop_order_transients( $post_id = 0 ) {
 		delete_transient( $transient );
 	}
 
+	// Increments the transient version to invalidate cache
+	WC_Cache_Helper::get_transient_version( 'orders', true );
+
+	// Do the same for regular cache
+	WC_Cache_Helper::incr_cache_prefix( 'orders' );
+
 	do_action( 'woocommerce_delete_shop_order_transients', $post_id );
 }
 
 /**
- * See if we only ship to billing addresses
+ * See if we only ship to billing addresses.
  * @return bool
  */
 function wc_ship_to_billing_address_only() {
@@ -581,7 +597,7 @@ function wc_ship_to_billing_address_only() {
 }
 
 /**
- * Create a new order refund programmatically
+ * Create a new order refund programmatically.
  *
  * Returns a new refund object on success which can then be used to add additional data.
  *
@@ -595,11 +611,17 @@ function wc_create_refund( $args = array() ) {
 		'reason'     => null,
 		'order_id'   => 0,
 		'refund_id'  => 0,
-		'line_items' => array()
+		'line_items' => array(),
+		'date'       => current_time( 'mysql', 0 )
 	);
 
 	$args        = wp_parse_args( $args, $default_args );
 	$refund_data = array();
+
+	// prevent negative refunds
+	if ( 0 > $args['amount'] ) {
+		$args['amount'] = 0;
+	}
 
 	if ( $args['refund_id'] > 0 ) {
 		$updating          = true;
@@ -613,6 +635,7 @@ function wc_create_refund( $args = array() ) {
 		$refund_data['post_password'] = uniqid( 'refund_' );
 		$refund_data['post_parent']   = absint( $args['order_id'] );
 		$refund_data['post_title']    = sprintf( __( 'Refund &ndash; %s', 'woocommerce' ), strftime( _x( '%b %d, %Y @ %I:%M %p', 'Order date parsed by strftime', 'woocommerce' ) ) );
+		$refund_data['post_date']     = $args['date'];
 	}
 
 	if ( ! is_null( $args['reason'] ) ) {
@@ -635,10 +658,13 @@ function wc_create_refund( $args = array() ) {
 
 		// Get refund object
 		$refund = wc_get_order( $refund_id );
+		$order  = wc_get_order( $args['order_id'] );
+
+		// Refund currency is the same used for the parent order
+		update_post_meta( $refund_id, '_order_currency', $order->get_order_currency() );
 
 		// Negative line items
 		if ( sizeof( $args['line_items'] ) > 0 ) {
-			$order       = wc_get_order( $args['order_id'] );
 			$order_items = $order->get_items( array( 'line_item', 'fee', 'shipping' ) );
 
 			foreach ( $args['line_items'] as $refund_item_id => $refund_item ) {
@@ -699,7 +725,7 @@ function wc_create_refund( $args = array() ) {
 		// Set total to total refunded which may vary from order items
 		$refund->set_total( wc_format_decimal( $args['amount'] ) * -1, 'total' );
 
-		do_action( 'woocommerce_refund_created', $refund_id );
+		do_action( 'woocommerce_refund_created', $refund_id, $args );
 	}
 
 	// Clear transients
@@ -739,8 +765,36 @@ function wc_get_payment_gateway_by_order( $order ) {
 
 	if ( ! is_object( $order ) ) {
 		$order_id = absint( $order );
-		$order    = new WC_Order( $order_id );
+		$order    = wc_get_order( $order_id );
 	}
 
 	return isset( $payment_gateways[ $order->payment_method ] ) ? $payment_gateways[ $order->payment_method ] : false;
 }
+
+/**
+ * When refunding an order, create a refund line item if the partial refunds do not match order total.
+ *
+ * This is manual; no gateway refund will be performed.
+ *
+ * @since 2.4
+ * @param int $order_id
+ */
+function wc_order_fully_refunded( $order_id ) {
+	$order       = wc_get_order( $order_id );
+	$max_refund  = wc_format_decimal( $order->get_total() - $order->get_total_refunded() );
+
+	if ( ! $max_refund ) {
+		return;
+	}
+
+	// Create the refund object
+	$refund = wc_create_refund( array(
+		'amount'     => $max_refund,
+		'reason'     => __( 'Order Fully Refunded', 'woocommerce' ),
+		'order_id'   => $order_id,
+		'line_items' => array()
+	) );
+
+	wc_delete_shop_order_transients( $order_id );
+}
+add_action( 'woocommerce_order_status_refunded', 'wc_order_fully_refunded' );

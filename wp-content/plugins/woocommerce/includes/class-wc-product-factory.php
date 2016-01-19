@@ -1,8 +1,13 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
 /**
  * Product Factory Class
  *
- * The WooCommerce product factory creating the right product object
+ * The WooCommerce product factory creating the right product object.
  *
  * @class 		WC_Product_Factory
  * @version		2.3.0
@@ -13,7 +18,7 @@
 class WC_Product_Factory {
 
 	/**
-	 * get_product function.
+	 * Get product.
 	 *
 	 * @param bool $the_product (default: false)
 	 * @param array $args (default: array())
@@ -26,7 +31,7 @@ class WC_Product_Factory {
 			return false;
 		}
 
-		$classname = $this->get_product_class( $the_product );
+		$classname = $this->get_product_class( $the_product, $args );
 
 		if ( ! class_exists( $classname ) ) {
 			$classname = 'WC_Product_Simple';
@@ -36,7 +41,7 @@ class WC_Product_Factory {
 	}
 
 	/**
-	 * Create a WC coding standards compliant class name e.g. WC_Product_Type_Class instead of WC_Product_type-class
+	 * Create a WC coding standards compliant class name e.g. WC_Product_Type_Class instead of WC_Product_type-class.
 	 * @param  string $product_type
 	 * @return string|false
 	 */
@@ -45,11 +50,12 @@ class WC_Product_Factory {
 	}
 
 	/**
-	 * Get the product class name
+	 * Get the product class name.
 	 * @param  WP_Post $the_product
+	 * @param  array $args (default: array())
 	 * @return string
 	 */
-	private function get_product_class( $the_product ) {
+	private function get_product_class( $the_product, $args = array() ) {
 		$product_id = absint( $the_product->ID );
 		$post_type  = $the_product->post_type;
 
@@ -73,9 +79,9 @@ class WC_Product_Factory {
 	}
 
 	/**
-	 * Get the product object
+	 * Get the product object.
 	 * @param  mixed $the_product
-	 * @uses   WP_POST
+	 * @uses   WP_Post
 	 * @return WP_Post|bool false on failure
 	 */
 	private function get_product_object( $the_product ) {

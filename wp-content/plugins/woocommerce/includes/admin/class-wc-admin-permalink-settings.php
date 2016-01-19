@@ -1,6 +1,6 @@
 <?php
 /**
- * Adds settings to the permalinks admin settings page.
+ * Adds settings to the permalinks admin settings page
  *
  * @class       WC_Admin_Permalink_Settings
  * @author      WooThemes
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'WC_Admin_Permalink_Settings' ) ) :
 
 /**
- * WC_Admin_Permalink_Settings Class
+ * WC_Admin_Permalink_Settings Class.
  */
 class WC_Admin_Permalink_Settings {
 
@@ -33,7 +33,7 @@ class WC_Admin_Permalink_Settings {
 	 */
 	public function settings_init() {
 		// Add a section to the permalinks page
-		add_settings_section( 'woocommerce-permalink', __( 'Product permalink base', 'woocommerce' ), array( $this, 'settings' ), 'permalink' );
+		add_settings_section( 'woocommerce-permalink', __( 'Product Permalinks', 'woocommerce' ), array( $this, 'settings' ), 'permalink' );
 
 		// Add our settings
 		add_settings_field(
@@ -65,7 +65,7 @@ class WC_Admin_Permalink_Settings {
 	public function product_category_slug_input() {
 		$permalinks = get_option( 'woocommerce_permalinks' );
 		?>
-		<input name="woocommerce_product_category_slug" type="text" class="regular-text code" value="<?php if ( isset( $permalinks['category_base'] ) ) echo esc_attr( $permalinks['category_base'] ); ?>" placeholder="<?php echo _x('product-category', 'slug', 'woocommerce') ?>" />
+		<input name="woocommerce_product_category_slug" type="text" class="regular-text code" value="<?php if ( isset( $permalinks['category_base'] ) ) echo esc_attr( $permalinks['category_base'] ); ?>" placeholder="<?php echo esc_attr_x('product-category', 'slug', 'woocommerce') ?>" />
 		<?php
 	}
 
@@ -75,7 +75,7 @@ class WC_Admin_Permalink_Settings {
 	public function product_tag_slug_input() {
 		$permalinks = get_option( 'woocommerce_permalinks' );
 		?>
-		<input name="woocommerce_product_tag_slug" type="text" class="regular-text code" value="<?php if ( isset( $permalinks['tag_base'] ) ) echo esc_attr( $permalinks['tag_base'] ); ?>" placeholder="<?php echo _x('product-tag', 'slug', 'woocommerce') ?>" />
+		<input name="woocommerce_product_tag_slug" type="text" class="regular-text code" value="<?php if ( isset( $permalinks['tag_base'] ) ) echo esc_attr( $permalinks['tag_base'] ); ?>" placeholder="<?php echo esc_attr_x('product-tag', 'slug', 'woocommerce') ?>" />
 		<?php
 	}
 
@@ -93,9 +93,9 @@ class WC_Admin_Permalink_Settings {
 	 * Show the settings.
 	 */
 	public function settings() {
-		echo wpautop( __( 'These settings control the permalinks used for products. These settings only apply when <strong>not using "default" permalinks above</strong>.', 'woocommerce' ) );
+		echo wpautop( __( 'These settings control the permalinks used specifically for products.', 'woocommerce' ) );
 
-		$permalinks = get_option( 'woocommerce_permalinks' );
+		$permalinks        = get_option( 'woocommerce_permalinks' );
 		$product_permalink = $permalinks['product_base'];
 
 		// Get shop page
@@ -105,29 +105,24 @@ class WC_Admin_Permalink_Settings {
 
 		$structures = array(
 			0 => '',
-			1 => '/' . trailingslashit( $product_base ),
-			2 => '/' . trailingslashit( $base_slug ),
-			3 => '/' . trailingslashit( $base_slug ) . trailingslashit( '%product_cat%' )
+			1 => '/' . trailingslashit( $base_slug ),
+			2 => '/' . trailingslashit( $base_slug ) . trailingslashit( '%product_cat%' )
 		);
 		?>
-		<table class="form-table">
+		<table class="form-table wc-permalink-structure">
 			<tbody>
 				<tr>
-					<th><label><input name="product_permalink" type="radio" value="<?php echo $structures[0]; ?>" class="wctog" <?php checked( $structures[0], $product_permalink ); ?> /> <?php _e( 'Default', 'woocommerce' ); ?></label></th>
-					<td><code><?php echo home_url(); ?>/?product=sample-product</code></td>
-				</tr>
-				<tr>
-					<th><label><input name="product_permalink" type="radio" value="<?php echo $structures[1]; ?>" class="wctog" <?php checked( $structures[1], $product_permalink ); ?> /> <?php _e( 'Product', 'woocommerce' ); ?></label></th>
-					<td><code><?php echo home_url(); ?>/<?php echo $product_base; ?>/sample-product/</code></td>
+					<th><label><input name="product_permalink" type="radio" value="<?php echo esc_attr( $structures[0] ); ?>" class="wctog" <?php checked( $structures[0], $product_permalink ); ?> /> <?php _e( 'Default', 'woocommerce' ); ?></label></th>
+					<td><code class="default-example"><?php echo esc_html( home_url() ); ?>/?product=sample-product</code> <code class="non-default-example"><?php echo esc_html( home_url() ); ?>/<?php echo esc_html( $product_base ); ?>/sample-product/</code></td>
 				</tr>
 				<?php if ( $shop_page_id ) : ?>
 					<tr>
-						<th><label><input name="product_permalink" type="radio" value="<?php echo $structures[2]; ?>" class="wctog" <?php checked( $structures[2], $product_permalink ); ?> /> <?php _e( 'Shop base', 'woocommerce' ); ?></label></th>
-						<td><code><?php echo home_url(); ?>/<?php echo $base_slug; ?>/sample-product/</code></td>
+						<th><label><input name="product_permalink" type="radio" value="<?php echo esc_attr( $structures[1] ); ?>" class="wctog" <?php checked( $structures[1], $product_permalink ); ?> /> <?php _e( 'Shop base', 'woocommerce' ); ?></label></th>
+						<td><code><?php echo esc_html( home_url() ); ?>/<?php echo esc_html( $base_slug ); ?>/sample-product/</code></td>
 					</tr>
 					<tr>
-						<th><label><input name="product_permalink" type="radio" value="<?php echo $structures[3]; ?>" class="wctog" <?php checked( $structures[3], $product_permalink ); ?> /> <?php _e( 'Shop base with category', 'woocommerce' ); ?></label></th>
-						<td><code><?php echo home_url(); ?>/<?php echo $base_slug; ?>/product-category/sample-product/</code></td>
+						<th><label><input name="product_permalink" type="radio" value="<?php echo esc_attr( $structures[2] ); ?>" class="wctog" <?php checked( $structures[2], $product_permalink ); ?> /> <?php _e( 'Shop base with category', 'woocommerce' ); ?></label></th>
+						<td><code><?php echo esc_html( home_url() ); ?>/<?php echo esc_html( $base_slug ); ?>/product-category/sample-product/</code></td>
 					</tr>
 				<?php endif; ?>
 				<tr>
@@ -144,7 +139,18 @@ class WC_Admin_Permalink_Settings {
 				jQuery('input.wctog').change(function() {
 					jQuery('#woocommerce_permalink_structure').val( jQuery( this ).val() );
 				});
-
+				jQuery('.permalink-structure input').change(function() {
+					jQuery('.wc-permalink-structure').find('code.non-default-example, code.default-example').hide();
+					if ( jQuery(this).val() ) {
+						jQuery('.wc-permalink-structure code.non-default-example').show();
+						jQuery('.wc-permalink-structure input').removeAttr('disabled');
+					} else {
+						jQuery('.wc-permalink-structure code.default-example').show();
+						jQuery('.wc-permalink-structure input:eq(0)').click();
+						jQuery('.wc-permalink-structure input').attr('disabled', 'disabled');
+					}
+				});
+				jQuery('.permalink-structure input:checked').change();
 				jQuery('#woocommerce_permalink_structure').focus( function(){
 					jQuery('#woocommerce_custom_selection').click();
 				} );
@@ -168,8 +174,7 @@ class WC_Admin_Permalink_Settings {
 			$woocommerce_product_category_slug  = wc_clean( $_POST['woocommerce_product_category_slug'] );
 			$woocommerce_product_tag_slug       = wc_clean( $_POST['woocommerce_product_tag_slug'] );
 			$woocommerce_product_attribute_slug = wc_clean( $_POST['woocommerce_product_attribute_slug'] );
-
-			$permalinks = get_option( 'woocommerce_permalinks' );
+			$permalinks                         = get_option( 'woocommerce_permalinks' );
 
 			if ( ! $permalinks ) {
 				$permalinks = array();
@@ -182,7 +187,7 @@ class WC_Admin_Permalink_Settings {
 			// Product base
 			$product_permalink = wc_clean( $_POST['product_permalink'] );
 
-			if ( $product_permalink == 'custom' ) {
+			if ( 'custom' === $product_permalink ) {
 				// Get permalink without slashes
 				$product_permalink = trim( wc_clean( $_POST['product_permalink_structure'] ), '/' );
 

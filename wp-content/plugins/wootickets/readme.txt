@@ -1,11 +1,11 @@
 === The Events Calendar: WooCommerce Tickets ===
 
-Contributors:  ModernTribe, roblagatta, faction23, jazbek, jbrinley, leahkoerper, brook-tribe, ckpicker, barry.hughes, joshlimecuda, geoffgraham, brianjessee, mdbitz, neillmcshea, peterchester, reid.peifer, shane.pearlman
+Contributors:  ModernTribe, roblagatta, faction23, jazbek, jbrinley, leahkoerper, brook-tribe, ckpicker, barry.hughes, joshlimecuda, geoffgraham, brianjessee, mdbitz, neillmcshea, peterchester, reid.peifer, shane.pearlman, borkweb, zbtirrell
 Tags: events, WooCommerce, WooTickets, add-on, ticket sales, tickets, calendar, community, registration, api, dates, date, posts, workshop, conference, meeting, seminar, concert, summit, The Events Calendar, Events Calendar PRO, ticket integration, event ticketing
 Donate link: http://m.tri.be/29
-Requires at least: 3.8
-Tested up to: 4.0.1
-Stable tag: 3.9.3
+Requires at least: 3.9
+Tested up to: 4.3.1
+Stable tag: 3.12.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,10 +43,11 @@ If you have trouble installing, see the [Codex](http://codex.wordpress.org/Manag
 
 = Requirements =
 
-* WordPress 3.8 or above
-* PHP 5.2 or above
-* The Events Calendar 3.9 or above
-* WooCommerce 2.1 or above
+* PHP 5.2.4 or greater (recommended: PHP 5.4 or greater)
+* WordPress 3.9 or above
+* jQuery 1.11.x
+* The Events Calendar 3.10 or above
+* WooCommerce 2.2 or above
 
 == Documentation ==
 
@@ -80,52 +81,72 @@ Unfortunately we cannot provide support for any WooCommerce-specific issues. Ple
 
 == Contributors ==
 
-This plugin is produced by <a href="http://m.tri.be/1o">Modern Tribe Inc</a>.
+The plugin is produced by <a href="http://m.tri.be/2s">Modern Tribe Inc</a>.
 
 = Current Contributors =
 
-* <a href="http://profiles.wordpress.org/users/roblagatta">Rob La Gatta</a>
-* <a href="http://profiles.wordpress.org/users/ckpicker”>Casey Picker</a>
-* <a href="http://profiles.wordpress.org/users/peterchester">Peter Chester</a>
-* <a href="http://profiles.wordpress.org/users/reid.peifer">Reid Peifer</a>
-* <a href="http://profiles.wordpress.org/users/shane.pearlman">Shane Pearlman</a>
-* <a href="http://profiles.wordpress.org/users/neillmcshea">Neill McShea</a>
-* <a href="http://profiles.wordpress.org/users/brook-tribe”>Brook Harding</a>
-* <a href="http://profiles.wordpress.org/users/leahkoerper">Leah Koerper</a>
-* <a href="http://profiles.wordpress.org/users/barryhughes">Barry Hughes</a>
+<a href="https://profiles.wordpress.org/barryhughes">Barry Hughes</a>
+<a href="https://profiles.wordpress.org/brianjessee">Brian Jessee</a>
+<a href="https://profiles.wordpress.org/brook-tribe">Brook Harding</a>
+<a href="https://profiles.wordpress.org/cliffpaulick">Clifford Paulick</a>
+<a href="https://profiles.wordpress.org/MZAWeb">Daniel Dvorkin</a>
+<a href="https://profiles.wordpress.org/geoffgraham">Geoff Graham</a>
+<a href="https://profiles.wordpress.org/ggwicz">George Gecewicz</a>
+<a href="https://profiles.wordpress.org/bordoni">Gustavo Bordoni</a>
+<a href="https://profiles.wordpress.org/jazbek">Jessica Yazbek</a>
+<a href="https://profiles.wordpress.org/joshlimecuda">Josh Mallard</a>
+<a href="https://profiles.wordpress.org/leahkoerper">Leah Koerper</a>
+<a href="https://profiles.wordpress.org/lucatume">Luca Tumedei</a>
+<a href="https://profiles.wordpress.org/borkweb">Matthew Batchelder</a>
+<a href="https://profiles.wordpress.org/neillmcshea">Neill McShea</a>
+<a href="https://profiles.wordpress.org/mastromktg">Nick Mastromattei</a>
+<a href="https://profiles.wordpress.org/nicosantos”>Nico Santo</a>
+<a href="https://profiles.wordpress.org/peterchester">Peter Chester</a>
+<a href="https://profiles.wordpress.org/roblagatta">Rob La Gatta</a>
+<a href="https://profiles.wordpress.org/reid.peifer">Reid Peifer</a>
+<a href="https://profiles.wordpress.org/shane.pearlman">Shane Pearlman</a>
+<a href="https://profiles.wordpress.org/thatdudebutch">Wayne Stratton</a>
+<a href="https://profiles.wordpress.org/zbtirrell">Zachary Tirrell</a>
 
 = Past Contributors =
 
-* <a href="http://profiles.wordpress.org/users/kellykathryn">Kelly Groves</a>
-* <a href="http://profiles.wordpress.org/users/MZAWeb">Daniel Dvorkin</a>
-* <a href="http://profiles.wordpress.org/users/caseypatrickdriscoll">Casey Driscoll</a>
+<a href="https://profiles.wordpress.org/caseypatrickdriscoll">Casey Driscoll</a>
+<a href="https://profiles.wordpress.org/ckpicker">Casey Picker</a>
+<a href="https://profiles.wordpress.org/dancameron">Dan Cameron</a>
+<a href="https://profiles.wordpress.org/jkudish">Joachim Kudish</a>
+<a href="https://profiles.wordpress.org/jgadbois">John Gadbois</a>
+<a href="https://profiles.wordpress.org/jonahcoyote">Jonah West</a>
+<a href="https://profiles.wordpress.org/jbrinley">Jonathan Brinley</a>
+<a href="httpss://profiles.wordpress.org/justinendler/">Justin Endler</a>
+<a href="https://profiles.wordpress.org/kellykathryn">Kelly Groves</a>
+<a href="https://profiles.wordpress.org/kelseydamas">Kelsey Damas</a>
+<a href="https://profiles.wordpress.org/kyleunzicker">Kyle Unzicker</a>
+<a href="https://profiles.wordpress.org/mdbitz">Matthew Denton</a>
+<a href="https://profiles.wordpress.org/mattwiebe">Matt Wiebe</a>
+<a href="https://profiles.wordpress.org/mat-lipe">Mat Lipe</a>
+<a href="https://profiles.wordpress.org/nickciske">Nick Ciske</a>
+<a href="https://profiles.wordpress.org/paulhughes01">Paul Hughes</a>
+<a href="https://profiles.wordpress.org/ryancurban">Ryan Urban</a>
+<a href="https://profiles.wordpress.org/faction23">Samuel Estok</a>
+<a href="https://profiles.wordpress.org/codearachnid">Timothy Wood</a>
 
-= Translators =
+= Translations =
 
-* Brazilian Portuguese from Dionizio Bonfim Bach
-* Catalan by Jordi Divins
-* Chinese by Massound Huang
-* Czech by Petr Basan
-* Danish by Soren Jensen
-* Dutch from J.F.M. Cornelissen and Frans Pronk
-* French by Alaric Breithof
-* German from Margit Wright
-* Indonesian from Didik Priyanto
-* Italian from Roberto Scano
-* Norwegian (Bokmål) by Gregory G
-* Norwegian (Nynorsk) by Torbjørn Lauen
-* Polish from Arkadiusz Śnieżek
-* Portuguese from Hugo Malhoa
-* Romanian from Cosmin Vaman
-* Spanish by Jesus Arpon
-* Swedish from Andreas Bodin
-* Ukranian from Vasily Vishnyakov
+* Catalan
+* Chinese (China)
+* Chinese (Taiwan)
+* Czech
+* Dutch
+* French
+* German
+* Spanish
+* Turkish
 
-* Previous translators include Bastien BC, Ben Andersen, Jerry van den Berg, Mihai Burcea, John Rozzo, and Jordan Vernon
+Many thanks to all our translators!  You can grab the latest translations or contribute at http://translations.theeventscalendar.com
 
 == Add-Ons ==
 
-But wait: there's more! We've got a whole stable of plugins available to help you kick ass at what you do. Check out a full list of the products below, and over at the <a href="http://tri.be/products/">Modern Tribe website.</a>
+But wait: there's more! We've got a whole stable of plugins available to help you be awesome at what you do. Check out a full list of the products below, and over at the <a href="http://tri.be/products/">Modern Tribe website.</a>
 
 Our Free Plugins:
 
@@ -136,7 +157,7 @@ Our Free Plugins:
 
 Our Premium Plugins:
 
-* <a href="http://m.tri.be/2c" target="_blank">The Events Calendar PRO</a>
+* <a href="http://m.tri.be/2c" target="_blank">Events Calendar PRO</a>
 * <a href="http://m.tri.be/2e" target="_blank">The Events Calendar: Eventbrite Tickets</a>
 * <a href="http://m.tri.be/2g" target="_blank">The Events Calendar: Community Events</a>
 * <a href="http://m.tri.be/2h" target="_blank">The Events Calendar: Facebook Events</a>
@@ -145,16 +166,47 @@ Our Premium Plugins:
 * <a href="http://m.tri.be/cu" target="_blank">The Events Calendar: WPEC Tickets</a>
 * <a href="http://m.tri.be/dp" target="_blank">The Events Calendar: Shopp Tickets</a>
 * <a href="http://m.tri.be/fa" target="_blank">The Events Calendar: Filter Bar</a>
+* <a href="http://m.tri.be/18h9" target="_blank">The Events Calendar: iCal Importer</a>
+
 
 == Upgrade Notice ==
 
-This upgrade requires The Events Calendar 3.9 or newer!
+IMPORTANT NOTICE: 3.10 is a massive update from the 3.9 build, which contains a number of changes under-the-hood. All users are encouraged to backup their site before updating, and to apply the updates on a staging/test site where they can check on + fix customizations as needed before deploying to production.
 
 == Changelog ==
 
-= IMPORTANT NOTICE =
+= [3.12.1] 2015-11-04 =
 
-3.x is a complete overhaul of the plugin, and as a result we're starting the changelog fresh. For release notes from the 2.x lifecycle, see <a href="http://m.tri.be/k">our 2.x release notes.</a>
+* Feature - Adding support for the new Events Community Tickets plugin
+
+= [3.12] 2015-09-08 =
+
+* Feature - Added additional attendee generation hooks: wootickets_attendee_insert_args and wootickets_get_ticket (Thanks to aaemnnosttv for this!)
+* Tweak - Build and provide an order ID link when generating the list of attendees (Props to aaemnnosttv!)
+* Tweak - Added additional parameters to the following hooks: wootickets_generate_ticket_attendee, wootickets_after_create_ticket, wootickets_after_update_ticket, wootickets_after_save_ticket (Thank you aaemnnosttv!)
+* Tweak - Use CSS rather than HTML attributes to set nowrap on the tickets table (Thanks to Mark for reporting this!)
+* Tweak - Made ticket prices update via ajax the instant changes are made, instead of waiting for the WP Update button to trigger them (Cheers to Daniel and Chris!)
+
+= [3.11] 2015-07-22 =
+
+* Security - Added escaping to a number of previously un-escaped values
+* Feature - Added the following actions so plugin and theme developers can hook into the ticket create/update/save process: wootickets_after_create_ticket, wootickets_after_update_ticket, and wootickets_after_save_ticket
+* Feature - Added an action (wootickets_generate_ticket_attendee) that gets fired when tickets are generated (Thanks to randomwalk for the idea!)
+* Tweak - Attendees Bulk Edit URL now doesn't get longer on every action (Thanks to Mike for the insight!)
+* Tweak - No longer auto-add tickets into the "Tickets" category in WooCommerce by default (Props to Winfried for bringing this up!)
+* Tweak - Conformed code to updated coding standards
+* Bug - Fixed a fatal error caused by visiting an event that had WooCommerce tickets attached when the WooCommerce plugin was disabled
+* Bug - Prevent ticket End and Start date to stop working with 24h WordPress (Thanks to aborigens for originally reporting this!)
+
+= [3.10] 2015-06-16 =
+
+* Bug - Fixed a bug where WooCommerce's "sold individually" product setting was being ignored (thanks to skysoclear on the forums for reporting this!)
+* Bug - Fixed a bug that prevented activating plugin alongside EDD Tickets
+* Tweak - Plugin code has been refactored to new standards: that did result in a new file structure and many renamed classes. Old class names will be deprecated in future releases and, while still working as expected, you can keep track of any deprecated classes yours or third party plugins are calling using the Log Deprecated Notices plugin (https://wordpress.org/plugins/log-deprecated-notices/)
+* Tweak - Improved handling of sale prices within event editor (thanks to Scratch Digital on the dot-org forums for starting us down this path!)
+* Tweak - Added some changelog formatting enhancements after seeing keepachangelog.com :)
+* Tweak - Moved CSS from The Events Calendar to wootickets.css; use the 'tribe_wootickets_stylesheet_url' filter to override with your own styles
+* Feature - Incorporated updated Turkish translation, courtesy of Nadin Kokciyan
 
 = 3.9.3 =
 
@@ -217,7 +269,7 @@ This upgrade requires The Events Calendar 3.9 or newer!
 = 3.4 =
 
 * When setting up a new ticketed event, sale time options are now “grayed out” until a date is entered
-* Addressed a few broken translation strings 
+* Addressed a few broken translation strings
 * Made some enhancements to comply with PHP 5.4 strict standards
 
 = 3.3 =
