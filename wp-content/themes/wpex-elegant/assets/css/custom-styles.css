@@ -1045,3 +1045,9 @@ a.tribe-events-gcal.tribe-events-button
     padding: 7px 0 !important;
     }
 }
+
+
+
+a.tribe-event-url br{
+    display: none;
+}
