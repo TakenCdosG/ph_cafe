@@ -56,11 +56,11 @@ jQuery(function($){
           if(name === 'hide_empty'){
             settings[name] = useAlternative || !!ocd.cmwV36plus || val;
           }else if(csv[name]){
-            settings['_' + name + '_sep'] = !val || /(^\d+\+?$|,)/.test($.trim(val)) ? ',' : ' ';
+            settings['_' + name + '_sep'] = !val || /(^-?\d+\+?$|,)/.test($.trim(val)) ? ',' : ' ';
             val = $.map(val.split(/[,\s]+/), function(x){
               var inherit = !legacyVersion && /\+$/.test(x);
               x = x ? parseInt(x, 10) : 0;
-              return isNaN(x) || x < 1 ? null : (inherit ? x + '+' : x);
+              return isNaN(x) || !x ? null : (inherit ? x + '+' : x);
             });
             settings['_' + name] = val.join(settings['_' + name + '_sep']);
           }
@@ -673,7 +673,7 @@ jQuery(function($){
               var plus = this === item[0] || this === inheritsTickCrossFrom.get(0) ? hasTickCross : $(this).hasClass('cmw-inherit-' + tickOrCross);
               return $(this).data().itemid + (plus ? '+' : '');
             })
-            .get().join( /(,|^\d+\+?$)/.test( $.trim(widgetField.val()) || ',' ) ? ',' : ' ' );
+            .get().join( /(,|^-?\d+\+?$)/.test( $.trim(widgetField.val()) || ',' ) ? ',' : ' ' );
           widgetField.val(sampleSet).trigger('change');
         }
         this.blur();

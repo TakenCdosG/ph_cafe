@@ -82,6 +82,19 @@ function wc_send_frame_options_header() {
 add_action( 'template_redirect', 'wc_send_frame_options_header' );
 
 /**
+ * No index our endpoints.
+ * Prevent indexing pages like order-received.
+ *
+ * @since 2.5.3
+ */
+function wc_prevent_endpoint_indexing() {
+	if ( is_wc_endpoint_url() || isset( $_GET['download_file'] ) ) {
+		@header( 'X-Robots-Tag: noindex' );
+	}
+}
+add_action( 'template_redirect', 'wc_prevent_endpoint_indexing' );
+
+/**
  * When the_post is called, put product data into a global.
  *
  * @param mixed $post
@@ -524,7 +537,7 @@ if (  ! function_exists( 'woocommerce_template_loop_product_title' ) ) {
 		echo '<h3>' . get_the_title() . '</h3>';
 	}
 }
-if (  ! function_exists( 'woocommerce_template_loop_subcategory_title' ) ) {
+if (  ! function_exists( 'woocommerce_template_loop_category_title' ) ) {
 
 	/**
 	 * Show the subcategory title in the product loop.
@@ -1477,8 +1490,8 @@ if ( ! function_exists( 'woocommerce_products_will_display' ) ) {
 					$products_will_display = false;
 				} else {
 					// If we get here, the parents were empty so we're forced to check children
-					foreach ( $has_children as $term ) {
-						$children = get_term_children( $term, $term->taxonomy );
+					foreach ( $has_children as $term_id ) {
+						$children = get_term_children( $term_id, $term->taxonomy );
 
 						if ( sizeof( get_objects_in_term( $children, $term->taxonomy ) ) > 0 ) {
 							$products_will_display = false;
@@ -1761,7 +1774,7 @@ if ( ! function_exists( 'woocommerce_form_field' ) ) {
 							. '<option value="">'.__( 'Select a country&hellip;', 'woocommerce' ) .'</option>';
 
 					foreach ( $countries as $ckey => $cvalue ) {
-						$field .= '<option value="' . esc_attr( $ckey ) . '" '. selected( $value, $ckey, false ) . '>'.__( $cvalue, 'woocommerce' ) .'</option>';
+						$field .= '<option value="' . esc_attr( $ckey ) . '" '. selected( $value, $ckey, false ) . '>'. __( $cvalue, 'woocommerce' ) .'</option>';
 					}
 
 					$field .= '</select>';
@@ -2021,7 +2034,7 @@ if ( ! function_exists( 'wc_dropdown_variation_attribute_options' ) ) {
 
 		$html .= '</select>';
 
-		echo apply_filters( 'woocommerce_dropdown_variation_attribute_options_html', $html );
+		echo apply_filters( 'woocommerce_dropdown_variation_attribute_options_html', $html, $args );
 	}
 
 }

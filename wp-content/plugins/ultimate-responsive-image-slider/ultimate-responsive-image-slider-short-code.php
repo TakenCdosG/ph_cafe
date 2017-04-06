@@ -150,18 +150,12 @@ function ResponsiveWWRISroShortCode( $Id ) {
 			else
 				$WRIS_L3_Custom_CSS   			= "";		
 		}
-		/* echo "<pre>";
-		print_r($WRIS_Gallery_Settings);
-		echo "<pre>"; */
 	}
 
 	/**
 	 * Load Slider Layout Output
 	 */
 	require("uris-layout.php");
-	?>
-	<div style="display:none">Ultimate Responsive Image Slider Plugin Powered By Weblizar</div>
-	<?php
 	wp_reset_query();
     return ob_get_clean();
 }

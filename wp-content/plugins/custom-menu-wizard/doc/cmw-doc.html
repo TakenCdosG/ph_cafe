@@ -117,9 +117,9 @@ div > ul > li > ul, div > ol > li > ul {
 <p>
 	<strong>Requires at least:</strong> 3.6</p>
 <p>
-	<strong>Tested up to:</strong> 4.3.1</p>
+	<strong>Tested up to:</strong> 4.4</p>
 <p>
-	<strong>Stable tag:</strong> 3.2.2</p>
+	<strong>Stable tag:</strong> 3.2.4</p>
 <p>
 	<strong>License:</strong> GPLv2 or Later	</p>
 
@@ -515,11 +515,8 @@ application are therefore determined and governed by the other Secondary Filter 
 
 <p>It only comes into play (possibly) when a <code>Branch</code> filter is set as "Current Item", and the <code>Starting at</code>
 and <code>For Depth</code> settings are such that the output should start at or below the current item,
-and would normally include some of the current item's descendants (eg. <code>Starting at</code> "the Branch",</p>
-
-<pre><code>For Depth</code></pre>
-
-<p>"1 level" does <em>not</em> invoke the fallback).
+and would normally include some of the current item's descendants
+(eg. <code>Starting at</code> "the Branch", <code>For Depth</code> "1 level" does <em>not</em> invoke the fallback).
 The fallback allows for the occasion when the current menu item <em>does not have</em> any immediate children.</p>
 
 <ul>
@@ -1081,7 +1078,7 @@ notice of is <code>title</code>, which will be output (if supplied) as an H3 in 
 <p>Yep, 'fraid so :</p>
 
 <ol>
-<li>The widget will only recognise one "current" item (prior to v2.0.2 it was the last one found; as of v2.0.2, it's the first one encountered, but v3.1.5 add a switch that lets you opt for the last one found). It is perfectly possible to have more than one menu item marked as "current", but if CMW has been configured to filter on anything related to a "current menu item" it can only choose one. The simplest example of multiple "current" items is if you add the same page to a menu more than once, but any other plugin that adds and/or manipulates menu items could potentially cause problems for CMW.</li>
+<li>The widget will only recognise one "current" item (prior to v2.0.2 it was the last one found; as of v2.0.2, it's the first one encountered, but v3.1.5 adds a switch that lets you opt for the last one found). It is perfectly possible to have more than one menu item marked as "current", but if CMW has been configured to filter on anything related to a "current menu item" it can only choose one. The simplest example of multiple "current" items is if you add the same page to a menu more than once, but any other plugin that adds and/or manipulates menu items could potentially cause problems for CMW.</li>
 <li>The widget's "assist" uses jQuery UI's Dialog, which unfortunately (in versions 1.10.3/4) has a <em>really</em> annoying bug in its handling of a draggable (ie. when you drag the Dialog's title bar to reposition it on the page) when the page has been scrolled. It is due to be fixed in UI v1.11.0, but meantime I have defaulted the Dialog to fixed position, with an option to toggle back to absolute : it's not perfect but it's the best compromise I can come up with to maintain some sort of useability.</li>
 </ol>
 
@@ -1098,8 +1095,84 @@ infallible (and it's been proven a fair few times!), so if you still have proble
 <p>Please note that simply reporting "It doesn't work" is not
 the most useful of feedbacks, and is unlikely to get a response other than, possibly, a request for more details.</p>
 
+<p>I should also point out that any other plugin can change any menu, at any time, either before or after this widget does it stuff (even
+prevent it running at all!), so it's possible that the problem lies somewhere other than CMW.</p>
 
-</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-3-heading" data-toggle="collapse" href="#faq-3" aria-expanded="false" aria-controls="faq-3"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>How do I use the "assist"?</h4></a><div id="faq-3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-3-heading"><div class="panel-body">
+
+</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-3-heading" data-toggle="collapse" href="#faq-3" aria-expanded="false" aria-controls="faq-3"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>Where is the styling of the output coming from, and how do I change it?</h4></a><div id="faq-3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-3-heading"><div class="panel-body">
+
+
+<p>The widget does not supply any output styling (at all!). This is because I have absolutely no idea where you are going to place either the
+widget (sidebar, footer, header, ad-hoc, etc?) or the shortcode (page content, post content, widget content, custom field, etc?) and everyone's
+requirements for styling are likely to be different ... possibly even within the same web page's output. So, all styling is down to your theme,
+and if you wish to modify it you will need to add to (or modify) your theme's stylesheet.</p>
+
+<p>The safest way to do this is via a <a href="https://codex.wordpress.org/Child_Themes" target='_blank'>child theme<small class="glyphicon glyphicon-new-window offsite-link" aria-hidden="true"></small></a>, so that any
+changes you make will not be lost if/when the main theme gets updated.
+The best way to test your changes is by utilising the developer capabilities that are available in most
+modern browsers (personally, I could not do without Firefox and the Firebug extension!) and dynamically
+applying/modifying styles, possibly utilising the custom classes that the
+widget applies to its output, or the Container options for a user-defined id or class.</p>
+
+
+</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-4-heading" data-toggle="collapse" href="#faq-4" aria-expanded="false" aria-controls="faq-4"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>Why is there no (or, How do I get...) indentation on my hierarchical menu?</h4></a><div id="faq-4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-4-heading"><div class="panel-body">
+
+
+<p>Firstly, see the answer above, re: styling of the output.</p>
+
+<p>Any output styling comes from your theme (or possibly some other plugin, but definitely <em>not</em> CMW).</p>
+
+<p>If other nested lists are displayed with indentation then it is likely (but not guaranteed) that there is a
+class that can be applied to the CMW output that may result in the desired effect. It is always worth
+checking out WordPress's own Nav Menu widget, on a menu that has sub-menus : if that has indentation then
+check the classes <em>it</em> has and try them on CMW (assuming that they're not already there!). If it doesn't
+have indentation then you're probably going to have to add your own styled class(es) to your theme, and
+then apply them to CMW.</p>
+
+<p>Note that quite a few themes "reset/standardise the CSS", by removing all
+padding and margins from lists : trouble is, some of them don't then provide any means for indenting
+nested lists.
+Also, please be aware that any CSS rules that <em>are</em> provided <em>may</em> be location-specific.
+So, for example, a class may indent nested lists when they are in a sidebar widget area, but not when
+they're in a footer widget area or inserted within content (using a shortcode).</p>
+
+<p>Purely as an example, [re-]applying indentation to nested unorder lists (ULs) could be as fundamental as ...</p>
+
+<pre><code>ul ul { margin-left: 1em; }</code></pre>
+
+<p>...however, I have found that things a generally never that straightforward, particularly when menus with
+links in them are involved, so I'm afraid you might to have to experiment a bit.</p>
+
+
+</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-5-heading" data-toggle="collapse" href="#faq-5" aria-expanded="false" aria-controls="faq-5"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>How can I create a horizontal menu?</h4></a><div id="faq-5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-5-heading"><div class="panel-body">
+
+
+<p>Firstly, see the answer above, re: styling of the output.</p>
+
+<p>Any output styling comes from your theme (or possibly some other plugin, but definitely <em>not</em> CMW).</p>
+
+<p>If you simply want all the menu items to flow horizontally across the page then you could start with
+something along the lines of...</p>
+
+<pre><code>.menu-widget {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.menu-widget li {
+    display: inline-block;
+    margin: 0 2em 0 0;
+}</code></pre>
+
+<p>This is purely an <em>example</em>.</p>
+
+<p>I've used a class : you may want to change/add to the class, or swap it for an id.
+There are a number of other ways to do it - especially if you have multiple levels, or you want vertical
+sub-menus, and/or any sort of interaction. You may want to bring in a jQuery script, or another WordPress
+plugin, to handle it for you, assuming that your theme doesn't already provide the functionality you need.</p>
+
+
+</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-6-heading" data-toggle="collapse" href="#faq-6" aria-expanded="false" aria-controls="faq-6"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>How do I use the "assist"?</h4></a><div id="faq-6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-6-heading"><div class="panel-body">
 
 
 <p>The widget's interactive "assist" is specific to each widget instance. It is a javascript-driven <em>emulator</em> that uses the widget instance's
@@ -1129,21 +1202,21 @@ settings but they will be slightly opaque and they will <em>not</em> be clickabl
 If you are using a shortcode implementation, then copy-paste the shortcode text - at the base of either the "assist" or the widget form - straight into your post.</p>
 
 
-</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-4-heading" data-toggle="collapse" href="#faq-4" aria-expanded="false" aria-controls="faq-4"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>Is there an easy way to construct the shortcode?</h4></a><div id="faq-4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-4-heading"><div class="panel-body">
+</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-7-heading" data-toggle="collapse" href="#faq-7" aria-expanded="false" aria-controls="faq-7"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>Is there an easy way to construct the shortcode?</h4></a><div id="faq-7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-7-heading"><div class="panel-body">
 
 
 <p>Yes, use a widget form. The shortcode for all the selected/specified options is show at the base of the widget (v3+) and the base of the
 "assist". The widget does not have to be placed within a widget area, it can also be used from the Inactive Widgets area.</p>
 
 
-</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-5-heading" data-toggle="collapse" href="#faq-5" aria-expanded="false" aria-controls="faq-5"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>Do I have to Save the widget if I am using a shortcode?</h4></a><div id="faq-5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-5-heading"><div class="panel-body">
+</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-8-heading" data-toggle="collapse" href="#faq-8" aria-expanded="false" aria-controls="faq-8"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>Do I have to Save the widget if I am using a shortcode?</h4></a><div id="faq-8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-8-heading"><div class="panel-body">
 
 
 <p>Only if (as of v3.1.5) you are using the <code>widget=N</code> attribute, which refers back to an existing widget instance
 for its settings.</p>
 
 
-</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-6-heading" data-toggle="collapse" href="#faq-6" aria-expanded="false" aria-controls="faq-6"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>How do I get the menu item ids for the 'Items' option?</h4></a><div id="faq-6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-6-heading"><div class="panel-body">
+</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-9-heading" data-toggle="collapse" href="#faq-9" aria-expanded="false" aria-controls="faq-9"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>How do I get the menu item ids for the 'Items' option?</h4></a><div id="faq-9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-9-heading"><div class="panel-body">
 
 
 <p>Use the widget's interactive "assist" (see above). Within the representative menu structure, each menu item's id is set in its title
@@ -1151,18 +1224,18 @@ attribute, so should be seen when the cursor is moved over the item. A simpler w
 then show a green tick "checkbox" to the right of each menu item and you simply [un]check the items as required. Each selection will be reflected back into the
 widget's <code>Items</code> settings, and also in the shortcode texts.</p>
 
-<p>The more painstaking way is to go to Appearance, Menus and select the relevant menu; hover over the <em>edit</em>, <em>Remove</em>, or <em>Cancel</em> link for an item and look in
+<p>The more painstaking way is to go to Appearance, Menus and select the relevant menu; hover over one of the <em>edit</em>, <em>Remove</em>, or <em>Cancel</em> links for an item and look in
 the URL (the link's href) for <code>menu-item=NNN</code> ... the NNN is the menu item id.</p>
 
 
-</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-7-heading" data-toggle="collapse" href="#faq-7" aria-expanded="false" aria-controls="faq-7"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>How do I get the menu item ids for the 'Exclude Ids' option?</h4></a><div id="faq-7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-7-heading"><div class="panel-body">
+</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-10-heading" data-toggle="collapse" href="#faq-10" aria-expanded="false" aria-controls="faq-10"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>How do I get the menu item ids for the 'Exclude Ids' option?</h4></a><div id="faq-10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-10-heading"><div class="panel-body">
 
 
 <p>The "assist" shows a red cross "checkbox" to the left of each menu item, and [un]checking the items will reflect back into the options and
 shortcode texts. Otherwise, it's the same principle as outlined above for <code>Items</code> ids.</p>
 
 
-</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-8-heading" data-toggle="collapse" href="#faq-8" aria-expanded="false" aria-controls="faq-8"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>What's the difference between including Branch Siblings (or Branch Ancestors + Siblings), and switching to 'Level' instead of 'Item' in the Secondary Filter section?</h4></a><div id="faq-8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-8-heading"><div class="panel-body">
+</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-11-heading" data-toggle="collapse" href="#faq-11" aria-expanded="false" aria-controls="faq-11"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>What's the difference between including Branch Siblings (or Branch Ancestors + Siblings), and switching to 'Level' instead of 'Item' in the Secondary Filter section?</h4></a><div id="faq-11" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-11-heading"><div class="panel-body">
 
 
 <p>If you elect to include Branch [Ancestor] Siblings, you will <em>only</em> get the siblings, <strong>not</strong> their descendants (assuming they have any).
@@ -1174,21 +1247,39 @@ will become eligible for filtering. If you left "Item" enabled, and switched on 
 would both still be eligible, but only <em>Bravo's descendants</em> would be; not Charlie's!</p>
 
 
-</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-9-heading" data-toggle="collapse" href="#faq-9" aria-expanded="false" aria-controls="faq-9"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>Where is the styling of the output coming from, and how do I change it?</h4></a><div id="faq-9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-9-heading"><div class="panel-body">
+</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-12-heading" data-toggle="collapse" href="#faq-12" aria-expanded="false" aria-controls="faq-12"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>Can CMW handle menus that have items dynamically added by other plugins?</h4></a><div id="faq-12" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-12-heading"><div class="panel-body">
 
 
-<p>The widget does not supply any ouput styling (at all!). This is because I have absolutely no idea where you are going to place either the
-widget (sidebar, footer, header, ad-hoc, etc?) or the shortcode (page content, post content, widget content, custom field, etc?) and everyone's
-requirements for styling are likely to be different ... possibly even within the same web page's output. So all styling is down to your theme,
-and if you wish to modify it you will need to add to your theme's stylesheet.</p>
+<p>Ummm ... Maybe.</p>
 
-<p>The safest way to do this is via a child theme, so that any changes you make will not be lost if/when the main theme gets updated. The best
-way to test your changes is by utilising the developer capabilities that are available in most modern browsers (personally, I could not
-do without Firefox and the Firebug extension!) and dynamically applying/modifying styles, possibly utilising the custom classes that the
-widget applies to its output, or the Container options for a user-defined id or class.</p>
+<p>Unfortunately, I can't answer this with a definitive Yes or No. By definition, if something is "dynamic" then
+it is likely to change. If the plugin that creates those dynamic items does its job correctly then the items
+added should have unique ids, <em>at least within the context of the menu being manipulated</em>. Also, those items
+will probably have been set up with a menu_order property that places them appropriately within the menu
+structure, and the existing menu items will have been modified accordingly. If that is the case then CMW will
+be able to process them in the right order &amp; structure.</p>
+
+<p><strong>However</strong>, there is a big caveat here : CMW stores item ids wherever a specific item is targeted - such
+as <code>Branch=Page One</code>, or <code>Items=1,3,5</code>, or <code>Exclusions=2,4,6+</code>, etc. If any one of those ids relates
+to a dynamically-generated item at the time the widget (or shortcode) is configured, then it is possible that
+the id may get assigned to a different item, or may not even exist, when it comes to displaying the
+menu.</p>
+
+<p>As a contrived example, let's say that posts Alpha, Charlie and Echo are dynamically added to a menu, and you
+can see them when you configure the CMW widget. You decide to Exclude post Charlie, so you configure and save the widget accordingly.
+Then someone adds or changes post Beta such that <em>it</em> now qualifies for dynamic inclusion into the menu - so, the
+menu should now contain posts Alpha, Beta, Charlie and Echo. Unfortunately, the ids get re-assigned by the
+plugin doing the dynamic insertion, and Beta now has the id that Charlie was given when you configured CMW, so
+Beta gets filtered out and Alpha, Charlie and Echo get shown!</p>
+
+<p>So, my advice would be : If you use CMW with a menu that you <em>know</em> contains dynamically-degenerated items,
+try to avoid specifically targeting any of those items in the configuration. For example,
+setting <code>Branch=Current Item</code> is fine, but don't set <code>Branch=A Dynamic Item</code>; and avoid including or excluding
+specific dynamic items, use a parent item that exists in the menu instead. If you can do that then there
+should be no problem.</p>
 
 
-</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-10-heading" data-toggle="collapse" href="#faq-10" aria-expanded="false" aria-controls="faq-10"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>How can I find all my posts/pages that have a CMW shortcode so that I can upgrade them?</h4></a><div id="faq-10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-10-heading"><div class="panel-body">
+</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-13-heading" data-toggle="collapse" href="#faq-13" aria-expanded="false" aria-controls="faq-13"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>How can I find all my posts/pages that have a CMW shortcode so that I can upgrade them?</h4></a><div id="faq-13" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-13-heading"><div class="panel-body">
 
 
 <p>There is a button on the widget's "assist" - <code>[...]</code> - that will provide a list of posts/pages whose content, or meta data (custom fields),
@@ -1201,7 +1292,7 @@ the "assist" (for some unknown reason). You may optionally provide a title attri
 Note that output from this shortcode extension is restricted to users with edit_pages capability.</p>
 
 
-</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-11-heading" data-toggle="collapse" href="#faq-11" aria-expanded="false" aria-controls="faq-11"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>Is Version 2 of the widget, including the old [custom_menu_wizard/] shortcode, still supported?</h4></a><div id="faq-11" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-11-heading"><div class="panel-body">
+</div></div></div><div class="panel panel-info"><a class="panel-heading show" role="tab" id="faq-14-heading" data-toggle="collapse" href="#faq-14" aria-expanded="false" aria-controls="faq-14"><h4 class="panel-title"><span class="glyphicon glyphicon-triangle-bottom pull-right"></span><span class="glyphicon glyphicon-triangle-top pull-right"></span>Is Version 2 of the widget, including the old [custom_menu_wizard/] shortcode, still supported?</h4></a><div id="faq-14" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faq-14-heading"><div class="panel-body">
 
 
 <p>In Version 3, Yes. However, I highly recommend that you upgrade your widgets &amp; shortcodes to the latest versions,
@@ -1209,7 +1300,20 @@ because Version 2 will <strong>not</strong> be supported beyond Version 3.</p>
 </div></div></div></div>                </div>
                 <div role="tabpanel" class="tab-pane fade" id="Changelog">
                     <h2>Changelog</h2>
-	<h4>3.2.2</h4>
+	<h4>3.2.4</h4>
+
+<ul>
+<li>bugfix : improve handling of dynamically-generated items, by pre-sorting into menu_order order and coping with negative item ids</li>
+<li>documentation : updated FAQs</li>
+</ul>
+
+<h4>3.2.3</h4>
+
+<ul>
+<li>tweak : minor updates to documentation, and verified for WordPress v4.4</li>
+</ul>
+
+<h4>3.2.2</h4>
 
 <ul>
 <li>bugfix : fixed initial widget display when adding new widget instance in the customizer</li>

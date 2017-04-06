@@ -1,10 +1,10 @@
 === Ultimate Responsive Image Slider ===
 Contributors: weblizar
 Donate link: http://www.weblizar.com/
-Tags: best slider plugin, carousel, carousel slider, coin slider, content slider, content slideshow, featured-content-slider, flex slider, free video slider, Horizontal slider, HTML5 slider, image, Image Rotator, image slider, image slideshow, images, javascript slider, javascript slideshow, jquery slider, jquery slideshow, media, nivo slider, nivoslider, page, photo slider, picture slider, plugin, Post, posts, posts slider, recent post slider, responsive, responsive slider, responsive slideshow, seo, slide, slide show, slider, slider plugin, slider shortcode, slides, slideshow, slideshow manager, slideshow plugin, vertical slider, vertical slides,  wordpress seo, wordpress slider, wordpress slideshow, wp, wp slider, thumbnail slider, responsive image slider, slider plugin, mobile slider, tab slider, touch slider, text slider, link slider,  media slider, 3d slider , awesome slider, wordpress slider plugin, meta slider, free slider, free plugin, gpl slider, Responsive Touch Slider, easy slider , simple slider, image slideshow, lightbox, popbox, gallery, image gallery, slider gallery, photo gallery, thumbnail, portfolio, portfolio gallery, slider portfolio, css slider, jquery plugin, jquery slider plugin, jquery slideshow plugin, animation, animation slider, navigation slider, bullet slider, html5, css3 slider, css3 slideshow, responsive images, responsive, post slider, page slider, wordpress photos slider , wordpress photos slideshow, responsive 3d slider, slideshow
-Requires at least: 3.5
-Tested up to: 4.4
-Stable tag: 2.9.1
+Tags: slider, slider plugin, best slider plugin, image slide show, responsive slider, image slider, slider shortcode, slider widget, responsive image slider, theme slider, post slider, page slider, free slider plguin 
+Requires at least: 3.8
+Tested up to: 4.4.2
+Stable tag: 2.9.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -138,6 +138,25 @@ If you have any question contact us at here: [Plugin Support Forum ](http://word
 == Changelog ==
 
 For more information, see Weblizar(http://wwww.weblizar.com/).
+
+= Version 2.9.4.2 06-Feb-2016 =
+* Minior testing and updates
+
+= Version 2.9.4.1 06-Feb-2016 =
+* HTML tag display fixed
+
+= Version 2.9.4 02-Feb-2016 =
+* Removal of Non-required section of codes. 
+
+= Version 2.9.3 28-Jan-2016 =
+* Powered By Removed
+* Plugin Tags updated
+* Post data sanitized
+* Escaping all output data
+* Removed external link
+
+= Version 2.9.2 27-Jan-2016 =
+* Removed external link
 
 = Version 2.9.1 30-12-2015 =
 * Small Update

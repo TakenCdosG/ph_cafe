@@ -4,7 +4,7 @@ Donate link: http://www.ramoonus.nl/donate/
 Tags: jquery, update, jquery ui, javascript, jq
 Requires at least: 3.8
 Tested up to: 4.4
-Stable tag: 2.2.0.1
+Stable tag: 2.2.2
 Text Domain: jquery-updater
 
 This plugin updates jQuery to the latest stable version on your website.
@@ -15,19 +15,19 @@ Since jQuery 2.2 was used in this plugin, making jQuery 1.x obsolete, [jQuery Mi
 
 No files are replaced, therefore deactivation of this plugin returns your site to it`s original state.
 
-*Warning*
+**Warning**
 
-If you are not familiar with beta testing, bugfixing, javascript or running bleeding edge software it`s recommended.
+If you are not familiar with beta testing, bugfixing, javascript or running bleeding edge software it`s **not** recommended.
 I will not provide help on JavaScript and jQuery!
 
-*Reporting problems*
+**Reporting problems**
 
 Please post bug reports and request for help on [WordPress.org Support Forums](https://wordpress.org/support/plugin/jquery-updater). I will only provide help on issues caused by the plugin, not on JavaScript and jQuery related matters!
 Please report feature requests and code changes on [GitHub Issues page](https://github.com/Ramoonus/jQuery-Updater/issues)
 
 If you run into any bugs, turning this plugin off will fully deactivate everything.
 
-*Work in Progress*
+**Work in Progress**
 
 * Options screen to enable/disable
 * Option to choose a specific jQuery version
@@ -44,15 +44,24 @@ For more information on the development visit the plugins [GitHub](https://githu
 1. Q: Do I need this plugin if I`m running the latest version of WordPress on my site?
 A: No
 
-2. Q: Is this plugin compatible with PHP 5.2 / 5.3 / 5.4 or 7?
+2. Q: Is this plugin compatible with PHP 5.2 / 5.3 / 5.4 / 5.5 / 5.6 or 7 and HHVM?
 A: Yes
 
 3. Q: This plugin breaks my site! How do I fix it?
 A: Using jQuery version 2 could break your site. See the warning on the homepage of this plugin.
 
-== Changelog ==
+== Upgrade Notice ==
+= 2.2.2 =
+* Updated jQuery to 2.2.2
 
-Updated Readme
+== Changelog ==
+= 2.2.2 =
+* [Updated jQuery to 2.2.2](http://blog.jquery.com/2016/02/22/jquery-1-12-1-and-2-2-1-released/)
+* Updated Upgrade Notice
+
+= 2.2.1 =
+* [Updated jQuery to 2.2.1](http://blog.jquery.com/2016/02/22/jquery-1-12-1-and-2-2-1-released/)
+* Updated Readme
 
 == 2.2.0.1 ==
 * Updated jQuery Migrate to 1.3.1
@@ -176,7 +185,3 @@ jQuery 2.0 has the same API as jQuery 1.9, but does not support Internet Explore
 
 = 1.0 =
 * First version, uses jQuery 1.5.2 on Googles CDN
-
-== Upgrade Notice == 
-= 2.1.4 =
-* Updated jQuery to 2.1.4

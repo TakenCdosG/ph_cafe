@@ -446,9 +446,9 @@ class WC_Shortcodes {
 			return '';
 		}
 
-		if ( is_object( $product_data ) ) {
-			$product = wc_setup_product_data( $product_data );
-		} else {
+		$product = is_object( $product_data ) && in_array( $product_data->post_type, array( 'product', 'product_variation' ) ) ? wc_setup_product_data( $product_data ) : false;
+
+		if ( ! $product ) {
 			return '';
 		}
 
@@ -494,13 +494,9 @@ class WC_Shortcodes {
 			return '';
 		}
 
-		if ( is_object( $product_data ) ) {
-			$product = wc_setup_product_data( $product_data );
-		} else {
-			return '';
-		}
+		$product = is_object( $product_data ) && in_array( $product_data->post_type, array( 'product', 'product_variation' ) ) ? wc_setup_product_data( $product_data ) : false;
 
-		if ( 'product' !== $product_data->post_type ) {
+		if ( ! $product ) {
 			return '';
 		}
 
@@ -593,8 +589,6 @@ class WC_Shortcodes {
 		);
 
 		$query_args = self::_maybe_add_category_args( $query_args, $atts['category'], $atts['operator'] );
-
-		ob_start();
 
 		add_filter( 'posts_clauses', array( __CLASS__, 'order_by_rating_post_clauses' ) );
 

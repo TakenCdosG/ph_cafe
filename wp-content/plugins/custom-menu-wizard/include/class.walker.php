@@ -52,16 +52,23 @@ class Custom_Menu_Wizard_Walker extends Walker_Nav_Menu {
      * @param integer $max_depth
      * @return string
      */
-    public function walk($elements, $max_depth){
+    public function walk( $elements, $max_depth ){
 
-        $args = array_slice(func_get_args(), 2);
+        $args = array_slice( func_get_args(), 2 );
         $args = $args[0];
 
-        if( $max_depth >= -1 && !empty( $elements ) && isset($args->_custom_menu_wizard) ){
+        //v3.2.4 : there's no guarantee the items in $elements will actually be in menu_order order, even
+        //         though they will probably be indexed as such, which means that reading through using
+        //         foreach() may process menu_order 14 before menu_order 3 (for example).
+        //         I'm therefore introducing a pre-sorter, to ensure that the array *is* in the right order!
+
+        if( $max_depth >= -1 && !empty( $elements ) && isset( $args->_custom_menu_wizard ) ){
 
             if( empty( $args->_custom_menu_wizard['cmwv'] ) ){
                 $elements = $this->_cmw_walk_legacy( $args, $elements );
             }else{
+                //pre-sort $elements...
+                usort( $elements, array( &$this, 'cmw_sort_menu_order') );
                 $elements = $this->_cmw_walk( $args, $elements );
             }
 
@@ -74,11 +81,23 @@ class Custom_Menu_Wizard_Walker extends Walker_Nav_Menu {
                 $max_depth = -1;
             }
 
-        } //ends the check for bad max depth, empty elements, or empty cmw args
+        }
 
         return empty( $elements ) ? '' : parent::walk( apply_filters( 'custom_menu_wizard_walker_items', $elements, $args ), $max_depth, $args );
 
     } //end walk()
+
+    /**
+     * sort by ascending menu_order
+     * @param object $a Item
+     * @param object $a Item
+     * @return integer +/-1
+     */
+    public static function cmw_sort_menu_order( $a, $b ){
+
+        return (int) $a->menu_order < (int) $b->menu_order ? -1 : 1;
+
+    }
 
     /**
      * current & legacy : finds and returns ID of current menu item while creating the tree and levels arrays
@@ -91,6 +110,7 @@ class Custom_Menu_Wizard_Walker extends Walker_Nav_Menu {
         //$elements is an array of objects, indexed by position within the menu (menu_order),
         //starting at 1 and incrementing sequentially regardless of parentage (ie. first item is [1],
         //second item is [2] whether it's at root or subordinate to first item)
+        //NB : as of v3.2.4, $elements will be zero-based due to pre-sorting to get into menu_order order.
 
         $id_field = $this->db_fields['id']; //eg. = 'db_id'
         $parent_field = $this->db_fields['parent']; //eg. = 'menu_item_parent'
@@ -425,7 +445,7 @@ class Custom_Menu_Wizard_Walker extends Walker_Nav_Menu {
         $rtn = $this->_cmw_tree[0]['keepCount'] > 0;
         if( $rtn && !empty( $cmw['__exclude'] )){
             foreach( $cmw['__exclude'] as $itemID ){
-                if( $itemID > 0 && isset( $this->_cmw_tree[ $itemID ] ) && $this->_cmw_tree[ $itemID ]['keep'] ){
+                if( !empty( $itemID ) && isset( $this->_cmw_tree[ $itemID ] ) && $this->_cmw_tree[ $itemID ]['keep'] ){
                     $this->_cmw_tree[ $itemID ]['keep'] = false;
                     $this->_cmw_tree[0]['keepCount']--;
                 }
@@ -565,6 +585,10 @@ class Custom_Menu_Wizard_Walker extends Walker_Nav_Menu {
      */
     private function _cmw_walk( &$args, $elements ){
 
+        if( empty( $elements ) ){
+            return $elements;
+        }
+
         $id_field = $this->db_fields['id']; //eg. = 'db_id'
         $parent_field = $this->db_fields['parent']; //eg. = 'menu_item_parent'
         $unlimited = 65532;
@@ -576,7 +600,7 @@ class Custom_Menu_Wizard_Walker extends Walker_Nav_Menu {
         while( $runCount > 0 ){
 
             $runCount--;
-            $topOfBranch = -1;
+            $topOfBranch = false;
             $continue = true;
 
             //find the current menu item (ID of the menu item) while creating the tree and levels arrays...
@@ -645,12 +669,12 @@ class Custom_Menu_Wizard_Walker extends Walker_Nav_Menu {
                 }
                 //branch...
                 if( $find_branch ){
-                    //topOfBranch gets set to -1 if it can't be determined...
+                    //topOfBranch gets set to false if it can't be determined...
                     $topOfBranch = $find_current
-                        ? ( $currentItem === false ? -1 : $currentItem )
-                        : ( isset( $this->_cmw_tree[ $cmw['branch'] ] ) ? $cmw['branch'] : -1 );
+                        ? $currentItem
+                        : ( isset( $this->_cmw_tree[ $cmw['branch'] ] ) ? $cmw['branch'] : false );
                     $theBranchItem = $topOfBranch;
-                    $continue = $topOfBranch > 0;
+                    $continue = $topOfBranch !== false;
                 }
             } //end PRIMARIES
 

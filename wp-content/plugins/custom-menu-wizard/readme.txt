@@ -3,8 +3,8 @@ Contributors: wizzud
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KP2LVCBXNCEB4
 Tags: menu,widget,navigation,custom menu,partial menu,current item,current page,menu level,menu branch,menu shortcode,menu widget,advanced,enhanced
 Requires at least: 3.6
-Tested up to: 4.3.1
-Stable tag: 3.2.2
+Tested up to: 4.4
+Stable tag: 3.2.4
 License: GPLv2 or Later
 
 Show branches or levels of your menu in a widget, or in content using a shortcode, with full customisation.
@@ -288,8 +288,8 @@ application are therefore determined and governed by the other Secondary Filter 
 
 It only comes into play (possibly) when a `Branch` filter is set as "Current Item", and the `Starting at`
 and `For Depth` settings are such that the output should start at or below the current item,
-and would normally include some of the current item's descendants (eg. `Starting at` "the Branch",
-`For Depth` "1 level" does *not* invoke the fallback).
+and would normally include some of the current item's descendants
+(eg. `Starting at` "the Branch", `For Depth` "1 level" does *not* invoke the fallback).
 The fallback allows for the occasion when the current menu item *does not have* any immediate children.
 
 * **Unlabelled Select** *(select)*
@@ -769,7 +769,7 @@ If you have a question or problem that is not covered here, please use the [Supp
 = Are there any known problems/restrictions? =
 Yep, 'fraid so :
 
-1. The widget will only recognise one "current" item (prior to v2.0.2 it was the last one found; as of v2.0.2, it's the first one encountered, but v3.1.5 add a switch that lets you opt for the last one found). It is perfectly possible to have more than one menu item marked as "current", but if CMW has been configured to filter on anything related to a "current menu item" it can only choose one. The simplest example of multiple "current" items is if you add the same page to a menu more than once, but any other plugin that adds and/or manipulates menu items could potentially cause problems for CMW.
+1. The widget will only recognise one "current" item (prior to v2.0.2 it was the last one found; as of v2.0.2, it's the first one encountered, but v3.1.5 adds a switch that lets you opt for the last one found). It is perfectly possible to have more than one menu item marked as "current", but if CMW has been configured to filter on anything related to a "current menu item" it can only choose one. The simplest example of multiple "current" items is if you add the same page to a menu more than once, but any other plugin that adds and/or manipulates menu items could potentially cause problems for CMW.
 2. The widget's "assist" uses jQuery UI's Dialog, which unfortunately (in versions 1.10.3/4) has a *really* annoying bug in its handling of a draggable (ie. when you drag the Dialog's title bar to reposition it on the page) when the page has been scrolled. It is due to be fixed in UI v1.11.0, but meantime I have defaulted the Dialog to fixed position, with an option to toggle back to absolute : it's not perfect but it's the best compromise I can come up with to maintain some sort of useability.
 
 = Why isn't it working? Why is there no output? =
@@ -781,6 +781,73 @@ infallible (and it's been proven a fair few times!), so if you still have proble
 
 Please note that simply reporting "It doesn't work" is not
 the most useful of feedbacks, and is unlikely to get a response other than, possibly, a request for more details.
+
+I should also point out that any other plugin can change any menu, at any time, either before or after this widget does it stuff (even
+prevent it running at all!), so it's possible that the problem lies somewhere other than CMW.
+
+= Where is the styling of the output coming from, and how do I change it? =
+The widget does not supply any output styling (at all!). This is because I have absolutely no idea where you are going to place either the
+widget (sidebar, footer, header, ad-hoc, etc?) or the shortcode (page content, post content, widget content, custom field, etc?) and everyone's
+requirements for styling are likely to be different ... possibly even within the same web page's output. So, all styling is down to your theme,
+and if you wish to modify it you will need to add to (or modify) your theme's stylesheet.
+
+The safest way to do this is via a [child theme](https://codex.wordpress.org/Child_Themes), so that any
+changes you make will not be lost if/when the main theme gets updated.
+The best way to test your changes is by utilising the developer capabilities that are available in most
+modern browsers (personally, I could not do without Firefox and the Firebug extension!) and dynamically
+applying/modifying styles, possibly utilising the custom classes that the
+widget applies to its output, or the Container options for a user-defined id or class.
+
+= Why is there no (or, How do I get...) indentation on my hierarchical menu? =
+Firstly, see the answer above, re: styling of the output.
+
+Any output styling comes from your theme (or possibly some other plugin, but definitely *not* CMW).
+
+If other nested lists are displayed with indentation then it is likely (but not guaranteed) that there is a
+class that can be applied to the CMW output that may result in the desired effect. It is always worth
+checking out WordPress's own Nav Menu widget, on a menu that has sub-menus : if that has indentation then
+check the classes *it* has and try them on CMW (assuming that they're not already there!). If it doesn't
+have indentation then you're probably going to have to add your own styled class(es) to your theme, and
+then apply them to CMW.
+
+Note that quite a few themes "reset/standardise the CSS", by removing all
+padding and margins from lists : trouble is, some of them don't then provide any means for indenting
+nested lists.
+Also, please be aware that any CSS rules that *are* provided *may* be location-specific.
+So, for example, a class may indent nested lists when they are in a sidebar widget area, but not when
+they're in a footer widget area or inserted within content (using a shortcode).
+
+Purely as an example, [re-]applying indentation to nested unorder lists (ULs) could be as fundamental as ...
+
+`ul ul { margin-left: 1em; }`
+
+...however, I have found that things a generally never that straightforward, particularly when menus with
+links in them are involved, so I'm afraid you might to have to experiment a bit.
+
+= How can I create a horizontal menu? =
+Firstly, see the answer above, re: styling of the output.
+
+Any output styling comes from your theme (or possibly some other plugin, but definitely *not* CMW).
+
+If you simply want all the menu items to flow horizontally across the page then you could start with
+something along the lines of...
+
+`.menu-widget {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.menu-widget li {
+    display: inline-block;
+    margin: 0 2em 0 0;
+}`
+
+This is purely an *example*.
+
+I've used a class : you may want to change/add to the class, or swap it for an id.
+There are a number of other ways to do it - especially if you have multiple levels, or you want vertical
+sub-menus, and/or any sort of interaction. You may want to bring in a jQuery script, or another WordPress
+plugin, to handle it for you, assuming that your theme doesn't already provide the functionality you need.
 
 = How do I use the "assist"? =
 The widget's interactive "assist" is specific to each widget instance. It is a javascript-driven *emulator* that uses the widget instance's
@@ -821,7 +888,7 @@ attribute, so should be seen when the cursor is moved over the item. A simpler w
 then show a green tick "checkbox" to the right of each menu item and you simply [un]check the items as required. Each selection will be reflected back into the
 widget's `Items` settings, and also in the shortcode texts.
 
-The more painstaking way is to go to Appearance, Menus and select the relevant menu; hover over the *edit*, *Remove*, or *Cancel* link for an item and look in
+The more painstaking way is to go to Appearance, Menus and select the relevant menu; hover over one of the *edit*, *Remove*, or *Cancel* links for an item and look in
 the URL (the link's href) for `menu-item=NNN` ... the NNN is the menu item id.
 
 = How do I get the menu item ids for the 'Exclude Ids' option? =
@@ -837,16 +904,34 @@ with `Starting at` set to "the Branch" (ie. Bravo). If you switch from "Item" to
 will become eligible for filtering. If you left "Item" enabled, and switched on the inclusion of Branch Siblings, then Bravo and Charlie
 would both still be eligible, but only *Bravo's descendants* would be; not Charlie's!
 
-= Where is the styling of the output coming from, and how do I change it? =
-The widget does not supply any ouput styling (at all!). This is because I have absolutely no idea where you are going to place either the
-widget (sidebar, footer, header, ad-hoc, etc?) or the shortcode (page content, post content, widget content, custom field, etc?) and everyone's
-requirements for styling are likely to be different ... possibly even within the same web page's output. So all styling is down to your theme,
-and if you wish to modify it you will need to add to your theme's stylesheet.
+= Can CMW handle menus that have items dynamically added by other plugins? =
+Ummm ... Maybe.
 
-The safest way to do this is via a child theme, so that any changes you make will not be lost if/when the main theme gets updated. The best
-way to test your changes is by utilising the developer capabilities that are available in most modern browsers (personally, I could not
-do without Firefox and the Firebug extension!) and dynamically applying/modifying styles, possibly utilising the custom classes that the
-widget applies to its output, or the Container options for a user-defined id or class.
+Unfortunately, I can't answer this with a definitive Yes or No. By definition, if something is "dynamic" then
+it is likely to change. If the plugin that creates those dynamic items does its job correctly then the items
+added should have unique ids, *at least within the context of the menu being manipulated*. Also, those items
+will probably have been set up with a menu_order property that places them appropriately within the menu
+structure, and the existing menu items will have been modified accordingly. If that is the case then CMW will
+be able to process them in the right order & structure.
+
+**However**, there is a big caveat here : CMW stores item ids wherever a specific item is targeted - such
+as `Branch=Page One`, or `Items=1,3,5`, or `Exclusions=2,4,6+`, etc. If any one of those ids relates
+to a dynamically-generated item at the time the widget (or shortcode) is configured, then it is possible that
+the id may get assigned to a different item, or may not even exist, when it comes to displaying the
+menu.
+
+As a contrived example, let's say that posts Alpha, Charlie and Echo are dynamically added to a menu, and you
+can see them when you configure the CMW widget. You decide to Exclude post Charlie, so you configure and save the widget accordingly.
+Then someone adds or changes post Beta such that *it* now qualifies for dynamic inclusion into the menu - so, the
+menu should now contain posts Alpha, Beta, Charlie and Echo. Unfortunately, the ids get re-assigned by the
+plugin doing the dynamic insertion, and Beta now has the id that Charlie was given when you configured CMW, so
+Beta gets filtered out and Alpha, Charlie and Echo get shown!
+
+So, my advice would be : If you use CMW with a menu that you *know* contains dynamically-degenerated items,
+try to avoid specifically targeting any of those items in the configuration. For example,
+setting `Branch=Current Item` is fine, but don't set `Branch=A Dynamic Item`; and avoid including or excluding
+specific dynamic items, use a parent item that exists in the menu instead. If you can do that then there
+should be no problem.
 
 = How can I find all my posts/pages that have a CMW shortcode so that I can upgrade them? =
 There is a button on the widget's "assist" - `[...]` - that will provide a list of posts/pages whose content, or meta data (custom fields),
@@ -875,6 +960,13 @@ because Version 2 will **not** be supported beyond Version 3.
 9. Widget's "assist"
 
 == Changelog ==
+
+= 3.2.4 =
+* bugfix : improve handling of dynamically-generated items, by pre-sorting into menu_order order and coping with negative item ids
+* documentation : updated FAQs
+
+= 3.2.3 =
+* tweak : minor updates to documentation, and verified for WordPress v4.4
 
 = 3.2.2 =
 * bugfix : fixed initial widget display when adding new widget instance in the customizer
@@ -1031,6 +1123,13 @@ because Version 2 will **not** be supported beyond Version 3.
 * Initial release
 
 == Upgrade Notice ==
+
+= 3.2.4 =
+Fix to improve handling of dynamically-generated items that have negative item ids, and that get appended to the list of items.
+Updated FAQs documentation.
+
+= 3.2.3 =
+Tweaked documentation and verified for WordPress v4.4
 
 = 3.2.2 =
 Fixed a bug on the very first rendering of a newly added widget via the customizer, where the widget output rendered in legacy mode until an option got changed or the widget was saved.

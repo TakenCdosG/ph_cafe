@@ -16,7 +16,7 @@
 			public $singular_event_label;
 			public $plural_event_label;
 
-			/** @var Tribe__Events__Pro__Recurrence_Permalinks */
+			/** @var Tribe__Events__Pro__Recurrence__Permalinks */
 			public $permalink_editor = null;
 
 			/**
@@ -46,8 +46,8 @@
 			 */
 			public $widget_wrappers;
 
-			const REQUIRED_TEC_VERSION = '4.0.3';
-			const VERSION = '4.0.4';
+			const REQUIRED_TEC_VERSION = '4.1';
+			const VERSION = '4.1';
 
 
 			private function __construct() {
@@ -103,6 +103,7 @@
 				add_filter( 'tribe_help_tab_getting_started_text', array( $this, 'add_help_tab_getting_started_text' ) );
 				add_filter( 'tribe_help_tab_introtext', array( $this, 'add_help_tab_intro_text' ) );
 				add_filter( 'tribe_help_tab_forumtext', array( $this, 'add_help_tab_forumtext' ) );
+				add_filter( 'tribe_support_registered_template_systems', array( $this, 'register_template_updates' ) );
 
 				add_action( 'widgets_init', array( $this, 'pro_widgets_init' ), 100 );
 				add_action( 'wp_loaded', array( $this, 'allow_cpt_search' ) );
@@ -167,7 +168,7 @@
 				add_filter( 'wp', array( $this, 'detect_recurrence_redirect' ) );
 				add_filter( 'template_redirect', array( $this, 'filter_canonical_link_on_recurring_events' ), 10, 1 );
 
-				$this->permalink_editor = apply_filters( 'tribe_events_permalink_editor', new Tribe__Events__Pro__Recurrence_Permalinks() );
+				$this->permalink_editor = apply_filters( 'tribe_events_permalink_editor', new Tribe__Events__Pro__Recurrence__Permalinks() );
 				add_filter( 'post_type_link', array(
 					$this->permalink_editor,
 					'filter_recurring_event_permalinks',
@@ -401,7 +402,7 @@
 				Tribe__Events__Pro__Mini_Calendar::instance();
 				Tribe__Events__Pro__This_Week::instance();
 				Tribe__Events__Pro__Custom_Meta::init();
-				Tribe__Events__Pro__Recurrence_Meta::init();
+				Tribe__Events__Pro__Recurrence__Meta::init();
 				Tribe__Events__Pro__Geo_Loc::instance();
 				Tribe__Events__Pro__Community_Modifications::init();
 				$this->displayMetaboxCustomFields();
@@ -1104,7 +1105,7 @@
 				$data = apply_filters( 'tribe_events_pro_localize_script', array(), 'TribeEventsProAdmin', Tribe__Events__Main::POSTTYPE.'-premium-admin' );
 				wp_localize_script( Tribe__Events__Main::POSTTYPE . '-premium-admin', 'TribeEventsProAdmin', $data );
 				wp_localize_script( Tribe__Events__Main::POSTTYPE . '-premium-admin', 'tribe_events_pro_recurrence_strings', array(
-					'date' => Tribe__Events__Pro__Recurrence_Meta::date_strings(),
+					'date' => Tribe__Events__Pro__Recurrence__Meta::date_strings(),
 					'recurrence' => Tribe__Events__Pro__Recurrence__Strings::recurrence_strings(),
 					'exclusion' => array(),
 				) );
@@ -1636,16 +1637,44 @@
 				return 1.60934;
 			}
 
+			/**
+			 * Instances the filters.
+			 */
 			public function init_apm_filters() {
-				new Tribe__Events__Pro__APM_Filters__APM_Filters();
-				new Tribe__Events__Pro__APM_Filters__Date_Filter();
-				new Tribe__Events__Pro__APM_Filters__Recur_Filter();
-				new Tribe__Events__Pro__APM_Filters__Content_Filter();
-				new Tribe__Events__Pro__APM_Filters__Title_Filter();
-				new Tribe__Events__Pro__APM_Filters__Venue_Filter();
-				new Tribe__Events__Pro__APM_Filters__Organizer_Filter();
+				new Tribe__Events__Pro__APM_Filters__APM_Filters( );
+				new Tribe__Events__Pro__APM_Filters__Date_Filter( );
+				new Tribe__Events__Pro__APM_Filters__Recur_Filter( );
+				new Tribe__Events__Pro__APM_Filters__Content_Filter( );
+				new Tribe__Events__Pro__APM_Filters__Title_Filter( );
+				new Tribe__Events__Pro__APM_Filters__Venue_Filter( );
+				new Tribe__Events__Pro__APM_Filters__Organizer_Filter( );
+
+				/**
+				 * Fires after APM filters have been instantiated.
+				 *
+				 * This is the action additional filters defining should hook to instantiate those filters.
+				 *
+				 * @since 4.1
+				 */
+				do_action('tribe_events_pro_init_apm_filters');
 			}
 
+			/**
+			 * Registers The Events Calendar with the views/overrides update checker.
+			 *
+			 * @param array $plugins
+			 *
+			 * @return array
+			 */
+			public function register_template_updates( $plugins ) {
+				$plugins[ __( 'Events Calendar PRO', 'tribe-events-calendar-pro' ) ] = array(
+					self::VERSION,
+					$this->pluginPath . 'src/views/pro',
+					trailingslashit( get_stylesheet_directory() ) . 'tribe-events/pro',
+				);
+
+				return $plugins;
+			}
 
 			/**
 			 * plugin deactivation callback

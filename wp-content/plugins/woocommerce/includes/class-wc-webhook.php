@@ -114,7 +114,7 @@ class WC_Webhook {
 		if ( apply_filters( 'woocommerce_webhook_deliver_async', true, $this ) ) {
 
 			// deliver in background
-			wp_schedule_single_event( time(), 'woocommerce_deliver_webhook_async', array( $this->id, is_scalar( $arg ) ? $arg : 0 ) );
+			wp_schedule_single_event( time(), 'woocommerce_deliver_webhook_async', array( $this->id, $arg ) );
 
 		} else {
 
@@ -549,6 +549,7 @@ class WC_Webhook {
 			'customer.updated' => array(
 				'profile_update',
 				'woocommerce_api_edit_customer',
+				'woocommerce_customer_save_address',
 			),
 			'customer.deleted' => array(
 				'delete_user',

@@ -1,13 +1,12 @@
 <?php
 /**
  * Plugin Name: Ultimate Responsive Image Slider
- * Version: 2.9.1
+ * Version: 2.9.4.2
  * Description: Add unlimited image slides using Ultimate Responsive Image Slider in any Page and Post content to give an attractive mode to represent contents.
  * Author: Weblizar
  * Author URI: https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/
  * Plugin URI: https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/
- */
- 
+ */ 
 
 //Constant Variable
 define("WRIS_TEXT_DOMAIN", "W_R_I_S" );
@@ -37,7 +36,7 @@ function WRIS_DefaultSettingsPro() {
 		"WRIS_L3_Custom_CSS"   			=> "",
 
 		'WRIS_L3_Slide_Order'   		=> "ASC",
-		'WRIS_L3_Navigation_Position'   => "bottom",
+		'WRIS_L3_Navigation_Position'  	=> "bottom",
 		'WRIS_L3_Slide_Distance'   		=> 5,
 		'WRIS_L3_Thumbnail_Style'   	=> "border",
 		'WRIS_L3_Thumbnail_Width'   	=> 120,
@@ -143,6 +142,7 @@ class WRIS {
         if (is_admin()) {
 			add_action('plugins_loaded', array(&$this, 'WRIS_Translate'), 1);
 			add_action('init', array(&$this, 'ResponsiveImageSlider'), 1);
+			
 			add_action('add_meta_boxes', array(&$this, 'add_all_ris_meta_boxes'));
 			add_action('admin_init', array(&$this, 'add_all_ris_meta_boxes'), 1);
 			
@@ -339,20 +339,20 @@ class WRIS {
 						<li class="rpg-image-entry" id="rpg_img">
 							<a class="gallery_remove rpggallery_remove" href="#gallery_remove" id="rpg_remove_bt" ><img src="<?php echo  WRIS_PLUGIN_URL.'img/Close-icon.png'; ?>" /></a>
 							<div class="rpp-admin-inner-div1" >
-								<img src="<?php echo $url1; ?>" class="rpg-meta-image" alt=""  style="">
-								<input type="hidden" id="unique_string[]" name="unique_string[]" value="<?php echo $UniqueString; ?>" />
+								<img src="<?php echo esc_url ( $url1 ); ?>" class="rpg-meta-image" alt=""  style="">
+								<input type="hidden" id="unique_string[]" name="unique_string[]" value="<?php echo esc_attr( $UniqueString ); ?>" />
 							</div>
 							<div class="rpp-admin-inner-div2" >
-								<input type="text" id="rpgp_image_url[]" name="rpgp_image_url[]" class="rpg_label_text"  value="<?php echo $url; ?>"  readonly="readonly" style="display:none;" />
-								<input type="text" id="rpggallery_admin_thumb[]" name="rpggallery_admin_thumb[]" class="rpg_label_text"  value="<?php echo $url1; ?>"  readonly="readonly" style="display:none;" />
-								<input type="text" id="rpggallery_admin_large[]" name="rpggallery_admin_large[]" class="rpg_label_text"  value="<?php echo $url3; ?>"  readonly="readonly" style="display:none;" />
+								<input type="text" id="rpgp_image_url[]" name="rpgp_image_url[]" class="rpg_label_text"  value="<?php echo esc_url( $url ); ?>"  readonly="readonly" style="display:none;" />
+								<input type="text" id="rpggallery_admin_thumb[]" name="rpggallery_admin_thumb[]" class="rpg_label_text"  value="<?php echo esc_url( $url1 ); ?>"  readonly="readonly" style="display:none;" />
+								<input type="text" id="rpggallery_admin_large[]" name="rpggallery_admin_large[]" class="rpg_label_text"  value="<?php echo esc_url( $url3 ); ?>"  readonly="readonly" style="display:none;" />
 								<p>
 									<label><?php _e('Slide Title', WRIS_TEXT_DOMAIN); ?></label>
-									<input type="text" id="rpgp_image_label[]" name="rpgp_image_label[]" value="<?php echo $name; ?>" placeholder="<?php _e('Enter Slide Title', WRIS_TEXT_DOMAIN); ?>" class="rpg_label_text">
+									<input type="text" id="rpgp_image_label[]" name="rpgp_image_label[]" value="<?php echo esc_attr( $name ); ?>" placeholder="<?php _e('Enter Slide Title', WRIS_TEXT_DOMAIN); ?>" class="rpg_label_text">
 								</p>
 								<p>
 									<label><?php _e('Slide Descriptions', WRIS_TEXT_DOMAIN); ?></label>
-									<textarea rows="4" cols="50" id="rpgp_image_desc[]" name="rpgp_image_desc[]" placeholder="<?php _e('Enter Slide Description', WRIS_TEXT_DOMAIN); ?>" class="rpg_label_text"><?php echo $desc; ?></textarea>
+									<textarea rows="4" cols="50" id="rpgp_image_desc[]" name="rpgp_image_desc[]" placeholder="<?php _e('Enter Slide Description', WRIS_TEXT_DOMAIN); ?>" class="rpg_label_text"><?php echo esc_attr( $desc ); ?></textarea>
 								</p>
 							</div>
 						</li>
@@ -393,7 +393,7 @@ class WRIS {
 	}	
 
 	public function admin_thumb_uris($id) {
-		$image  = wp_get_attachment_image_src($id, 'rpggallery_admin_original', true);
+	$image  = wp_get_attachment_image_src($id, 'rpggallery_admin_original', true);
         $image1 = wp_get_attachment_image_src($id, 'rpggallery_admin_thumb', true);
         $image3 = wp_get_attachment_image_src($id, 'rpggallery_admin_large', true);
 		$UniqueString = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 5);
@@ -401,12 +401,12 @@ class WRIS {
 		<li class="rpg-image-entry" id="rpg_img">
 			<a class="gallery_remove rpggallery_remove" href="#gallery_remove" id="rpg_remove_bt" ><img src="<?php echo  WRIS_PLUGIN_URL.'img/Close-icon.png'; ?>" /></a>
 			<div class="rpp-admin-inner-div1" >
-				<img src="<?php echo $image1[0]; ?>" class="rpg-meta-image" alt=""  style="">
+				<img src="<?php echo esc_url( $image1[0] ); ?>" class="rpg-meta-image" alt=""  style="">
 				</div>
 			<div class="rpp-admin-inner-div1" >
-				<input type="text" id="rpgp_image_url[]" name="rpgp_image_url[]" class="rpg_label_text"  value="<?php echo $image[0]; ?>"  readonly="readonly" style="display:none;" />
-				<input type="text" id="rpggallery_admin_thumb[]" name="rpggallery_admin_thumb[]" class="rpg_label_text"  value="<?php echo $image1[0]; ?>"  readonly="readonly" style="display:none;" />
-				<input type="text" id="rpggallery_admin_large[]" name="rpggallery_admin_large[]" class="rpg_label_text"  value="<?php echo $image3[0]; ?>"  readonly="readonly" style="display:none;" />
+				<input type="text" id="rpgp_image_url[]" name="rpgp_image_url[]" class="rpg_label_text"  value="<?php echo esc_url( $image[0] ); ?>"  readonly="readonly" style="display:none;" />
+				<input type="text" id="rpggallery_admin_thumb[]" name="rpggallery_admin_thumb[]" class="rpg_label_text"  value="<?php echo esc_url( $image1[0] ); ?>"  readonly="readonly" style="display:none;" />
+				<input type="text" id="rpggallery_admin_large[]" name="rpggallery_admin_large[]" class="rpg_label_text"  value="<?php echo esc_url( $image3[0] ); ?>"  readonly="readonly" style="display:none;" />
 				<p>
 					<label><?php _e('Slide Title', WRIS_TEXT_DOMAIN); ?></label>
 					<input type="text" id="rpgp_image_label[]" name="rpgp_image_label[]" placeholder="<?php _e('Enter Slide Title Here', WRIS_TEXT_DOMAIN); ?>" class="rpg_label_text">
@@ -431,11 +431,11 @@ class WRIS {
 			$ImagesArray = array();
 			if($TotalImages) {
 				for($i=0; $i < $TotalImages; $i++) {
-					$image_label = stripslashes($_POST['rpgp_image_label'][$i]);
-					$image_desc = stripslashes($_POST['rpgp_image_desc'][$i]);
-					$url = $_POST['rpgp_image_url'][$i];
-					$url1 = $_POST['rpggallery_admin_thumb'][$i];
-					$url3 = $_POST['rpggallery_admin_large'][$i];
+					$image_label =stripslashes(sanitize_text_field($_POST['rpgp_image_label'][$i]));
+					$image_desc = stripslashes(sanitize_text_field($_POST['rpgp_image_desc'][$i]));
+					$url = sanitize_text_field( $_POST['rpgp_image_url'][$i] );
+					$url1 = sanitize_text_field($_POST['rpggallery_admin_thumb'][$i] );
+					$url3 = sanitize_text_field($_POST['rpggallery_admin_large'][$i] );
 					$ImagesArray[] = array(
 						'rpgp_image_label' => $image_label,
 						'rpgp_image_desc' => $image_desc,
@@ -459,64 +459,62 @@ class WRIS {
 	public function ris_settings_meta_save($PostID) {
 		if(isset($PostID) && isset($_POST['wl_action']) == "wl-save-settings") {
 
-			$WRIS_L3_Slide_Title				=	$_POST['wl-l3-slide-title'];
-			$WRIS_L3_Auto_Slideshow				=	$_POST['wl-l3-auto-slide'];
-			$WRIS_L3_Transition					=	$_POST['wl-l3-transition'];
-			$WRIS_L3_Transition_Speed			=	$_POST['wl-l3-transition-speed'];
-			$WRIS_L3_Sliding_Arrow				=	$_POST['wl-l3-sliding-arrow'];
-			$WRIS_L3_Slider_Navigation			=	$_POST['wl-l3-navigation'];
-			$WRIS_L3_Navigation_Button			=	$_POST['wl-l3-navigation-button'];
-			$WRIS_L3_Slider_Width				=	$_POST['wl-l3-slider-width'];
-			$WRIS_L3_Slider_Height				=	$_POST['wl-l3-slider-height'];
-			$WRIS_L3_Font_Style					=	$_POST['wl-l3-font-style'];
-			$WRIS_L3_Title_Color   				=	$_POST['wl-l3-title-color'];
-			$WRIS_L3_Title_BgColor   			=	$_POST['wl-l3-title-bgcolor'];
-			$WRIS_L3_Desc_Color   				=	$_POST['wl-l3-desc-color'];
-			$WRIS_L3_Desc_BgColor  				=	$_POST['wl-l3-desc-bgcolor'];
-			$WRIS_L3_Navigation_Color  			=	$_POST['wl-l3-navigation-color'];
-			$WRIS_L3_Fullscreeen  				=	$_POST['wl-l3-fullscreen'];
-			$WRIS_L3_Custom_CSS					=	$_POST['wl-l3-custom-css'];
-			
-			$WRIS_L3_Slide_Order   				= $_POST['wl-l3-slide-order'];
-			$WRIS_L3_Navigation_Position   		= $_POST['wl-l3-navigation-position'];
-			$WRIS_L3_Slide_Distance   			= $_POST['wl-l3-slide-distance'];
-			$WRIS_L3_Thumbnail_Style   			= $_POST['wl-l3-thumbnail-style'];
-			$WRIS_L3_Thumbnail_Width   			= $_POST['wl-l3-navigation-width'];
-			$WRIS_L3_Thumbnail_Height   		= $_POST['wl-l3-navigation-height'];
-			$WRIS_L3_Width   					= $_POST['wl-l3-width'];
-			$WRIS_L3_Height   					= $_POST['wl-l3-height'];
-			$WRIS_L3_Navigation_Bullets_Color	= $_POST['wl-l3-navigation-bullets-color'];
-			$WRIS_L3_Navigation_Pointer_Color	= $_POST['wl-l3-navigation-pointer-color'];
+			$WRIS_L3_Slide_Title				=	 sanitize_option ( 'title', $_POST['wl-l3-slide-title'] );
+			$WRIS_L3_Auto_Slideshow				=	 sanitize_option ( 'autoplay', $_POST['wl-l3-auto-slide'] );
+			$WRIS_L3_Transition					=	 sanitize_option ( 'transition', $_POST['wl-l3-transition'] );
+			$WRIS_L3_Transition_Speed			=	 sanitize_text_field( $_POST['wl-l3-transition-speed'] );
+			$WRIS_L3_Sliding_Arrow				=	 sanitize_option ( 'arrow', $_POST['wl-l3-sliding-arrow'] );
+			$WRIS_L3_Slider_Navigation			=	 sanitize_option ( 'navigation', $_POST['wl-l3-navigation'] );
+			$WRIS_L3_Navigation_Button			=	 sanitize_option ( 'navigation_button', $_POST['wl-l3-navigation-button'] );
+			$WRIS_L3_Slider_Width				=	 sanitize_option ( 'slider_width', $_POST['wl-l3-slider-width'] );
+			$WRIS_L3_Slider_Height				=	 sanitize_option ( 'slider_height', $_POST['wl-l3-slider-height'] );
+			$WRIS_L3_Font_Style					=	 sanitize_option ( 'font_style', $_POST['wl-l3-font-style'] );
+			$WRIS_L3_Title_Color   				=	 sanitize_option ( 'title_color', $_POST['wl-l3-title-color'] );
+			$WRIS_L3_Title_BgColor   			=	 sanitize_option ( 'title_bgcolor', $_POST['wl-l3-title-bgcolor'] );
+			$WRIS_L3_Desc_Color   				=	 sanitize_option ( 'desc_color', $_POST['wl-l3-desc-color'] );
+			$WRIS_L3_Desc_BgColor  				=	 sanitize_option ( 'desc_bgcolor', $_POST['wl-l3-desc-bgcolor'] );
+			$WRIS_L3_Navigation_Color  			=	 sanitize_option ( 'navigation_color', $_POST['wl-l3-navigation-color'] );
+			$WRIS_L3_Fullscreeen  				=	 sanitize_option ( 'fullscreen', $_POST['wl-l3-fullscreen'] );
+			$WRIS_L3_Custom_CSS					=	 sanitize_text_field( $_POST['wl-l3-custom-css'] );
+			$WRIS_L3_Slide_Order   				= 	 sanitize_option ( 'slide_order', $_POST['wl-l3-slide-order'] );
+			$WRIS_L3_Navigation_Position   		= 	 sanitize_option ( 'navigation_position', $_POST['wl-l3-navigation-position'] );
+			$WRIS_L3_Slide_Distance				= 	 sanitize_option ( 'slide_distance', $_POST['wl-l3-slide-distance'] );
+			$WRIS_L3_Thumbnail_Style   			= 	 sanitize_option ( 'thumbnail_style', $_POST['wl-l3-thumbnail-style'] );
+			$WRIS_L3_Thumbnail_Width   			= 	 sanitize_text_field( $_POST['wl-l3-navigation-width'] );
+			$WRIS_L3_Thumbnail_Height   		= 	 sanitize_text_field( $_POST['wl-l3-navigation-height'] );
+			$WRIS_L3_Width   					= 	 sanitize_text_field( $_POST['wl-l3-width'] );
+			$WRIS_L3_Height   					= 	 sanitize_text_field( $_POST['wl-l3-height'] );
+			$WRIS_L3_Navigation_Bullets_Color	= 	 sanitize_option ( 'navigation_bullet_color', $_POST['wl-l3-navigation-bullets-color'] );
+			$WRIS_L3_Navigation_Pointer_Color	=	 sanitize_option ( 'navigation_pointer_color', $_POST['wl-l3-navigation-pointer-color'] );
 			
 			$WRIS_Settings_Array = serialize( array(
-				'WRIS_L3_Slide_Title'  				=> $WRIS_L3_Slide_Title,
-				'WRIS_L3_Auto_Slideshow'  			=> $WRIS_L3_Auto_Slideshow,
-				'WRIS_L3_Transition'  				=> $WRIS_L3_Transition,
-				'WRIS_L3_Transition_Speed'  		=> $WRIS_L3_Transition_Speed,
-				'WRIS_L3_Sliding_Arrow'  			=> $WRIS_L3_Sliding_Arrow,
-				'WRIS_L3_Slider_Navigation'  		=> $WRIS_L3_Slider_Navigation,
-				'WRIS_L3_Navigation_Button'  		=> $WRIS_L3_Navigation_Button,
-				'WRIS_L3_Slider_Width'  			=> $WRIS_L3_Slider_Width,
-				'WRIS_L3_Slider_Height'  			=> $WRIS_L3_Slider_Height,
-				'WRIS_L3_Font_Style'  				=> $WRIS_L3_Font_Style,
-				'WRIS_L3_Title_Color'   			=> $WRIS_L3_Title_Color,
-				'WRIS_L3_Title_BgColor'   			=> $WRIS_L3_Title_BgColor,
-				'WRIS_L3_Desc_Color'   				=> $WRIS_L3_Desc_Color,
-				'WRIS_L3_Desc_BgColor'  			=> $WRIS_L3_Desc_BgColor,
-				'WRIS_L3_Navigation_Color' 			=> $WRIS_L3_Navigation_Color,
-				'WRIS_L3_Fullscreeen' 				=> $WRIS_L3_Fullscreeen,
-				'WRIS_L3_Custom_CSS'  				=> $WRIS_L3_Custom_CSS,
-				
-				'WRIS_L3_Slide_Order'   			=> $WRIS_L3_Slide_Order,
-				'WRIS_L3_Navigation_Position'   	=> $WRIS_L3_Navigation_Position,
-				'WRIS_L3_Slide_Distance'   			=> $WRIS_L3_Slide_Distance,
-				'WRIS_L3_Thumbnail_Style'   		=> $WRIS_L3_Thumbnail_Style,
-				'WRIS_L3_Thumbnail_Width'   		=> $WRIS_L3_Thumbnail_Width,
-				'WRIS_L3_Thumbnail_Height'   		=> $WRIS_L3_Thumbnail_Height,
-				'WRIS_L3_Width'   					=> $WRIS_L3_Width,
-				'WRIS_L3_Height'   					=> $WRIS_L3_Height,
-				'WRIS_L3_Navigation_Bullets_Color'  => $WRIS_L3_Navigation_Bullets_Color,
-				'WRIS_L3_Navigation_Pointer_Color'  => $WRIS_L3_Navigation_Pointer_Color,
+				'WRIS_L3_Slide_Title'  			=> 	$WRIS_L3_Slide_Title,
+				'WRIS_L3_Auto_Slideshow'  		=> 	$WRIS_L3_Auto_Slideshow,
+				'WRIS_L3_Transition'  			=> 	$WRIS_L3_Transition,
+				'WRIS_L3_Transition_Speed'  	=> 	$WRIS_L3_Transition_Speed,
+				'WRIS_L3_Sliding_Arrow'  		=> 	$WRIS_L3_Sliding_Arrow,
+				'WRIS_L3_Slider_Navigation'  	=> 	$WRIS_L3_Slider_Navigation,
+				'WRIS_L3_Navigation_Button'  	=> 	$WRIS_L3_Navigation_Button,
+				'WRIS_L3_Slider_Width'  		=> 	$WRIS_L3_Slider_Width,
+				'WRIS_L3_Slider_Height'  		=> 	$WRIS_L3_Slider_Height,
+				'WRIS_L3_Font_Style'  			=> 	$WRIS_L3_Font_Style,
+				'WRIS_L3_Title_Color'   		=> 	$WRIS_L3_Title_Color,
+				'WRIS_L3_Title_BgColor'   		=> 	$WRIS_L3_Title_BgColor,
+				'WRIS_L3_Desc_Color'   			=> 	$WRIS_L3_Desc_Color,
+				'WRIS_L3_Desc_BgColor'  		=> 	$WRIS_L3_Desc_BgColor,
+				'WRIS_L3_Navigation_Color' 		=> 	$WRIS_L3_Navigation_Color,
+				'WRIS_L3_Fullscreeen' 			=> 	$WRIS_L3_Fullscreeen,
+				'WRIS_L3_Custom_CSS'  			=> 	$WRIS_L3_Custom_CSS,
+				'WRIS_L3_Slide_Order'   		=> 	$WRIS_L3_Slide_Order,
+				'WRIS_L3_Navigation_Position'   => 	$WRIS_L3_Navigation_Position,
+				'WRIS_L3_Slide_Distance'   		=> 	$WRIS_L3_Slide_Distance,
+				'WRIS_L3_Thumbnail_Style'   	=> 	$WRIS_L3_Thumbnail_Style,
+				'WRIS_L3_Thumbnail_Width'   	=> 	$WRIS_L3_Thumbnail_Width,
+				'WRIS_L3_Thumbnail_Height'   	=> 	$WRIS_L3_Thumbnail_Height,
+				'WRIS_L3_Width'   				=> 	$WRIS_L3_Width,
+				'WRIS_L3_Height'   				=> 	$WRIS_L3_Height,
+				'WRIS_L3_Navigation_Bullets_Color'      => 	$WRIS_L3_Navigation_Bullets_Color,
+				'WRIS_L3_Navigation_Pointer_Color'      => 	$WRIS_L3_Navigation_Pointer_Color,
 			));
 			
 			$WRIS_Gallery_Settings = "WRIS_Gallery_Settings_".$PostID;
@@ -539,14 +537,14 @@ function uris_pro_SettingsPage() {
 		wp_enqueue_style('wl-boot-strap-admin', WRIS_PLUGIN_URL.'css/bootstrap-admin.css');
 		require_once("get-uris-pro.php");
 	}
-	add_submenu_page('edit.php?post_type=ris_gallery', 'Upgrade To Pro', 'Upgrade To Pro', 'administrator', 'ris_gallery', 'uris_upgrade_pro_function');
-	add_submenu_page('edit.php?post_type=ris_gallery', 'Help and Support', 'Help and Support', 'administrator', 'RIS-Help-page', 'RIS_Help_and_Support_page');
-	
-	}
 	function RIS_Help_and_Support_page(){
 		wp_enqueue_style('bootstrap-admin.css', WRIS_PLUGIN_URL.'css/bootstrap-admin.css');
-    require_once("help_and_support.php");
+		require_once("help_and_support.php");
 	}
+	add_submenu_page('edit.php?post_type=ris_gallery', 'Upgrade To Pro', 'Upgrade To Pro', 'administrator', 'ris_gallery', 'uris_upgrade_pro_function');
+	add_submenu_page('edit.php?post_type=ris_gallery', 'Help and Support', 'Help and Support', 'administrator', 'RIS-Help-page', 'RIS_Help_and_Support_page');
+}
+
 
 /**
  * Weblizar RIS Short Code [URIS]

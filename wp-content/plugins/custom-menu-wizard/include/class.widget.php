@@ -26,6 +26,8 @@ class Custom_Menu_Wizard_Widget extends WP_Widget {
         $this->_cmw_accessibility = isset( $_GET['editwidget'] ) && $_GET['editwidget'];
         $this->_cmw_hash_ct = 0;
 
+        $this->_cmw_hierarchy = new Custom_Menu_Wizard_Sorter();
+
     } //end __construct()
 
     /**
@@ -1159,20 +1161,17 @@ class Custom_Menu_Wizard_Widget extends WP_Widget {
         if( !empty( $menus ) ){
             foreach( $menus as $i => $menu ){
                 //find the menu's items, then remove any menus that have no items...
-                $menus[ $i ]->_items = wp_get_nav_menu_items( $menu->term_id );
+                //note : sending a huge number through to the sorter should prevent orphans being
+                //       appended to the returned array.
+                //       but also note that if the entire menu is orphans, the sorter will appoint
+                //       the first item in $elements as "root"!
+                //no longer need to check for all orphans (no root) because the hierarchy sort
+                //will create one if there weren't any before!
+                $menus[ $i ]->_items = $this->_cmw_hierarchy->walk( wp_get_nav_menu_items( $menu->term_id ), 65532 );
                 if( empty( $menus[ $i ]->_items ) ){
                     unset( $menus[ $i ] );
-                }else{
-                    //if the items are all orphans, then remove the menu...
-                    $rootItem = false;
-                    foreach( $menus[ $i ]->_items as $item ){
-                        $rootItem = $rootItem || $item->menu_item_parent == 0;
-                    }
-                    if( !$rootItem ){
-                        unset( $menus[ $i ] );
-                    }elseif( $findSM && $selectedMenu == $menu->term_id ){
-                        $findSM = false;
-                    }
+                }elseif( $findSM && $selectedMenu == $menu->term_id ){
+                    $findSM = false;
                 }
             }
         }
@@ -1228,7 +1227,7 @@ class Custom_Menu_Wizard_Widget extends WP_Widget {
             //don't need to check for existence of items because if there were none then the menu wouldn't be here!
             foreach( $menu->_items as $item ){
                 //exclude orphans!
-                if( isset($itemindents[ $item->menu_item_parent ])){
+                if( isset( $itemindents[ $item->menu_item_parent ] ) ){
                     $title = $item->title;
                     $level = $itemindents[ $item->menu_item_parent ] + 1;
 
@@ -1405,7 +1404,7 @@ class Custom_Menu_Wizard_Widget extends WP_Widget {
                 'ancestors'         => -9999, //v3.0.0 replaces include_ancestors, but with levels (relative & absolute)
                 'ancestor_siblings' => -9999, //v3.0.0 also has levels (relative & absolute)
                 'depth'             => 0,
-                'branch'            => 0,  //v3.0.0 replaces filter_item, but without current parent|root item
+                'branch'            => -999999,  //v3.0.0 replaces filter_item, but without current parent|root item, v3.2.4 allows negative
                 'menu'              => 0,
                 'level'             => 1,  //v3.0.0 replace start_level (for a level filter)
                 'fallback_depth'    => 0   //v3.0.0 added
@@ -1472,10 +1471,10 @@ class Custom_Menu_Wizard_Widget extends WP_Widget {
             $instance[ "_$k" ] = array();
             $instance[ $k ] = isset( $from_instance[ $k ] ) ? trim( (string)$from_instance[ $k ] ) : $v;
             foreach( preg_split('/[,\s]+/', $instance[ $k ], -1, PREG_SPLIT_NO_EMPTY ) as $i ){
-                //values can be just digits, or digits followed by a '+' (for inheritance)...
-                if( preg_match( '/^(\d+)(\+?)$/', $i, $m ) > 0 ){
+                //values can be just digits (maybe with leading '-'), or digits followed by a '+' (for inheritance)...
+                if( preg_match( '/^(-?\d+)(\+?)$/', $i, $m ) > 0 ){
                     $i = intval( $m[1] );
-                    if( $i > 0 ){
+                    if( $i != 0 ){
                         if( !empty( $m[2] ) ){
                             $inherits[] = $i;
                             $i = $i . '+';
@@ -1560,7 +1559,7 @@ class Custom_Menu_Wizard_Widget extends WP_Widget {
         //specifying branch sets byBranch, overriding byLevel...
         if( $byBranch ){
             //use the alternative for 0 ("current") because it's more self-explanatory...
-            $args['branch'] = $instance['branch'] > 0 ? $instance['branch'] : 'current';
+            $args['branch'] = $instance['branch'] == 0 ? 'current' : $instance['branch'];
             //start_at only *has* to be specified if not empty...
             if( !empty( $instance['branch_start'] ) ){
                 $args['start_at'] = array( $instance['branch_start'] );

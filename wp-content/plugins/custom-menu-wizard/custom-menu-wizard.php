@@ -3,7 +3,7 @@
  * Plugin Name: Custom Menu Wizard
  * Plugin URI: http://wordpress.org/plugins/custom-menu-wizard/
  * Description: Show any part of a custom menu in a Widget, or in content using a Shortcode. Customise the output with extra classes or html; filter by current menu item or a specific item; set a depth, show the parent(s), change the list style, etc. Use the included emulator to assist with the filter settings.
- * Version: 3.2.2
+ * Version: 3.2.4
  * Author: Roger Barrett
  * Author URI: http://www.wizzud.com/
  * License: GPL2+
@@ -11,6 +11,13 @@
 */
 defined( 'ABSPATH' ) or exit();
 /*
+ * v3.2.4 change log
+ * - changed the walker and the Assist to cope with negative ids on menu items
+ * - added pre-sorting of menu items, to provide better handling of dynamically generated items by other plugins
+ *
+ * v3.2.3 change log
+ * - tweaked documentation & verified WP 4.4
+ *
  * v3.2.2 change log
  * - fixed bug : fixed initial widget display when adding new widget instance in the customizer
  *
@@ -163,6 +170,9 @@ if( !class_exists( 'Custom_Menu_Wizard_Plugin' ) ){
     //include the widget class and its walker...
     include( plugin_dir_path( __FILE__ ) . 'include/class.widget.php' );
     include( plugin_dir_path( __FILE__ ) . 'include/class.walker.php' );
+    //...and a small walker for sorting nav items hierarchically : it's used by the widget
+    //   class - to make sure the branch selector has the right items in the right order
+    include( plugin_dir_path( __FILE__ ) . 'include/class.sorter.php' );
 
     //instantiate...
     add_action( 'plugins_loaded', array( 'Custom_Menu_Wizard_Plugin', 'init' ) );
@@ -170,7 +180,7 @@ if( !class_exists( 'Custom_Menu_Wizard_Plugin' ) ){
     //declare the main plugin class...
     class Custom_Menu_Wizard_Plugin {
 
-        public static $version = '3.2.2';
+        public static $version = '3.2.4';
         public static $script_handle = 'custom-menu-wizard-plugin-script';
         public static $widget_class = 'Custom_Menu_Wizard_Widget';
         protected static $instance;

@@ -86,7 +86,7 @@ abstract class WC_Shipping_Method extends WC_Settings_API {
 			return;
 		}
 
-		// Handle cost
+		// Total up the cost
 		$total_cost = is_array( $args['cost'] ) ? array_sum( $args['cost'] ) : $args['cost'];
 		$taxes      = $args['taxes'];
 
@@ -132,6 +132,8 @@ abstract class WC_Shipping_Method extends WC_Settings_API {
 			}
 		}
 
+		// Round the total cost after taxes have been calculated.
+		$total_cost    = wc_format_decimal( $total_cost, wc_get_price_decimals() );
 		$this->rates[] = new WC_Shipping_Rate( $args['id'], $args['label'], $total_cost, $taxes, $this->id );
 	}
 

@@ -86,21 +86,13 @@ $j = 1;
 		});
 	});
 </script>
-<script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
-<script type="text/javascript">
-  WebFont.load({
-	google: {
-	  families: ['<?php echo $RISP_Font_Style; ?>'] // saved value
-	}
-  });
-</script>
 <style>
 /* Example 3 */
 
 /* border */
 <?php if($WRIS_L3_Thumbnail_Style == "border") { ?>
 #example3_<?php echo $post_id; ?> .sp-selected-thumbnail {
-	border: 4px solid <?php echo $WRIS_L3_Navigation_Pointer_Color; ?>;
+	border: 4px solid <?php echo $WRIS_L3_Navigation_Pointer_Color ; ?>;
 }
 <?php } ?>
 
@@ -224,19 +216,19 @@ $j = 1;
 		$i++;
 		?>
 		<div class="sp-slide">
-			<img class="sp-image" alt="<?php echo $Title; ?>" src="" 
-				data-src="<?php echo $Url; ?>"
-				data-small="<?php echo $Url; ?>"
-				data-medium="<?php echo $Url; ?>"
-				data-large="<?php echo $Url; ?>"
-				data-retina="<?php echo $Url; ?>"/>
+			<img class="sp-image" alt="<?php echo esc_url($Title); ?>" src="" 
+				data-src="<?php echo esc_url($Url); ?>"
+				data-small="<?php echo esc_url($Url); ?>"
+				data-medium="<?php echo esc_url($Url); ?>"
+				data-large="<?php echo esc_url($Url); ?>"
+				data-retina="<?php echo esc_url($Url); ?>"/>
 
 			<?php if($Title != "") { ?>
 			<p class="sp-layer sp-white sp-padding title-in title-in-bg hide-small-screen" 
 				data-position="centerCenter"
 				data-vertical="-14%"
 				data-show-transition="left" data-show-delay="500">
-				<?php if(strlen($Title) > 100 ) echo substr($Title,0,100); else echo $Title; ?>
+				<?php if(strlen(esc_html($Title)) > 100 ) echo substr(esc_html($Title),0,100); else echo esc_html( $Title ); ?>
 			</p>
 			<?php } ?>
 
@@ -245,7 +237,7 @@ $j = 1;
 				data-position="centerCenter"
 				data-vertical="14%"
 				data-show-transition="right" data-show-delay="500">
-				<?php if(strlen($Desc) > 300 ) echo substr($Desc,0,300)."..."; else echo $Desc; ?>
+				<?php if(strlen(esc_html($Desc)) > 300 ) echo substr(esc_html($Desc),0,300)."..."; else echo esc_html($Desc); ?>
 			</p>
 			<?php } ?>
 		</div>
@@ -263,7 +255,7 @@ $j = 1;
 			$ThumbUrl = $RPGP_SinglePhotoDetails['rpggallery_admin_thumb'];
 			$j++;
 			?>
-			<img class="sp-thumbnail" src="<?php echo $ThumbUrl; ?>"/>
+			<img class="sp-thumbnail" src="<?php echo esc_url($ThumbUrl); ?>"/>
 		<?php } ?>
 	</div>
 	<?php } ?>

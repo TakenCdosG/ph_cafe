@@ -1,37 +1,34 @@
 <div class="row-fluid pricing-table pricing-three-column" style="margin-top: 10px;display:block;width:100%;overflow:hidden">
 
 	<div class="purchase_btn_div" style="margin-top:20px;text-align: center;">
-	  <a  style= "margin-right:10px;" href="http://demo.weblizar.com/ultimate-responsive-image-slider-pro/" target="_new" class="btn btn-primary btn-lg">View Demo</a>
-	  <a style= "margin-right:10px;" href="https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/" target="_new" class="btn btn-success btn-lg">Try Before Buy</a>
-	  <a href="https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/" target="_new" class="btn btn-danger btn-lg">Upgrade To Pro</a>
-		
+		<a  style= "margin-right:10px;" href="http://demo.weblizar.com/ultimate-responsive-image-slider-pro/" target="_new" class="btn btn-primary btn-lg">View Demo</a>
+		<a style= "margin-right:10px;" href="https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/" target="_new" class="btn btn-success btn-lg">Try Before Buy</a>
+		<a href="https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/" target="_new" class="btn btn-danger btn-lg">Upgrade To Pro</a>
 	</div>
 	
 	<div class="plan-name" style="margin-top:40px;text-align: center;">
         <h2 style="font-weight: bold;font-size: 36px;padding-top: 30px;padding-bottom: 10px;">Ultimate Responsive Slider Pro Screen shot</h2>
 		<h6 style="font-size: 22px;padding-top: 10px;padding-bottom: 10px;">A Perfect Responsive Image Slider plugin for WordPress. Contain 5 types of slider layout. Tested on all browser like Chrome, Mozilla, Safari, IE etc...</h6>
     </div>
-	<div class="plan-name"><!-- SLIDER-INTRO-->
-				<!--===============================================================-->
-			<div class="col-md-12 col-sm-12">
-				<a href="https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/" target="_new"><h2 style="font-weight: bold;font-size: 26px;padding-top: 20px;padding-bottom: 20px; text-align:center">Pro Version Demos</h2>
+	<div class="plan-name">
+		<!-- SLIDER-INTRO-->
+		<!--===============================================================-->
+		<div class="col-md-12 col-sm-12">
+			<a href="https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/" target="_new"><h2 style="font-weight: bold;font-size: 26px;padding-top: 20px;padding-bottom: 20px; text-align:center">Pro Version Demos</h2>
 				<img class="img-responsive" style="width:100%;border: 1px solid #e3e3e3;background: #f7f7f7;padding:10px" src="<?php echo  WRIS_PLUGIN_URL.'img/detail-product.jpg'; ?>" alt=""/>
-				</a>
-			</div>
-			
+			</a>
 		</div>
-</div>
-<div class="plan-name" style="padding-top:40px; text-align: center;display:block;width:100%;overflow:hidden">
- 
-	<div class="purchase_btn_div" style="margin-top:20px;text-align: center;">
-	  <a  style= "margin-right:10px;" href="http://demo.weblizar.com/ultimate-responsive-image-slider-pro/" target="_new" class="btn btn-primary btn-lg">View Demo</a>
-	  <a style= "margin-right:10px;" href="https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/" target="_new" class="btn btn-success btn-lg">Try Before Buy</a>
-	  <a href="https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/" target="_new" class="btn btn-danger btn-lg">Upgrade To Pro</a>
-	
 	</div>
 </div>
 <div class="plan-name" style="padding-top:40px; text-align: center;display:block;width:100%;overflow:hidden">
-        <h2 style="font-weight: bold;font-size: 36px;padding-top: 10px;padding-bottom: 10px;">Ultimate Responsive Image Slider Pro And Free Comparison Table</h2>
+	<div class="purchase_btn_div" style="margin-top:20px;text-align: center;">
+		<a  style= "margin-right:10px;" href="http://demo.weblizar.com/ultimate-responsive-image-slider-pro/" target="_new" class="btn btn-primary btn-lg">View Demo</a>
+		<a style= "margin-right:10px;" href="https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/" target="_new" class="btn btn-success btn-lg">Try Before Buy</a>
+		<a href="https://weblizar.com/plugins/ultimate-responsive-image-slider-pro/" target="_new" class="btn btn-danger btn-lg">Upgrade To Pro</a>
+	</div>
+</div>
+<div class="plan-name" style="padding-top:40px; text-align: center;display:block;width:100%;overflow:hidden">
+	<h2 style="font-weight: bold;font-size: 36px;padding-top: 10px;padding-bottom: 10px;">Ultimate Responsive Image Slider Pro And Free Comparison Table</h2>
 </div>
 <div class="row-fluid pricing-table pricing-three-column" style="margin-top: 10px;">
 	<div class="col-md-4">

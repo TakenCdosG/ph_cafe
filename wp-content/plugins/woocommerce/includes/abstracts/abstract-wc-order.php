@@ -1948,10 +1948,11 @@ abstract class WC_Abstract_Order {
 		}
 
 		$defaults = array(
-			'show_sku'   => false,
-			'show_image' => false,
-			'image_size' => array( 32, 32 ),
-			'plain_text' => false
+			'show_sku'      => false,
+			'show_image'    => false,
+			'image_size'    => array( 32, 32 ),
+			'plain_text'    => false,
+			'sent_to_admin' => false
 		);
 
 		$args     = wp_parse_args( $args, $defaults );
@@ -1960,11 +1961,12 @@ abstract class WC_Abstract_Order {
 		wc_get_template( $template, array(
 			'order'               => $this,
 			'items'               => $this->get_items(),
-			'show_download_links' => $this->is_download_permitted(),
+			'show_download_links' => $this->is_download_permitted() && ! $args['sent_to_admin'],
 			'show_sku'            => $args['show_sku'],
-			'show_purchase_note'  => $this->is_paid(),
+			'show_purchase_note'  => $this->is_paid() && ! $args['sent_to_admin'],
 			'show_image'          => $args['show_image'],
 			'image_size'          => $args['image_size'],
+			'sent_to_admin'       => $args['sent_to_admin']
 		) );
 
 		return apply_filters( 'woocommerce_email_order_items_table', ob_get_clean(), $this );
@@ -2272,9 +2274,18 @@ abstract class WC_Abstract_Order {
 			return false;
 		}
 
-		// Update the order.
-		wp_update_post( array( 'ID' => $this->id, 'post_status' => 'wc-' . $new_status ) );
 		$this->post_status = 'wc-' . $new_status;
+		$update_post_data  = array(
+			'ID'          => $this->id,
+			'post_status' => $this->post_status,
+		);
+
+		if ( 'pending' === $old_status && ! $manual ) {
+			$update_post_data[ 'post_date' ]     = current_time( 'mysql', 0 );
+			$update_post_data[ 'post_date_gmt' ] = current_time( 'mysql', 1 );
+		}
+
+		wp_update_post( $update_post_data );
 
 		$this->add_order_note( trim( $note . ' ' . sprintf( __( 'Order status changed from %s to %s.', 'woocommerce' ), wc_get_order_status_name( $old_status ), wc_get_order_status_name( $new_status ) ) ), 0, $manual );
 
@@ -2366,6 +2377,9 @@ abstract class WC_Abstract_Order {
 							$order_needs_processing = true;
 							break;
 						}
+					} else {
+						$order_needs_processing = true;
+						break;
 					}
 				}
 			}
@@ -2377,12 +2391,6 @@ abstract class WC_Abstract_Order {
 			if ( ! empty( $transaction_id ) ) {
 				update_post_meta( $this->id, '_transaction_id', $transaction_id );
 			}
-
-			wp_update_post( array(
-				'ID'            => $this->id,
-				'post_date'     => current_time( 'mysql', 0 ),
-				'post_date_gmt' => current_time( 'mysql', 1 )
-			) );
 
 			// Payment is complete so reduce stock levels
 			if ( apply_filters( 'woocommerce_payment_complete_reduce_order_stock', ! get_post_meta( $this->id, '_order_stock_reduced', true ), $this->id ) ) {
