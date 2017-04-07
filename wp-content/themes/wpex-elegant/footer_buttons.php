@@ -17,8 +17,8 @@
             </a>
 		</div>
 		<div class="col span_1_of_4">
-            <a href="/catering" class="catering">
-			<img src="<?php echo get_template_directory_uri(); ?>/assets/images/catering_button.png">
+            <a href="/events/category/all/" class="catering">
+			<img src="<?php echo get_template_directory_uri(); ?>/assets/images/Calendar_purple.png">
             </a>
 		</div>
 	</div>
